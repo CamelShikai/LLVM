@@ -14,10 +14,10 @@ int main() {
   x = x + 4;
   int y  = x + 2;
   y = y + 1;
-  if(x + 1 < 4){
-    x++;
+  if(x < 100){
+    printf("this is true branch\n");
   }else{
-    tobecalled();
+    printf("this is false branch\n");
     x--;
   } 
   return 0;

@@ -27,7 +27,7 @@ namespace {
     Function* insert;
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
-      hookFunc = M.getOrInsertFunction("print",IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
+      hookFunc = M.getOrInsertFunction("print",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
       insert = cast<Function>(hookFunc);
       return false;
     }
@@ -62,8 +62,8 @@ namespace {
 		       //inst->getType()->print(errs());
 		       //Instruction* next_ins = &(*(inst+1));
                        newInst->insertAfter(&(*inst));
-		       llvm::Instruction* br_ins = &*(newInst->getParent()->end());
-		       errs() << br_ins->getOpcode() << "br_ins\n";
+		       llvm::Instruction* br_ins = &*(newInst->getParent()->getTerminator());
+		       //errs() << br_ins->getOpcode() << "br_ins\n";
 		       //llvm::Value temp = LLVMGetCondition(newInst);
 		       //next_inst->eraseFromParent();
 		       //inst->eraseFromParent();
@@ -71,8 +71,15 @@ namespace {
 		       //LoadInst *CI = dyn_cast<LoadInst>(inst);
 		       //ReplaceInstWithInst((Instruction*)CI, newInst);
                        //inst->replaceAllUsesWith(newInst);
-		       BasicBlock * label1 = successors(&(*bb));
-		       BasicBlock * label2 = successors(label1);
+		       //BasicBlock * label1 = successors(&(*bb));
+		       //BasicBlock * label2 = successors(label1);
+		       if (auto* AI = dyn_cast<BranchInst>(br_ins)){
+			 errs() << "predicate changed\n";
+			 AI->setCondition(newInst);
+			 //inst->eraseFromParent();
+		       }else{
+			 errs() << "this is not a branchinst" << br_ins->getOpcode() << '\n';
+		       }
 		     }
 		  }
                    

@@ -4,6 +4,8 @@ target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
 @.str = private unnamed_addr constant [15 x i8] c"just a target\0A\00", align 1
+@.str.1 = private unnamed_addr constant [21 x i8] c"this is true branch\0A\00", align 1
+@.str.2 = private unnamed_addr constant [22 x i8] c"this is false branch\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
 define i32 @tobecalled() #0 {
@@ -45,24 +47,21 @@ define i32 @main() #0 {
   %9 = add nsw i32 %8, 1
   store i32 %9, i32* %3, align 4
   %10 = load i32, i32* %2, align 4
-  %11 = add nsw i32 %10, 1
-  %12 = icmp slt i32 %11, 4
-  br i1 %12, label %13, label %16
+  %11 = icmp slt i32 %10, 100
+  br i1 %11, label %12, label %14
 
-; <label>:13:                                     ; preds = %0
-  %14 = load i32, i32* %2, align 4
-  %15 = add nsw i32 %14, 1
-  store i32 %15, i32* %2, align 4
-  br label %20
+; <label>:12:                                     ; preds = %0
+  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i32 0, i32 0))
+  br label %18
 
-; <label>:16:                                     ; preds = %0
-  %17 = call i32 @tobecalled()
-  %18 = load i32, i32* %2, align 4
-  %19 = add nsw i32 %18, -1
-  store i32 %19, i32* %2, align 4
-  br label %20
+; <label>:14:                                     ; preds = %0
+  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2, i32 0, i32 0))
+  %16 = load i32, i32* %2, align 4
+  %17 = add nsw i32 %16, -1
+  store i32 %17, i32* %2, align 4
+  br label %18
 
-; <label>:20:                                     ; preds = %16, %13
+; <label>:18:                                     ; preds = %14, %12
   ret i32 0
 }
 
