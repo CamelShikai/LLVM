@@ -17,6 +17,7 @@ Turing Machine Obfuscator Pass
 #include "llvm/Support/Casting.h"
 #include "llvm/Support/Compiler.h"
 #include "llvm/IR/CFG.h"
+#include "llvm/IR/InstrTypes.h"
 
 using namespace llvm;
 
@@ -47,22 +48,10 @@ namespace {
                   if (inst->getOpcode() == Instruction::ICmp) {
 		     Instruction* next_inst = inst->getNextNode();
 		     if(next_inst->getOpcode() == Instruction::Br) {
-		       //dyn_cast<llvm::BranchInst*>(next_inst);
+		       //make sure br instrucion follows the icmp instruction
                        //llvm::IRBuilder<> builder(inst);
-		       //construct 3 parameters
-                       std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
-                       ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,0));
-                       ConstantInt* Arg2 = ConstantInt::get(bb->getContext(), APInt(32,2));
-                       ConstantInt* Arg3 = ConstantInt::get(bb->getContext(), APInt(32,3));
-                       putsArgs->push_back(Arg1);
-                       putsArgs->push_back(Arg2);
-                       putsArgs->push_back(Arg3);		      
-                       ArrayRef<llvm::Value*> x =  ArrayRef<llvm::Value*>(*putsArgs);
-                       Instruction *newInst = CallInst::Create(insert,x);
-		       //inst->getType()->print(errs());
-		       //Instruction* next_ins = &(*(inst+1));
-                       newInst->insertAfter(&(*inst));
-		       llvm::Instruction* br_ins = &*(newInst->getParent()->getTerminator());
+		       
+		       llvm::TerminatorInst* br_ins = &*(inst->getParent()->getTerminator());
 		       //errs() << br_ins->getOpcode() << "br_ins\n";
 		       //llvm::Value temp = LLVMGetCondition(newInst);
 		       //next_inst->eraseFromParent();
@@ -73,10 +62,52 @@ namespace {
                        //inst->replaceAllUsesWith(newInst);
 		       //BasicBlock * label1 = successors(&(*bb));
 		       //BasicBlock * label2 = successors(label1);
-		       if (auto* AI = dyn_cast<BranchInst>(br_ins)){
-			 errs() << "predicate changed\n";
-			 AI->setCondition(newInst);
+		       if (auto* AI = dyn_cast<BranchInst>(br_ins)){			 
 			 //inst->eraseFromParent();
+			 //errs() << "1\n";
+			 if (auto* icmp = dyn_cast<ICmpInst>(&*inst)){		  
+			     // If it is a icmp instruction then we do transformation
+			     // ICMP_EQ    = 32,  ///< equal
+			     // ICMP_NE    = 33,  ///< not equal
+			     // ICMP_UGT   = 34,  ///< unsigned greater than
+			     // ICMP_UGE   = 35,  ///< unsigned greater or equal
+			     // ICMP_ULT   = 36,  ///< unsigned less than
+			     // ICMP_ULE   = 37,  ///< unsigned less or equal
+			     // ICMP_SGT   = 38,  ///< signed greater than
+			     // ICMP_SGE   = 39,  ///< signed greater or equal
+			     // ICMP_SLT   = 40,  ///< signed less than
+			     // ICMP_SLE   = 41,  ///< signed less or equal
+			     
+			     llvm::CmpInst::Predicate p = icmp->getSignedPredicate();
+			     errs() << "p:" << p << '\n';
+			     Value* op1 = inst->getOperand(0);
+			     Value* op2 = inst->getOperand(1);
+			     //construct 3 parameters
+			     std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
+			     ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
+			     putsArgs->push_back(Arg1);
+			     putsArgs->push_back(op1);
+			     putsArgs->push_back(op2);
+			     // if(auto* Arg2 = dyn_cast<llvm::ConstantInt>(op1)){
+			     //   errs() << "could be1\n";
+			     //   putsArgs->push_back(Arg2);
+			     // }
+			     //ConstantInt* Arg2 = ConstantInt::get(bb->getContext(), APInt(32,op1));
+			     //ConstantInt* Arg3 = ConstantInt::get(bb->getContext(), APInt(32,22));
+			     // if(auto* Arg3 = dyn_cast<llvm::ConstantInt>(op2)){
+			     //   errs() << "could be2\n";
+			     //   putsArgs->push_back(Arg3);
+			     // }
+			     
+			     ArrayRef<llvm::Value*> x =  ArrayRef<llvm::Value*>(*putsArgs);
+			     Instruction *newInst = CallInst::Create(insert,x);
+			     //insert after the icmp instruction
+			     newInst->insertAfter(&(*inst));
+			     //change branch condition to the callinst instruction
+			     errs() << "predicate changed\n";
+			     AI->setCondition(newInst);
+			   
+			 }
 		       }else{
 			 errs() << "this is not a branchinst" << br_ins->getOpcode() << '\n';
 		       }

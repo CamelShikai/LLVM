@@ -34,7 +34,7 @@ define i32 @tobecalled() #0 {
   store i32 1, i32* %2, align 4
   %4 = load i32, i32* %1, align 4
   %5 = icmp sge i32 %4, -4
-  %6 = call i1 bitcast (i32 (i32, i32, i32)* @print to i1 (i32, i32, i32)*)(i32 0, i32 2, i32 3)
+  %6 = call i1 bitcast (i32 (i32, i32, i32)* @print to i1 (i32, i32, i32)*)(i32 39, i32 %4, i32 -4)
   br i1 %6, label %7, label %10
 
 ; <label>:7:                                      ; preds = %0
@@ -65,7 +65,7 @@ define i32 @main() #0 {
   store i32 %9, i32* %3, align 4
   %10 = load i32, i32* %2, align 4
   %11 = icmp slt i32 %10, 100
-  %12 = call i1 bitcast (i32 (i32, i32, i32)* @print to i1 (i32, i32, i32)*)(i32 0, i32 2, i32 3)
+  %12 = call i1 bitcast (i32 (i32, i32, i32)* @print to i1 (i32, i32, i32)*)(i32 40, i32 %10, i32 100)
   br i1 %12, label %13, label %15
 
 ; <label>:13:                                     ; preds = %0
