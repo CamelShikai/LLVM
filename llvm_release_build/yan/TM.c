@@ -66,8 +66,7 @@ Tape *insert_tape(Tape *t, Direction dir, char c) {
     new1->right = NULL;
     t->right = new1;
     return head;
-  }
-  
+  }  
 }
 
 Tape *create_tape(char *input) {
@@ -179,20 +178,20 @@ TM *createTM (char operator, char* tape_str) {
   char* rules;
   switch(operator){
     case '+':
-      printf("plus operator\n");
+      //printf("plus operator\n");
       rules = "0*0*R:0.1.R:1*2.R:1.1.R:2*3*L:2.2.R:3*3*L:3.4*L:4*h*-:4.4.L";
       break;
     case '-':
-      printf("minus operator\n");
+      //printf("minus operator\n");
       rules = "0*0*R:0.1*R:1*2*R:1.1.R:2*3*L:2.2.R:3*h.-:3.4*L:4*h*-:4.5.L:5*6*L:5.5.L:6*h.-:6.7.L:7*0*R:7.7.L";
       break;
     case '*'://17 states in total use 0,1...9,A(10),B(11),C(12),D(13),E(14),F(15),G(16) to represent each state
-      printf("multiply operator\n");
+      //printf("multiply operator\n");
       rules = "0*1*R:0.2*R:1*E*R:1.2*R:2*3*R:2.2.R:3*F*L:3.4*R:4*5*R:4.4.R:5*6.L:5.5.R:6*7*L:6.6.L:7*9.L:7.8.L:8*3.R:8.8.L:9*A*L:9.9.L:A*C*R:A.B.L:B*0*R:B.B.L:C*C*R:C.D*R:D*h*-:D.D*R:E*h*-:E.E*R:F*G*L:F.F*L:G*h*-:G.G*L";
       break;
     case '/':
       //40 states in total,0,1,2...9,A(10),B(11),C(12),D(13),E(14),F(15),G(16),H(17),I(18),J(19),K(20),M(21),N(22),O(23),P(24),Q(25),S(26),T(27),U(28),V(29),W(30),X(31),Y(32),Z(33),a(34),b(35),c(36),d(37),e(38),f(39)
-      printf("division operator\n");
+      //printf("division operator\n");
       rules = "0*0*R:0.1.L:1*2*L:1.2*L:2*3.L:2.3.L:3*4*R:3.4*R:4*3.R:4.5.R:5*6*R:5.h.-:6*7*R:6.6.R:7*7*R:7.8*R:8*O*L:8.9.L:9*9*L:9.A.L:A*B*R:A.d.L:B*h*-:B.C.R:C*C*R:C.D.L:D*E.L:D.h.-:E*F*L:E.h.-:F*G*L:F.J.L:G*G*L:G.H.L:H*I.R:H.H.L:I*C*R:I.I.R:J*K*L:J.J.L:K*K*L:K.M.L:M*N*R:M.M.L:N*h*-:N.h*-:O*O.L:O.P.R:P*h*-:P.Q*L:Q*h*-:Q.S.L:S*Y*R:S.T.L:T*f*L:T.T.L:U*V.L:U.U.L:V*W*R:V.W*R:W*X*R:W.W.R:X*X*R:X.6*R:Y*h*-:Y.Z*R:Z*a*R:Z.h.-:a*b*L:a.a*R:b*b*L:b.c.L:c*h*-:c.c.L:d*e*R:d.d.L:e*h*-:e.6*R:f*f*L:f.U.L";
       break;
     default:
@@ -207,7 +206,7 @@ TM *createTM (char operator, char* tape_str) {
   for (i = 0;i<lenth;i++) {
     input[i] = rules[i];
   }
-  printf("%s\n",input);
+  //printf("%s\n",input);
   
   
   /*read input alphabet of PDA
@@ -325,8 +324,8 @@ int simulate( TM *m) {
   const char blank = m->tape_alpha[0];//*
   char current_state = m->start;
   Tape *tape = create_tape(m->input);//first tape from left
-  printf("Tape:");
-  print_tape(tape,'*');
+  //printf("Tape:");
+  //print_tape(tape,'*');
   //move to the very right
   /*
   while(tape->right != NULL){
@@ -342,15 +341,16 @@ int simulate( TM *m) {
   while(1) {
     //printf("while looping\n");
     if(current_state == m->accept) {
-      printf("Accept\n");
-      print_tape(current_tape,blank);
+      //printf("Accept\n");
+      //print_tape(current_tape,blank);
       int temp = count_tape(tape);
-      printf("final result:%d\n",temp);
+      //printf("final result:%d\n",temp);
       return temp;
     }
     if(current_state == m->reject) {
-      printf("Reject\n");
+      printf("Turing Machine Reject\n");
       print_tape(tape,blank);
+      return -1;
       break;
     }
    
@@ -369,8 +369,7 @@ int simulate( TM *m) {
     }else{
       printf("left tape content:%c\n",left_node ->content);
     }
-    */  
-    
+    */    
   }
 }
 
@@ -395,6 +394,7 @@ int compare(char operator, char* tape_input){
       return res <= 0 ? 1: 0;
       break;
   }
+  return 0;
 }
 
 
@@ -409,6 +409,7 @@ int calculator (int op1,int op2,char op){
   switch(op){
     case '+':
       pm_flag = op1 + op2 >= 0 ? 1 : -1;
+      //op1 op2 both positive or both negative no need to transform
       if (op1 * op2 < 0){
 	if (op1 < 0){
           return calculator(op2,-op1,'-');
@@ -420,6 +421,7 @@ int calculator (int op1,int op2,char op){
       break;
     case '-':
       pm_flag = op1 - op2 >= 0 ? 1 : -1;
+      //op1 op2 both positive or both negative no need to transform
       if (op1 * op2 < 0){
 	if (op1 < 0){
 	  return calculator(op1,-op2,'+');
@@ -469,19 +471,37 @@ int calculator (int op1,int op2,char op){
   p = createTM(op,tape_str);
   //parsetm(p);
   int ret = simulate(p) * pm_flag;
-  printf("main result:%d",ret);
-  return 0;
+  //printf("main result:%d",ret);
+  return ret;
 }
 
-int main() {  	
-  //char s[300];  
-  //scanf("%s",s)a;
-  /*
-  fp = fopen("add.txt","r");
-  fscanf(fp,"%s", s);
-  printf("%s\n",s);
-  FILE *fp;
-  */
-  calculator(2,-4,'+');
+int ext_callee(int operator,int op1,int op2){
+  int result,tmp;
+  // ICMP_EQ    = 32,  ///< equal
+  // ICMP_NE    = 33,  ///< not equal
+  // ICMP_UGT   = 34,  ///< unsigned greater than
+  // ICMP_UGE   = 35,  ///< unsigned greater or equal
+  // ICMP_ULT   = 36,  ///< unsigned less than
+  // ICMP_ULE   = 37,  ///< unsigned less or equal
+  // ICMP_SGT   = 38,  ///< signed greater than
+  // ICMP_SGE   = 39,  ///< signed greater or equal
+  // ICMP_SLT   = 40,  ///< signed less than
+  // ICMP_SLE   = 41,  ///< signed less or equal
+  switch(operator){
+   case 40:
+     tmp = calculator(op1,op2,'-');
+     //printf("temp:%d\n",tmp);
+     result = tmp < 0 ? 1 : 0;
+     break;
+   default:
+     break;
+  }  
+  return result;
+}
+
+/*
+int main() {  
+  printf("result:%d",ext_callee(40,10,100));
   return 0;
 }
+*/

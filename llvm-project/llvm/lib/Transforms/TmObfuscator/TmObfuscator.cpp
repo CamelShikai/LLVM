@@ -18,6 +18,7 @@ Turing Machine Obfuscator Pass
 #include "llvm/Support/Compiler.h"
 #include "llvm/IR/CFG.h"
 #include "llvm/IR/InstrTypes.h"
+//#include "hashset.h"
 
 using namespace llvm;
 
@@ -28,13 +29,17 @@ namespace {
     Function* insert;
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
-      hookFunc = M.getOrInsertFunction("print",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
+      hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
       insert = cast<Function>(hookFunc);
       return false;
     }
     bool runOnFunction(Function &F) override {
             Function *tmp = &F;
             //
+	    if(tmp->getName() != "main"){
+	      errs() << "skip\n";
+	      return false;
+	    }
             for (Function::iterator bb = tmp->begin(); bb != tmp->end(); ++bb) {
 	      //errs().write_escaped(bb->getName()) << "basicblock\n";
 	     
@@ -50,7 +55,7 @@ namespace {
 		     if(next_inst->getOpcode() == Instruction::Br) {
 		       //make sure br instrucion follows the icmp instruction
                        //llvm::IRBuilder<> builder(inst);
-		       
+		       errs().write_escaped(tmp->getName()) << "function\n";
 		       llvm::TerminatorInst* br_ins = &*(inst->getParent()->getTerminator());
 		       //errs() << br_ins->getOpcode() << "br_ins\n";
 		       //llvm::Value temp = LLVMGetCondition(newInst);
@@ -118,12 +123,7 @@ namespace {
             }
              
             return true;
-    }
-    
-    // bool runOnBasicBlock(BasicBlock &BB){
-    //   errs() << "this is a block" << '\n';
-    //   return false;
-    // }
+    }  
   };
 }
 char TmObfuscator::ID = 0;
