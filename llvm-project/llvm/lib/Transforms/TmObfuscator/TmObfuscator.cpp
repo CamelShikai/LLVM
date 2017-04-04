@@ -18,7 +18,10 @@ Turing Machine Obfuscator Pass
 #include "llvm/Support/Compiler.h"
 #include "llvm/IR/CFG.h"
 #include "llvm/IR/InstrTypes.h"
-//#include "hashset.h"
+#include <string>
+#include <unordered_set>
+#include <fstream>
+#include <iostream>
 
 using namespace llvm;
 
@@ -27,18 +30,32 @@ namespace {
     static char ID;
     TmObfuscator() : FunctionPass(ID){}
     Function* insert;
+    std::unordered_set<std::string> white_list = {};
+    std::unordered_set<std::string>::iterator got;
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
       hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
       insert = cast<Function>(hookFunc);
+      
+      //read while list file
+      std::ifstream skip_file("/media/windows/win2/Research/llvm_release_build/yan/white_list.txt");
+      for(std::string line;getline(skip_file,line);){
+	errs() << line;
+	white_list.insert(line);
+      }
+
       return false;
     }
     bool runOnFunction(Function &F) override {
             Function *tmp = &F;
-            //
-	    if(tmp->getName() != "main"){
+            //skip some functions in white list
+	    std::string func_name = tmp->getName().str();
+	    got = white_list.find(func_name);
+	    if(got != white_list.end()){
 	      errs() << "skip\n";
 	      return false;
+	    }else{
+	      std::cout << "do something" << '\n';
 	    }
             for (Function::iterator bb = tmp->begin(); bb != tmp->end(); ++bb) {
 	      //errs().write_escaped(bb->getName()) << "basicblock\n";

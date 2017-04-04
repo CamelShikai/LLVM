@@ -14,6 +14,8 @@
 #include "llvm/Pass.h"
 #include "llvm/IR/Function.h"
 #include "llvm/Support/raw_ostream.h"
+#include <iostream>
+#include <fstream>
 
 using namespace llvm;
 
@@ -23,8 +25,11 @@ struct Hello2 : public FunctionPass {
   Hello2() : FunctionPass(ID) {}
 
   bool runOnFunction(Function &F) override {
-    errs() << "Function name: ";
-    errs().write_escaped(F.getName()) << '\n';
+    //errs() << "Function name: ";
+    //errs().write_escaped(F.getName()) << '\n';
+    std::ofstream wlist;
+    wlist.open("white_list.txt",std::ios_base::app);
+    wlist << F.getName().str() << '\n';
     return false;
   }
 }; // end of struct Hello
