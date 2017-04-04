@@ -32,6 +32,9 @@ namespace {
     Function* insert;
     std::unordered_set<std::string> white_list = {};
     std::unordered_set<std::string>::iterator got;
+    int total_cap = 1;
+    int obfuscation_counter = 0;
+    int candidate_counter = 0;
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
       hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
@@ -52,10 +55,10 @@ namespace {
 	    std::string func_name = tmp->getName().str();
 	    got = white_list.find(func_name);
 	    if(got != white_list.end()){
-	      errs() << "skip\n";
+	      errs() << func_name  << " skipped\n";
 	      return false;
 	    }else{
-	      std::cout << "do something" << '\n';
+	      std::cout << "do something here" << '\n';
 	    }
             for (Function::iterator bb = tmp->begin(); bb != tmp->end(); ++bb) {
 	      //errs().write_escaped(bb->getName()) << "basicblock\n";
@@ -98,37 +101,42 @@ namespace {
 			     // ICMP_SGT   = 38,  ///< signed greater than
 			     // ICMP_SGE   = 39,  ///< signed greater or equal
 			     // ICMP_SLT   = 40,  ///< signed less than
-			     // ICMP_SLE   = 41,  ///< signed less or equal
+			     // ICMP_SLE   = 41,  ///< signed less or equal			     
+			     if (candidate_counter % 10 <= 0 && obfuscation_counter < total_cap){
+			       candidate_counter += 1;
+			       llvm::CmpInst::Predicate p = icmp->getSignedPredicate();
+			       errs() << "p:" << p << '\n';
+			       Value* op1 = inst->getOperand(0);
+			       Value* op2 = inst->getOperand(1);
+			       //construct 3 parameters
+			       std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
+			       ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
+			       putsArgs->push_back(Arg1);
+			       putsArgs->push_back(op1);
+			       putsArgs->push_back(op2);
+			       // if(auto* Arg2 = dyn_cast<llvm::ConstantInt>(op1)){
+			       //   errs() << "could be1\n";
+			       //   putsArgs->push_back(Arg2);
+			       // }
+			       //ConstantInt* Arg2 = ConstantInt::get(bb->getContext(), APInt(32,op1));
+			       //ConstantInt* Arg3 = ConstantInt::get(bb->getContext(), APInt(32,22));
+			       // if(auto* Arg3 = dyn_cast<llvm::ConstantInt>(op2)){
+			       //   errs() << "could be2\n";
+			       //   putsArgs->push_back(Arg3);
+			       // }
 			     
-			     llvm::CmpInst::Predicate p = icmp->getSignedPredicate();
-			     errs() << "p:" << p << '\n';
-			     Value* op1 = inst->getOperand(0);
-			     Value* op2 = inst->getOperand(1);
-			     //construct 3 parameters
-			     std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
-			     ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
-			     putsArgs->push_back(Arg1);
-			     putsArgs->push_back(op1);
-			     putsArgs->push_back(op2);
-			     // if(auto* Arg2 = dyn_cast<llvm::ConstantInt>(op1)){
-			     //   errs() << "could be1\n";
-			     //   putsArgs->push_back(Arg2);
-			     // }
-			     //ConstantInt* Arg2 = ConstantInt::get(bb->getContext(), APInt(32,op1));
-			     //ConstantInt* Arg3 = ConstantInt::get(bb->getContext(), APInt(32,22));
-			     // if(auto* Arg3 = dyn_cast<llvm::ConstantInt>(op2)){
-			     //   errs() << "could be2\n";
-			     //   putsArgs->push_back(Arg3);
-			     // }
-			     
-			     ArrayRef<llvm::Value*> x =  ArrayRef<llvm::Value*>(*putsArgs);
-			     Instruction *newInst = CallInst::Create(insert,x);
-			     //insert after the icmp instruction
-			     newInst->insertAfter(&(*inst));
-			     //change branch condition to the callinst instruction
-			     errs() << "predicate changed\n";
-			     AI->setCondition(newInst);
-			   
+			       ArrayRef<llvm::Value*> x =  ArrayRef<llvm::Value*>(*putsArgs);
+			       Instruction *newInst = CallInst::Create(insert,x);
+			       //insert after the icmp instruction
+			       newInst->insertAfter(&(*inst));
+			       //change branch condition to the callinst instruction
+			       errs() << "predicate changed\n";
+			       obfuscation_counter += 1;
+			       AI->setCondition(newInst);
+			     }else{
+			       errs() << "cap exceeded,quit\n";
+			       return false;
+			     }		   
 			 }
 		       }else{
 			 errs() << "this is not a branchinst" << br_ins->getOpcode() << '\n';

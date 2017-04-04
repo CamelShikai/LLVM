@@ -4578,3 +4578,7 @@
 6420	6534	0	lib/LLVMTmObfuscator.so	744e91ba929dd47d
 1306	6364	0	lib/Transforms/TmObfuscator/CMakeFiles/LLVMTmObfuscator.dir/TmObfuscator.cpp.o	82c076921a1523ce
 6365	6475	0	lib/LLVMTmObfuscator.so	744e91ba929dd47d
+3903	10239	0	lib/Transforms/TmObfuscator/CMakeFiles/LLVMTmObfuscator.dir/TmObfuscator.cpp.o	82c076921a1523ce
+10239	10348	0	lib/LLVMTmObfuscator.so	744e91ba929dd47d
+1331	6330	0	lib/Transforms/TmObfuscator/CMakeFiles/LLVMTmObfuscator.dir/TmObfuscator.cpp.o	82c076921a1523ce
+6330	6441	0	lib/LLVMTmObfuscator.so	744e91ba929dd47d

@@ -1467,15 +1467,16 @@ define i32 @tobecalled() #0 {
   store i32 1, i32* %2, align 4
   %4 = load i32, i32* %1, align 4
   %5 = icmp sge i32 %4, -4
-  br i1 %5, label %6, label %9
+  %6 = call i1 bitcast (i32 (i32, i32, i32)* @ext_callee to i1 (i32, i32, i32)*)(i32 39, i32 %4, i32 -4)
+  br i1 %6, label %7, label %10
 
-; <label>:6:                                      ; preds = %0
-  %7 = load i32, i32* %2, align 4
-  %8 = add nsw i32 %7, 1
-  store i32 %8, i32* %2, align 4
-  br label %9
+; <label>:7:                                      ; preds = %0
+  %8 = load i32, i32* %2, align 4
+  %9 = add nsw i32 %8, 1
+  store i32 %9, i32* %2, align 4
+  br label %10
 
-; <label>:9:                                      ; preds = %6, %0
+; <label>:10:                                     ; preds = %7, %0
   ret i32 0
 }
 
@@ -1497,21 +1498,20 @@ define i32 @main() #0 {
   store i32 %9, i32* %3, align 4
   %10 = load i32, i32* %2, align 4
   %11 = icmp slt i32 %10, 100
-  %12 = call i1 bitcast (i32 (i32, i32, i32)* @ext_callee to i1 (i32, i32, i32)*)(i32 40, i32 %10, i32 100)
-  br i1 %12, label %13, label %15
+  br i1 %11, label %12, label %14
 
-; <label>:13:                                     ; preds = %0
-  %14 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1.13, i32 0, i32 0))
-  br label %19
+; <label>:12:                                     ; preds = %0
+  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1.13, i32 0, i32 0))
+  br label %18
 
-; <label>:15:                                     ; preds = %0
-  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2.14, i32 0, i32 0))
-  %17 = load i32, i32* %2, align 4
-  %18 = add nsw i32 %17, -1
-  store i32 %18, i32* %2, align 4
-  br label %19
+; <label>:14:                                     ; preds = %0
+  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2.14, i32 0, i32 0))
+  %16 = load i32, i32* %2, align 4
+  %17 = add nsw i32 %16, -1
+  store i32 %17, i32* %2, align 4
+  br label %18
 
-; <label>:19:                                     ; preds = %15, %13
+; <label>:18:                                     ; preds = %14, %12
   ret i32 0
 }
 
@@ -1530,3 +1530,5 @@ attributes #10 = { nounwind readnone }
 !llvm.ident = !{!0, !0}
 
 !0 = !{!"clang version 5.0.0 "}
+do something here
+do something here
