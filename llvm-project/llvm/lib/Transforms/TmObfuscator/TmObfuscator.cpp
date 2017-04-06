@@ -58,7 +58,7 @@ namespace {
 	      errs() << func_name  << " skipped\n";
 	      return false;
 	    }else{
-	      std::cout << "do something here" << '\n';
+	      //errs() << "do something here" << '\n';
 	    }
             for (Function::iterator bb = tmp->begin(); bb != tmp->end(); ++bb) {
 	      //errs().write_escaped(bb->getName()) << "basicblock\n";
@@ -101,13 +101,25 @@ namespace {
 			     // ICMP_SGT   = 38,  ///< signed greater than
 			     // ICMP_SGE   = 39,  ///< signed greater or equal
 			     // ICMP_SLT   = 40,  ///< signed less than
-			     // ICMP_SLE   = 41,  ///< signed less or equal			     
-			     if (candidate_counter % 10 <= 0 && obfuscation_counter < total_cap){
-			       candidate_counter += 1;
-			       llvm::CmpInst::Predicate p = icmp->getSignedPredicate();
-			       errs() << "p:" << p << '\n';
-			       Value* op1 = inst->getOperand(0);
-			       Value* op2 = inst->getOperand(1);
+			     // ICMP_SLE   = 41,  ///< signed less or equal
+			     llvm::CmpInst::Predicate p = icmp->getSignedPredicate();
+			     errs() << "p:" << p << '\n';
+			     Value* op1 = inst->getOperand(0);
+			     Value* op2 = inst->getOperand(1);
+			     //check op type
+			     //llvm::ConstantInt* op1p = dyn_cast<llvm::ConstantInt>(&*op1);
+			     //llvm::ConstantInt* op2p = dyn_cast<llvm::ConstantInt>(&*op2);
+			     if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth()==32){
+			       errs() << "type right\n";
+			       candidate_counter++;
+			     }else{
+			       
+			       errs() << "type not right\n";
+			       return false;
+			     }
+			     
+			     if (candidate_counter % 10 <= 2 && obfuscation_counter < total_cap){			       
+			       
 			       //construct 3 parameters
 			       std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
 			       ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
@@ -134,7 +146,7 @@ namespace {
 			       obfuscation_counter += 1;
 			       AI->setCondition(newInst);
 			     }else{
-			       errs() << "cap exceeded,quit\n";
+			       errs() << "cap exceeded or not the one,quit\n";
 			       return false;
 			     }		   
 			 }

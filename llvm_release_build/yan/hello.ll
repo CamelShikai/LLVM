@@ -3,15 +3,15 @@ source_filename = "hello.c"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.str = private unnamed_addr constant [15 x i8] c"just a target\0A\00", align 1
-@.str.1 = private unnamed_addr constant [21 x i8] c"this is true branch\0A\00", align 1
-@.str.2 = private unnamed_addr constant [22 x i8] c"this is false branch\0A\00", align 1
+@.str = private unnamed_addr constant [21 x i8] c"tobecalled function\0A\00", align 1
+@.str.1 = private unnamed_addr constant [27 x i8] c"x:%d,this is x<100 branch\0A\00", align 1
+@.str.2 = private unnamed_addr constant [29 x i8] c"x:%d,this is x>= 100 branch\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
 define i32 @tobecalled() #0 {
   %1 = alloca i32, align 4
   %2 = alloca i32, align 4
-  %3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str, i32 0, i32 0))
+  %3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i32 0, i32 0))
   store i32 0, i32* %1, align 4
   store i32 1, i32* %2, align 4
   %4 = load i32, i32* %1, align 4
@@ -48,20 +48,22 @@ define i32 @main() #0 {
   store i32 %9, i32* %3, align 4
   %10 = load i32, i32* %2, align 4
   %11 = icmp slt i32 %10, 100
-  br i1 %11, label %12, label %14
+  br i1 %11, label %12, label %15
 
 ; <label>:12:                                     ; preds = %0
-  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1, i32 0, i32 0))
-  br label %18
+  %13 = load i32, i32* %2, align 4
+  %14 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i32 0, i32 0), i32 %13)
+  br label %20
 
-; <label>:14:                                     ; preds = %0
-  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2, i32 0, i32 0))
+; <label>:15:                                     ; preds = %0
   %16 = load i32, i32* %2, align 4
-  %17 = add nsw i32 %16, -1
-  store i32 %17, i32* %2, align 4
-  br label %18
+  %17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.2, i32 0, i32 0), i32 %16)
+  %18 = load i32, i32* %2, align 4
+  %19 = add nsw i32 %18, -1
+  store i32 %19, i32* %2, align 4
+  br label %20
 
-; <label>:18:                                     ; preds = %14, %12
+; <label>:20:                                     ; preds = %15, %12
   ret i32 0
 }
 

@@ -8,12 +8,15 @@ target triple = "x86_64-unknown-linux-gnu"
 %struct.list = type { %struct.transition*, %struct.list* }
 %struct.tm = type { i8*, i8*, i8*, i8, i8, i8, %struct.list* }
 
+@.str = private unnamed_addr constant [21 x i8] c"tobecalled function\0A\00", align 1
+@.str.1 = private unnamed_addr constant [27 x i8] c"x:%d,this is x<100 branch\0A\00", align 1
+@.str.2 = private unnamed_addr constant [29 x i8] c"x:%d,this is x>= 100 branch\0A\00", align 1
 @print_transition.s1 = private unnamed_addr constant [5 x i8] c"Left\00", align 1
 @print_transition.s2 = private unnamed_addr constant [6 x i8] c"Right\00", align 1
-@.str = private unnamed_addr constant [14 x i8] c"NULL Transfer\00", align 1
-@.str.1 = private unnamed_addr constant [58 x i8] c"current:%c tape:%c new state:%c new tape:%c direction %s\0A\00", align 1
-@.str.2 = private unnamed_addr constant [60 x i8] c"0*0*R:0.1.R:1*2.R:1.1.R:2*3*L:2.2.R:3*3*L:3.4*L:4*h*-:4.4.L\00", align 1
-@.str.3 = private unnamed_addr constant [96 x i8] c"0*0*R:0.1*R:1*2*R:1.1.R:2*3*L:2.2.R:3*h.-:3.4*L:4*h*-:4.5.L:5*6*L:5.5.L:6*h.-:6.7.L:7*0*R:7.7.L\00", align 1
+@.str.3 = private unnamed_addr constant [14 x i8] c"NULL Transfer\00", align 1
+@.str.1.4 = private unnamed_addr constant [58 x i8] c"current:%c tape:%c new state:%c new tape:%c direction %s\0A\00", align 1
+@.str.2.5 = private unnamed_addr constant [60 x i8] c"0*0*R:0.1.R:1*2.R:1.1.R:2*3*L:2.2.R:3*3*L:3.4*L:4*h*-:4.4.L\00", align 1
+@.str.3.6 = private unnamed_addr constant [96 x i8] c"0*0*R:0.1*R:1*2*R:1.1.R:2*3*L:2.2.R:3*h.-:3.4*L:4*h*-:4.5.L:5*6*L:5.5.L:6*h.-:6.7.L:7*0*R:7.7.L\00", align 1
 @.str.4 = private unnamed_addr constant [204 x i8] c"0*1*R:0.2*R:1*E*R:1.2*R:2*3*R:2.2.R:3*F*L:3.4*R:4*5*R:4.4.R:5*6.L:5.5.R:6*7*L:6.6.L:7*9.L:7.8.L:8*3.R:8.8.L:9*A*L:9.9.L:A*C*R:A.B.L:B*0*R:B.B.L:C*C*R:C.D*R:D*h*-:D.D*R:E*h*-:E.E*R:F*G*L:F.F*L:G*h*-:G.G*L\00", align 1
 @.str.5 = private unnamed_addr constant [480 x i8] c"0*0*R:0.1.L:1*2*L:1.2*L:2*3.L:2.3.L:3*4*R:3.4*R:4*3.R:4.5.R:5*6*R:5.h.-:6*7*R:6.6.R:7*7*R:7.8*R:8*O*L:8.9.L:9*9*L:9.A.L:A*B*R:A.d.L:B*h*-:B.C.R:C*C*R:C.D.L:D*E.L:D.h.-:E*F*L:E.h.-:F*G*L:F.J.L:G*G*L:G.H.L:H*I.R:H.H.L:I*C*R:I.I.R:J*K*L:J.J.L:K*K*L:K.M.L:M*N*R:M.M.L:N*h*-:N.h*-:O*O.L:O.P.R:P*h*-:P.Q*L:Q*h*-:Q.S.L:S*Y*R:S.T.L:T*f*L:T.T.L:U*V.L:U.U.L:V*W*R:V.W*R:W*X*R:W.W.R:X*X*R:X.6*R:Y*h*-:Y.Z*R:Z*a*R:Z.h.-:a*b*L:a.a*R:b*b*L:b.c.L:c*h*-:c.c.L:d*e*R:d.d.L:e*h*-:e.6*R:f*f*L:f.U.L\00", align 1
 @.str.6 = private unnamed_addr constant [3 x i8] c".*\00", align 1
@@ -22,9 +25,68 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.9 = private unnamed_addr constant [2 x i8] c":\00", align 1
 @.str.10 = private unnamed_addr constant [23 x i8] c"Turing Machine Reject\0A\00", align 1
 @.str.11 = private unnamed_addr constant [85 x i8] c"function parsetm\0Ainput_alpha:%s\0Ainput:%s\0Atape_alpha:%s\0Astart:%c\0Aaccept:%c\0Areject:%c\0A\00", align 1
-@.str.12 = private unnamed_addr constant [15 x i8] c"just a target\0A\00", align 1
-@.str.1.13 = private unnamed_addr constant [21 x i8] c"this is true branch\0A\00", align 1
-@.str.2.14 = private unnamed_addr constant [22 x i8] c"this is false branch\0A\00", align 1
+
+; Function Attrs: noinline nounwind uwtable
+define i32 @tobecalled() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i32 0, i32 0))
+  store i32 0, i32* %1, align 4
+  store i32 1, i32* %2, align 4
+  %4 = load i32, i32* %1, align 4
+  %5 = icmp sge i32 %4, -4
+  %6 = call i1 bitcast (i32 (i32, i32, i32)* @ext_callee to i1 (i32, i32, i32)*)(i32 39, i32 %4, i32 -4)
+  br i1 %6, label %7, label %10
+
+; <label>:7:                                      ; preds = %0
+  %8 = load i32, i32* %2, align 4
+  %9 = add nsw i32 %8, 1
+  store i32 %9, i32* %2, align 4
+  br label %10
+
+; <label>:10:                                     ; preds = %7, %0
+  ret i32 0
+}
+
+declare i32 @printf(i8*, ...) #1
+
+; Function Attrs: noinline nounwind uwtable
+define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  store i32 0, i32* %1, align 4
+  store i32 1, i32* %2, align 4
+  %4 = load i32, i32* %2, align 4
+  %5 = add nsw i32 %4, 4
+  store i32 %5, i32* %2, align 4
+  %6 = load i32, i32* %2, align 4
+  %7 = add nsw i32 %6, 2
+  store i32 %7, i32* %3, align 4
+  %8 = load i32, i32* %3, align 4
+  %9 = add nsw i32 %8, 1
+  store i32 %9, i32* %3, align 4
+  %10 = load i32, i32* %2, align 4
+  %11 = icmp slt i32 %10, 100
+  %12 = call i1 bitcast (i32 (i32, i32, i32)* @ext_callee to i1 (i32, i32, i32)*)(i32 40, i32 %10, i32 100)
+  br i1 %12, label %13, label %16
+
+; <label>:13:                                     ; preds = %0
+  %14 = load i32, i32* %2, align 4
+  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.1, i32 0, i32 0), i32 %14)
+  br label %21
+
+; <label>:16:                                     ; preds = %0
+  %17 = load i32, i32* %2, align 4
+  %18 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.2, i32 0, i32 0), i32 %17)
+  %19 = load i32, i32* %2, align 4
+  %20 = add nsw i32 %19, -1
+  store i32 %20, i32* %2, align 4
+  br label %21
+
+; <label>:21:                                     ; preds = %16, %13
+  ret i32 0
+}
 
 ; Function Attrs: noinline nounwind uwtable
 define %struct.tapes* @insert_tape(%struct.tapes*, i32, i8 signext) #0 {
@@ -127,7 +189,7 @@ define %struct.tapes* @insert_tape(%struct.tapes*, i32, i8 signext) #0 {
 }
 
 ; Function Attrs: nounwind
-declare noalias i8* @calloc(i64, i64) #1
+declare noalias i8* @calloc(i64, i64) #2
 
 ; Function Attrs: noinline nounwind uwtable
 define %struct.tapes* @create_tape(i8*) #0 {
@@ -378,7 +440,7 @@ define void @print_tape(%struct.tapes*, i8 signext) #0 {
   ret void
 }
 
-declare i32 @putchar(i32) #2
+declare i32 @putchar(i32) #1
 
 ; Function Attrs: noinline nounwind uwtable
 define void @print_transition(%struct.transition*) #0 {
@@ -395,7 +457,7 @@ define void @print_transition(%struct.transition*) #0 {
   br i1 %8, label %9, label %11
 
 ; <label>:9:                                      ; preds = %1
-  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str, i32 0, i32 0))
+  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.3, i32 0, i32 0))
   br label %39
 
 ; <label>:11:                                     ; preds = %1
@@ -431,7 +493,7 @@ define void @print_transition(%struct.transition*) #0 {
 
 ; <label>:36:                                     ; preds = %34, %32
   %37 = phi i8* [ %33, %32 ], [ %35, %34 ]
-  %38 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.1, i32 0, i32 0), i32 %15, i32 %19, i32 %23, i32 %27, i8* %37)
+  %38 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.1.4, i32 0, i32 0), i32 %15, i32 %19, i32 %23, i32 %27, i8* %37)
   br label %39
 
 ; <label>:39:                                     ; preds = %36, %9
@@ -440,8 +502,6 @@ define void @print_transition(%struct.transition*) #0 {
 
 ; Function Attrs: argmemonly nounwind
 declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture readonly, i64, i32, i1) #3
-
-declare i32 @printf(i8*, ...) #2
 
 ; Function Attrs: noinline nounwind uwtable
 define i32 @contains(i8 signext, i8*) #0 {
@@ -572,11 +632,11 @@ define %struct.tm* @createTM(i8 signext, i8*) #0 {
   ]
 
 ; <label>:15:                                     ; preds = %2
-  store i8* getelementptr inbounds ([60 x i8], [60 x i8]* @.str.2, i32 0, i32 0), i8** %5, align 8
+  store i8* getelementptr inbounds ([60 x i8], [60 x i8]* @.str.2.5, i32 0, i32 0), i8** %5, align 8
   br label %20
 
 ; <label>:16:                                     ; preds = %2
-  store i8* getelementptr inbounds ([96 x i8], [96 x i8]* @.str.3, i32 0, i32 0), i8** %5, align 8
+  store i8* getelementptr inbounds ([96 x i8], [96 x i8]* @.str.3.6, i32 0, i32 0), i8** %5, align 8
   br label %20
 
 ; <label>:17:                                     ; preds = %2
@@ -729,7 +789,7 @@ declare i8* @llvm.stacksave() #5
 declare void @exit(i32) #6
 
 ; Function Attrs: nounwind
-declare i8* @strtok(i8*, i8*) #1
+declare i8* @strtok(i8*, i8*) #2
 
 ; Function Attrs: nounwind
 declare void @llvm.stackrestore(i8*) #5
@@ -1434,8 +1494,17 @@ define i32 @ext_callee(i32, i32, i32) #0 {
   store i32 %1, i32* %5, align 4
   store i32 %2, i32* %6, align 4
   %9 = load i32, i32* %4, align 4
-  switch i32 %9, label %18 [
-    i32 40, label %10
+  switch i32 %9, label %90 [
+    i32 32, label %10
+    i32 33, label %18
+    i32 34, label %26
+    i32 35, label %34
+    i32 36, label %42
+    i32 37, label %50
+    i32 38, label %58
+    i32 39, label %66
+    i32 40, label %74
+    i32 41, label %82
   ]
 
 ; <label>:10:                                     ; preds = %3
@@ -1444,80 +1513,131 @@ define i32 @ext_callee(i32, i32, i32) #0 {
   %13 = call i32 @calculator(i32 %11, i32 %12, i8 signext 45)
   store i32 %13, i32* %8, align 4
   %14 = load i32, i32* %8, align 4
-  %15 = icmp slt i32 %14, 0
+  %15 = icmp eq i32 %14, 0
   %16 = zext i1 %15 to i64
   %17 = select i1 %15, i32 1, i32 0
   store i32 %17, i32* %7, align 4
-  br label %19
+  br label %91
 
 ; <label>:18:                                     ; preds = %3
-  br label %19
+  %19 = load i32, i32* %5, align 4
+  %20 = load i32, i32* %6, align 4
+  %21 = call i32 @calculator(i32 %19, i32 %20, i8 signext 45)
+  store i32 %21, i32* %8, align 4
+  %22 = load i32, i32* %8, align 4
+  %23 = icmp ne i32 %22, 0
+  %24 = zext i1 %23 to i64
+  %25 = select i1 %23, i32 1, i32 0
+  store i32 %25, i32* %7, align 4
+  br label %26
 
-; <label>:19:                                     ; preds = %18, %10
-  %20 = load i32, i32* %7, align 4
-  ret i32 %20
-}
+; <label>:26:                                     ; preds = %18, %3
+  %27 = load i32, i32* %5, align 4
+  %28 = load i32, i32* %6, align 4
+  %29 = call i32 @calculator(i32 %27, i32 %28, i8 signext 45)
+  store i32 %29, i32* %8, align 4
+  %30 = load i32, i32* %8, align 4
+  %31 = icmp sgt i32 %30, 0
+  %32 = zext i1 %31 to i64
+  %33 = select i1 %31, i32 1, i32 0
+  store i32 %33, i32* %7, align 4
+  br label %91
 
-; Function Attrs: noinline nounwind uwtable
-define i32 @tobecalled() #0 {
-  %1 = alloca i32, align 4
-  %2 = alloca i32, align 4
-  %3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.12, i32 0, i32 0))
-  store i32 0, i32* %1, align 4
-  store i32 1, i32* %2, align 4
-  %4 = load i32, i32* %1, align 4
-  %5 = icmp sge i32 %4, -4
-  %6 = call i1 bitcast (i32 (i32, i32, i32)* @ext_callee to i1 (i32, i32, i32)*)(i32 39, i32 %4, i32 -4)
-  br i1 %6, label %7, label %10
+; <label>:34:                                     ; preds = %3
+  %35 = load i32, i32* %5, align 4
+  %36 = load i32, i32* %6, align 4
+  %37 = call i32 @calculator(i32 %35, i32 %36, i8 signext 45)
+  store i32 %37, i32* %8, align 4
+  %38 = load i32, i32* %8, align 4
+  %39 = icmp sge i32 %38, 0
+  %40 = zext i1 %39 to i64
+  %41 = select i1 %39, i32 1, i32 0
+  store i32 %41, i32* %7, align 4
+  br label %91
 
-; <label>:7:                                      ; preds = %0
-  %8 = load i32, i32* %2, align 4
-  %9 = add nsw i32 %8, 1
-  store i32 %9, i32* %2, align 4
-  br label %10
+; <label>:42:                                     ; preds = %3
+  %43 = load i32, i32* %5, align 4
+  %44 = load i32, i32* %6, align 4
+  %45 = call i32 @calculator(i32 %43, i32 %44, i8 signext 45)
+  store i32 %45, i32* %8, align 4
+  %46 = load i32, i32* %8, align 4
+  %47 = icmp slt i32 %46, 0
+  %48 = zext i1 %47 to i64
+  %49 = select i1 %47, i32 1, i32 0
+  store i32 %49, i32* %7, align 4
+  br label %91
 
-; <label>:10:                                     ; preds = %7, %0
-  ret i32 0
-}
+; <label>:50:                                     ; preds = %3
+  %51 = load i32, i32* %5, align 4
+  %52 = load i32, i32* %6, align 4
+  %53 = call i32 @calculator(i32 %51, i32 %52, i8 signext 45)
+  store i32 %53, i32* %8, align 4
+  %54 = load i32, i32* %8, align 4
+  %55 = icmp sle i32 %54, 0
+  %56 = zext i1 %55 to i64
+  %57 = select i1 %55, i32 1, i32 0
+  store i32 %57, i32* %7, align 4
+  br label %91
 
-; Function Attrs: noinline nounwind uwtable
-define i32 @main() #0 {
-  %1 = alloca i32, align 4
-  %2 = alloca i32, align 4
-  %3 = alloca i32, align 4
-  store i32 0, i32* %1, align 4
-  store i32 1, i32* %2, align 4
-  %4 = load i32, i32* %2, align 4
-  %5 = add nsw i32 %4, 4
-  store i32 %5, i32* %2, align 4
-  %6 = load i32, i32* %2, align 4
-  %7 = add nsw i32 %6, 2
-  store i32 %7, i32* %3, align 4
-  %8 = load i32, i32* %3, align 4
-  %9 = add nsw i32 %8, 1
-  store i32 %9, i32* %3, align 4
-  %10 = load i32, i32* %2, align 4
-  %11 = icmp slt i32 %10, 100
-  br i1 %11, label %12, label %14
+; <label>:58:                                     ; preds = %3
+  %59 = load i32, i32* %5, align 4
+  %60 = load i32, i32* %6, align 4
+  %61 = call i32 @calculator(i32 %59, i32 %60, i8 signext 45)
+  store i32 %61, i32* %8, align 4
+  %62 = load i32, i32* %8, align 4
+  %63 = icmp sgt i32 %62, 0
+  %64 = zext i1 %63 to i64
+  %65 = select i1 %63, i32 1, i32 0
+  store i32 %65, i32* %7, align 4
+  br label %91
 
-; <label>:12:                                     ; preds = %0
-  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.1.13, i32 0, i32 0))
-  br label %18
+; <label>:66:                                     ; preds = %3
+  %67 = load i32, i32* %5, align 4
+  %68 = load i32, i32* %6, align 4
+  %69 = call i32 @calculator(i32 %67, i32 %68, i8 signext 45)
+  store i32 %69, i32* %8, align 4
+  %70 = load i32, i32* %8, align 4
+  %71 = icmp sge i32 %70, 0
+  %72 = zext i1 %71 to i64
+  %73 = select i1 %71, i32 1, i32 0
+  store i32 %73, i32* %7, align 4
+  br label %91
 
-; <label>:14:                                     ; preds = %0
-  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2.14, i32 0, i32 0))
-  %16 = load i32, i32* %2, align 4
-  %17 = add nsw i32 %16, -1
-  store i32 %17, i32* %2, align 4
-  br label %18
+; <label>:74:                                     ; preds = %3
+  %75 = load i32, i32* %5, align 4
+  %76 = load i32, i32* %6, align 4
+  %77 = call i32 @calculator(i32 %75, i32 %76, i8 signext 45)
+  store i32 %77, i32* %8, align 4
+  %78 = load i32, i32* %8, align 4
+  %79 = icmp slt i32 %78, 0
+  %80 = zext i1 %79 to i64
+  %81 = select i1 %79, i32 1, i32 0
+  store i32 %81, i32* %7, align 4
+  br label %91
 
-; <label>:18:                                     ; preds = %14, %12
-  ret i32 0
+; <label>:82:                                     ; preds = %3
+  %83 = load i32, i32* %5, align 4
+  %84 = load i32, i32* %6, align 4
+  %85 = call i32 @calculator(i32 %83, i32 %84, i8 signext 45)
+  store i32 %85, i32* %8, align 4
+  %86 = load i32, i32* %8, align 4
+  %87 = icmp sle i32 %86, 0
+  %88 = zext i1 %87 to i64
+  %89 = select i1 %87, i32 1, i32 0
+  store i32 %89, i32* %7, align 4
+  br label %91
+
+; <label>:90:                                     ; preds = %3
+  br label %91
+
+; <label>:91:                                     ; preds = %90, %82, %74, %66, %58, %50, %42, %34, %26, %10
+  %92 = load i32, i32* %7, align 4
+  ret i32 %92
 }
 
 attributes #0 = { noinline nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #1 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #2 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #3 = { argmemonly nounwind }
 attributes #4 = { nounwind readonly "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #5 = { nounwind }
@@ -1530,5 +1650,3 @@ attributes #10 = { nounwind readnone }
 !llvm.ident = !{!0, !0}
 
 !0 = !{!"clang version 5.0.0 "}
-do something here
-do something here

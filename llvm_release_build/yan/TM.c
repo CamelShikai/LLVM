@@ -487,21 +487,57 @@ int ext_callee(int operator,int op1,int op2){
   // ICMP_SGE   = 39,  ///< signed greater or equal
   // ICMP_SLT   = 40,  ///< signed less than
   // ICMP_SLE   = 41,  ///< signed less or equal
-  switch(operator){
-   case 40:
-     tmp = calculator(op1,op2,'-');
-     //printf("temp:%d\n",tmp);
-     result = tmp < 0 ? 1 : 0;
-     break;
-   default:
-     break;
+  switch(operator){    
+    case 32:
+      tmp = calculator(op1,op2,'-');
+      result = tmp == 0 ? 1 : 0;
+      break;
+    case 33:
+      tmp = calculator(op1,op2,'-');
+      //printf("temp:%d\n",tmp);
+      result = tmp != 0 ? 1 : 0;
+    case 34:
+      tmp = calculator(op1,op2,'-');
+      result = tmp > 0 ? 1 : 0;
+      break;
+    case 35:
+      tmp = calculator(op1,op2,'-');
+      result = tmp >= 0 ? 1 : 0;
+      break;
+    case 36:
+      tmp = calculator(op1,op2,'-');
+      result = tmp < 0 ? 1 : 0;
+      break;
+    case 37:
+      tmp = calculator(op1,op2,'-');
+      result = tmp <= 0 ? 1 : 0;
+      break;
+    case 38:
+      tmp = calculator(op1,op2,'-');
+      result = tmp > 0 ? 1 : 0;
+      break;
+    case 39:
+      tmp = calculator(op1,op2,'-');
+      result = tmp >= 0 ? 1 : 0;
+      break;
+    case 40:
+      tmp = calculator(op1,op2,'-');
+      //printf("temp:%d\n",tmp);
+      result = tmp < 0 ? 1 : 0;
+      break;
+    case 41:
+      tmp = calculator(op1,op2,'-');
+      result = tmp <= 0 ? 1 : 0;
+      break;
+    default:
+      break;
   }  
   return result;
 }
 
 /*
 int main() {  
-  printf("result:%d",ext_callee(40,10,100));
+  printf("result:%d",ext_callee(41,-102,-101));
   return 0;
 }
 */

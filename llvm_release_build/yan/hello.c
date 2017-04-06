@@ -1,6 +1,6 @@
 #include <stdio.h>
 int tobecalled(){
-  printf("just a target\n");
+  printf("tobecalled function\n");
   int x = 0;
   int y = 1;
   if (x >= -4){
@@ -15,9 +15,9 @@ int main() {
   int y  = x + 2;
   y = y + 1;
   if(x < 100){
-    printf("this is true branch\n");
+    printf("x:%d,this is x<100 branch\n",x);
   }else{
-    printf("this is false branch\n");
+    printf("x:%d,this is x>= 100 branch\n",x);
     x--;
   } 
   return 0;
