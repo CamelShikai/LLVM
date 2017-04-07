@@ -487,6 +487,7 @@ int ext_callee(int operator,int op1,int op2){
   // ICMP_SGE   = 39,  ///< signed greater or equal
   // ICMP_SLT   = 40,  ///< signed less than
   // ICMP_SLE   = 41,  ///< signed less or equal
+  printf("tm ext_callee called\n");
   switch(operator){    
     case 32:
       tmp = calculator(op1,op2,'-');
@@ -537,7 +538,7 @@ int ext_callee(int operator,int op1,int op2){
 
 /*
 int main() {  
-  printf("result:%d",ext_callee(41,-102,-101));
+  printf("result:%d",ext_callee(41,-102,-103));
   return 0;
 }
 */

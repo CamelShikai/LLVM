@@ -32,7 +32,7 @@ namespace {
     Function* insert;
     std::unordered_set<std::string> white_list = {};
     std::unordered_set<std::string>::iterator got;
-    int total_cap = 1;
+    int total_cap = INT_MAX;
     int obfuscation_counter = 0;
     int candidate_counter = 0;
     bool doInitialization(Module &M) override{
@@ -43,7 +43,7 @@ namespace {
       //read while list file
       std::ifstream skip_file("/media/windows/win2/Research/llvm_release_build/yan/white_list.txt");
       for(std::string line;getline(skip_file,line);){
-	errs() << line;
+	//errs() << line;
 	white_list.insert(line);
       }
 
@@ -110,15 +110,17 @@ namespace {
 			     //llvm::ConstantInt* op1p = dyn_cast<llvm::ConstantInt>(&*op1);
 			     //llvm::ConstantInt* op2p = dyn_cast<llvm::ConstantInt>(&*op2);
 			     if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth()==32){
-			       errs() << "type right\n";
+			       //errs() << "type right\n";
+			       //op1->getType()->print(errs());
 			       candidate_counter++;
 			     }else{
-			       
-			       errs() << "type not right\n";
+			       op1->getType()->print(errs());
+			       op2->getType()->print(errs());
+			       errs() << "not 32 bit integer,skip\n";
 			       return false;
 			     }
 			     
-			     if (candidate_counter % 10 <= 2 && obfuscation_counter < total_cap){			       
+			     if (candidate_counter % 10 <= 9 && obfuscation_counter < total_cap){			       
 			       
 			       //construct 3 parameters
 			       std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
