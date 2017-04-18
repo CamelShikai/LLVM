@@ -71,17 +71,16 @@ namespace {
 	      for (BasicBlock::iterator inst = bb->begin(); inst != bb->end(); ++inst) {
 		//errs() << inst->getName() << "opname:" << inst->getOpcodeName();
 		//errs() << " opcode:" << inst->getOpcode() << '\n';
-		// if (inst->isTerminator()){
-		//   errs() << inst->getOpcodeName() << " is a terminator\n";
-		// }
-	
+			
 		if (inst->getOpcode() == Instruction::ICmp) {
 		  Instruction* next_inst = inst->getNextNode();
 		  if(next_inst->getOpcode() == Instruction::Br) {
-		    //make sure br instrucion follows the icmp instruction
-		    //llvm::IRBuilder<> builder(inst);
-		       
-		    llvm::TerminatorInst* br_ins = &*(inst->getParent()->getTerminator());		       
+		    //make sure br instrucion follows the icmp instruction		       
+		    llvm::TerminatorInst* br_ins = &*(inst->getParent()->getTerminator());
+		    if (!br_ins->isSameOperationAs(next_inst)) {
+		      errs() << "next instruction not terminator";
+		      continue;
+		    }
 		    if (auto* AI = dyn_cast<BranchInst>(br_ins)){			 
 		      //inst->eraseFromParent();
 		      //errs() << "1\n";
@@ -110,13 +109,12 @@ namespace {
 			  //op1->getType()->print(errs());
 			  //op2->getType()->print(errs());
 			  //errs() << "not 32 bit integer,skip\n";
-			  return false;
+			  continue;
 			}
 			
 			
-			//errs() <<'\n';
-			if (candidate_counter % 10 <= 3 && obfuscation_counter < total_cap){			       
-			  
+			if (candidate_counter%10 <= 9 && obfuscation_counter < total_cap){			       
+			  errs() << "candidate counter :"<< candidate_counter << '\n';
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
 			  ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
@@ -136,28 +134,30 @@ namespace {
 			  
 			  ArrayRef<llvm::Value*> x =  ArrayRef<llvm::Value*>(*putsArgs);
 			  Instruction *newInst = CallInst::Create(insert,x);
-			  //insert after the icmp instruction
-			  newInst->insertAfter(&(*inst));
-			  //inst->insertAfter(&(*inst));
+			  //insert before the AI instruction
+			  //newInst->insertBefore(&(*AI));
+		       
+			  ReplaceInstWithInst(inst->getParent()->getInstList(), inst,newInst);
+			  obfuscation_counter += 1;
 			  errs() << "\033[1;31m function ->\033[0m";
 			  errs().write_escaped(tmp->getName());			  
 			  newInst -> print(errs());
-			  errs() << "inserted after";
-			  inst->print(errs());
-			  obfuscation_counter += 1;
+			  errs() << "replace former icmp inst";
+			  //inst->print(errs());			  
+			  errs() << "\033[1;31m ob num: \033[0m";
 			  errs() << obfuscation_counter << '\n';
 			  //change branch condition to the callinst instruction
 			  //errs() << "predicate changed\n";
 			 
-			  if(AI->isConditional()){//have to check isconditional, or will prompt segmment fault 
-			    AI->setCondition(newInst);
-			    errs() << "condition set to :";
-			    AI->print(errs());
-			    errs() << '\n';
-			  }
+			  // if(AI->isConditional()){//have to check isconditional, or will prompt segmment fault 
+			  //   AI->setCondition(newInst);
+			  //   errs() << "condition set to :";
+			  //   AI->print(errs());
+			  //   errs() << '\n';
+			  // }
 			}else{
-			  //errs() << "cap exceeded or not the one,quit\n";
-			  return false;
+			  errs() << "cap exceeded or not the one,quit\n";
+			  continue;
 			}		   
 		      }
 		    }else{
