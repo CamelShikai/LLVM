@@ -102,9 +102,11 @@ namespace {
 			Value* op2 = inst->getOperand(1);
 			//check op type
 			
-			if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth()==32){
-			  //op1->getType()->print(errs());
+			if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth()==32){			  			  
 			  candidate_counter++;
+			  int tmp1 = cast<llvm::ConstantInt>(op1)->getSExtValue();
+			  int tmp2 = cast<llvm::ConstantInt>(op2)->getSExtValue();
+			  errs() << "tmp1:" << tmp1 << "temp2:" << tmp2 << '\n';
 			}else{
 			  //op1->getType()->print(errs());
 			  //op2->getType()->print(errs());
@@ -113,7 +115,7 @@ namespace {
 			}
 			
 			
-			if (candidate_counter%10 <= 9 && obfuscation_counter < total_cap){			       
+			if (candidate_counter%10 <= 0 && obfuscation_counter < total_cap){			       
 			  errs() << "candidate counter :"<< candidate_counter << '\n';
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
@@ -149,12 +151,12 @@ namespace {
 			  //change branch condition to the callinst instruction
 			  //errs() << "predicate changed\n";
 			 
-			  // if(AI->isConditional()){//have to check isconditional, or will prompt segmment fault 
-			  //   AI->setCondition(newInst);
-			  //   errs() << "condition set to :";
-			  //   AI->print(errs());
-			  //   errs() << '\n';
-			  // }
+			  if(AI->isConditional()){//have to check isconditional, or will prompt segmment fault 
+			    AI->setCondition(newInst);
+			    errs() << "condition set to :";
+			    AI->print(errs());
+			    errs() << '\n';
+			  }
 			}else{
 			  errs() << "cap exceeded or not the one,quit\n";
 			  continue;
