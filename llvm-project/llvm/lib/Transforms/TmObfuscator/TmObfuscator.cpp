@@ -35,8 +35,9 @@ namespace {
     int total_cap = INT_MAX;
     int obfuscation_counter = 0;
     int candidate_counter = 0;
+    
+          
     //set up
-
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
       hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);       
@@ -48,10 +49,21 @@ namespace {
 	//errs() << line;
 	white_list.insert(line);
       }
-
+      //open logfile
+      
       return false;
     }
-
+    //finish
+    bool doFinalization(Module &M) override {
+      //log
+      std::ofstream passlog;
+      passlog.open("passlog.txt",std::ios::app);
+      std::string mo = M.getModuleIdentifier();
+      passlog << "Module:" << mo << "candidate_counter:" << candidate_counter << "obfuscation_counter" << obfuscation_counter << '\n';
+      passlog.close();
+      return false;
+    }
+    
     //per function
     bool runOnFunction(Function &F) override {
             Function *tmp = &F;
@@ -102,20 +114,24 @@ namespace {
 			Value* op2 = inst->getOperand(1);
 			//check op type
 			
-			if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth()==32){			  			  
+			if(op1->getType()->isIntegerTy() && op2->getType()->isIntegerTy() && cast<llvm::IntegerType>(op1->getType())->getBitWidth() == 32 && cast<llvm::IntegerType>(op2->getType())->getBitWidth() == 32){
+			  //Value* op1_32 = zext op1->getType() op1 to i32;
 			  candidate_counter++;
-			  int tmp1 = cast<llvm::ConstantInt>(op1)->getSExtValue();
-			  int tmp2 = cast<llvm::ConstantInt>(op2)->getSExtValue();
-			  errs() << "tmp1:" << tmp1 << "temp2:" << tmp2 << '\n';
+			  //int tmp1 = cast<llvm::ConstantInt>(op1)->getSExtValue();
+			  //int tmp2 = cast<llvm::ConstantInt>(op2)->getSExtValue();
+			  
+			  //llvm::BitCastInst(op1,IntegerType::get(F.getContext(),64));
+			  //llvm::BitCastInst(op2,IntegerType::get(F.getContext(),64));
+			  //errs() << "bitcast operated\n";
 			}else{
-			  //op1->getType()->print(errs());
-			  //op2->getType()->print(errs());
-			  //errs() << "not 32 bit integer,skip\n";
+			  op1->getType()->print(errs());
+			  op2->getType()->print(errs());
+			  errs() << "not 32 bit integer,skip\n";
 			  continue;
 			}
 			
 			
-			if (candidate_counter%10 <= 0 && obfuscation_counter < total_cap){			       
+			if (candidate_counter % 10 <= 2 && obfuscation_counter < total_cap){			       
 			  errs() << "candidate counter :"<< candidate_counter << '\n';
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
