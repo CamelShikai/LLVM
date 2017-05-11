@@ -1,0 +1,7 @@
+Module:<stdin>candidate_counter:202obfuscation_counter0
+Module:<stdin>candidate_counter:202obfuscation_counter0
+Module:<stdin>candidate_counter:202obfuscation_counter0
+Module:<stdin>candidate_counter:202obfuscation_counter62
+Module:<stdin>candidate_counter:202obfuscation_counter62
+Module:<stdin>candidate_counter:202obfuscation_counter62
+Module:<stdin>candidate_counter:202obfuscation_counter102

@@ -1,0 +1,4 @@
+Module:<stdin>candidate_counter:124obfuscation_counter64
+Module:<stdin>candidate_counter:156obfuscation_counter79
+Module:<stdin>candidate_counter:124obfuscation_counter38
+Module:<stdin>candidate_counter:156obfuscation_counter47
