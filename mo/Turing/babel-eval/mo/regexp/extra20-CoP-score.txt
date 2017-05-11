@@ -1,0 +1,5 @@
+regexp, 0.05
+regexp, 0.12
+regexp, 0.08
+regexp, 0.11
+regexp, 0.03

@@ -1,0 +1,1290 @@
+Prolog compiler (GNU Prolog) 1.4.4
+By Daniel Diaz
+Copyright (C) 1999-2013 Daniel Diaz
+
+GNU Prolog comes with ABSOLUTELY NO WARRANTY.
+This is free software; see the source or the file
+named COPYING for copying conditions.
+
+Path used: /usr/local/gprolog-1.4.4 
+
+*** Compiling
+
+--- file: svm_common.c
+gcc -O2 -L. -lm -Wno-format-security -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -g  -fno-strict-aliasing -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c -I/usr/local/gprolog-1.4.4/include -o /tmp/gplccD2aKb.o svm_common.c
+
+--- file: svm_hideo.c
+gcc -O2 -L. -lm -Wno-format-security -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -g  -fno-strict-aliasing -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c -I/usr/local/gprolog-1.4.4/include -o /tmp/gplch6Ubkd.o svm_hideo.c
+
+--- file: svm_learn_b.c
+gcc -O2 -L. -lm -Wno-format-security -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -g  -fno-strict-aliasing -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c -I/usr/local/gprolog-1.4.4/include -o /tmp/gplcmzNcUe.o svm_learn_b.c
+svm_learn.c: In function ‘babel_wrapper_compute_objective_function’:
+svm_learn.c:3177:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3178:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3179:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3180:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3181:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3183:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3184:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_clear_index’:
+svm_learn.c:3220:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_add_to_index’:
+svm_learn.c:3256:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3257:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3258:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3259:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3260:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3261:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3262:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_compute_index’:
+svm_learn.c:3299:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3300:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3301:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3302:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3303:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3305:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_optimize_svm’:
+svm_learn.c:3341:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3342:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:3343:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3344:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3345:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3346:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3348:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3349:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3350:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct MODEL *’
+svm_learn.c:3352:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3354:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3355:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3356:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3357:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c:3358:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c:3359:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:3360:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct QP *’
+svm_learn.c:3361:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_compute_shared_slacks’:
+svm_learn.c:3397:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:3398:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3399:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3400:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3401:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3402:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3403:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:3404:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3405:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3406:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:3407:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3408:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3409:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3410:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3411:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3412:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:3413:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3414:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3415:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3416:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3417:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3418:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3419:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3420:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3421:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c:3422:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3423:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component’:
+svm_learn.c:3459:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:3460:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3461:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3462:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3463:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:3464:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3465:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3466:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3467:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3468:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3469:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3470:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3471:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3472:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3475:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:3476:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:3477:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3478:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c:3479:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_select_next_qp_slackset’:
+svm_learn.c:3515:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3516:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3517:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3518:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3519:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3520:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3521:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3522:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3523:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3524:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3525:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3526:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3527:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3528:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c:3529:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3530:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_select_top_n’:
+svm_learn.c:3566:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3567:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3568:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3569:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3570:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:3571:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3572:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3573:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3574:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:3576:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_init_shrink_state’:
+svm_learn.c:3613:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct SHRINK_STATE *’
+svm_learn.c: In function ‘babel_wrapper_shrink_state_cleanup’:
+svm_learn.c:3651:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct SHRINK_STATE *’
+svm_learn.c: In function ‘babel_wrapper_get_kernel_row’:
+svm_learn.c:3687:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:3688:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3691:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3692:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c:3693:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_cache_kernel_row’:
+svm_learn.c:3729:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:3730:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:3732:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink’:
+svm_learn.c:3768:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:3769:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3770:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3771:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3772:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3773:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3774:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3775:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3776:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3777:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3778:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:3779:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3780:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3781:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3782:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3783:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3784:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3785:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:3786:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:3789:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_init’:
+svm_learn.c:3825:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3826:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3827:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3828:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3829:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3830:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3841:22: warning: assignment makes pointer from integer without a cast [enabled by default]
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_reset_lru’:
+svm_learn.c:3868:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3869:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3870:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3871:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3872:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_malloc’:
+svm_learn.c:3908:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3909:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3910:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_free’:
+svm_learn.c:3946:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_free_lru’:
+svm_learn.c:3983:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3984:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3985:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:3986:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:3987:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_clean_and_malloc’:
+svm_learn.c:4023:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:4033:22: warning: assignment makes pointer from integer without a cast [enabled by default]
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_touch’:
+svm_learn.c:4060:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_check’:
+svm_learn.c:4097:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_space_available’:
+svm_learn.c:4134:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily’:
+svm_learn.c:4170:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4171:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4172:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4173:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4174:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:4175:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:4176:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4177:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4178:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4179:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4180:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4181:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4182:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4183:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4184:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:4185:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:4186:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4187:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4188:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4189:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4190:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4192:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4193:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4195:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4196:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:4197:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c: In function ‘babel_wrapper_estimate_margin_vcdim’:
+svm_learn.c:4234:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct MODEL *’
+svm_learn.c:4237:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_estimate_sphere’:
+svm_learn.c:4273:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct WORD *’
+svm_learn.c:4274:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4275:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4276:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4277:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4278:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct MODEL *’
+svm_learn.c:4279:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_estimate_r_delta’:
+svm_learn.c:4315:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct WORD *’
+svm_learn.c:4316:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4317:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4318:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4319:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4320:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4322:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_write_alphas’:
+svm_learn.c:4358:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4359:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct FILE **’
+svm_learn.c:4360:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4361:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:4362:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct FILE **’
+svm_learn.c:4363:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘char *’
+svm_learn.c:4364:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4365:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily_cil_lr_2_cil_lr_2_cil_lr_1’:
+svm_learn.c:4402:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4403:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4404:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4405:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily_cil_lr_2_cil_lr_2_cil_lr_2’:
+svm_learn.c:4442:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4443:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4444:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4445:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4446:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily_cil_lr_2_cil_lr_1’:
+svm_learn.c:4483:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4484:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4485:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4486:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4487:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:4488:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:4489:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4490:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4491:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4492:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4493:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4494:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4495:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily_cil_lr_2_cil_lr_3’:
+svm_learn.c:4532:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4533:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4534:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4535:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4536:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:4537:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:4538:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4539:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4540:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4541:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4542:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4543:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4544:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink_cil_lr_3_cil_lr_1’:
+svm_learn.c:4581:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4582:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4583:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4584:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:4585:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c: In function ‘babel_wrapper_select_top_n_cil_lr_2_cil_lr_1’:
+svm_learn.c:4622:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4623:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4624:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4625:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4626:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_select_top_n_cil_lr_1_cil_lr_1’:
+svm_learn.c:4663:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4664:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4665:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_3_cil_lr_1’:
+svm_learn.c:4702:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4703:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4704:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4705:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4706:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4707:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4708:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4709:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:4710:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:4711:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4712:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:4713:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_2_cil_lr_1’:
+svm_learn.c:4751:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:4752:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4753:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4754:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4755:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4757:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct SVECTOR *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_1_cil_lr_1’:
+svm_learn.c:4793:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4794:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4795:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4796:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4797:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4798:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4800:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct SVECTOR *’
+svm_learn.c: In function ‘babel_wrapper_write_alphas_cil_lr_1’:
+svm_learn.c:4836:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4837:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct FILE **’
+svm_learn.c:4838:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4839:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_write_prediction_cil_lr_1’:
+svm_learn.c:4877:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4878:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct MODEL **’
+svm_learn.c:4879:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4880:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:4881:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4882:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:4883:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4884:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:4885:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct FILE **’
+svm_learn.c:4886:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_estimate_r_delta_average_cil_lr_1’:
+svm_learn.c:4923:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:4924:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4925:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4926:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4927:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_estimate_r_delta_cil_lr_1’:
+svm_learn.c:4964:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:4965:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4966:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:4968:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_estimate_sphere_cil_lr_1’:
+svm_learn.c:5005:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5006:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5007:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct MODEL *’
+svm_learn.c:5008:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c: In function ‘babel_wrapper_distribute_alpha_t_greedily_cil_lr_1’:
+svm_learn.c:5045:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5046:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5047:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5048:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5049:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:5050:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:5051:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5052:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:5053:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_free_lru_cil_lr_1’:
+svm_learn.c:5090:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5091:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_malloc_cil_lr_1’:
+svm_learn.c:5129:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5130:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_reset_lru_cil_lr_1’:
+svm_learn.c:5167:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5168:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_reset_lru_cil_lr_2’:
+svm_learn.c:5205:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_init_cil_lr_1’:
+svm_learn.c:5243:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5244:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_init_cil_lr_2’:
+svm_learn.c:5281:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5282:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_init_cil_lr_3’:
+svm_learn.c:5319:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink_cil_lr_1’:
+svm_learn.c:5357:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:5358:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5359:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5360:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5361:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5362:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5363:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5364:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5365:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink_cil_lr_2’:
+svm_learn.c:5402:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:5403:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5404:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5405:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5406:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5407:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5408:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5410:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink_cil_lr_3’:
+svm_learn.c:5448:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5449:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5450:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5451:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5452:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5453:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5454:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:5455:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5456:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5457:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5458:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c: In function ‘babel_wrapper_kernel_cache_shrink_cil_lr_4’:
+svm_learn.c:5497:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct _IO_FILE **’
+svm_learn.c:5498:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5499:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5500:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5501:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c: In function ‘babel_wrapper_cache_kernel_row_cil_lr_1’:
+svm_learn.c:5538:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:5539:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5541:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:5542:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC *’
+svm_learn.c:5545:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c: In function ‘babel_wrapper_get_kernel_row_cil_lr_1’:
+svm_learn.c:5581:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:5582:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5583:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5584:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c:5585:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:5588:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC *’
+svm_learn.c: In function ‘babel_wrapper_get_kernel_row_cil_lr_2’:
+svm_learn.c:5624:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5625:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5626:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c:5627:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:5629:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC *’
+svm_learn.c: In function ‘babel_wrapper_init_shrink_state_cil_lr_1’:
+svm_learn.c:5665:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct SHRINK_STATE *’
+svm_learn.c: In function ‘babel_wrapper_select_top_n_cil_lr_1’:
+svm_learn.c:5703:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5704:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5705:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5706:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5707:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5708:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_select_top_n_cil_lr_2’:
+svm_learn.c:5745:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5746:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5747:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5748:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5749:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5750:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5751:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5752:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5753:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5754:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5755:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5757:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_select_next_qp_slackset_cil_lr_1’:
+svm_learn.c:5795:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5796:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5797:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5798:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5799:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5800:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5801:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5802:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5803:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5804:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5805:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c:5806:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_1’:
+svm_learn.c:5843:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5844:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5845:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5846:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5847:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5848:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5849:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5850:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5851:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5852:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5853:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5854:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5855:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5856:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5857:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5858:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5859:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5860:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_2’:
+svm_learn.c:5897:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5898:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5899:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5900:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5901:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5902:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5903:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5904:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5905:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5906:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5907:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5908:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5909:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5910:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_update_linear_component_cil_lr_3’:
+svm_learn.c:5947:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5948:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5949:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5950:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5951:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5952:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5953:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5954:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:5955:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5956:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5957:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:5958:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5959:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:5960:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5961:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5962:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5963:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5964:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:5965:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5966:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM **’
+svm_learn.c:5967:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE **’
+svm_learn.c:5968:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:5969:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float **’
+svm_learn.c:5970:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5971:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:5972:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5973:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5974:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5975:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5976:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:5978:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_PARM *’
+svm_learn.c:5979:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct KERNEL_CACHE *’
+svm_learn.c:5980:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:5981:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘float *’
+svm_learn.c: In function ‘babel_wrapper_compute_shared_slacks_cil_lr_1’:
+svm_learn.c:6018:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC ***’
+svm_learn.c:6019:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:6020:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:6021:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:6022:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:6023:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:6024:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM **’
+svm_learn.c:6025:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c:6026:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double **’
+svm_learn.c: In function ‘babel_wrapper_compute_shared_slacks_cil_lr_2’:
+svm_learn.c:6063:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct DOC **’
+svm_learn.c:6064:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:6065:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6066:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6067:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6068:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:6069:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘struct LEARN_PARM *’
+svm_learn.c:6070:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6071:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_optimize_svm_cil_lr_1’:
+svm_learn.c:6108:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:6110:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6112:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c: In function ‘babel_wrapper_add_to_index_cil_lr_1’:
+svm_learn.c:6148:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int **’
+svm_learn.c:6149:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:6150:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘babel_wrapper_compute_objective_function_cil_lr_1’:
+svm_learn.c:6186:7: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6187:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6188:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6189:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘double *’
+svm_learn.c:6191:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c:6192:1: warning: passing argument 1 of ‘Pl_Mk_Integer’ makes integer from pointer without a cast [enabled by default]
+/usr/local/gprolog-1.4.4/include/gprolog.h:500:8: note: expected ‘PlLong’ but argument is of type ‘long int *’
+svm_learn.c: In function ‘clear_index’:
+svm_learn.c:2067:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘add_to_index’:
+svm_learn.c:2073:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘optimize_svm’:
+svm_learn.c:2104:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘compute_shared_slacks’:
+svm_learn.c:2475:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component’:
+svm_learn.c:2590:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_top_n’:
+svm_learn.c:3173:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘init_shrink_state’:
+svm_learn.c:3212:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘shrink_state_cleanup’:
+svm_learn.c:3230:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘get_kernel_row’:
+svm_learn.c:3446:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘cache_kernel_row’:
+svm_learn.c:3476:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink’:
+svm_learn.c:3518:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_reset_lru’:
+svm_learn.c:3626:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_free’:
+svm_learn.c:3666:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘write_alphas’:
+svm_learn.c:4131:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘distribute_alpha_t_greedily_cil_lr_2_cil_lr_2_cil_lr_1’:
+svm_learn.c:3860:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘distribute_alpha_t_greedily_cil_lr_2_cil_lr_2_cil_lr_2’:
+svm_learn.c:3870:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘distribute_alpha_t_greedily_cil_lr_2_cil_lr_1’:
+svm_learn.c:3852:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘distribute_alpha_t_greedily_cil_lr_2_cil_lr_3’:
+svm_learn.c:3888:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink_cil_lr_3_cil_lr_1’:
+svm_learn.c:3538:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_top_n_cil_lr_2_cil_lr_1’:
+svm_learn.c:3190:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_top_n_cil_lr_1_cil_lr_1’:
+svm_learn.c:3177:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_3_cil_lr_1’:
+svm_learn.c:2620:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_2_cil_lr_1’:
+svm_learn.c:2611:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_1_cil_lr_1’:
+svm_learn.c:2605:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘write_alphas_cil_lr_1’:
+svm_learn.c:4139:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘write_prediction_cil_lr_1’:
+svm_learn.c:4101:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘estimate_r_delta_average_cil_lr_1’:
+svm_learn.c:4057:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘estimate_r_delta_cil_lr_1’:
+svm_learn.c:4032:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘estimate_sphere_cil_lr_1’:
+svm_learn.c:4008:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘distribute_alpha_t_greedily_cil_lr_1’:
+svm_learn.c:3840:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_free_lru_cil_lr_1’:
+svm_learn.c:3676:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_reset_lru_cil_lr_1’:
+svm_learn.c:3627:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_reset_lru_cil_lr_2’:
+svm_learn.c:3631:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_init_cil_lr_1’:
+svm_learn.c:3603:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_init_cil_lr_2’:
+svm_learn.c:3607:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_init_cil_lr_3’:
+svm_learn.c:3613:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink_cil_lr_1’:
+svm_learn.c:3525:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink_cil_lr_2’:
+svm_learn.c:3529:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink_cil_lr_3’:
+svm_learn.c:3543:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘kernel_cache_shrink_cil_lr_4’:
+svm_learn.c:3552:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘cache_kernel_row_cil_lr_1’:
+svm_learn.c:3481:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘get_kernel_row_cil_lr_1’:
+svm_learn.c:3451:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘get_kernel_row_cil_lr_2’:
+svm_learn.c:3461:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘init_shrink_state_cil_lr_1’:
+svm_learn.c:3220:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_top_n_cil_lr_1’:
+svm_learn.c:3235:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_top_n_cil_lr_2’:
+svm_learn.c:3196:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘select_next_qp_slackset_cil_lr_1’:
+svm_learn.c:3153:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_1’:
+svm_learn.c:3168:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_2’:
+svm_learn.c:2616:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘update_linear_component_cil_lr_3’:
+svm_learn.c:2628:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘compute_shared_slacks_cil_lr_1’:
+svm_learn.c:2481:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘compute_shared_slacks_cil_lr_2’:
+svm_learn.c:2485:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘optimize_svm_cil_lr_1’:
+svm_learn.c:2130:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘add_to_index_cil_lr_1’:
+svm_learn.c:2074:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘compute_objective_function_cil_lr_1’:
+svm_learn.c:2057:3: warning: ‘return’ with a value, in function returning void [enabled by default]
+svm_learn.c: In function ‘babel__implicit_optimize_svmc_7’:
+svm_learn.c:825:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_init_shrink_statec_19’:
+svm_learn.c:885:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_init_shrink_statec_20’:
+svm_learn.c:890:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_init_shrink_statec_21’:
+svm_learn.c:895:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_init_shrink_statec_22’:
+svm_learn.c:900:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_init_shrink_statec_23’:
+svm_learn.c:905:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_cache_kernel_rowc_34’:
+svm_learn.c:960:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_shrinkc_39’:
+svm_learn.c:985:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_48’:
+svm_learn.c:1030:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_49’:
+svm_learn.c:1035:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_50’:
+svm_learn.c:1040:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_51’:
+svm_learn.c:1045:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_52’:
+svm_learn.c:1050:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_53’:
+svm_learn.c:1055:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_54’:
+svm_learn.c:1060:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_kernel_cache_initc_55’:
+svm_learn.c:1065:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_distribute_alpha_t_greedilyc_70’:
+svm_learn.c:1140:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_distribute_alpha_t_greedilyc_71’:
+svm_learn.c:1145:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_estimate_spherec_78’:
+svm_learn.c:1180:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_estimate_spherec_79’:
+svm_learn.c:1185:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_estimate_r_deltac_82’:
+svm_learn.c:1200:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_estimate_r_deltac_83’:
+svm_learn.c:1205:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+svm_learn.c: In function ‘babel__implicit_write_alphasc_88’:
+svm_learn.c:1230:12: warning: assignment makes integer from pointer without a cast [enabled by default]
+
+--- file: svm_learn_main.c
+gcc -O2 -L. -lm -Wno-format-security -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -g  -fno-strict-aliasing -ffixed-r12 -ffixed-r13 -ffixed-r14 -ffixed-r15 -c -I/usr/local/gprolog-1.4.4/include -o /tmp/gplcB2Fdug.o svm_learn_main.c
+
+--- file: babel.pl
+pl2wam -o /tmp/gplcQvye4h.wam babel.pl
+compilation failed
+deleting temporary files before exit
+delete /tmp/gplccD2aKb.o
+delete /tmp/gplccD2aKb.o
+delete /tmp/gplch6Ubkd.o
+delete /tmp/gplch6Ubkd.o
+delete /tmp/gplcmzNcUe.o
+delete /tmp/gplcmzNcUe.o
+delete /tmp/gplcB2Fdug.o
+delete /tmp/gplcB2Fdug.o
+delete /tmp/gplcQvye4h.wam
+make: *** [all] Error 1

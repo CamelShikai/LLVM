@@ -1,0 +1,10 @@
+do_lprt
+convert_newlines
+write_fully
+filespec_is_legal
+do_cwd
+do_eprt
+do_syst
+get_passive_port
+get_absolute_fname
+telnet_session_destroy

@@ -1,0 +1,9 @@
+maxl
+minl
+compute_objective_function
+clear_index
+add_to_index
+compute_index
+optimize_svm
+update_linear_component
+select_next_qp_slackset

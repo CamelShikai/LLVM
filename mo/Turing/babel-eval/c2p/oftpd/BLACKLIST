@@ -1,0 +1,51 @@
+error.c: 3/4
+error_init
+
+file_list.c: 3/5
+fdprintf
+file_list
+
+ftp_command.c: 3/7
+ftp_command_parse
+parse_host_port
+parse_host_port_ext
+parse_host_port_long
+
+ftp_listener.c: 4/8
+connection_acceptor
+connection_handler
+connection_handler_cleanup
+ftp_listener_init
+
+ftp_session.c: 30/46
+change_dir
+do_epsv
+do_list
+do_lpsv
+do_nlst
+do_pasv
+do_retr
+filespec_has_wildcard
+ftp_session_run
+get_addr_str
+invariant
+netscape_hack
+reply
+send_readme
+set_pasv
+set_port
+
+oftpd.c: 2/3
+main
+
+telnet_session.c: 9/14
+invariant
+process_data
+process_incoming_char
+telnet_session_print
+telnet_session_readln
+
+watchdog.c: 5/7
+watchdog
+invariant
+

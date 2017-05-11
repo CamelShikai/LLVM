@@ -1,0 +1,9 @@
+regbranch
+regnode
+regc
+reginsert
+regtail
+regoptail
+regtry
+regrepeat
+regnext

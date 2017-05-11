@@ -1,0 +1,3227 @@
+USE32
+
+section .text
+
+global __init_proc
+
+__init_proc:
+4196552    sub     rsp, 8
+4196556    lea     rax, [__gmon_start__]
+4196563    test    rax, rax
+4196566    jz      loc_4008DD
+4196568    call    __gmon_start__
+loc_4008DD:
+4196573    add     rsp, 8
+4196577    retn    
+USE32
+
+section .text
+
+global _main
+
+_main:
+4196960    push    rbp
+4196961    mov     rbp, rsp
+4196964    push    rbx
+4196965    sub     rsp, 8
+4196969    call    _mcount
+4196974    cmp     edi, 1
+4196977    mov     rbx, rsi
+4196980    jle     loc_400B5A
+4196986    mov     edi, s
+4196991    call    _puts
+4196996    mov     edi, aCopyrightC1998
+4197001    call    _puts
+4197006    mov     edi, aCopyrightC2000
+4197011    call    _puts
+4197016    mov     edi, aCopyrightC2003
+4197021    call    _puts
+4197026    mov     edi, 0Ah
+4197031    call    _putchar
+4197036    mov     edx, net
+4197041    xor     eax, eax
+4197043    mov     ecx, 4Eh
+4197048    mov     rdi, rdx
+4197051    rep stosq
+4197054    mov     rdi, rdx
+4197057    mov     [cs:qword net+210h], 989680h
+4197068    mov     rsi, [rbx+8]
+4197072    call    _strcpy
+4197077    mov     edi, net
+4197082    call    _read_min
+4197087    test    rax, rax
+4197090    jnz     loc_400B37
+4197092    mov     rsi, [cs:qword net+198h]
+4197099    mov     edi, format
+4197104    xor     eax, eax
+4197106    call    _printf
+4197111    mov     edi, net
+4197116    call    _primal_start_artificial
+4197121    call    _global_opt
+4197126    mov     edi, aDone
+4197131    call    _puts
+4197136    mov     edi, aMcf_out
+4197141    mov     esi, net
+4197146    call    _write_circulations
+4197151    test    rax, rax
+4197154    mov     edi, net
+4197159    jnz     loc_400B50
+4197161    call    _getfree
+4197166    xor     eax, eax
+loc_400B30:
+4197168    add     rsp, 8
+4197172    pop     rbx
+4197173    pop     rbp
+4197174    retn    
+loc_400B37:
+4197175    mov     edi, aReadErrorExit
+4197180    call    _puts
+4197185    mov     edi, net
+4197190    call    _getfree
+4197195    or      eax, 0FFFFFFFFh
+4197198    jmp     loc_400B30
+loc_400B50:
+4197200    call    _getfree
+4197205    or      eax, 0FFFFFFFFh
+4197208    jmp     loc_400B30
+loc_400B5A:
+4197210    or      eax, 0FFFFFFFFh
+4197213    jmp     loc_400B30
+USE32
+
+section .text
+
+global _deregister_tm_clones
+
+_deregister_tm_clones:
+4197328    mov     eax, 6050EFh
+4197333    push    rbp
+4197334    sub     rax, 6050E8h
+4197340    cmp     rax, 0Eh
+4197344    mov     rbp, rsp
+4197347    ja      loc_400BE7
+loc_400BE5:
+4197349    pop     rbp
+4197350    retn    
+loc_400BE7:
+4197351    mov     eax, 0
+4197356    test    rax, rax
+4197359    jz      loc_400BE5
+4197361    pop     rbp
+4197362    mov     edi, 6050E8h
+4197367    jmp     rax
+USE32
+
+section .text
+
+global _register_tm_clones
+
+_register_tm_clones:
+4197376    mov     eax, 6050E8h
+4197381    push    rbp
+4197382    sub     rax, 6050E8h
+4197388    sar     rax, 3
+4197392    mov     rbp, rsp
+4197395    mov     rdx, rax
+4197398    shr     rdx, 3Fh
+4197402    add     rax, rdx
+4197405    sar     rax, 1
+4197408    jnz     loc_400C24
+loc_400C22:
+4197410    pop     rbp
+4197411    retn    
+loc_400C24:
+4197412    mov     edx, 0
+4197417    test    rdx, rdx
+4197420    jz      loc_400C22
+4197422    pop     rbp
+4197423    mov     rsi, rax
+4197426    mov     edi, 6050E8h
+4197431    jmp     rdx
+USE32
+
+section .text
+
+global _resize_prob
+
+_resize_prob:
+4197520    push    rbp
+4197521    mov     rbp, rsp
+4197524    push    rbx
+4197525    sub     rsp, 8
+4197529    call    _mcount
+4197534    mov     rax, [rdi+1C8h]
+4197541    mov     rbx, rdi
+4197544    cmp     rax, 2
+4197548    jle     loc_400D5E
+4197554    mov     rsi, rax
+4197557    add     rsi, [rdi+1A0h]
+4197564    add     [rdi+1C0h], rax
+4197571    mov     [rdi+1A0h], rsi
+4197578    shl     rsi, 6
+4197582    mov     rdi, [rdi+238h]
+4197589    call    _realloc
+4197594    test    rax, rax
+4197597    jz      loc_400D3C
+4197599    mov     rdx, [rbx+1A8h]
+4197606    mov     rcx, [rbx+228h]
+4197613    mov     rsi, rax
+4197616    sub     rsi, [rbx+238h]
+4197623    mov     [rbx+238h], rax
+4197630    shl     rdx, 6
+4197634    add     rax, rdx
+4197637    mov     rdx, [rbx+230h]
+4197644    mov     [rbx+240h], rax
+4197651    lea     rax, [rcx+68h]
+4197655    cmp     rax, rdx
+4197658    jnb     loc_400D33
+4197660    nop     dword [rax+00h]
+loc_400D20:
+4197664    cmp     rcx, [rax+18h]
+4197668    jz      loc_400D2A
+4197670    add     [rax+30h], rsi
+loc_400D2A:
+4197674    add     rax, 68h
+4197678    cmp     rdx, rax
+4197681    ja      loc_400D20
+loc_400D33:
+4197683    xor     eax, eax
+loc_400D35:
+4197685    add     rsp, 8
+4197689    pop     rbx
+4197690    pop     rbp
+4197691    retn    
+loc_400D3C:
+4197692    mov     rsi, rbx
+4197695    mov     edi, aNetworkSNotEno
+4197700    call    _printf
+4197705    mov     rdi, [cs:stdout@@GLIBC_2_2_5]
+4197712    call    _fflush
+4197717    mov     rax, 0FFFFFFFFFFFFFFFFh
+4197724    jmp     loc_400D35
+loc_400D5E:
+4197726    mov     ecx, __PRETTY_FUNCTION___4701
+4197731    mov     edx, 27h
+4197736    mov     esi, file
+4197741    mov     edi, assertion
+4197746    call    ___assert_fail
+USE32
+
+section .text
+
+global _insert_new_arc
+
+_insert_new_arc:
+4197760    push    rbp
+4197761    mov     rbp, rsp
+4197764    push    rbx
+4197765    call    _mcount
+4197770    mov     rax, rsi
+4197773    add     rsi, 1
+4197777    shl     rax, 6
+4197781    add     rax, rdi
+4197784    cmp     rsi, 1
+4197788    mov     [rax+8], rdx
+4197792    mov     [rax+10h], rcx
+4197796    mov     [rax+38h], r8
+4197800    mov     [rax], r8
+4197803    mov     [rax+30h], r9
+4197807    jz      loc_400E4B
+4197813    mov     r10, rsi
+4197816    shr     r10, 3Fh
+4197820    add     r10, rsi
+4197823    sar     r10, 1
+4197826    mov     rax, r10
+4197829    shl     rax, 6
+4197833    lea     rax, [rdi+rax-40h]
+4197838    mov     rbx, [rax+30h]
+4197842    cmp     r9, rbx
+4197845    jg      loc_400E08
+4197847    jmp     loc_400E4B
+4197849    align 20h
+loc_400DE0:
+4197856    mov     r11, r10
+4197859    shr     r11, 3Fh
+4197863    add     r11, r10
+4197866    sar     r11, 1
+4197869    mov     rax, r11
+4197872    shl     rax, 6
+4197876    lea     rax, [rdi+rax-40h]
+4197881    mov     rbx, [rax+30h]
+4197885    cmp     r9, rbx
+4197888    jle     loc_400E4B
+4197890    mov     rsi, r10
+4197893    mov     r10, r11
+loc_400E08:
+4197896    mov     r11, [rax+8]
+4197900    shl     rsi, 6
+4197904    cmp     r10, 1
+4197908    lea     rsi, [rdi+rsi-40h]
+4197913    mov     [rsi+8], r11
+4197917    mov     r11, [rax+10h]
+4197921    mov     [rsi+10h], r11
+4197925    mov     r11, [rax]
+4197928    mov     [rsi], r11
+4197931    mov     r11, [rax]
+4197934    mov     [rsi+30h], rbx
+4197938    mov     [rsi+38h], r11
+4197942    mov     [rax+8], rdx
+4197946    mov     [rax+10h], rcx
+4197950    mov     [rax], r8
+4197953    mov     [rax+38h], r8
+4197957    mov     [rax+30h], r9
+4197961    jnz     loc_400DE0
+loc_400E4B:
+4197963    pop     rbx
+4197964    pop     rbp
+4197965    retn    
+USE32
+
+section .text
+
+global _replace_weaker_arc
+
+_replace_weaker_arc:
+4197968    push    rbp
+4197969    mov     rbp, rsp
+4197972    push    r14
+4197974    push    rbx
+4197975    call    _mcount
+4197980    xor     r10d, r10d
+4197983    mov     rax, [rsi+0B0h]
+4197990    cmp     [rsi+70h], rax
+4197994    mov     rbx, [rdi+1C0h]
+4198001    mov     [rsi+8], rdx
+4198005    mov     edi, 1
+4198010    mov     [rsi+10h], rcx
+4198014    mov     [rsi+38h], r8
+4198018    mov     [rsi], r8
+4198021    mov     [rsi+30h], r9
+4198025    setle   r10b
+4198029    add     r10, 2
+4198033    jmp     loc_400F1D
+4198038    align 20h
+loc_400EA0:
+4198048    mov     rax, r10
+4198051    shl     rax, 6
+4198055    lea     rax, [rsi+rax-40h]
+4198060    mov     r11, [rax+30h]
+4198064    cmp     r9, r11
+4198067    jge     loc_400F26
+4198069    mov     r14, [rax+8]
+4198073    shl     rdi, 6
+4198077    lea     rdi, [rsi+rdi-40h]
+4198082    mov     [rdi+8], r14
+4198086    mov     r14, [rax+10h]
+4198090    mov     [rdi+10h], r14
+4198094    mov     r14, [rax]
+4198097    mov     [rdi], r14
+4198100    mov     r14, [rax]
+4198103    mov     [rdi+30h], r11
+4198107    mov     [rdi+38h], r14
+4198111    mov     [rax+8], rdx
+4198115    mov     [rax+10h], rcx
+4198119    mov     [rax], r8
+4198122    mov     [rax+38h], r8
+4198126    mov     [rax+30h], r9
+4198130    lea     rax, [r10+r10]
+4198134    cmp     rbx, rax
+4198137    jle     loc_400F17
+4198139    mov     rdi, r10
+4198142    shl     rdi, 7
+4198146    mov     r11, [rsi+rdi+30h]
+4198151    cmp     [rsi+rdi-10h], r11
+4198156    setl    dil
+4198160    movzx   edi, dil
+4198164    add     rax, rdi
+loc_400F17:
+4198167    mov     rdi, r10
+4198170    mov     r10, rax
+loc_400F1D:
+4198173    cmp     r10, rbx
+4198176    jle     loc_400EA0
+loc_400F26:
+4198182    pop     rbx
+4198183    pop     r14
+4198185    pop     rbp
+4198186    retn    
+USE32
+
+section .text
+
+global _price_out_impl
+
+_price_out_impl:
+4198192    push    rbp
+4198193    mov     rbp, rsp
+4198196    push    r15
+4198198    push    r14
+4198200    push    r13
+4198202    push    r12
+4198204    push    rbx
+4198205    sub     rsp, 48h
+4198209    call    _mcount
+4198214    mov     rax, [rdi+198h]
+4198221    mov     r12, [rdi+210h]
+4198228    mov     [rbp-48h], rdi
+4198232    cmp     rax, 3A98h
+4198238    mov     [rbp-50h], rax
+4198242    jg      loc_400FB4
+4198244    mov     rcx, [rdi+1A8h]
+4198251    mov     rdx, [rdi+1C8h]
+4198258    mov     rax, [rdi+1A0h]
+4198265    lea     rsi, [rcx+rdx]
+4198269    cmp     rsi, rax
+4198272    jg      loc_400FFB
+4198274    mov     qword [rbp-70h], 0
+loc_400F8A:
+4198282    cmp     qword [rbp-50h], 0
+4198287    mov     rax, [rbp-48h]
+4198291    mov     rcx, [rax+240h]
+4198298    mov     rax, [rax+238h]
+4198305    jg      loc_400FCE
+loc_400FA3:
+4198307    xor     eax, eax
+loc_400FA5:
+4198309    add     rsp, 48h
+4198313    pop     rbx
+4198314    pop     r12
+4198316    pop     r13
+4198318    pop     r14
+4198320    pop     r15
+4198322    pop     rbp
+4198323    retn    
+loc_400FB4:
+4198324    mov     rax, [rbp-48h]
+4198328    mov     qword [rbp-70h], 0
+4198336    mov     rcx, [rax+240h]
+4198343    mov     rax, [rax+238h]
+loc_400FCE:
+4198350    cmp     dword [rax+58h], 0FFFFFFFFh
+4198354    jnz     loc_401465
+4198360    xor     ebx, ebx
+4198362    mov     rdx, [rbp-50h]
+4198366    jmp     loc_400FEA
+loc_400FE0:
+4198368    cmp     dword [rax+58h], 0FFFFFFFFh
+4198372    jnz     loc_4010DA
+loc_400FEA:
+4198378    add     rbx, 1
+4198382    add     rax, 0C0h
+4198388    cmp     rbx, rdx
+4198391    jnz     loc_400FE0
+4198393    jmp     loc_400FA3
+loc_400FFB:
+4198395    mov     rdi, [rbp-50h]
+4198399    mov     qword [rbp-70h], 0
+4198407    mov     rsi, rdi
+4198410    imul    rsi, rdi
+4198414    mov     rdi, rsi
+4198417    shr     rdi, 3Fh
+4198421    add     rsi, rdi
+4198424    sar     rsi, 1
+4198427    add     rcx, rsi
+4198430    cmp     rax, rcx
+4198433    jge     loc_400F8A
+4198439    cmp     rdx, 2
+4198443    jle     loc_401496
+4198449    mov     rdi, [rbp-48h]
+4198453    add     rax, rdx
+4198456    add     [rdi+1C0h], rdx
+4198463    mov     [rdi+1A0h], rax
+4198470    shl     rax, 6
+4198474    mov     rdi, [rdi+238h]
+4198481    mov     rsi, rax
+4198484    call    _realloc
+4198489    test    rax, rax
+4198492    jz      loc_401470
+4198498    mov     rdi, [rbp-48h]
+4198502    mov     rsi, rax
+4198505    mov     rdx, [rdi+1A8h]
+4198512    mov     rcx, [rdi+228h]
+4198519    sub     rsi, [rdi+238h]
+4198526    mov     [rdi+238h], rax
+4198533    shl     rdx, 6
+4198537    add     rax, rdx
+4198540    mov     rdx, [rdi+230h]
+4198547    mov     [rdi+240h], rax
+4198554    lea     rax, [rcx+68h]
+4198558    cmp     rax, rdx
+4198561    jnb     loc_4010B6
+loc_4010A3:
+4198563    cmp     rcx, [rax+18h]
+4198567    jz      loc_4010AD
+4198569    add     [rax+30h], rsi
+loc_4010AD:
+4198573    add     rax, 68h
+4198577    cmp     rdx, rax
+4198580    ja      loc_4010A3
+loc_4010B6:
+4198582    mov     rbx, [rbp-48h]
+4198586    mov     rdi, rbx
+4198589    call    _refresh_neighbour_lists
+4198594    mov     rax, [rbx+198h]
+4198601    mov     qword [rbp-70h], 1
+4198609    mov     [rbp-50h], rax
+4198613    jmp     loc_400F8A
+loc_4010DA:
+4198618    mov     [rbp-58h], rax
+loc_4010DE:
+4198622    add     rax, 40h
+4198626    xor     r14d, r14d
+4198629    mov     qword [rbp-40h], 0
+4198637    mov     [rbp-60h], rax
+4198641    mov     r11, rax
+4198644    lea     rax, [r12-0Fh]
+4198649    mov     r15d, 1Eh
+4198655    mov     [rbp-38h], rbx
+4198659    mov     [rbp-68h], rax
+4198663    nop     word [rax+rax+00000000h]
+loc_401110:
+4198672    mov     rax, r11
+4198675    sub     rax, [rbp-58h]
+4198679    mov     rdi, [rbp-60h]
+4198683    cmp     dword [rdi+rax-28h], 0FFFFFFFFh
+4198688    jz      loc_401135
+4198690    mov     rax, [r11-30h]
+4198694    mov     rax, [rax+38h]
+4198698    mov     rax, [rax+10h]
+4198702    mov     [rax+48h], r14
+4198706    mov     r14, r11
+loc_401135:
+4198709    cmp     dword [r11-28h], 0FFFFFFFFh
+4198714    jz      loc_4012A0
+4198720    mov     rdi, [r11-30h]
+4198724    mov     rax, [r14+8]
+4198728    movsxd  r9, dword [rdi+64h]
+4198732    sub     r9, [r11-8]
+4198736    add     r9, [rbp-68h]
+4198740    nop     dword [rax+00h]
+loc_401158:
+4198744    mov     rdx, [rax+48h]
+4198748    test    rdx, rdx
+4198751    jz      loc_4012A0
+loc_401165:
+4198757    mov     rax, [rdx+8]
+4198761    movsxd  rsi, dword [rax+64h]
+4198765    add     rsi, [rdx+38h]
+4198769    cmp     r9, rsi
+4198772    jl      loc_401158
+4198774    mov     rsi, r15
+4198777    sub     rsi, [rax]
+4198780    add     rsi, [rdi]
+4198783    jns     loc_401158
+4198785    mov     rbx, [rbp-48h]
+4198789    mov     r12, [rbx+1C0h]
+4198796    cmp     r12, [rbp-40h]
+4198800    jg      loc_401358
+4198806    cmp     rsi, [rcx+30h]
+4198810    jge     loc_401158
+4198812    mov     r8, [rcx+70h]
+4198816    cmp     r8, [rcx+0B0h]
+4198823    mov     edx, 40h
+4198828    mov     ebx, 80h
+4198833    mov     [rcx+8], rax
+4198837    mov     [rcx+10h], rdi
+4198841    mov     qword [rcx+38h], 1Eh
+4198849    mov     qword [rcx], 1Eh
+4198856    mov     [rcx+30h], rsi
+4198860    setle   r10b
+4198864    cmovle  rdx, rbx
+4198868    movzx   r10d, r10b
+4198872    add     r10, 2
+4198876    cmp     r12, r10
+4198879    jl      loc_401158
+4198885    add     rdx, rcx
+4198888    mov     rbx, [rdx+30h]
+4198892    cmp     rsi, rbx
+4198895    jge     loc_401158
+4198901    mov     r13d, 1
+4198907    jmp     loc_40121F
+4198909    align 20h
+loc_401200:
+4198912    mov     rdx, r8
+4198915    shl     rdx, 6
+4198919    lea     rdx, [rcx+rdx-40h]
+4198924    mov     rbx, [rdx+30h]
+loc_401210:
+4198928    cmp     rsi, rbx
+4198931    jge     loc_401158
+4198937    mov     r13, r10
+4198940    mov     r10, r8
+loc_40121F:
+4198943    shl     r13, 6
+4198947    lea     r8, [rcx+r13-40h]
+4198952    mov     r13, [rdx+8]
+4198956    mov     [r8+8], r13
+4198960    mov     r13, [rdx+10h]
+4198964    mov     [r8+10h], r13
+4198968    mov     r13, [rdx]
+4198971    mov     [r8], r13
+4198974    mov     r13, [rdx]
+4198977    mov     [r8+30h], rbx
+4198981    mov     [r8+38h], r13
+4198985    lea     r8, [r10+r10]
+4198989    mov     [rdx+8], rax
+4198993    mov     [rdx+10h], rdi
+4198997    mov     qword [rdx], 1Eh
+4199004    cmp     r12, r8
+4199007    mov     qword [rdx+38h], 1Eh
+4199015    mov     [rdx+30h], rsi
+4199019    jle     loc_401288
+4199021    mov     r13, r10
+4199024    shl     r13, 7
+4199028    lea     rdx, [rcx+r13-40h]
+4199033    mov     rbx, [rdx+30h]
+4199037    cmp     rbx, [rcx+r13+30h]
+4199042    jge     loc_401210
+4199044    add     r8, 1
+loc_401288:
+4199048    cmp     r12, r8
+4199051    jge     loc_401200
+4199057    mov     rdx, [rax+48h]
+4199061    test    rdx, rdx
+4199064    jnz     loc_401165
+4199070    xchg    ax, ax
+loc_4012A0:
+4199072    add     qword [rbp-38h], 1
+4199077    add     r11, 0C0h
+4199084    mov     rax, [rbp-50h]
+4199088    cmp     [rbp-38h], rax
+4199092    jl      loc_401110
+4199098    mov     rdx, [rbp-40h]
+4199102    test    rdx, rdx
+4199105    jz      loc_400FA3
+4199111    shl     rdx, 6
+4199115    mov     rax, [rbp-48h]
+4199119    add     rdx, rcx
+4199122    cmp     qword [rbp-70h], 0
+4199127    mov     [rax+240h], rdx
+4199134    jnz     loc_40143C
+4199140    cmp     rcx, rdx
+4199143    jz      loc_401328
+4199145    nop     dword [rax+00000000h]
+loc_4012F0:
+4199152    mov     rax, [rcx+8]
+4199156    mov     qword [rcx+30h], 0
+4199164    mov     dword [rcx+18h], 1
+4199171    mov     rsi, [rax+38h]
+4199175    mov     [rcx+20h], rsi
+4199179    mov     [rax+38h], rcx
+4199183    mov     rax, [rcx+10h]
+4199187    mov     rsi, [rax+40h]
+4199191    mov     [rcx+28h], rsi
+4199195    mov     [rax+40h], rcx
+4199199    add     rcx, 40h
+4199203    cmp     rdx, rcx
+4199206    jnz     loc_4012F0
+loc_401328:
+4199208    mov     rdi, [rbp-48h]
+4199212    mov     rax, [rbp-40h]
+4199216    add     [rdi+1A8h], rax
+4199223    add     [rdi+1B8h], rax
+4199230    sub     [rdi+1C0h], rax
+4199237    add     rsp, 48h
+4199241    pop     rbx
+4199242    pop     r12
+4199244    pop     r13
+4199246    pop     r14
+4199248    pop     r15
+4199250    pop     rbp
+4199251    retn    
+4199252    align 8 
+loc_401358:
+4199256    mov     rdx, [rbp-40h]
+4199260    add     qword [rbp-40h], 1
+4199265    mov     r12, [rbp-40h]
+4199269    shl     rdx, 6
+4199273    add     rdx, rcx
+4199276    cmp     r12, 1
+4199280    mov     [rdx+8], rax
+4199284    mov     [rdx+10h], rdi
+4199288    mov     qword [rdx+38h], 1Eh
+4199296    mov     qword [rdx], 1Eh
+4199303    mov     [rdx+30h], rsi
+4199307    jz      loc_401158
+4199313    mov     r10, r12
+4199316    shr     r10, 3Fh
+4199320    add     r10, r12
+4199323    sar     r10, 1
+4199326    mov     rdx, r10
+4199329    shl     rdx, 6
+4199333    lea     rdx, [rcx+rdx-40h]
+4199338    mov     rbx, [rdx+30h]
+4199342    cmp     rsi, rbx
+4199345    jg      loc_4013EC
+4199347    jmp     loc_401158
+4199352    align 20h
+loc_4013C0:
+4199360    mov     r8, r10
+4199363    shr     r8, 3Fh
+4199367    add     r8, r10
+4199370    sar     r8, 1
+4199373    mov     rdx, r8
+4199376    shl     rdx, 6
+4199380    lea     rdx, [rcx+rdx-40h]
+4199385    mov     rbx, [rdx+30h]
+4199389    cmp     rsi, rbx
+4199392    jle     loc_401158
+4199398    mov     r12, r10
+4199401    mov     r10, r8
+loc_4013EC:
+4199404    shl     r12, 6
+4199408    cmp     r10, 1
+4199412    lea     r8, [rcx+r12-40h]
+4199417    mov     r12, [rdx+8]
+4199421    mov     [r8+8], r12
+4199425    mov     r12, [rdx+10h]
+4199429    mov     [r8+10h], r12
+4199433    mov     r12, [rdx]
+4199436    mov     [r8], r12
+4199439    mov     r12, [rdx]
+4199442    mov     [r8+30h], rbx
+4199446    mov     [r8+38h], r12
+4199450    mov     [rdx+8], rax
+4199454    mov     [rdx+10h], rdi
+4199458    mov     qword [rdx], 1Eh
+4199465    mov     qword [rdx+38h], 1Eh
+4199473    mov     [rdx+30h], rsi
+4199477    jnz     loc_4013C0
+4199479    jmp     loc_401158
+loc_40143C:
+4199484    cmp     rcx, rdx
+4199487    jz      loc_401328
+4199493    nop     dword [rax]
+loc_401448:
+4199496    mov     qword [rcx+30h], 0
+4199504    mov     dword [rcx+18h], 1
+4199511    add     rcx, 40h
+4199515    cmp     rdx, rcx
+4199518    jnz     loc_401448
+4199520    jmp     loc_401328
+loc_401465:
+4199525    mov     [rbp-58h], rax
+4199529    xor     ebx, ebx
+4199531    jmp     loc_4010DE
+loc_401470:
+4199536    mov     rsi, [rbp-48h]
+4199540    mov     edi, aNetworkSNotEno
+4199545    call    _printf
+4199550    mov     rdi, [cs:stdout@@GLIBC_2_2_5]
+4199557    call    _fflush
+4199562    mov     rax, 0FFFFFFFFFFFFFFFFh
+4199569    jmp     loc_400FA5
+loc_401496:
+4199574    mov     ecx, __PRETTY_FUNCTION___4701
+4199579    mov     edx, 27h
+4199584    mov     esi, file
+4199589    mov     edi, assertion
+4199594    call    ___assert_fail
+USE32
+
+section .text
+
+global _suspend_impl
+
+_suspend_impl:
+4199600    push    rbp
+4199601    mov     rbp, rsp
+4199604    push    rbx
+4199605    sub     rsp, 8
+4199609    call    _mcount
+4199614    test    rdx, rdx
+4199617    jz      loc_401510
+4199619    mov     rbx, [rdi+1B8h]
+4199626    mov     r10, rbx
+loc_4014CD:
+4199629    test    rbx, rbx
+4199632    jz      loc_4014FD
+4199634    mov     rax, rbx
+4199637    sub     [rdi+1A8h], rbx
+4199644    add     [rdi+1C0h], rbx
+4199651    shl     rax, 6
+4199655    sub     r10, rbx
+4199658    sub     [rdi+240h], rax
+4199665    mov     [rdi+1B8h], r10
+4199672    call    _refresh_neighbour_lists
+loc_4014FD:
+4199677    add     rsp, 8
+4199681    mov     rax, rbx
+4199684    pop     rbx
+4199685    pop     rbp
+4199686    retn    
+4199687    align 10h
+loc_401510:
+4199696    mov     r10, [rdi+1B8h]
+4199703    mov     rcx, [rdi+1A8h]
+4199710    mov     rax, [rdi+240h]
+4199717    sub     rcx, r10
+4199720    shl     rcx, 6
+4199724    add     rcx, [rdi+238h]
+4199731    cmp     rax, rcx
+4199734    jbe     loc_4015E3
+4199740    mov     rdx, rcx
+4199743    xor     ebx, ebx
+4199745    jmp     loc_401559
+4199747    align 8 
+loc_401548:
+4199752    add     rbx, 1
+loc_40154C:
+4199756    add     rdx, 40h
+4199760    cmp     rax, rdx
+4199763    jbe     loc_4014CD
+loc_401559:
+4199769    mov     r9d, [rdx+18h]
+4199773    cmp     r9d, 1
+4199777    jz      loc_4015D0
+4199779    test    r9d, r9d
+4199782    mov     r8, 0FFFFFFFFFFFFFFFEh
+4199789    jnz     loc_401581
+4199791    mov     r9, [rdx+8]
+4199795    cmp     [r9+30h], rdx
+4199799    jz      loc_40157D
+4199801    mov     r9, [rdx+10h]
+loc_40157D:
+4199805    mov     [r9+30h], rcx
+loc_401581:
+4199809    cmp     r8, rsi
+4199812    jg      loc_401548
+4199814    mov     r8, [rdx]
+4199817    add     rcx, 40h
+4199821    mov     [rcx-40h], r8
+4199825    mov     r8, [rdx+8]
+4199829    mov     [rcx-38h], r8
+4199833    mov     r8, [rdx+10h]
+4199837    mov     [rcx-30h], r8
+4199841    mov     r8, [rdx+18h]
+4199845    mov     [rcx-28h], r8
+4199849    mov     r8, [rdx+20h]
+4199853    mov     [rcx-20h], r8
+4199857    mov     r8, [rdx+28h]
+4199861    mov     [rcx-18h], r8
+4199865    mov     r8, [rdx+30h]
+4199869    mov     [rcx-10h], r8
+4199873    mov     r8, [rdx+38h]
+4199877    mov     [rcx-8], r8
+4199881    jmp     loc_40154C
+4199883    align 10h
+loc_4015D0:
+4199888    mov     r9, [rdx+8]
+4199892    mov     r8, [rdx]
+4199895    sub     r8, [r9]
+4199898    mov     r9, [rdx+10h]
+4199902    add     r8, [r9]
+4199905    jmp     loc_401581
+loc_4015E3:
+4199907    xor     ebx, ebx
+4199909    jmp     loc_4014FD
+USE32
+
+section .text
+
+global _global_opt
+
+_global_opt:
+4199920    push    rbp
+4199921    mov     rbp, rsp
+4199924    push    r12
+4199926    push    rbx
+4199927    call    _mcount
+4199932    mov     rsi, [cs:qword net+1A8h]
+4199939    mov     edi, aActiveArcsLd
+4199944    xor     eax, eax
+4199946    mov     r12d, 5
+4199952    call    _printf
+4199957    mov     edi, net
+4199962    call    _primal_net_simplex
+4199967    mov     rsi, [cs:qword net+258h]
+4199974    mov     edi, aSimplexIterati
+4199979    xor     eax, eax
+4199981    call    _printf
+4199986    mov     edi, net
+4199991    call    _flow_cost
+4199996    mov     edi, aObjectiveValue
+4200001    mov     eax, 1
+4200006    call    _printf
+loc_40164B:
+4200011    cmp     [cs:qword net+1B8h], 0
+4200019    jnz     loc_401688
+loc_401655:
+4200021    mov     edi, net
+4200026    call    _price_out_impl
+4200031    test    rax, rax
+4200034    mov     rbx, rax
+4200037    jnz     loc_4016B8
+loc_401667:
+4200039    mov     rsi, [cs:qword net+268h]
+4200046    mov     edi, aChecksumLd
+4200051    xor     eax, eax
+4200053    call    _printf
+4200058    pop     rbx
+4200059    pop     r12
+4200061    xor     eax, eax
+4200063    pop     rbp
+4200064    retn    
+4200065    align 8 
+loc_401688:
+4200072    xor     edx, edx
+4200074    mov     rsi, 0FFFFFFFFFFFFFFFFh
+4200081    mov     edi, net
+4200086    call    _suspend_impl
+4200091    test    rax, rax
+4200094    jz      loc_401655
+4200096    mov     rsi, rax
+4200099    mov     edi, aErasedArcsLd
+4200104    xor     eax, eax
+4200106    call    _printf
+4200111    jmp     loc_401655
+4200113    align 8 
+loc_4016B8:
+4200120    mov     rsi, rax
+4200123    mov     edi, aNewImplicitArc
+4200128    xor     eax, eax
+4200130    call    _printf
+4200135    test    rbx, rbx
+4200138    js      loc_401724
+4200140    mov     rsi, [cs:qword net+1A8h]
+4200147    mov     edi, aActiveArcsLd
+4200152    xor     eax, eax
+4200154    call    _printf
+4200159    mov     edi, net
+4200164    call    _primal_net_simplex
+4200169    mov     rsi, [cs:qword net+258h]
+4200176    mov     edi, aSimplexIterati
+4200181    xor     eax, eax
+4200183    call    _printf
+4200188    mov     edi, net
+4200193    call    _flow_cost
+4200198    mov     edi, aObjectiveValue
+4200203    mov     eax, 1
+4200208    call    _printf
+4200213    sub     r12, 1
+4200217    jnz     loc_40164B
+4200223    jmp     loc_401667
+loc_401724:
+4200228    mov     edi, aNotEnoughMemor
+4200233    call    _puts
+4200238    mov     edi, 0FFFFFFFFh
+4200243    call    _exit
+USE32
+
+section .text
+
+global _refresh_neighbour_lists
+
+_refresh_neighbour_lists:
+4200256    push    rbp
+4200257    mov     rbp, rsp
+4200260    call    _mcount
+4200265    mov     rax, [rdi+228h]
+4200272    mov     rdx, [rdi+230h]
+4200279    cmp     rax, rdx
+4200282    jnb     loc_401779
+4200284    nop     dword [rax+00h]
+loc_401760:
+4200288    mov     qword [rax+40h], 0
+4200296    mov     qword [rax+38h], 0
+4200304    add     rax, 68h
+4200308    cmp     rdx, rax
+4200311    ja      loc_401760
+loc_401779:
+4200313    mov     rax, [rdi+238h]
+4200320    mov     rsi, [rdi+240h]
+4200327    cmp     rax, rsi
+4200330    jnb     loc_4017B9
+4200332    nop     dword [rax+00h]
+loc_401790:
+4200336    mov     rdx, [rax+8]
+4200340    mov     rcx, [rdx+38h]
+4200344    mov     [rax+20h], rcx
+4200348    mov     [rdx+38h], rax
+4200352    mov     rdx, [rax+10h]
+4200356    mov     rcx, [rdx+40h]
+4200360    mov     [rax+28h], rcx
+4200364    mov     [rdx+40h], rax
+4200368    add     rax, 40h
+4200372    cmp     rsi, rax
+4200375    ja      loc_401790
+loc_4017B9:
+4200377    pop     rbp
+4200378    retn    
+USE32
+
+section .text
+
+global _refresh_potential
+
+_refresh_potential:
+4200384    push    rbp
+4200385    mov     rbp, rsp
+4200388    call    _mcount
+4200393    mov     r8, [rdi+228h]
+4200400    mov     rsi, [r8+10h]
+4200404    mov     qword [r8], 0FFFFFFFFFA0A1F00h
+4200411    cmp     r8, rsi
+4200414    jz      loc_40188B
+4200420    mov     rdx, rsi
+4200423    xor     eax, eax
+4200425    nop     dword [rax+00000000h]
+loc_4017F0:
+4200432    test    rdx, rdx
+4200435    jnz     loc_401821
+4200437    jmp     loc_401882
+4200442    align 20h
+loc_401800:
+4200448    mov     rcx, [rdx+18h]
+4200452    mov     rdi, [rdx+30h]
+4200456    add     rax, 1
+4200460    mov     rsi, [rcx]
+4200463    sub     rsi, [rdi]
+4200466    mov     [rdx], rsi
+4200469    mov     rsi, [rdx+10h]
+4200473    test    rsi, rsi
+4200476    jz      loc_401841
+loc_40181E:
+4200478    mov     rdx, rsi
+loc_401821:
+4200481    cmp     dword [rdx+8], 1
+4200485    jnz     loc_401800
+4200487    mov     rcx, [rdx+30h]
+4200491    mov     rsi, [rcx]
+4200494    mov     rcx, [rdx+18h]
+4200498    add     rsi, [rcx]
+4200501    mov     [rdx], rsi
+4200504    mov     rsi, [rdx+10h]
+4200508    test    rsi, rsi
+4200511    jnz     loc_40181E
+loc_401841:
+4200513    mov     rsi, rdx
+4200516    jmp     loc_401860
+4200518    align 10h
+loc_401850:
+4200528    mov     rsi, [rdx+20h]
+4200532    test    rsi, rsi
+4200535    jnz     loc_401870
+4200537    mov     rdx, rcx
+4200540    mov     rcx, [rcx+18h]
+loc_401860:
+4200544    test    rcx, rcx
+4200547    jnz     loc_401850
+4200549    cmp     r8, rdx
+4200552    jnz     loc_4017F0
+loc_40186A:
+4200554    pop     rbp
+4200555    retn    
+4200556    align 10h
+loc_401870:
+4200560    mov     rdx, rsi
+4200563    cmp     r8, rdx
+4200566    jnz     loc_4017F0
+4200572    nop     dword [rax+00h]
+4200576    jmp     loc_40186A
+loc_401882:
+4200578    mov     rcx, [rsi+18h]
+4200582    mov     rdx, rsi
+4200585    jmp     loc_401841
+loc_40188B:
+4200587    xor     eax, eax
+4200589    pop     rbp
+4200590    retn    
+USE32
+
+section .text
+
+global _flow_cost
+
+_flow_cost:
+4200592    push    rbp
+4200593    mov     rbp, rsp
+4200596    call    _mcount
+4200601    mov     rax, [rdi+238h]
+4200608    mov     rcx, [rdi+240h]
+4200615    cmp     rcx, rax
+4200618    mov     rdx, rax
+4200621    jz      loc_4018C7
+4200623    nop     
+loc_4018B0:
+4200624    xor     esi, esi
+4200626    cmp     dword [rdx+18h], 2
+4200630    setz    sil
+4200634    add     rdx, 40h
+4200638    mov     [rdx-10h], rsi
+4200642    cmp     rcx, rdx
+4200645    jnz     loc_4018B0
+loc_4018C7:
+4200647    mov     rsi, [rdi+228h]
+4200654    mov     r9, [rdi+230h]
+4200661    lea     rdx, [rsi+68h]
+4200665    cmp     r9, rdx
+4200668    jz      loc_4018F5
+4200670    xchg    ax, ax
+loc_4018E0:
+4200672    mov     rsi, [rdx+30h]
+4200676    mov     r8, [rdx+50h]
+4200680    add     rdx, 68h
+4200684    cmp     r9, rdx
+4200687    mov     [rsi+30h], r8
+4200691    jnz     loc_4018E0
+loc_4018F5:
+4200693    cmp     rcx, rax
+4200696    jz      loc_401980
+4200702    mov     r8, [rdi+210h]
+4200709    xor     esi, esi
+4200711    xor     edi, edi
+4200713    jmp     loc_401929
+4200715    align 10h
+loc_401910:
+4200720    sub     rsi, r8
+4200723    add     rsi, [rax]
+4200726    add     rdi, 1
+4200730    nop     word [rax+rax+00h]
+loc_401920:
+4200736    add     rax, 40h
+4200740    cmp     rcx, rax
+4200743    jz      loc_401950
+loc_401929:
+4200745    cmp     qword [rax+30h], 0
+4200750    jz      loc_401920
+4200752    mov     rdx, [rax+8]
+4200756    mov     r9d, [rdx+60h]
+4200760    test    r9d, r9d
+4200763    js      loc_401970
+4200765    jz      loc_401910
+4200767    add     rsi, [rax]
+loc_401942:
+4200770    add     rax, 40h
+4200774    cmp     rcx, rax
+4200777    jnz     loc_401929
+4200779    nop     dword [rax+rax+00h]
+loc_401950:
+4200784    cvtsi2sd xmm2, rdi
+4200789    cvtsi2sd xmm1, rsi
+loc_40195A:
+4200794    cvtsi2sd xmm0, r8
+4200799    pop     rbp
+4200800    mulsd   xmm0, xmm2
+4200804    addsd   xmm0, xmm1
+4200808    retn    
+4200809    align 10h
+loc_401970:
+4200816    mov     rdx, [rax+10h]
+4200820    mov     edx, [rdx+60h]
+4200823    test    edx, edx
+4200825    jg      loc_401920
+4200827    add     rsi, [rax]
+4200830    jmp     loc_401942
+loc_401980:
+4200832    xorpd   xmm1, xmm1
+4200836    mov     r8, [rdi+210h]
+4200843    movapd  xmm2, xmm1
+4200847    jmp     loc_40195A
+USE32
+
+section .text
+
+global _flow_org_cost
+
+_flow_org_cost:
+4200864    push    rbp
+4200865    mov     rbp, rsp
+4200868    call    _mcount
+4200873    mov     rax, [rdi+238h]
+4200880    mov     rcx, [rdi+240h]
+4200887    cmp     rcx, rax
+4200890    mov     rdx, rax
+4200893    jz      loc_4019D7
+4200895    nop     
+loc_4019C0:
+4200896    xor     esi, esi
+4200898    cmp     dword [rdx+18h], 2
+4200902    setz    sil
+4200906    add     rdx, 40h
+4200910    mov     [rdx-10h], rsi
+4200914    cmp     rcx, rdx
+4200917    jnz     loc_4019C0
+loc_4019D7:
+4200919    mov     rsi, [rdi+228h]
+4200926    mov     r9, [rdi+230h]
+4200933    lea     rdx, [rsi+68h]
+4200937    cmp     r9, rdx
+4200940    jz      loc_401A05
+4200942    xchg    ax, ax
+loc_4019F0:
+4200944    mov     rsi, [rdx+30h]
+4200948    mov     r8, [rdx+50h]
+4200952    add     rdx, 68h
+4200956    cmp     r9, rdx
+4200959    mov     [rsi+30h], r8
+4200963    jnz     loc_4019F0
+loc_401A05:
+4200965    cmp     rcx, rax
+4200968    jz      loc_401A81
+4200970    mov     r8, [rdi+210h]
+4200977    xor     edx, edx
+4200979    xor     edi, edi
+4200981    jmp     loc_401A34
+4200983    align 20h
+loc_401A20:
+4200992    sub     rdx, r8
+4200995    add     rdx, [rax+38h]
+4200999    add     rdi, 1
+loc_401A2B:
+4201003    add     rax, 40h
+4201007    cmp     rcx, rax
+4201010    jz      loc_401A57
+loc_401A34:
+4201012    cmp     qword [rax+30h], 0
+4201017    jz      loc_401A2B
+4201019    mov     rsi, [rax+8]
+4201023    mov     r9d, [rsi+60h]
+4201027    test    r9d, r9d
+4201030    js      loc_401A70
+4201032    jz      loc_401A20
+4201034    add     rdx, [rax+38h]
+loc_401A4E:
+4201038    add     rax, 40h
+4201042    cmp     rcx, rax
+4201045    jnz     loc_401A34
+loc_401A57:
+4201047    cvtsi2sd xmm2, rdi
+4201052    cvtsi2sd xmm1, rdx
+loc_401A61:
+4201057    cvtsi2sd xmm0, r8
+4201062    pop     rbp
+4201063    mulsd   xmm0, xmm2
+4201067    addsd   xmm0, xmm1
+4201071    retn    
+loc_401A70:
+4201072    mov     rsi, [rax+10h]
+4201076    mov     esi, [rsi+60h]
+4201079    test    esi, esi
+4201081    jg      loc_401A2B
+4201083    add     rdx, [rax+38h]
+4201087    jmp     loc_401A4E
+loc_401A81:
+4201089    xorpd   xmm1, xmm1
+4201093    mov     r8, [rdi+210h]
+4201100    movapd  xmm2, xmm1
+4201104    jmp     loc_401A61
+USE32
+
+section .text
+
+global _primal_feasible
+
+_primal_feasible:
+4201120    push    rbp
+4201121    mov     rbp, rsp
+4201124    push    r15
+4201126    push    r14
+4201128    push    r13
+4201130    push    r12
+4201132    push    rbx
+4201133    sub     rsp, 18h
+4201137    call    _mcount
+4201142    mov     rax, [rdi+228h]
+4201149    mov     r14, [rdi+230h]
+4201156    mov     r13, rdi
+4201159    mov     rcx, [rdi+248h]
+4201166    mov     r15, [rdi+250h]
+4201173    lea     rbx, [rax+68h]
+4201177    cmp     r14, rbx
+4201180    ja      loc_401B13
+4201182    jmp     loc_401BB8
+4201187    align 8 
+loc_401AE8:
+4201192    cmp     rax, rcx
+4201195    jb      loc_401B20
+4201197    mov     rdx, r12
+4201200    sar     rdx, 3Fh
+4201204    mov     rax, rdx
+4201207    xor     rax, r12
+4201210    sub     rax, rdx
+4201213    cmp     rax, [r13+200h]
+4201220    jg      loc_401B80
+loc_401B06:
+4201222    add     rbx, 68h
+4201226    cmp     r14, rbx
+4201229    jbe     loc_401BB8
+loc_401B13:
+4201235    mov     rax, [rbx+30h]
+4201239    mov     r12, [rbx+50h]
+4201243    cmp     rax, r15
+4201246    jb      loc_401AE8
+loc_401B20:
+4201248    mov     rax, [r13+200h]
+4201255    mov     rdx, rax
+4201258    neg     rdx
+4201261    cmp     r12, rdx
+4201264    jl      loc_401B3C
+4201266    lea     rdx, [r12-1]
+4201271    cmp     rax, rdx
+4201274    jge     loc_401B06
+loc_401B3C:
+4201276    mov     edi, aPrimalNetworkS
+4201281    xor     eax, eax
+4201283    call    _printf
+4201288    mov     rsi, r12
+4201291    mov     edi, aBasisPrimalInf
+4201296    xor     eax, eax
+4201298    call    _printf
+4201303    mov     qword [r13+1E8h], 0
+4201314    add     rsp, 18h
+4201318    mov     eax, 1
+4201323    pop     rbx
+4201324    pop     r12
+4201326    pop     r13
+4201328    pop     r14
+4201330    pop     r15
+4201332    pop     rbp
+4201333    retn    
+4201334    align 20h
+loc_401B80:
+4201344    mov     edi, aPrimalNetworkS
+4201349    xor     eax, eax
+4201351    mov     [rbp-38h], rcx
+4201355    call    _printf
+4201360    mov     esi, [rbx+60h]
+4201363    xor     eax, eax
+4201365    mov     rdx, r12
+4201368    mov     edi, aArtificialArcW
+4201373    add     rbx, 68h
+4201377    call    _printf
+4201382    cmp     r14, rbx
+4201385    mov     rcx, [rbp-38h]
+4201389    ja      loc_401B13
+4201395    nop     dword [rax+rax+00h]
+loc_401BB8:
+4201400    mov     qword [r13+1E8h], 1
+4201411    add     rsp, 18h
+4201415    xor     eax, eax
+4201417    pop     rbx
+4201418    pop     r12
+4201420    pop     r13
+4201422    pop     r14
+4201424    pop     r15
+4201426    pop     rbp
+4201427    retn    
+USE32
+
+section .text
+
+global _dual_feasible
+
+_dual_feasible:
+4201440    push    rbp
+4201441    mov     rbp, rsp
+4201444    call    _mcount
+4201449    mov     rsi, [rdi+240h]
+4201456    mov     rax, [rdi+238h]
+4201463    cmp     rsi, rax
+4201466    ja      loc_401C1B
+4201468    jmp     loc_401C98
+4201473    align 8 
+loc_401C08:
+4201480    cmp     ecx, 1
+4201483    jz      loc_401C33
+4201485    cmp     ecx, 2
+4201488    jz      loc_401C80
+loc_401C12:
+4201490    add     rax, 40h
+4201494    cmp     rsi, rax
+4201497    jbe     loc_401C98
+loc_401C1B:
+4201499    mov     rcx, [rax+8]
+4201503    mov     rdx, [rax]
+4201506    sub     rdx, [rcx]
+4201509    mov     rcx, [rax+10h]
+4201513    add     rdx, [rcx]
+4201516    mov     ecx, [rax+18h]
+4201519    test    ecx, ecx
+4201521    jnz     loc_401C08
+loc_401C33:
+4201523    mov     rcx, [rdi+200h]
+4201530    neg     rcx
+4201533    cmp     rdx, rcx
+4201536    jge     loc_401C12
+loc_401C42:
+4201538    mov     rcx, [cs:stderr@@GLIBC_2_2_5]
+4201545    mov     edx, 16h
+4201550    mov     esi, 1
+4201555    mov     edi, aDualNetworkSim
+4201560    call    _fwrite
+4201565    mov     rcx, [cs:stderr@@GLIBC_2_2_5]
+4201572    mov     edx, 16h
+4201577    mov     esi, 1
+4201582    mov     edi, aBasisDualInfea
+4201587    call    _fwrite
+4201592    mov     eax, 1
+4201597    pop     rbp
+4201598    retn    
+4201599    align 20h
+loc_401C80:
+4201600    cmp     rdx, [rdi+200h]
+4201607    jg      loc_401C42
+4201609    add     rax, 40h
+4201613    cmp     rsi, rax
+4201616    ja      loc_401C1B
+4201618    nop     word [rax+rax+00h]
+loc_401C98:
+4201624    xor     eax, eax
+4201626    pop     rbp
+4201627    retn    
+USE32
+
+section .text
+
+global _getfree
+
+_getfree:
+4201632    push    rbp
+4201633    mov     rbp, rsp
+4201636    push    rbx
+4201637    sub     rsp, 8
+4201641    call    _mcount
+4201646    mov     rbx, rdi
+4201649    mov     rdi, [rdi+228h]
+4201656    test    rdi, rdi
+4201659    jz      loc_401CC2
+4201661    call    _free
+loc_401CC2:
+4201666    mov     rdi, [rbx+238h]
+4201673    test    rdi, rdi
+4201676    jz      loc_401CD3
+4201678    call    _free
+loc_401CD3:
+4201683    mov     rdi, [rbx+248h]
+4201690    test    rdi, rdi
+4201693    jz      loc_401CE4
+4201695    call    _free
+loc_401CE4:
+4201700    mov     qword [rbx+230h], 0
+4201711    mov     qword [rbx+228h], 0
+4201722    xor     eax, eax
+4201724    mov     qword [rbx+240h], 0
+4201735    mov     qword [rbx+238h], 0
+4201746    mov     qword [rbx+250h], 0
+4201757    mov     qword [rbx+248h], 0
+4201768    add     rsp, 8
+4201772    pop     rbx
+4201773    pop     rbp
+4201774    retn    
+USE32
+
+section .text
+
+global _write_circulations
+
+_write_circulations:
+4201776    push    rbp
+4201777    mov     rbp, rsp
+4201780    push    r15
+4201782    push    r14
+4201784    push    r13
+4201786    push    r12
+4201788    push    rbx
+4201789    sub     rsp, 8
+4201793    call    _mcount
+4201798    mov     rax, [rsi+1B8h]
+4201805    mov     r15, [rsi+240h]
+4201812    mov     r14, rsi
+4201815    mov     esi, modes
+4201820    shl     rax, 6
+4201824    sub     r15, rax
+4201827    call    _fopen
+4201832    test    rax, rax
+4201835    mov     r12, rax
+4201838    jz      loc_401E48
+4201844    mov     rdi, r14
+4201847    call    _refresh_neighbour_lists
+4201852    mov     rax, [r14+190h]
+4201859    lea     rdx, [rax+rax*2]
+4201863    lea     rax, [rax+rdx*4]
+4201867    mov     rdx, [r14+228h]
+4201874    lea     rax, [rdx+rax*8]
+4201878    mov     r13, [rax+38h]
+4201882    test    r13, r13
+4201885    jnz     loc_401DB5
+4201887    jmp     loc_401E7C
+4201892    align 8 
+loc_401DA8:
+4201896    mov     r13, [r13+20h]
+4201900    test    r13, r13
+4201903    jz      loc_401E7C
+loc_401DB5:
+4201909    cmp     qword [r13+30h], 0
+4201914    jz      loc_401DA8
+4201916    mov     rcx, r12
+4201919    mov     edx, 3
+4201924    mov     esi, 1
+4201929    mov     edi, asc_403942
+4201934    mov     rbx, r13
+4201937    call    _fwrite
+loc_401DD6:
+4201942    cmp     r15, rbx
+4201945    jbe     loc_401E60
+loc_401DDF:
+4201951    mov     rax, [rbx+10h]
+4201955    mov     esi, aD
+4201960    mov     rdi, r12
+4201963    mov     edx, [rax+60h]
+4201966    xor     eax, eax
+4201968    neg     edx
+4201970    call    _fprintf
+4201975    mov     rax, [r14+198h]
+4201982    lea     rdx, [rax+rax*2]
+4201986    lea     rdx, [rax+rdx*4]
+4201990    mov     rax, [rbx+10h]
+4201994    mov     rbx, [rax+rdx*8+38h]
+4201999    test    rbx, rbx
+4202002    jnz     loc_401E29
+4202004    jmp     loc_401E40
+4202006    align 20h
+loc_401E20:
+4202016    mov     rbx, [rbx+20h]
+4202020    test    rbx, rbx
+4202023    jz      loc_401E40
+loc_401E29:
+4202025    cmp     qword [rbx+30h], 0
+4202030    jz      loc_401E20
+4202032    mov     rax, [rbx+10h]
+4202036    mov     eax, [rax+60h]
+4202039    test    eax, eax
+4202041    jnz     loc_401DD6
+4202043    jmp     loc_401DA8
+loc_401E40:
+4202048    mov     rdi, r12
+4202051    call    _fclose
+loc_401E48:
+4202056    add     rsp, 8
+4202060    mov     rax, 0FFFFFFFFFFFFFFFFh
+4202067    pop     rbx
+4202068    pop     r12
+4202070    pop     r13
+4202072    pop     r14
+4202074    pop     r15
+4202076    pop     rbp
+4202077    retn    
+4202078    align 20h
+loc_401E60:
+4202080    mov     rcx, r12
+4202083    mov     edx, 4
+4202088    mov     esi, 1
+4202093    mov     edi, asc_403946
+4202098    call    _fwrite
+4202103    jmp     loc_401DDF
+loc_401E7C:
+4202108    mov     rdi, r12
+4202111    call    _fclose
+4202116    add     rsp, 8
+4202120    xor     eax, eax
+4202122    pop     rbx
+4202123    pop     r12
+4202125    pop     r13
+4202127    pop     r14
+4202129    pop     r15
+4202131    pop     rbp
+4202132    retn    
+USE32
+
+section .text
+
+global _bea_is_dual_infeasible
+
+_bea_is_dual_infeasible:
+4202144    push    rbp
+4202145    mov     rbp, rsp
+4202148    call    _mcount
+4202153    cmp     rsi, 0
+4202157    jl      loc_401EC0
+4202159    jle     loc_401ED0
+4202161    xor     eax, eax
+4202163    cmp     dword [rdi+18h], 2
+4202167    pop     rbp
+4202168    setz    al
+4202171    retn    
+4202172    align 20h
+loc_401EC0:
+4202176    xor     eax, eax
+4202178    cmp     dword [rdi+18h], 1
+4202182    pop     rbp
+4202183    setz    al
+4202186    retn    
+4202187    align 10h
+loc_401ED0:
+4202192    xor     eax, eax
+4202194    pop     rbp
+4202195    retn    
+USE32
+
+section .text
+
+global _sort_basket
+
+_sort_basket:
+4202208    push    rbp
+4202209    mov     rbp, rsp
+4202212    push    r15
+4202214    push    r14
+4202216    push    r13
+4202218    push    r12
+4202220    push    rbx
+4202221    sub     rsp, 78h
+4202225    call    _mcount
+4202230    mov     r10, rdi
+4202233    mov     [rbp-68h], rsi
+4202237    mov     rdi, rsi
+loc_401F00:
+4202240    mov     rax, rdi
+4202243    lea     r11, [r10+1]
+4202247    add     rax, r10
+4202250    mov     rdx, rax
+4202253    shr     rdx, 3Fh
+4202257    add     rax, rdx
+4202260    mov     rdx, rdi
+4202263    sar     rax, 1
+4202266    mov     rax, qword perm[rax*8]
+4202274    mov     rcx, [rax+10h]
+4202278    mov     rax, r11
+loc_401F29:
+4202281    mov     r8, qword_605138[rax*8]
+4202289    lea     rdi, [rax-1]
+4202293    cmp     rcx, [r8+10h]
+4202297    jge     loc_401F4C
+loc_401F3B:
+4202299    add     rax, 1
+4202303    jmp     loc_401F29
+4202305    align 8 
+loc_401F48:
+4202312    sub     rdx, 1
+loc_401F4C:
+4202316    mov     rsi, qword perm[rdx*8]
+4202324    cmp     rcx, [rsi+10h]
+4202328    jg      loc_401F48
+4202330    cmp     rdx, rdi
+4202333    jle     loc_401F7D
+4202335    mov     qword_605138[rax*8], rsi
+4202343    mov     qword perm[rdx*8], r8
+loc_401F6F:
+4202351    sub     rdx, 1
+4202355    mov     rdi, rax
+4202358    cmp     rax, rdx
+4202361    jle     loc_401F3B
+4202363    jmp     loc_401F7F
+loc_401F7D:
+4202365    jge     loc_401F6F
+loc_401F7F:
+4202367    cmp     r10, rdx
+4202370    mov     [rbp-38h], rdx
+4202374    mov     [rbp-40h], rdi
+4202378    jl      loc_401FDF
+loc_401F8C:
+4202380    mov     rax, [rbp-40h]
+4202384    cmp     rax, 32h
+4202388    jg      loc_40205C
+4202394    mov     rdi, [rbp-68h]
+4202398    cmp     rax, rdi
+4202401    jge     loc_40205C
+4202407    mov     r10, [rbp-40h]
+4202411    mov     rdi, [rbp-68h]
+4202415    jmp     loc_401F00
+loc_401FB4:
+4202420    jge     loc_40204B
+loc_401FBA:
+4202426    cmp     r10, r9
+4202429    mov     [rbp-48h], rsi
+4202433    jl      loc_40206B
+loc_401FC7:
+4202439    mov     rax, [rbp-48h]
+4202443    cmp     rax, 32h
+4202447    jg      loc_401F8C
+4202449    cmp     [rbp-38h], rax
+4202453    jle     loc_401F8C
+4202455    mov     r10, [rbp-48h]
+4202459    lea     r11, [r10+1]
+loc_401FDF:
+4202463    mov     r9, [rbp-38h]
+4202467    mov     rax, r9
+4202470    add     rax, r10
+4202473    mov     rdx, rax
+4202476    shr     rdx, 3Fh
+4202480    add     rax, rdx
+4202483    sar     rax, 1
+4202486    mov     rax, qword perm[rax*8]
+4202494    mov     rcx, [rax+10h]
+4202498    mov     rax, r11
+loc_402005:
+4202501    mov     rdi, qword_605138[rax*8]
+4202509    lea     rsi, [rax-1]
+4202513    cmp     rcx, [rdi+10h]
+4202517    jge     loc_402024
+loc_402017:
+4202519    add     rax, 1
+4202523    jmp     loc_402005
+4202525    align 20h
+loc_402020:
+4202528    sub     r9, 1
+loc_402024:
+4202532    mov     rdx, qword perm[r9*8]
+4202540    cmp     rcx, [rdx+10h]
+4202544    jg      loc_402020
+4202546    cmp     r9, rsi
+4202549    jle     loc_401FB4
+4202555    mov     qword_605138[rax*8], rdx
+4202563    mov     qword perm[r9*8], rdi
+loc_40204B:
+4202571    sub     r9, 1
+4202575    mov     rsi, rax
+4202578    cmp     rax, r9
+4202581    jle     loc_402017
+4202583    jmp     loc_401FBA
+loc_40205C:
+4202588    add     rsp, 78h
+4202592    pop     rbx
+4202593    pop     r12
+4202595    pop     r13
+4202597    pop     r14
+4202599    pop     r15
+4202601    pop     rbp
+4202602    retn    
+loc_40206B:
+4202603    mov     [rbp-70h], r9
+4202607    mov     r9, r10
+loc_402072:
+4202610    mov     r10, [rbp-70h]
+4202614    mov     rax, r10
+4202617    add     rax, r9
+4202620    mov     rdx, rax
+4202623    shr     rdx, 3Fh
+4202627    add     rax, rdx
+4202630    sar     rax, 1
+4202633    mov     rax, qword perm[rax*8]
+4202641    mov     rcx, [rax+10h]
+4202645    mov     rax, r11
+loc_402098:
+4202648    mov     rdi, qword_605138[rax*8]
+4202656    lea     rsi, [rax-1]
+4202660    cmp     rcx, [rdi+10h]
+4202664    jl      loc_4020EB
+4202666    mov     rdx, qword perm[r10*8]
+4202674    cmp     [rdx+10h], rcx
+4202678    jge     loc_4020CA
+loc_4020B8:
+4202680    sub     r10, 1
+4202684    mov     rdx, qword perm[r10*8]
+4202692    cmp     rcx, [rdx+10h]
+4202696    jg      loc_4020B8
+loc_4020CA:
+4202698    cmp     r10, rsi
+4202701    jle     loc_4020F1
+4202703    mov     qword_605138[rax*8], rdx
+4202711    mov     qword perm[r10*8], rdi
+loc_4020DF:
+4202719    sub     r10, 1
+4202723    mov     rsi, rax
+4202726    cmp     rax, r10
+4202729    jg      loc_4020F3
+loc_4020EB:
+4202731    add     rax, 1
+4202735    jmp     loc_402098
+loc_4020F1:
+4202737    jge     loc_4020DF
+loc_4020F3:
+4202739    cmp     r9, r10
+4202742    mov     [rbp-50h], rsi
+4202746    jl      loc_402121
+loc_4020FC:
+4202748    mov     rax, [rbp-50h]
+4202752    cmp     rax, 32h
+4202756    jg      loc_401FC7
+4202762    cmp     [rbp-70h], rax
+4202766    jle     loc_401FC7
+4202772    mov     r9, [rbp-50h]
+4202776    lea     r11, [r9+1]
+4202780    jmp     loc_402072
+loc_402121:
+4202785    mov     r8, r9
+4202788    mov     [rbp-78h], r10
+4202792    mov     r9, r10
+loc_40212B:
+4202795    mov     rax, r9
+4202798    add     rax, r8
+4202801    mov     rdx, rax
+4202804    shr     rdx, 3Fh
+4202808    add     rax, rdx
+4202811    sar     rax, 1
+4202814    mov     rax, qword perm[rax*8]
+4202822    mov     rcx, [rax+10h]
+4202826    mov     rax, r11
+loc_40214D:
+4202829    mov     rdi, qword_605138[rax*8]
+4202837    lea     rsi, [rax-1]
+4202841    cmp     rcx, [rdi+10h]
+4202845    jl      loc_4021A0
+4202847    mov     rdx, qword perm[r9*8]
+4202855    cmp     [rdx+10h], rcx
+4202859    jge     loc_40217F
+loc_40216D:
+4202861    sub     r9, 1
+4202865    mov     rdx, qword perm[r9*8]
+4202873    cmp     rcx, [rdx+10h]
+4202877    jg      loc_40216D
+loc_40217F:
+4202879    cmp     r9, rsi
+4202882    jle     loc_4021A6
+4202884    mov     qword_605138[rax*8], rdx
+4202892    mov     qword perm[r9*8], rdi
+loc_402194:
+4202900    sub     r9, 1
+4202904    mov     rsi, rax
+4202907    cmp     rax, r9
+4202910    jg      loc_4021A8
+loc_4021A0:
+4202912    add     rax, 1
+4202916    jmp     loc_40214D
+loc_4021A6:
+4202918    jge     loc_402194
+loc_4021A8:
+4202920    cmp     r8, r9
+4202923    mov     [rbp-58h], rsi
+4202927    jl      loc_4021DA
+loc_4021B1:
+4202929    mov     rax, [rbp-58h]
+4202933    cmp     rax, 32h
+4202937    jg      loc_4020FC
+4202943    cmp     [rbp-78h], rax
+4202947    jle     loc_4020FC
+4202953    mov     r8, [rbp-58h]
+4202957    mov     r9, [rbp-78h]
+4202961    lea     r11, [r8+1]
+4202965    jmp     loc_40212B
+loc_4021DA:
+4202970    mov     [rbp-80h], r9
+4202974    mov     rdi, r8
+4202977    mov     r14, r9
+loc_4021E4:
+4202980    mov     rax, r14
+4202983    mov     rcx, r11
+4202986    add     rax, rdi
+4202989    mov     rdx, rax
+4202992    shr     rdx, 3Fh
+4202996    add     rax, rdx
+4202999    sar     rax, 1
+4203002    mov     rax, qword perm[rax*8]
+4203010    mov     rdx, [rax+10h]
+loc_402206:
+4203014    mov     r8, qword_605138[rcx*8]
+4203022    lea     rsi, [rcx-1]
+4203026    cmp     rdx, [r8+10h]
+4203030    jl      loc_402259
+4203032    mov     rax, qword perm[r14*8]
+4203040    cmp     [rax+10h], rdx
+4203044    jge     loc_402238
+loc_402226:
+4203046    sub     r14, 1
+4203050    mov     rax, qword perm[r14*8]
+4203058    cmp     rdx, [rax+10h]
+4203062    jg      loc_402226
+loc_402238:
+4203064    cmp     r14, rsi
+4203067    jle     loc_40225F
+4203069    mov     qword_605138[rcx*8], rax
+4203077    mov     qword perm[r14*8], r8
+loc_40224D:
+4203085    sub     r14, 1
+4203089    mov     rsi, rcx
+4203092    cmp     rcx, r14
+4203095    jg      loc_402261
+loc_402259:
+4203097    add     rcx, 1
+4203101    jmp     loc_402206
+loc_40225F:
+4203103    jge     loc_40224D
+loc_402261:
+4203105    cmp     rdi, r14
+4203108    mov     [rbp-60h], rsi
+4203112    jl      loc_402293
+loc_40226A:
+4203114    mov     rax, [rbp-60h]
+4203118    cmp     rax, 32h
+4203122    jg      loc_4021B1
+4203128    cmp     [rbp-80h], rax
+4203132    jle     loc_4021B1
+4203138    mov     rdi, [rbp-60h]
+4203142    mov     r14, [rbp-80h]
+4203146    lea     r11, [rdi+1]
+4203150    jmp     loc_4021E4
+loc_402293:
+4203155    mov     r8, r14
+loc_402296:
+4203158    lea     rax, [r8+rdi]
+4203162    mov     rcx, r11
+4203165    mov     r13, r8
+4203168    mov     rdx, rax
+4203171    shr     rdx, 3Fh
+4203175    add     rax, rdx
+4203178    sar     rax, 1
+4203181    mov     rax, qword perm[rax*8]
+4203189    mov     rdx, [rax+10h]
+loc_4022B9:
+4203193    mov     rsi, qword_605138[rcx*8]
+4203201    lea     r14, [rcx-1]
+4203205    cmp     rdx, [rsi+10h]
+4203209    jl      loc_402313
+4203211    mov     rax, qword perm[r13*8]
+4203219    cmp     [rax+10h], rdx
+4203223    jge     loc_4022F2
+4203225    nop     dword [rax+00000000h]
+loc_4022E0:
+4203232    sub     r13, 1
+4203236    mov     rax, qword perm[r13*8]
+4203244    cmp     rdx, [rax+10h]
+4203248    jg      loc_4022E0
+loc_4022F2:
+4203250    cmp     r13, r14
+4203253    jle     loc_402319
+4203255    mov     qword_605138[rcx*8], rax
+4203263    mov     qword perm[r13*8], rsi
+loc_402307:
+4203271    sub     r13, 1
+4203275    mov     r14, rcx
+4203278    cmp     rcx, r13
+4203281    jg      loc_40231B
+loc_402313:
+4203283    add     rcx, 1
+4203287    jmp     loc_4022B9
+loc_402319:
+4203289    jge     loc_402307
+loc_40231B:
+4203291    cmp     rdi, r13
+4203294    xchg    ax, ax
+4203296    jl      loc_402341
+loc_402322:
+4203298    cmp     r14, 32h
+4203302    jg      loc_40226A
+4203308    cmp     r8, r14
+4203311    jle     loc_40226A
+4203317    mov     rdi, r14
+4203320    lea     r11, [r14+1]
+4203324    jmp     loc_402296
+loc_402341:
+4203329    mov     rcx, r14
+4203332    mov     r14, r13
+loc_402347:
+4203335    lea     rax, [r14+rdi]
+4203339    mov     rsi, r11
+4203342    mov     r12, r14
+4203345    mov     rdx, rax
+4203348    shr     rdx, 3Fh
+4203352    add     rax, rdx
+4203355    sar     rax, 1
+4203358    mov     rax, qword perm[rax*8]
+4203366    mov     rdx, [rax+10h]
+4203370    jmp     loc_402370
+loc_40236C:
+4203372    add     rsi, 1
+loc_402370:
+4203376    mov     r9, qword_605138[rsi*8]
+4203384    lea     r13, [rsi-1]
+4203388    cmp     rdx, [r9+10h]
+4203392    jl      loc_40236C
+4203394    mov     rax, qword perm[r12*8]
+4203402    cmp     rdx, [rax+10h]
+4203406    jle     loc_4023A2
+loc_402390:
+4203408    sub     r12, 1
+4203412    mov     rax, qword perm[r12*8]
+4203420    cmp     rdx, [rax+10h]
+4203424    jg      loc_402390
+loc_4023A2:
+4203426    cmp     r12, r13
+4203429    jle     loc_4024E9
+4203435    mov     qword_605138[rsi*8], rax
+4203443    mov     qword perm[r12*8], r9
+loc_4023BB:
+4203451    sub     r12, 1
+4203455    mov     r13, rsi
+4203458    cmp     rsi, r12
+4203461    jle     loc_40236C
+4203463    cmp     rdi, r12
+4203466    jge     loc_4024F8
+loc_4023D0:
+4203472    lea     rax, [r12+rdi]
+4203476    mov     rsi, r11
+4203479    mov     rbx, r12
+4203482    mov     rdx, rax
+4203485    shr     rdx, 3Fh
+4203489    add     rax, rdx
+4203492    sar     rax, 1
+4203495    mov     rax, qword perm[rax*8]
+4203503    mov     rdx, [rax+10h]
+4203507    jmp     loc_4023F9
+loc_4023F5:
+4203509    add     rsi, 1
+loc_4023F9:
+4203513    mov     r9, qword_605138[rsi*8]
+4203521    lea     r15, [rsi-1]
+4203525    cmp     rdx, [r9+10h]
+4203529    jl      loc_4023F5
+4203531    mov     rax, qword perm[rbx*8]
+4203539    cmp     rdx, [rax+10h]
+4203543    jle     loc_402432
+4203545    nop     dword [rax+00000000h]
+loc_402420:
+4203552    sub     rbx, 1
+4203556    mov     rax, qword perm[rbx*8]
+4203564    cmp     rdx, [rax+10h]
+4203568    jg      loc_402420
+loc_402432:
+4203570    cmp     rbx, r15
+4203573    jle     loc_40251B
+4203579    mov     qword_605138[rsi*8], rax
+4203587    mov     qword perm[rbx*8], r9
+loc_40244B:
+4203595    sub     rbx, 1
+4203599    mov     r15, rsi
+4203602    cmp     rsi, rbx
+4203605    jle     loc_4023F5
+4203607    cmp     rdi, rbx
+4203610    jge     loc_40252A
+loc_402460:
+4203616    mov     r10, r15
+4203619    mov     r15, r13
+4203622    mov     r13, r12
+4203625    mov     r12, rbx
+loc_40246C:
+4203628    lea     rax, [r12+rdi]
+4203632    mov     r9, r11
+4203635    mov     rsi, r12
+4203638    mov     rdx, rax
+4203641    shr     rdx, 3Fh
+4203645    add     rax, rdx
+4203648    sar     rax, 1
+4203651    mov     rax, qword perm[rax*8]
+4203659    mov     rdx, [rax+10h]
+4203663    nop     
+loc_402490:
+4203664    mov     r11, qword_605138[r9*8]
+4203672    lea     rbx, [r9-1]
+4203676    cmp     rdx, [r11+10h]
+4203680    jl      loc_4024E3
+4203682    mov     rax, qword perm[rsi*8]
+4203690    cmp     [rax+10h], rdx
+4203694    jge     loc_4024C2
+loc_4024B0:
+4203696    sub     rsi, 1
+4203700    mov     rax, qword perm[rsi*8]
+4203708    cmp     rdx, [rax+10h]
+4203712    jg      loc_4024B0
+loc_4024C2:
+4203714    cmp     rsi, rbx
+4203717    jle     loc_402543
+4203719    mov     qword_605138[r9*8], rax
+4203727    mov     qword perm[rsi*8], r11
+loc_4024D7:
+4203735    sub     rsi, 1
+4203739    mov     rbx, r9
+4203742    cmp     r9, rsi
+4203745    jg      loc_402545
+loc_4024E3:
+4203747    add     r9, 1
+4203751    jmp     loc_402490
+loc_4024E9:
+4203753    jge     loc_4023BB
+4203759    cmp     rdi, r12
+4203762    jl      loc_4023D0
+loc_4024F8:
+4203768    cmp     r13, 32h
+4203772    nop     dword [rax+00h]
+4203776    jg      loc_40259B
+4203782    cmp     r14, r13
+4203785    jle     loc_40259B
+4203791    mov     rdi, r13
+4203794    lea     r11, [r13+1]
+4203798    jmp     loc_402347
+loc_40251B:
+4203803    jge     loc_40244B
+4203809    cmp     rdi, rbx
+4203812    jl      loc_402460
+loc_40252A:
+4203818    cmp     r15, 32h
+4203822    xchg    ax, ax
+4203824    jg      loc_4024F8
+4203826    cmp     r12, r15
+4203829    jle     loc_4024F8
+4203831    mov     rdi, r15
+4203834    lea     r11, [r15+1]
+4203838    jmp     loc_4023D0
+loc_402543:
+4203843    jge     loc_4024D7
+loc_402545:
+4203845    cmp     rdi, rsi
+4203848    jge     loc_402579
+4203850    mov     [rbp-98h], r10
+4203857    mov     [rbp-90h], rcx
+4203864    mov     [rbp-88h], r8
+4203871    call    _sort_basket
+4203876    mov     r10, [rbp-98h]
+4203883    mov     rcx, [rbp-90h]
+4203890    mov     r8, [rbp-88h]
+loc_402579:
+4203897    cmp     rbx, 32h
+4203901    jg      loc_402590
+4203903    cmp     r12, rbx
+4203906    jle     loc_402590
+4203908    mov     rdi, rbx
+4203911    lea     r11, [rbx+1]
+4203915    jmp     loc_40246C
+loc_402590:
+4203920    mov     r12, r13
+4203923    mov     r13, r15
+4203926    mov     r15, r10
+4203929    jmp     loc_40252A
+loc_40259B:
+4203931    mov     r14, rcx
+4203934    jmp     loc_402322
+USE32
+
+section .text
+
+global _primal_bea_mpp
+
+_primal_bea_mpp:
+4203952    push    rbp
+4203953    mov     rbp, rsp
+4203956    push    r15
+4203958    push    r14
+4203960    push    r13
+4203962    push    r12
+4203964    push    rbx
+4203965    sub     rsp, 8
+4203969    call    _mcount
+4203974    cmp     [cs:initialize], 0
+4203982    mov     r11, rsi
+4203985    mov     r10, rdx
+4203988    mov     rbx, rcx
+4203991    jz      loc_402778
+4203997    mov     edx, 605C58h
+4204002    mov     eax, 1
+4204007    nop     word [rax+rax+00000000h]
+loc_4025F0:
+4204016    mov     qword perm[rax*8], rdx
+4204024    add     rax, 1
+4204028    add     rdx, 18h
+4204032    cmp     rax, 15Fh
+4204038    jnz     loc_4025F0
+4204040    sub     rdi, 1
+4204044    mov     rdx, 6D3A06D3A06D3A07h
+4204054    mov     [cs:group_pos], 0
+4204065    mov     rax, rdi
+4204068    sar     rdi, 3Fh
+4204072    mov     [cs:basket_size], 0
+4204083    imul    rdx
+4204086    mov     [cs:initialize], 0
+4204097    xor     esi, esi
+4204099    xor     r15d, r15d
+4204102    sar     rdx, 7
+4204106    sub     rdx, rdi
+4204109    lea     r13, [rdx+1]
+4204113    mov     [cs:nr_group], r13
+loc_402658:
+4204120    mov     r12, [cs:basket_size]
+4204127    mov     rdx, r13
+4204130    mov     rcx, r15
+4204133    shl     rdx, 6
+4204137    xor     r14d, r14d
+loc_40266C:
+4204140    mov     rax, rcx
+4204143    shl     rax, 6
+4204147    add     rax, r11
+4204150    cmp     rax, r10
+4204153    jb      loc_402690
+4204155    jmp     loc_4026F0
+4204157    align 20h
+loc_402680:
+4204160    jle     loc_402688
+4204162    cmp     r8d, 2
+4204166    jz      loc_4026B6
+loc_402688:
+4204168    add     rax, rdx
+4204171    cmp     r10, rax
+4204174    jbe     loc_4026F0
+loc_402690:
+4204176    mov     r8d, [rax+18h]
+4204180    test    r8d, r8d
+4204183    jle     loc_402688
+4204185    mov     r9, [rax+8]
+4204189    mov     rdi, [rax]
+4204192    sub     rdi, [r9]
+4204195    mov     r9, [rax+10h]
+4204199    add     rdi, [r9]
+4204202    cmp     rdi, 0
+4204206    jge     loc_402680
+4204208    cmp     r8d, 1
+4204212    jnz     loc_402688
+loc_4026B6:
+4204214    add     rsi, 1
+4204218    mov     r9, rdi
+4204221    mov     r8, qword perm[rsi*8]
+4204229    sar     r9, 3Fh
+4204233    mov     r12, rsi
+4204236    mov     [r8], rax
+4204239    mov     r8, qword perm[rsi*8]
+4204247    add     rax, rdx
+4204250    mov     [r8+8], rdi
+4204254    xor     rdi, r9
+4204257    mov     [r8+10h], rdi
+4204261    sub     [r8+10h], r9
+4204265    cmp     r10, rax
+4204268    ja      loc_402690
+4204270    xchg    ax, ax
+loc_4026F0:
+4204272    add     rcx, 1
+4204276    cmp     r13, rcx
+4204279    cmovz   rcx, r14
+4204283    cmp     rsi, 31h
+4204287    jg      loc_402740
+4204289    cmp     r15, rcx
+4204292    jnz     loc_40266C
+4204298    test    rsi, rsi
+4204301    mov     [cs:group_pos], r15
+4204308    mov     [cs:basket_size], r12
+4204315    jnz     loc_40274E
+4204317    mov     qword [rbx], 0
+4204324    mov     [cs:initialize], 1
+4204335    add     rsp, 8
+4204339    pop     rbx
+4204340    pop     r12
+4204342    pop     r13
+4204344    pop     r14
+4204346    pop     r15
+4204348    xor     eax, eax
+4204350    pop     rbp
+4204351    retn    
+loc_402740:
+4204352    mov     [cs:group_pos], rcx
+4204359    mov     [cs:basket_size], r12
+loc_40274E:
+4204366    mov     edi, 1
+4204371    call    _sort_basket
+4204376    mov     rax, [cs:qword perm+8]
+4204383    mov     rdx, [rax+8]
+4204387    mov     rax, [rax]
+4204390    mov     [rbx], rdx
+4204393    add     rsp, 8
+4204397    pop     rbx
+4204398    pop     r12
+4204400    pop     r13
+4204402    pop     r14
+4204404    pop     r15
+4204406    pop     rbp
+4204407    retn    
+loc_402778:
+4204408    mov     rcx, [cs:basket_size]
+4204415    xor     esi, esi
+4204417    cmp     rcx, 1
+4204421    jle     loc_4027C0
+4204423    mov     r8d, 2
+4204429    nop     dword [rax]
+loc_402790:
+4204432    mov     rax, qword perm[r8*8]
+4204440    mov     rax, [rax]
+4204443    mov     rdx, [rax+8]
+4204447    mov     rdi, [rax]
+4204450    sub     rdi, [rdx]
+4204453    mov     rdx, [rax+10h]
+4204457    add     rdi, [rdx]
+4204460    js      loc_4027F0
+4204462    jz      loc_4027B6
+4204464    cmp     dword [rax+18h], 2
+4204468    jz      loc_402820
+loc_4027B6:
+4204470    add     r8, 1
+4204474    cmp     r8, 33h
+4204478    jnz     loc_4027E0
+loc_4027C0:
+4204480    mov     [cs:basket_size], rsi
+4204487    mov     r15, [cs:group_pos]
+4204494    mov     r13, [cs:nr_group]
+4204501    jmp     loc_402658
+4204506    align 20h
+loc_4027E0:
+4204512    cmp     rcx, r8
+4204515    jge     loc_402790
+4204517    jmp     loc_4027C0
+4204519    align 10h
+loc_4027F0:
+4204528    cmp     dword [rax+18h], 1
+4204532    jnz     loc_4027B6
+4204534    add     rsi, 1
+4204538    mov     rdx, qword perm[rsi*8]
+4204546    mov     [rdx], rax
+4204549    mov     rax, qword perm[rsi*8]
+4204557    mov     [rax+8], rdi
+4204561    neg     rdi
+4204564    mov     [rax+10h], rdi
+4204568    jmp     loc_4027B6
+4204570    align 20h
+loc_402820:
+4204576    add     rsi, 1
+4204580    mov     rdx, qword perm[rsi*8]
+4204588    mov     [rdx], rax
+4204591    mov     rax, qword perm[rsi*8]
+4204599    mov     [rax+8], rdi
+4204603    mov     [rax+10h], rdi
+4204607    jmp     loc_4027B6
+USE32
+
+section .text
+
+global _primal_iminus
+
+_primal_iminus:
+4204624    push    rbp
+4204625    mov     rbp, rsp
+4204628    call    _mcount
+4204633    xor     eax, eax
+4204635    cmp     rdx, rcx
+4204638    jz      loc_4028CE
+4204640    mov     r11d, 1
+4204646    jmp     loc_40289C
+4204648    align 10h
+loc_402870:
+4204656    mov     r10d, [rdx+8]
+4204660    test    r10d, r10d
+4204663    jz      loc_402908
+4204669    mov     r9, [rdx+50h]
+4204673    cmp     [rdi], r9
+4204676    jle     loc_402893
+4204678    mov     [rdi], r9
+4204681    mov     rax, rdx
+4204684    mov     qword [rsi], 0
+loc_402893:
+4204691    mov     rdx, [rdx+18h]
+loc_402897:
+4204695    cmp     rdx, rcx
+4204698    jz      loc_4028CE
+loc_40289C:
+4204700    mov     r10, [rcx+58h]
+4204704    cmp     [rdx+58h], r10
+4204708    jl      loc_402870
+4204710    mov     r9d, [rcx+8]
+4204714    test    r9d, r9d
+4204717    jnz     loc_4028D8
+4204719    mov     r9, [rcx+50h]
+4204723    cmp     [rdi], r9
+4204726    jl      loc_4028C5
+4204728    mov     [rdi], r9
+4204731    mov     rax, rcx
+4204734    mov     qword [rsi], 1
+loc_4028C5:
+4204741    mov     rcx, [rcx+18h]
+4204745    cmp     rdx, rcx
+4204748    jnz     loc_40289C
+loc_4028CE:
+4204750    mov     [r8], rdx
+4204753    pop     rbp
+4204754    retn    
+4204755    align 8 
+loc_4028D8:
+4204760    mov     r9, [rcx+18h]
+4204764    cmp     qword [r9+18h], 0
+4204769    jz      loc_402938
+4204771    mov     r10, r11
+4204774    sub     r10, [rcx+50h]
+4204778    cmp     [rdi], r10
+4204781    jl      loc_402938
+4204783    mov     [rdi], r10
+4204786    mov     rax, rcx
+4204789    mov     qword [rsi], 1
+4204796    mov     rcx, r9
+4204799    jmp     loc_402897
+4204801    align 8 
+loc_402908:
+4204808    mov     r9, [rdx+18h]
+4204812    cmp     qword [r9+18h], 0
+4204817    jz      loc_402940
+4204819    mov     r10, r11
+4204822    sub     r10, [rdx+50h]
+4204826    cmp     [rdi], r10
+4204829    jle     loc_402940
+4204831    mov     [rdi], r10
+4204834    mov     rax, rdx
+4204837    mov     qword [rsi], 0
+4204844    mov     rdx, r9
+4204847    jmp     loc_402897
+4204852    align 8 
+loc_402938:
+4204856    mov     rcx, r9
+4204859    jmp     loc_402897
+loc_402940:
+4204864    mov     rdx, r9
+4204867    jmp     loc_402897
+USE32
+
+section .text
+
+global _primal_update_flow
+
+_primal_update_flow:
+4204880    push    rbp
+4204881    mov     rbp, rsp
+4204884    call    _mcount
+4204889    cmp     rdi, rdx
+4204892    jz      loc_402992
+4204894    xchg    ax, ax
+loc_402960:
+4204896    mov     r8d, [rdi+8]
+4204900    xor     eax, eax
+4204902    test    r8d, r8d
+4204905    setz    al
+4204908    mov     [rdi+50h], rax
+4204912    mov     rdi, [rdi+18h]
+4204916    cmp     rdx, rdi
+4204919    jnz     loc_402960
+4204921    cmp     rdx, rsi
+4204924    jz      loc_402997
+4204926    xchg    ax, ax
+loc_402980:
+4204928    mov     ecx, [rsi+8]
+4204931    xor     eax, eax
+4204933    test    ecx, ecx
+4204935    setnz   al
+4204938    mov     [rsi+50h], rax
+4204942    mov     rsi, [rsi+18h]
+loc_402992:
+4204946    cmp     rdx, rsi
+4204949    jnz     loc_402980
+loc_402997:
+4204951    pop     rbp
+4204952    retn    
+USE32
+
+section .text
+
+global _primal_net_simplex
+
+_primal_net_simplex:
+4204960    push    rbp
+4204961    mov     rbp, rsp
+4204964    push    r15
+4204966    push    r14
+4204968    push    r13
+4204970    push    r12
+4204972    push    rbx
+4204973    sub     rsp, 98h
+4204980    call    _mcount
+4204985    mov     rax, [rdi+238h]
+4204992    mov     r13, rdi
+4204995    mov     [rbp-80h], rax
+4204999    mov     rax, [rdi+240h]
+4205006    mov     [rbp-88h], rax
+4205013    mov     rax, [rdi+1A8h]
+4205020    mov     [rbp-90h], rax
+4205027    nop     dword [rax+rax+00h]
+loc_4029E8:
+4205032    mov     rdx, [rbp-88h]
+4205039    mov     rsi, [rbp-80h]
+4205043    lea     rcx, [rbp-40h]
+4205047    mov     rdi, [rbp-90h]
+4205054    call    _primal_bea_mpp
+4205059    test    rax, rax
+4205062    mov     rbx, rax
+4205065    jz      loc_402BB0
+4205071    add     qword [r13+258h], 1
+4205079    cmp     qword [rbp-40h], 0
+4205084    mov     r12, [rbx+8]
+4205088    mov     r14, [rbx+10h]
+4205092    jle     loc_402B50
+loc_402A2A:
+4205098    lea     r8, [rbp-50h]
+4205102    lea     rsi, [rbp-60h]
+4205106    lea     rdi, [rbp-70h]
+4205110    mov     rcx, r12
+4205113    mov     rdx, r14
+4205116    mov     qword [rbp-70h], 1
+4205124    call    _primal_iminus
+4205129    test    rax, rax
+4205132    jz      loc_402B70
+4205138    mov     rdi, [rbp-60h]
+4205142    test    rdi, rdi
+4205145    jnz     loc_402A64
+4205147    mov     rdx, r12
+4205150    mov     r12, r14
+4205153    mov     r14, rdx
+loc_402A64:
+4205156    movsxd  rdx, dword [rax+8]
+4205160    mov     r8, [rbp-40h]
+4205164    xor     r15d, r15d
+4205167    mov     r9, [rax+18h]
+4205171    mov     r10, [rax+30h]
+4205175    cmp     rdi, rdx
+4205178    setz    r15b
+4205182    add     r15d, 1
+4205186    test    r8, r8
+4205189    jle     loc_402B60
+4205195    mov     rdx, [rbp-70h]
+4205199    mov     ecx, 1
+4205204    sub     rcx, rdx
+loc_402A97:
+4205207    xor     esi, esi
+4205209    cmp     r12, [rbx+8]
+4205213    mov     r11, [r13+200h]
+4205220    mov     [rsp+20h], r8
+4205225    mov     r8, [rbp-50h]
+4205229    mov     [rsp+8], r9
+4205234    mov     [rsp], rax
+4205238    mov     r9, r14
+4205241    mov     [rsp+28h], r11
+4205246    mov     [rsp+18h], rbx
+4205251    setz    sil
+4205255    test    rdi, rdi
+4205258    mov     [rsp+10h], r8
+4205263    setz    dil
+4205267    mov     r8, r12
+4205270    mov     [rbp-78h], r10
+4205274    movzx   edi, dil
+4205278    call    _update_tree
+4205283    mov     rax, [r13+258h]
+4205290    mov     r10, [rbp-78h]
+4205294    mov     dword [rbx+18h], 0
+4205301    lea     rcx, [rax-1]
+4205305    mov     rax, 0A3D70A3D70A3D70Bh
+4205315    mov     [r10+18h], r15d
+4205319    imul    rcx
+4205322    mov     rax, rcx
+4205325    sar     rax, 3Fh
+4205329    add     rdx, rcx
+4205332    sar     rdx, 7
+4205336    sub     rdx, rax
+4205339    lea     rax, [rdx+rdx*4]
+4205343    lea     rax, [rax+rax*4]
+4205347    shl     rax, 3
+4205351    cmp     rcx, rax
+4205354    jnz     loc_4029E8
+4205360    mov     rbx, [r13+268h]
+4205367    mov     rdi, r13
+4205370    call    _refresh_potential
+4205375    add     rbx, rax
+4205378    mov     [r13+268h], rbx
+4205385    jmp     loc_4029E8
+4205390    align 10h
+loc_402B50:
+4205392    mov     rax, r14
+4205395    mov     r14, r12
+4205398    mov     r12, rax
+4205401    jmp     loc_402A2A
+4205406    align 20h
+loc_402B60:
+4205408    mov     rcx, [rbp-70h]
+4205412    mov     rdx, rcx
+4205415    jmp     loc_402A97
+4205420    align 10h
+loc_402B70:
+4205424    add     qword [r13+260h], 1
+4205432    xor     eax, eax
+4205434    cmp     dword [rbx+18h], 2
+4205438    setnz   al
+4205441    add     eax, 1
+4205444    cmp     qword [rbp-70h], 0
+4205449    mov     [rbx+18h], eax
+4205452    jz      loc_4029E8
+4205458    mov     rdx, [rbp-50h]
+4205462    mov     rsi, r12
+4205465    mov     rdi, r14
+4205468    call    _primal_update_flow
+4205473    jmp     loc_4029E8
+4205478    align 10h
+loc_402BB0:
+4205488    mov     rbx, [r13+268h]
+4205495    mov     rdi, r13
+4205498    call    _refresh_potential
+4205503    mov     rdi, r13
+4205506    add     rbx, rax
+4205509    mov     [r13+268h], rbx
+4205516    call    _primal_feasible
+4205521    mov     rdi, r13
+4205524    call    _dual_feasible
+4205529    add     rsp, 98h
+4205536    xor     eax, eax
+4205538    pop     rbx
+4205539    pop     r12
+4205541    pop     r13
+4205543    pop     r14
+4205545    pop     r15
+4205547    pop     rbp
+4205548    retn    
+USE32
+
+section .text
+
+global _primal_start_artificial
+
+_primal_start_artificial:
+4205552    push    rbp
+4205553    mov     rbp, rsp
+4205556    call    _mcount
+4205561    mov     rax, [rdi+190h]
+4205568    mov     rsi, [rdi+228h]
+4205575    mov     rdx, [rdi+240h]
+4205582    add     rax, 1
+4205586    lea     r9, [rsi+68h]
+4205590    mov     qword [rsi+30h], 0
+4205598    mov     [rsi+58h], rax
+4205602    mov     rax, [rdi+238h]
+4205609    mov     qword [rsi+18h], 0
+4205617    mov     [rsi+10h], r9
+4205621    mov     qword [rsi+20h], 0
+4205629    mov     qword [rsi+28h], 0
+4205637    cmp     rdx, rax
+4205640    mov     dword [rsi+8], 0
+4205647    mov     qword [rsi], 0FFFFFFFFFA0A1F00h
+4205654    mov     qword [rsi+50h], 0
+4205662    jz      loc_402C76
+loc_402C60:
+4205664    cmp     dword [rax+18h], 0FFFFFFFFh
+4205668    jz      loc_402C6D
+4205670    mov     dword [rax+18h], 1
+loc_402C6D:
+4205677    add     rax, 40h
+4205681    cmp     rdx, rax
+4205684    jnz     loc_402C60
+loc_402C76:
+4205686    mov     r8, [rdi+230h]
+4205693    mov     rdx, [rdi+248h]
+4205700    mov     rcx, r9
+4205703    cmp     r9, r8
+4205706    jnz     loc_402C9B
+4205708    jmp     loc_402D33
+4205713    align 8 
+loc_402C98:
+4205720    mov     rcx, rax
+loc_402C9B:
+4205723    lea     rax, [rcx+68h]
+4205727    lea     rdi, [rcx-68h]
+4205731    mov     [rcx+30h], rdx
+4205735    mov     [rcx+18h], rsi
+4205739    mov     qword [rcx+10h], 0
+4205747    add     rdx, 40h
+4205751    mov     [rax-48h], rax
+4205755    mov     [rax-40h], rdi
+4205759    mov     qword [rax-10h], 1
+4205767    mov     qword [rdx-40h], 5F5E100h
+4205775    mov     dword [rdx-28h], 0
+4205782    mov     dword [rax-60h], 1
+4205789    mov     qword [rax-68h], 0
+4205797    mov     [rdx-38h], rcx
+4205801    mov     [rdx-30h], rsi
+4205805    cmp     r8, rax
+4205808    mov     qword [rax-18h], 0
+4205816    jnz     loc_402C98
+4205818    lea     rax, [rsi+0D0h]
+4205825    sub     r8, rax
+4205828    mov     rax, 0EC4EC4EC4EC4EC5h
+4205838    shr     r8, 3
+4205842    imul    r8, rax
+4205846    mov     rax, 1FFFFFFFFFFFFFFFh
+4205856    and     r8, rax
+4205859    add     r8, 1
+4205863    lea     rax, [r8+r8*2]
+4205867    lea     rax, [r8+rax*4]
+4205871    lea     r9, [r9+rax*8]
+loc_402D33:
+4205875    mov     qword [r9-48h], 0
+4205883    xor     eax, eax
+4205885    mov     qword [rsi+90h], 0
+4205896    pop     rbp
+4205897    retn    
+USE32
+
+section .text
+
+global _read_min
+
+_read_min:
+4205904    push    rbp
+4205905    mov     rbp, rsp
+4205908    push    r15
+4205910    push    r14
+4205912    push    r13
+4205914    push    r12
+4205916    push    rbx
+4205917    sub     rsp, 128h
+4205924    call    _mcount
+4205929    mov     esi, aR
+4205934    mov     rax, [fs:28h]
+4205943    mov     [rbp-38h], rax
+4205947    xor     eax, eax
+4205949    mov     r14, rdi
+4205952    call    _fopen
+4205957    test    rax, rax
+4205960    mov     [rbp-138h], rax
+4205967    jz      loc_4030D1
+4205973    lea     rdi, [rbp-110h]
+4205980    mov     rdx, rax
+4205983    mov     esi, 0C8h
+4205988    call    _fgets
+4205993    lea     rcx, [rbp-120h]
+4206000    lea     rdx, [rbp-130h]
+4206007    lea     rdi, [rbp-110h]
+4206014    xor     eax, eax
+4206016    mov     esi, aLdLd
+4206021    call    ___isoc99_sscanf
+4206026    cmp     eax, 2
+4206029    jnz     loc_4030D1
+4206035    mov     rbx, [rbp-130h]
+4206042    mov     rdx, [rbp-120h]
+4206049    lea     rax, [rbx+rbx]
+4206053    mov     [r14+1B0h], rdx
+4206060    mov     [r14+198h], rbx
+4206067    lea     rcx, [rbx+rax]
+4206071    lea     r12, [rax+1]
+4206075    add     rdx, rcx
+4206078    cmp     rbx, 3A98h
+4206085    mov     [r14+190h], r12
+4206092    mov     [r14+1A8h], rdx
+4206099    jle     loc_403100
+4206105    mov     esi, 1A10000h
+4206110    mov     edi, 1B8FAA0h
+4206115    mov     ecx, 1A10000h
+4206120    sub     rsi, rdx
+loc_402E2B:
+4206123    mov     [r14+1C8h], rdi
+4206130    lea     rdi, [rax+2]
+4206134    mov     [r14+1A0h], rcx
+4206141    mov     [r14+1C0h], rsi
+4206148    mov     esi, 68h
+4206153    mov     [rbp-148h], rdx
+4206160    mov     [rbp-140h], rcx
+4206167    call    _calloc
+4206172    mov     esi, 40h
+4206177    mov     rdi, r12
+4206180    mov     [r14+228h], rax
+4206187    mov     r15, rax
+4206190    call    _calloc
+4206195    mov     rcx, [rbp-140h]
+4206202    mov     [r14+248h], rax
+4206209    mov     esi, 40h
+4206214    mov     r13, rax
+4206217    mov     rdi, rcx
+4206220    call    _calloc
+4206225    test    r15, r15
+4206228    mov     r8, rax
+4206231    mov     [r14+238h], rax
+4206238    jz      loc_4032D1
+4206244    test    rax, rax
+4206247    jz      loc_4032D1
+4206253    test    r13, r13
+4206256    mov     rdx, [rbp-148h]
+4206263    jz      loc_4032D1
+4206269    lea     rax, [r12+1]
+4206274    shl     rdx, 6
+4206278    shl     r12, 6
+4206282    add     rdx, r8
+4206285    add     r13, r12
+4206288    test    rbx, rbx
+4206291    lea     rcx, [rax+rax*2]
+4206295    mov     [r14+240h], rdx
+4206302    mov     [r14+250h], r13
+4206309    lea     rax, [rax+rcx*4]
+4206313    lea     rax, [r15+rax*8]
+4206317    mov     [r14+230h], rax
+4206324    jle     loc_4032C0
+4206330    mov     r12, r15
+4206333    mov     [rbp-140h], r15
+4206340    mov     rbx, r8
+4206343    mov     r15, r14
+4206346    mov     r13d, 1
+4206352    mov     r14, r8
+4206355    jmp     loc_40308F
+4206360    align 20h
+loc_402F20:
+4206368    mov     rsi, [rbp-130h]
+4206375    mov     rcx, [rbp-120h]
+4206382    cmp     rsi, rcx
+4206385    jg      loc_4030D1
+4206391    mov     eax, r13d
+4206394    mov     qword [r12+0B8h], 0FFFFFFFFFFFFFFFFh
+4206406    mov     rdi, [rbp-140h]
+4206413    neg     eax
+4206415    lea     r9, [r12+68h]
+4206420    lea     r11, [rbx+40h]
+4206424    mov     [r12+0C8h], eax
+4206432    mov     r10, [r15+198h]
+4206439    lea     rax, [r10+r13]
+4206443    lea     rdx, [rax+rax*2]
+4206447    lea     rax, [rax+rdx*4]
+4206451    lea     rdx, [rdi+rax*8]
+4206455    mov     [rdx+60h], r13d
+4206459    mov     qword [rdx+50h], 1
+4206467    mov     [r12+0CCh], esi
+4206475    mov     rax, [r15+190h]
+4206482    lea     rsi, [rbx+80h]
+4206489    mov     [rdx+64h], ecx
+4206492    mov     [rbx+10h], r9
+4206496    lea     rcx, [rax+rax*2]
+4206500    lea     rax, [rax+rcx*4]
+4206504    lea     rcx, [rdi+rax*8]
+4206508    mov     [rbx+8], rcx
+4206512    mov     rdi, [r15+210h]
+4206519    lea     rax, [rdi+0Fh]
+4206523    mov     [rbx], rax
+4206526    mov     [rbx+38h], rax
+4206530    mov     rax, [rcx+38h]
+4206534    mov     [rcx+38h], rbx
+4206538    mov     [rbx+20h], rax
+4206542    mov     rax, [r12+0A8h]
+4206550    mov     [r12+0A8h], rbx
+4206558    mov     r8, [rdx+38h]
+4206562    mov     [rdx+38h], r11
+4206566    mov     [rbx+28h], rax
+4206570    mov     rax, rbx
+4206573    sub     rax, r14
+4206576    cmp     rdi, 989680h
+4206583    mov     [rax+r14+48h], rdx
+4206588    mov     [rax+r14+50h], rcx
+4206593    mov     qword [rbx+40h], 0Fh
+4206601    mov     [rax+r14+60h], r8
+4206606    mov     r8, [rcx+40h]
+4206610    mov     [rcx+40h], r11
+4206614    mov     r11d, 989680h
+4206620    cmovl   rdi, r11
+4206624    mov     qword [rax+r14+78h], 0Fh
+4206633    mov     [rax+r14+88h], r9
+4206641    add     rdi, rdi
+4206644    mov     [rax+r14+90h], rdx
+4206652    add     r13, 1
+4206656    mov     [rax+r14+68h], r8
+4206661    mov     [rbx+80h], rdi
+4206668    add     rbx, 0C0h
+4206675    mov     [rax+r14+0B8h], rdi
+4206683    mov     rdi, [r12+0A0h]
+4206691    cmp     r10, r13
+4206694    mov     [r12+0A0h], rsi
+4206702    mov     [rax+r14+0A0h], rdi
+4206710    mov     rdi, [rdx+40h]
+4206714    mov     [rdx+40h], rsi
+4206718    mov     [rax+r14+0A8h], rdi
+4206726    jl      loc_403110
+4206732    mov     r12, r9
+loc_40308F:
+4206735    mov     rdx, [rbp-138h]
+4206742    lea     rdi, [rbp-110h]
+4206749    mov     esi, 0C8h
+4206754    call    _fgets
+4206759    lea     rcx, [rbp-120h]
+4206766    lea     rdx, [rbp-130h]
+4206773    lea     rdi, [rbp-110h]
+4206780    xor     eax, eax
+4206782    mov     esi, aLdLd
+4206787    call    ___isoc99_sscanf
+4206792    cmp     eax, 2
+4206795    jz      loc_402F20
+loc_4030D1:
+4206801    mov     rax, 0FFFFFFFFFFFFFFFFh
+loc_4030D8:
+4206808    mov     rsi, [rbp-38h]
+4206812    xor     rsi, [fs:28h]
+4206821    jnz     loc_4032EF
+4206827    add     rsp, 128h
+4206834    pop     rbx
+4206835    pop     r12
+4206837    pop     r13
+4206839    pop     r14
+4206841    pop     r15
+4206843    pop     rbp
+4206844    retn    
+4206845    align 20h
+loc_403100:
+4206848    mov     rcx, rdx
+4206851    xor     esi, esi
+4206853    mov     edi, 2DC6C0h
+4206858    jmp     loc_402E2B
+4206863    align 10h
+loc_403110:
+4206864    mov     r14, r15
+4206867    mov     r15, [rbp-140h]
+loc_40311A:
+4206874    add     r10, 1
+4206878    cmp     r10, r13
+4206881    jnz     loc_4030D1
+4206883    cmp     qword [r14+1B0h], 0
+4206891    jle     loc_403200
+4206897    xor     r12d, r12d
+4206900    mov     r13, [rbp-138h]
+4206907    jmp     loc_4031AC
+4206909    align 20h
+loc_403140:
+4206912    mov     rcx, [r14+198h]
+4206919    add     rcx, [rbp-130h]
+4206926    add     r12, 1
+4206930    mov     rdx, [rbp-120h]
+4206937    lea     rax, [rcx+rcx*2]
+4206941    lea     rax, [rcx+rax*4]
+4206945    lea     rcx, [rdx+rdx*2]
+4206949    lea     rdx, [rdx+rcx*4]
+4206953    lea     rax, [r15+rax*8]
+4206957    lea     rcx, [r15+rdx*8]
+4206961    mov     rdx, [rbp-118h]
+4206968    mov     [rbx+8], rax
+4206972    mov     [rbx+10h], rcx
+4206976    mov     [rbx+38h], rdx
+4206980    mov     [rbx], rdx
+4206983    mov     rdx, [rax+38h]
+4206987    mov     [rax+38h], rbx
+4206991    mov     rax, [rcx+40h]
+4206995    mov     [rcx+40h], rbx
+4206999    add     rbx, 40h
+4207003    mov     [rbx-20h], rdx
+4207007    mov     [rbx-18h], rax
+4207011    cmp     [r14+1B0h], r12
+4207018    jle     loc_403200
+loc_4031AC:
+4207020    lea     rdi, [rbp-110h]
+4207027    mov     rdx, r13
+4207030    mov     esi, 0C8h
+4207035    call    _fgets
+4207040    lea     r8, [rbp-118h]
+4207047    lea     rcx, [rbp-120h]
+4207054    lea     rdx, [rbp-130h]
+4207061    lea     rdi, [rbp-110h]
+4207068    xor     eax, eax
+4207070    mov     esi, unk_40396F
+4207075    call    ___isoc99_sscanf
+4207080    cmp     eax, 3
+4207083    jz      loc_403140
+4207089    jmp     loc_4030D1
+4207094    align 20h
+loc_403200:
+4207104    cmp     [r14+240h], rbx
+4207111    jz      loc_403247
+4207113    mov     rax, [r14+238h]
+4207120    mov     [r14+240h], rbx
+4207127    mov     qword [r14+1A8h], 0
+4207138    cmp     rax, rbx
+4207141    jnb     loc_4032E8
+4207147    not     rax
+4207150    add     rbx, rax
+4207153    shr     rbx, 6
+4207157    add     rbx, 1
+4207161    mov     [r14+1A8h], rbx
+loc_403240:
+4207168    mov     [r14+1B0h], rbx
+loc_403247:
+4207175    mov     rdi, [rbp-138h]
+4207182    call    _fclose
+4207187    mov     rcx, [r14+198h]
+4207194    mov     byte [r14+0C8h], 0
+4207202    test    rcx, rcx
+4207205    jle     loc_4032B9
+4207207    cmp     qword [r14+210h], 989680h
+4207218    mov     edx, 989680h
+4207223    mov     rax, [r14+238h]
+4207230    cmovge  rdx, [r14+210h]
+4207238    lea     rcx, [rcx+rcx*2]
+4207242    shl     rcx, 6
+4207246    add     rcx, rax
+4207249    neg     rdx
+4207252    add     rdx, rdx
+4207255    nop     word [rax+rax+00000000h]
+loc_4032A0:
+4207264    mov     [rax+80h], rdx
+4207271    mov     [rax+0B8h], rdx
+4207278    add     rax, 0C0h
+4207284    cmp     rax, rcx
+4207287    jnz     loc_4032A0
+loc_4032B9:
+4207289    xor     eax, eax
+4207291    jmp     loc_4030D8
+loc_4032C0:
+4207296    mov     r10, rbx
+4207299    mov     r13d, 1
+4207305    mov     rbx, r8
+4207308    jmp     loc_40311A
+loc_4032D1:
+4207313    mov     edi, aRead_minNotEno
+4207318    call    _puts
+4207323    mov     rdi, r14
+4207326    call    _getfree
+4207331    jmp     loc_4030D1
+loc_4032E8:
+4207336    xor     ebx, ebx
+4207338    jmp     loc_403240
+loc_4032EF:
+4207343    nop     
+4207344    call    ___stack_chk_fail
+USE32
+
+section .text
+
+global _update_tree
+
+_update_tree:
+4207360    push    rbp
+4207361    mov     rbp, rsp
+4207364    push    r15
+4207366    push    r14
+4207368    push    r13
+4207370    push    r12
+4207372    push    rbx
+4207373    sub     rsp, 10h
+4207377    call    _mcount
+4207382    mov     r13, [rbp+28h]
+4207386    mov     r11, [rbp+10h]
+4207390    mov     [rbp-30h], rdi
+4207394    mov     rax, [rbp+18h]
+4207398    mov     rdi, [rbp+30h]
+4207402    mov     r10, [r13+8]
+4207406    cmp     r10, r9
+4207409    jz      loc_40355C
+loc_403337:
+4207415    cmp     r10, r8
+4207418    jz      loc_40357A
+loc_403340:
+4207424    mov     rbx, rdi
+4207427    sar     rbx, 3Fh
+4207431    xor     rdi, rbx
+4207434    sub     rbx, rdi
+loc_40334D:
+4207437    add     [r11], rbx
+4207440    mov     rdi, r11
+4207443    jmp     loc_40335E
+4207445    align 8 
+loc_403358:
+4207448    add     [r10], rbx
+4207451    mov     rdi, r10
+loc_40335E:
+4207454    mov     r10, [rdi+10h]
+4207458    test    r10, r10
+4207461    jnz     loc_403358
+4207463    cmp     rdi, r11
+4207466    jz      loc_403382
+4207468    nop     dword [rax+00h]
+loc_403370:
+4207472    mov     r10, [rdi+20h]
+4207476    test    r10, r10
+4207479    jnz     loc_403358
+4207481    mov     rdi, [rdi+18h]
+4207485    cmp     r11, rdi
+4207488    jnz     loc_403370
+loc_403382:
+4207490    mov     rbx, [r11+58h]
+4207494    cmp     r8, rax
+4207497    mov     rdi, [r8+18h]
+4207501    mov     r10, r9
+4207504    mov     r14, rbx
+4207507    jz      loc_403464
+4207513    mov     r15, [rbp-30h]
+4207517    mov     [rbp-38h], r9
+4207521    jmp     loc_4033EC
+4207523    align 8 
+loc_4033A8:
+4207528    mov     r9, [r8+50h]
+4207532    sub     r9, rdx
+loc_4033AF:
+4207535    mov     r10, [r8+58h]
+4207539    mov     [r8+58h], r14
+4207543    mov     r14, rbx
+4207546    mov     r12, [r8+30h]
+4207550    mov     [r8+50h], rcx
+4207554    mov     [r8+8], esi
+4207558    mov     [r8+30h], r13
+4207562    sub     r14, r10
+4207565    cmp     rax, rdi
+4207568    mov     rcx, [rdi+18h]
+4207572    jz      loc_403460
+4207578    mov     r10, r8
+4207581    mov     r13, r12
+4207584    mov     r8, rdi
+4207587    mov     rsi, r11
+4207590    mov     rdi, rcx
+4207593    mov     rcx, r9
+loc_4033EC:
+4207596    mov     r9, [r8+20h]
+4207600    test    r9, r9
+4207603    jz      loc_4033FD
+4207605    mov     r11, [r8+28h]
+4207609    mov     [r9+28h], r11
+loc_4033FD:
+4207613    mov     r11, [r8+28h]
+4207617    test    r11, r11
+4207620    jz      loc_403450
+4207622    mov     [r11+20h], r9
+loc_40340A:
+4207626    mov     r9, [r10+10h]
+4207630    mov     [r8+18h], r10
+4207634    test    r9, r9
+4207637    mov     [r8+20h], r9
+4207641    jz      loc_40341F
+4207643    mov     [r9+28h], r8
+loc_40341F:
+4207647    mov     r9d, [r8+8]
+4207651    xor     r11d, r11d
+4207654    mov     [r10+10h], r8
+4207658    mov     qword [r8+28h], 0
+4207666    test    r9d, r9d
+4207669    setz    r11b
+4207673    cmp     r11, r15
+4207676    jnz     loc_4033A8
+4207682    mov     r9, rdx
+4207685    add     r9, [r8+50h]
+4207689    jmp     loc_4033AF
+4207694    align 10h
+loc_403450:
+4207696    mov     [rdi+10h], r9
+4207700    jmp     loc_40340A
+4207702    align 20h
+loc_403460:
+4207712    mov     r9, [rbp-38h]
+loc_403464:
+4207716    cmp     rdx, [rbp+38h]
+4207720    jle     loc_403510
+4207726    cmp     rax, [rbp+20h]
+4207730    jz      loc_4034B5
+4207732    mov     rsi, [rbp-30h]
+4207736    mov     rdi, [rbp+20h]
+4207740    jmp     loc_403494
+4207742    align 20h
+loc_403480:
+4207744    mov     rcx, rdx
+4207747    add     rcx, [rax+50h]
+4207751    mov     [rax+50h], rcx
+4207755    mov     rax, [rax+18h]
+4207759    cmp     rdi, rax
+4207762    jz      loc_4034B5
+loc_403494:
+4207764    movsxd  rcx, dword [rax+8]
+4207768    sub     [rax+58h], rbx
+4207772    cmp     rcx, rsi
+4207775    jnz     loc_403480
+4207777    mov     rcx, [rax+50h]
+4207781    sub     rcx, rdx
+4207784    mov     [rax+50h], rcx
+4207788    mov     rax, [rax+18h]
+4207792    cmp     rdi, rax
+4207795    jnz     loc_403494
+loc_4034B5:
+4207797    cmp     r9, [rbp+20h]
+4207801    jz      loc_403500
+4207803    mov     rcx, [rbp-30h]
+4207807    mov     rsi, [rbp+20h]
+4207811    jmp     loc_4034DC
+4207813    align 8 
+loc_4034C8:
+4207816    mov     rax, [r9+50h]
+4207820    sub     rax, rdx
+4207823    mov     [r9+50h], rax
+4207827    mov     r9, [r9+18h]
+4207831    cmp     rsi, r9
+4207834    jz      loc_403500
+loc_4034DC:
+4207836    movsxd  rax, dword [r9+8]
+4207840    add     [r9+58h], rbx
+4207844    cmp     rax, rcx
+4207847    jnz     loc_4034C8
+4207849    mov     rax, rdx
+4207852    add     rax, [r9+50h]
+4207856    mov     [r9+50h], rax
+4207860    mov     r9, [r9+18h]
+4207864    cmp     rsi, r9
+4207867    jnz     loc_4034DC
+4207869    nop     dword [rax]
+loc_403500:
+4207872    add     rsp, 10h
+4207876    pop     rbx
+4207877    pop     r12
+4207879    pop     r13
+4207881    pop     r14
+4207883    pop     r15
+4207885    pop     rbp
+4207886    retn    
+4207887    align 10h
+loc_403510:
+4207888    cmp     rax, [rbp+20h]
+4207892    mov     rdx, [rbp+20h]
+4207896    jz      loc_40352D
+4207898    nop     word [rax+rax+00h]
+loc_403520:
+4207904    sub     [rax+58h], rbx
+4207908    mov     rax, [rax+18h]
+4207912    cmp     rdx, rax
+4207915    jnz     loc_403520
+loc_40352D:
+4207917    cmp     r9, [rbp+20h]
+4207921    mov     rax, [rbp+20h]
+4207925    jz      loc_403500
+4207927    nop     word [rax+rax+00000000h]
+loc_403540:
+4207936    add     [r9+58h], rbx
+4207940    mov     r9, [r9+18h]
+4207944    cmp     rax, r9
+4207947    jz      loc_403500
+4207949    add     [r9+58h], rbx
+4207953    mov     r9, [r9+18h]
+4207957    cmp     rax, r9
+4207960    jnz     loc_403540
+4207962    jmp     loc_403500
+loc_40355C:
+4207964    test    rdi, rdi
+4207967    jns     loc_403337
+4207973    mov     r10, rdi
+4207976    mov     rbx, rdi
+4207979    sar     r10, 3Fh
+4207983    xor     rbx, r10
+4207986    sub     rbx, r10
+4207989    jmp     loc_40334D
+loc_40357A:
+4207994    test    rdi, rdi
+4207997    jle     loc_403340
+4208003    mov     r10, rdi
+4208006    mov     rbx, rdi
+4208009    sar     r10, 3Fh
+4208013    xor     rbx, r10
+4208016    sub     rbx, r10
+4208019    jmp     loc_40334D
+USE32
+
+section .text
+
+global ___libc_csu_init
+
+___libc_csu_init:
+4208032    push    r15
+4208034    mov     r15d, edi
+4208037    push    r14
+4208039    mov     r14, rsi
+4208042    push    r13
+4208044    mov     r13, rdx
+4208047    push    r12
+4208049    lea     r12, [__frame_dummy_init_array_entry]
+4208056    push    rbp
+4208057    lea     rbp, [__do_global_dtors_aux_fini_array_entry]
+4208064    push    rbx
+4208065    sub     rbp, r12
+4208068    xor     ebx, ebx
+4208070    sar     rbp, 3
+4208074    sub     rsp, 8
+4208078    call    _init_proc
+4208083    test    rbp, rbp
+4208086    jz      loc_4035F6
+4208088    nop     dword [rax+rax+00000000h]
+loc_4035E0:
+4208096    mov     rdx, r13
+4208099    mov     rsi, r14
+4208102    mov     edi, r15d
+4208105    call    qword [r12+rbx*8]
+4208109    add     rbx, 1
+4208113    cmp     rbx, rbp
+4208116    jnz     loc_4035E0
+loc_4035F6:
+4208118    add     rsp, 8
+4208122    pop     rbx
+4208123    pop     rbp
+4208124    pop     r12
+4208126    pop     r13
+4208128    pop     r14
+4208130    pop     r15
+4208132    retn    

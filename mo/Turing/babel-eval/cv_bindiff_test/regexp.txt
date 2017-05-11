@@ -1,0 +1,44 @@
+1.00 0.99 ------- 0000000000400998 _init_proc         0000000000400EA0 call_gmon_start      prime signature matching                             3     3     3      7      7      7     3     3     3
+1.00 0.98 ------- 0000000000400B30 _start             0000000000400E30 _start               prime signature matching                             1     1     1     12     12     12     0     0     0
+1.00 0.95 ------- 0000000000402650 __libc_csu_fini    0000000000403A40 __libc_csu_fini      prime signature matching                             1     1     1      1      1      1     0     0     0
+1.00 0.92 ------- 0000000000400A70 ___libc_start_main 0000000000400B80 ___libc_start_main   MD index matching (callGraph MD index, top down)     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 00000000004009D0 _free              0000000000400AB0 _free                address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 00000000004009E0 _putchar           0000000000400AC0 _putchar             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 00000000004009F0 _strncpy           0000000000400AD0 _strncpy             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A00 _strncmp           0000000000400AE0 _strncmp             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A10 _puts              0000000000400AF0 _puts                address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A20 ___stack_chk_fail  0000000000400B00 _strlen              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A30 _strchr            0000000000400B10 ___stack_chk_fail    address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A40 _strspn            0000000000400B20 _strchr              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A50 _fputc             0000000000400B30 _printf              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A60 _strcspn           0000000000400B40 __mcleanup           address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A80 _fgets             0000000000400B60 _fputc               address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400A90 _strcmp            0000000000400B70 _strcspn             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400AB0 _malloc            0000000000400B90 _fgets               address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400AC0 ___printf_chk      0000000000400BA0 _strcmp              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400AD0 _memmove           0000000000400B50 _strspn              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400AE0 _exit              0000000000400BB0 ___monstartup        address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400AF0 _fwrite            0000000000400BC0 _fprintf             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400B00 ___fprintf_chk     0000000000400BD0 _malloc              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400B10 _strstr            0000000000400BE0 _mcount              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400B20 ___ctype_b_loc     0000000000400C40 ___ctype_b_loc       address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000400C7B regerror           0000000000400BF0 _memmove             address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000401340 regnode            0000000000400C10 _exit                address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 000000000040138B regc               0000000000400C20 _fwrite              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 00000000004013CF regnext            0000000000400C30 _strstr              address sequence                                     1     1     1      1      1      1     0     0     0
+1.00 0.62 ------- 0000000000401485 regoptail          0000000000400C00 ___cxa_atexit        address sequence                                     1     1     1      1      1      1     0     0     0
+0.83 0.86 -I--E-C 00000000004025E0 __libc_csu_init    00000000004039B0 __libc_csu_init      instruction count                                    4     4     4     19     34     34     5     5     5
+0.66 0.92 -I--E-- 0000000000400C1D error              0000000000402E20 error                string references                                    1     1     1     18     21     22     0     0     0
+0.59 0.69 GI-JE-C 00000000004024D0 regsub             0000000000402CC0 regsub               string references                                   24    24    28     52     81    110    26    38    42
+0.49 0.80 GI--EL- 0000000000401DF2 regmatch           0000000000400FF0 regmatch             string references                                   21    50    58     52    190    237    16    82    99
+0.49 0.64 GI-JE-C 00000000004021AC regcomp            0000000000402630 regcomp              string references                                   20    26    29     66    119    134    19    38    44
+0.46 0.94 GI--EL- 00000000004023B2 regexec            0000000000402890 regexec              string references                                    9    16    43     25     59    215     3    20    64
+0.42 0.62 -I--E-- 0000000000401D3D regrepeat          0000000000403AA8 _term_proc           address sequence                                     1     1     1      1      2      4     0     0     0
+0.40 0.62 -I--E-- 00000000004014C3 reginsert          0000000000400A80 _init_proc           address sequence                                     1     1     1      0      6      6     0     0     0
+0.31 0.38 GI-JE-C 0000000000400D6F try                0000000000402EB0 try                  call sequence matching(exact)                       16    19    20     53     79    142    15    20    27
+0.31 0.78 G---E-- 0000000000400AA0 ___gmon_start__    0000000000400E60 __gmon_start__       call reference matching                              1     1     8      1      1     22     0     0     8
+0.12 0.19 GI-JE-C 0000000000400EE2 multiple           0000000000402130 regbranch            loop count matching                                 16    35    22     26    171    104    11    41    32
+0.09 0.19 GI-JE-- 000000000040124F main               0000000000403170 multiple             loop count matching                                 10    14    48     26     59    369     5    18    70
+0.01 0.02 GI--E-- 0000000000402125 regtry             0000000000402E80 regerror             call sequence matching(sequence)                     1     1     3      3      7     12     0     0     2
+0.00 0.03 GI--EL- 0000000000401B75 reg                0000000000401360 regpiece             call sequence matching(exact)                        1     5   215     11     36    882     0     4   329
+0.00 0.02 GI--EL- 000000000040152C regbranch          0000000000402280 reg                  call sequence matching(sequence)                     1     1    54      9     10    273     0     0    83
