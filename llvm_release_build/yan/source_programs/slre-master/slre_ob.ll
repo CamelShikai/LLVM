@@ -88,7 +88,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
 ; <label>:28:                                     ; preds = %321, %5
   %29 = load i32, i32* %12, align 4
   %30 = load i32, i32* %8, align 4
-  %31 = call i1 @ext_callee(i32 40, i32 %29, i32 %30)
+  %31 = icmp slt i32 %29, %30
   br i1 %31, label %32, label %325
 
 ; <label>:32:                                     ; preds = %28
@@ -107,7 +107,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %44 = getelementptr inbounds i8, i8* %41, i64 %43
   %45 = load i8, i8* %44, align 1
   %46 = sext i8 %45 to i32
-  %47 = call i1 @ext_callee(i32 32, i32 %46, i32 124)
+  %47 = icmp eq i32 %46, 124
   br i1 %47, label %48, label %99
 
 ; <label>:48:                                     ; preds = %32
@@ -239,7 +239,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %142 = getelementptr inbounds i8, i8* %138, i64 %141
   %143 = load i8, i8* %142, align 1
   %144 = sext i8 %143 to i32
-  %145 = call i1 @ext_callee(i32 32, i32 %144, i32 120)
+  %145 = icmp eq i32 %144, 120
   br i1 %145, label %146, label %179
 
 ; <label>:146:                                    ; preds = %137
@@ -257,7 +257,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %158 = load i16, i16* %157, align 2
   %159 = zext i16 %158 to i32
   %160 = and i32 %159, 4096
-  %161 = call i1 @ext_callee(i32 33, i32 %160, i32 0)
+  %161 = icmp ne i32 %160, 0
   br i1 %161, label %162, label %178
 
 ; <label>:162:                                    ; preds = %146
@@ -275,7 +275,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %174 = load i16, i16* %173, align 2
   %175 = zext i16 %174 to i32
   %176 = and i32 %175, 4096
-  %177 = call i1 @ext_callee(i32 33, i32 %176, i32 0)
+  %177 = icmp ne i32 %176, 0
   br i1 %177, label %179, label %178
 
 ; <label>:178:                                    ; preds = %162, %146
@@ -446,7 +446,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %299 = add nsw i32 %298, -1
   store i32 %299, i32* %14, align 4
   %300 = load i32, i32* %14, align 4
-  %301 = call i1 @ext_callee(i32 40, i32 %300, i32 0)
+  %301 = icmp slt i32 %300, 0
   br i1 %301, label %302, label %303
 
 ; <label>:302:                                    ; preds = %275
@@ -455,7 +455,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
 
 ; <label>:303:                                    ; preds = %275
   %304 = load i32, i32* %12, align 4
-  %305 = call i1 @ext_callee(i32 38, i32 %304, i32 0)
+  %305 = icmp sgt i32 %304, 0
   br i1 %305, label %306, label %316
 
 ; <label>:306:                                    ; preds = %303
@@ -466,7 +466,7 @@ define internal i32 @foo(i8*, i32, i8*, i32, %struct.regex_info*) #0 {
   %311 = getelementptr inbounds i8, i8* %307, i64 %310
   %312 = load i8, i8* %311, align 1
   %313 = sext i8 %312 to i32
-  %314 = call i1 @ext_callee(i32 32, i32 %313, i32 40)
+  %314 = icmp eq i32 %313, 40
   br i1 %314, label %315, label %316
 
 ; <label>:315:                                    ; preds = %306
@@ -719,7 +719,7 @@ define internal void @setup_branch_points(%struct.regex_info*) #0 {
   %105 = getelementptr inbounds %struct.branch, %struct.branch* %104, i32 0, i32 0
   %106 = load i32, i32* %105, align 8
   %107 = load i32, i32* %3, align 4
-  %108 = call i1 @ext_callee(i32 32, i32 %106, i32 %107)
+  %108 = icmp eq i32 %106, %107
   br label %109
 
 ; <label>:109:                                    ; preds = %99, %93
@@ -783,7 +783,7 @@ define internal i32 @baz(i8*, i32, %struct.regex_info*) #0 {
 ; <label>:20:                                     ; preds = %45, %3
   %21 = load i32, i32* %7, align 4
   %22 = load i32, i32* %5, align 4
-  %23 = call i1 @ext_callee(i32 41, i32 %21, i32 %22)
+  %23 = icmp sle i32 %21, %22
   br i1 %23, label %24, label %48
 
 ; <label>:24:                                     ; preds = %20
@@ -798,7 +798,7 @@ define internal i32 @baz(i8*, i32, %struct.regex_info*) #0 {
   %33 = call i32 @doh(i8* %28, i32 %31, %struct.regex_info* %32, i32 0)
   store i32 %33, i32* %8, align 4
   %34 = load i32, i32* %8, align 4
-  %35 = call i1 @ext_callee(i32 39, i32 %34, i32 0)
+  %35 = icmp sge i32 %34, 0
   br i1 %35, label %36, label %40
 
 ; <label>:36:                                     ; preds = %24
@@ -990,7 +990,7 @@ define internal i32 @doh(i8*, i32, %struct.regex_info*, i32) #0 {
   %42 = load %struct.bracket_pair*, %struct.bracket_pair** %9, align 8
   %43 = getelementptr inbounds %struct.bracket_pair, %struct.bracket_pair* %42, i32 0, i32 3
   %44 = load i32, i32* %43, align 8
-  %45 = call i1 @ext_callee(i32 32, i32 %44, i32 0)
+  %45 = icmp eq i32 %44, 0
   br i1 %45, label %46, label %50
 
 ; <label>:46:                                     ; preds = %40
@@ -1004,7 +1004,7 @@ define internal i32 @doh(i8*, i32, %struct.regex_info*, i32) #0 {
   %52 = load %struct.bracket_pair*, %struct.bracket_pair** %9, align 8
   %53 = getelementptr inbounds %struct.bracket_pair, %struct.bracket_pair* %52, i32 0, i32 3
   %54 = load i32, i32* %53, align 8
-  %55 = call i1 @ext_callee(i32 32, i32 %51, i32 %54)
+  %55 = icmp eq i32 %51, %54
   br i1 %55, label %56, label %70
 
 ; <label>:56:                                     ; preds = %50
@@ -1061,7 +1061,7 @@ define internal i32 @doh(i8*, i32, %struct.regex_info*, i32) #0 {
 
 ; <label>:98:                                     ; preds = %89
   %99 = load i32, i32* %12, align 4
-  %100 = call i1 @ext_callee(i32 41, i32 %99, i32 0)
+  %100 = icmp sle i32 %99, 0
   br i1 %100, label %101, label %108
 
 ; <label>:101:                                    ; preds = %98
@@ -1204,7 +1204,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %88 = sext i32 %87 to i64
   %89 = getelementptr inbounds i8, i8* %86, i64 %88
   %90 = call i32 @is_quantifier(i8* %89)
-  %91 = call i1 @ext_callee(i32 33, i32 %90, i32 0)
+  %91 = icmp ne i32 %90, 0
   br i1 %91, label %92, label %318
 
 ; <label>:92:                                     ; preds = %82
@@ -1216,7 +1216,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %98 = getelementptr inbounds i8, i8* %93, i64 %97
   %99 = load i8, i8* %98, align 1
   %100 = sext i8 %99 to i32
-  %101 = call i1 @ext_callee(i32 32, i32 %100, i32 63)
+  %101 = icmp eq i32 %100, 63
   br i1 %101, label %102, label %129
 
 ; <label>:102:                                    ; preds = %92
@@ -1237,7 +1237,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %117 = call i32 @bar(i8* %106, i32 %107, i8* %111, i32 %114, %struct.regex_info* %115, i32 %116)
   store i32 %117, i32* %18, align 4
   %118 = load i32, i32* %18, align 4
-  %119 = call i1 @ext_callee(i32 38, i32 %118, i32 0)
+  %119 = icmp sgt i32 %118, 0
   br i1 %119, label %120, label %122
 
 ; <label>:120:                                    ; preds = %102
@@ -1368,7 +1368,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
 ; <label>:206:                                    ; preds = %202, %192
   %207 = load i32, i32* %23, align 4
   %208 = load i32, i32* %9, align 4
-  %209 = call i1 @ext_callee(i32 39, i32 %207, i32 %208)
+  %209 = icmp sge i32 %207, %208
   br i1 %209, label %210, label %212
 
 ; <label>:210:                                    ; preds = %206
@@ -1395,7 +1395,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %228 = load i32, i32* %13, align 4
   %229 = call i32 @bar(i8* %216, i32 %219, i8* %223, i32 %226, %struct.regex_info* %227, i32 %228)
   store i32 %229, i32* %22, align 4
-  %230 = call i1 @ext_callee(i32 39, i32 %229, i32 0)
+  %230 = icmp sge i32 %229, 0
   br i1 %230, label %231, label %235
 
 ; <label>:231:                                    ; preds = %212
@@ -1411,7 +1411,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
 ; <label>:236:                                    ; preds = %235, %210
   %237 = load i32, i32* %20, align 4
   %238 = load i32, i32* %15, align 4
-  %239 = call i1 @ext_callee(i32 38, i32 %237, i32 %238)
+  %239 = icmp sgt i32 %237, %238
   br i1 %239, label %240, label %244
 
 ; <label>:240:                                    ; preds = %236
@@ -1496,7 +1496,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
 ; <label>:297:                                    ; preds = %287
   %298 = load i32, i32* %20, align 4
   %299 = load i32, i32* %15, align 4
-  %300 = call i1 @ext_callee(i32 32, i32 %298, i32 %299)
+  %300 = icmp eq i32 %298, %299
   br i1 %300, label %301, label %302
 
 ; <label>:301:                                    ; preds = %297
@@ -1506,13 +1506,13 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
 ; <label>:302:                                    ; preds = %297, %287
   %303 = load i32, i32* %20, align 4
   %304 = load i32, i32* %15, align 4
-  %305 = call i1 @ext_callee(i32 32, i32 %303, i32 %304)
+  %305 = icmp eq i32 %303, %304
   br i1 %305, label %306, label %314
 
 ; <label>:306:                                    ; preds = %302
   %307 = load i32, i32* %23, align 4
   %308 = load i32, i32* %9, align 4
-  %309 = call i1 @ext_callee(i32 40, i32 %307, i32 %308)
+  %309 = icmp slt i32 %307, %308
   br i1 %309, label %310, label %314
 
 ; <label>:310:                                    ; preds = %306
@@ -1652,7 +1652,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %402 = load i32, i32* %13, align 4
   %403 = call i32 @doh(i8* %395, i32 %400, %struct.regex_info* %401, i32 %402)
   store i32 %403, i32* %16, align 4
-  %404 = call i1 @ext_callee(i32 39, i32 %403, i32 0)
+  %404 = icmp sge i32 %403, 0
   br i1 %404, label %405, label %435
 
 ; <label>:405:                                    ; preds = %391
@@ -1683,7 +1683,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
   %430 = load %struct.regex_info*, %struct.regex_info** %12, align 8
   %431 = load i32, i32* %13, align 4
   %432 = call i32 @bar(i8* %412, i32 %417, i8* %424, i32 %429, %struct.regex_info* %430, i32 %431)
-  %433 = call i1 @ext_callee(i32 39, i32 %432, i32 0)
+  %433 = icmp sge i32 %432, 0
   br i1 %433, label %434, label %435
 
 ; <label>:434:                                    ; preds = %405
@@ -1703,7 +1703,7 @@ define internal i32 @bar(i8*, i32, i8*, i32, %struct.regex_info*, i32) #0 {
 
 ; <label>:440:                                    ; preds = %439, %373
   %441 = load i32, i32* %16, align 4
-  %442 = call i1 @ext_callee(i32 40, i32 %441, i32 0)
+  %442 = icmp slt i32 %441, 0
   br i1 %442, label %443, label %445
 
 ; <label>:443:                                    ; preds = %440
@@ -1876,7 +1876,7 @@ define internal i32 @is_quantifier(i8*) #0 {
   %4 = getelementptr inbounds i8, i8* %3, i64 0
   %5 = load i8, i8* %4, align 1
   %6 = sext i8 %5 to i32
-  %7 = call i1 @ext_callee(i32 32, i32 %6, i32 42)
+  %7 = icmp eq i32 %6, 42
   br i1 %7, label %20, label %8
 
 ; <label>:8:                                      ; preds = %1
@@ -1884,7 +1884,7 @@ define internal i32 @is_quantifier(i8*) #0 {
   %10 = getelementptr inbounds i8, i8* %9, i64 0
   %11 = load i8, i8* %10, align 1
   %12 = sext i8 %11 to i32
-  %13 = call i1 @ext_callee(i32 32, i32 %12, i32 43)
+  %13 = icmp eq i32 %12, 43
   br i1 %13, label %20, label %14
 
 ; <label>:14:                                     ; preds = %8
@@ -1892,7 +1892,7 @@ define internal i32 @is_quantifier(i8*) #0 {
   %16 = getelementptr inbounds i8, i8* %15, i64 0
   %17 = load i8, i8* %16, align 1
   %18 = sext i8 %17 to i32
-  %19 = call i1 @ext_callee(i32 32, i32 %18, i32 63)
+  %19 = icmp eq i32 %18, 63
   br label %20
 
 ; <label>:20:                                     ; preds = %14, %8, %1
@@ -2004,7 +2004,7 @@ define internal i32 @match_set(i8*, i32, i8*, %struct.regex_info*) #0 {
   %74 = getelementptr inbounds i8, i8* %70, i64 %73
   %75 = load i8, i8* %74, align 1
   %76 = sext i8 %75 to i32
-  %77 = call i1 @ext_callee(i32 33, i32 %76, i32 0)
+  %77 = icmp ne i32 %76, 0
   br i1 %77, label %78, label %144
 
 ; <label>:78:                                     ; preds = %69
@@ -2012,7 +2012,7 @@ define internal i32 @match_set(i8*, i32, i8*, %struct.regex_info*) #0 {
   %80 = getelementptr inbounds %struct.regex_info, %struct.regex_info* %79, i32 0, i32 6
   %81 = load i32, i32* %80, align 4
   %82 = and i32 %81, 1
-  %83 = call i1 @ext_callee(i32 33, i32 %82, i32 0)
+  %83 = icmp ne i32 %82, 0
   br i1 %83, label %84, label %114
 
 ; <label>:84:                                     ; preds = %78
@@ -2027,7 +2027,7 @@ define internal i32 @match_set(i8*, i32, i8*, %struct.regex_info*) #0 {
   %93 = load i8, i8* %92, align 1
   %94 = sext i8 %93 to i32
   %95 = call i32 @tolower(i32 %94) #4
-  %96 = call i1 @ext_callee(i32 39, i32 %88, i32 %95)
+  %96 = icmp sge i32 %88, %95
   br i1 %96, label %97, label %111
 
 ; <label>:97:                                     ; preds = %84
@@ -2194,7 +2194,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %25 = load i16, i16* %24, align 2
   %26 = zext i16 %25 to i32
   %27 = and i32 %26, 8192
-  %28 = call i1 @ext_callee(i32 33, i32 %27, i32 0)
+  %28 = icmp ne i32 %27, 0
   br i1 %28, label %29, label %30
 
 ; <label>:29:                                     ; preds = %17
@@ -2218,7 +2218,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %41 = load i16, i16* %40, align 2
   %42 = zext i16 %41 to i32
   %43 = and i32 %42, 8192
-  %44 = call i1 @ext_callee(i32 33, i32 %43, i32 0)
+  %44 = icmp ne i32 %43, 0
   br i1 %44, label %46, label %45
 
 ; <label>:45:                                     ; preds = %33
@@ -2242,7 +2242,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %57 = load i16, i16* %56, align 2
   %58 = zext i16 %57 to i32
   %59 = and i32 %58, 2048
-  %60 = call i1 @ext_callee(i32 33, i32 %59, i32 0)
+  %60 = icmp ne i32 %59, 0
   br i1 %60, label %62, label %61
 
 ; <label>:61:                                     ; preds = %49
@@ -2386,7 +2386,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %137 = getelementptr inbounds i8, i8* %136, i64 0
   %138 = load i8, i8* %137, align 1
   %139 = zext i8 %138 to i32
-  %140 = call i1 @ext_callee(i32 33, i32 %135, i32 %139)
+  %140 = icmp ne i32 %135, %139
   br i1 %140, label %141, label %142
 
 ; <label>:141:                                    ; preds = %131
@@ -2421,7 +2421,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %153 = getelementptr inbounds %struct.regex_info, %struct.regex_info* %152, i32 0, i32 6
   %154 = load i32, i32* %153, align 4
   %155 = and i32 %154, 1
-  %156 = call i1 @ext_callee(i32 33, i32 %155, i32 0)
+  %156 = icmp ne i32 %155, 0
   br i1 %156, label %157, label %169
 
 ; <label>:157:                                    ; preds = %151
@@ -2433,7 +2433,7 @@ define internal i32 @match_op(i8*, i8*, %struct.regex_info*) #0 {
   %163 = load i8, i8* %162, align 1
   %164 = zext i8 %163 to i32
   %165 = call i32 @tolower(i32 %164) #4
-  %166 = call i1 @ext_callee(i32 33, i32 %161, i32 %165)
+  %166 = icmp ne i32 %161, %165
   br i1 %166, label %167, label %168
 
 ; <label>:167:                                    ; preds = %157

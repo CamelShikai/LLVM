@@ -2,3 +2,17 @@ Module:<stdin>candidate_counter:124obfuscation_counter64
 Module:<stdin>candidate_counter:156obfuscation_counter79
 Module:<stdin>candidate_counter:124obfuscation_counter38
 Module:<stdin>candidate_counter:156obfuscation_counter47
+Module:<stdin>candidate_counter:124obfuscation_counter64
+Module:<stdin>candidate_counter:156obfuscation_counter79
+Module:<stdin>candidate_counter:124obfuscation_counter76
+Module:<stdin>candidate_counter:156obfuscation_counter95
+Module:<stdin>candidate_counter:124obfuscation_counter100
+Module:<stdin>candidate_counter:156obfuscation_counter126
+Module:<stdin>candidate_counter:124obfuscation_counter124
+Module:<stdin>candidate_counter:156obfuscation_counter156
+Module:<stdin>candidate_counter:124obfuscation_counter38
+Module:<stdin>candidate_counter:156obfuscation_counter47
+Module:<stdin>candidate_counter:124obfuscation_counter0
+Module:<stdin>candidate_counter:156obfuscation_counter0
+Module:<stdin>candidate_counter:124obfuscation_counter0
+Module:<stdin>candidate_counter:156obfuscation_counter0

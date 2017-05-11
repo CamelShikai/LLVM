@@ -192,14 +192,14 @@ define i32 @main(i32, i8**) #0 {
   %19 = load i8*, i8** %8, align 8
   %20 = load i8, i8* %19, align 1
   %21 = sext i8 %20 to i32
-  %22 = call i1 @ext_callee(i32 33, i32 %21, i32 0)
+  %22 = icmp ne i32 %21, 0
   br i1 %22, label %23, label %35
 
 ; <label>:23:                                     ; preds = %18
   %24 = load i8*, i8** %8, align 8
   %25 = load i8, i8* %24, align 1
   %26 = sext i8 %25 to i32
-  %27 = call i1 @ext_callee(i32 32, i32 %26, i32 47)
+  %27 = icmp eq i32 %26, 47
   br i1 %27, label %28, label %31
 
 ; <label>:28:                                     ; preds = %23
@@ -228,7 +228,7 @@ define i32 @main(i32, i8**) #0 {
   %37 = load i32, i32* %6, align 4
   %38 = load i32, i32* %4, align 4
   %39 = sub nsw i32 %38, 1
-  %40 = call i1 @ext_callee(i32 41, i32 %37, i32 %39)
+  %40 = icmp sle i32 %37, %39
   br i1 %40, label %41, label %52
 
 ; <label>:41:                                     ; preds = %36
@@ -266,7 +266,7 @@ define i32 @main(i32, i8**) #0 {
   %59 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %58, i32 0, i32 0
   %60 = load i8*, i8** %59, align 8
   %61 = call i32 @strcmp(i8* %60, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0)) #9
-  %62 = call i1 @ext_callee(i32 32, i32 %61, i32 0)
+  %62 = icmp eq i32 %61, 0
   br i1 %62, label %63, label %64
 
 ; <label>:63:                                     ; preds = %57
@@ -415,7 +415,7 @@ define i32 @main(i32, i8**) #0 {
   %149 = getelementptr inbounds i8, i8* %148, i64 0
   %150 = load i8, i8* %149, align 1
   %151 = sext i8 %150 to i32
-  %152 = call i1 @ext_callee(i32 32, i32 %151, i32 45)
+  %152 = icmp eq i32 %151, 45
   br i1 %152, label %153, label %217
 
 ; <label>:153:                                    ; preds = %145
@@ -425,7 +425,7 @@ define i32 @main(i32, i8**) #0 {
   %157 = getelementptr inbounds i8, i8* %156, i64 1
   %158 = load i8, i8* %157, align 1
   %159 = sext i8 %158 to i32
-  %160 = call i1 @ext_callee(i32 33, i32 %159, i32 45)
+  %160 = icmp ne i32 %159, 45
   br i1 %160, label %161, label %217
 
 ; <label>:161:                                    ; preds = %153
@@ -441,7 +441,7 @@ define i32 @main(i32, i8**) #0 {
   %168 = getelementptr inbounds i8, i8* %165, i64 %167
   %169 = load i8, i8* %168, align 1
   %170 = sext i8 %169 to i32
-  %171 = call i1 @ext_callee(i32 33, i32 %170, i32 0)
+  %171 = icmp ne i32 %170, 0
   br i1 %171, label %172, label %216
 
 ; <label>:172:                                    ; preds = %162
@@ -610,7 +610,7 @@ define i32 @main(i32, i8**) #0 {
   %229 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %228, i32 0, i32 0
   %230 = load i8*, i8** %229, align 8
   %231 = call i32 @strcmp(i8* %230, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0)) #9
-  %232 = call i1 @ext_callee(i32 32, i32 %231, i32 0)
+  %232 = icmp eq i32 %231, 0
   br i1 %232, label %233, label %234
 
 ; <label>:233:                                    ; preds = %227
@@ -621,7 +621,7 @@ define i32 @main(i32, i8**) #0 {
   %236 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %235, i32 0, i32 0
   %237 = load i8*, i8** %236, align 8
   %238 = call i32 @strcmp(i8* %237, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.17, i32 0, i32 0)) #9
-  %239 = call i1 @ext_callee(i32 32, i32 %238, i32 0)
+  %239 = icmp eq i32 %238, 0
   br i1 %239, label %240, label %241
 
 ; <label>:240:                                    ; preds = %234
@@ -693,7 +693,7 @@ define i32 @main(i32, i8**) #0 {
   %278 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %277, i32 0, i32 0
   %279 = load i8*, i8** %278, align 8
   %280 = call i32 @strcmp(i8* %279, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.23, i32 0, i32 0)) #9
-  %281 = call i1 @ext_callee(i32 32, i32 %280, i32 0)
+  %281 = icmp eq i32 %280, 0
   br i1 %281, label %282, label %283
 
 ; <label>:282:                                    ; preds = %276
@@ -705,7 +705,7 @@ define i32 @main(i32, i8**) #0 {
   %285 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %284, i32 0, i32 0
   %286 = load i8*, i8** %285, align 8
   %287 = call i32 @strcmp(i8* %286, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.24, i32 0, i32 0)) #9
-  %288 = call i1 @ext_callee(i32 32, i32 %287, i32 0)
+  %288 = icmp eq i32 %287, 0
   br i1 %288, label %289, label %290
 
 ; <label>:289:                                    ; preds = %283
@@ -717,7 +717,7 @@ define i32 @main(i32, i8**) #0 {
   %292 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %291, i32 0, i32 0
   %293 = load i8*, i8** %292, align 8
   %294 = call i32 @strcmp(i8* %293, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.25, i32 0, i32 0)) #9
-  %295 = call i1 @ext_callee(i32 32, i32 %294, i32 0)
+  %295 = icmp eq i32 %294, 0
   br i1 %295, label %296, label %297
 
 ; <label>:296:                                    ; preds = %290
@@ -729,7 +729,7 @@ define i32 @main(i32, i8**) #0 {
   %299 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %298, i32 0, i32 0
   %300 = load i8*, i8** %299, align 8
   %301 = call i32 @strcmp(i8* %300, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.26, i32 0, i32 0)) #9
-  %302 = call i1 @ext_callee(i32 32, i32 %301, i32 0)
+  %302 = icmp eq i32 %301, 0
   br i1 %302, label %303, label %304
 
 ; <label>:303:                                    ; preds = %297
@@ -741,7 +741,7 @@ define i32 @main(i32, i8**) #0 {
   %306 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %305, i32 0, i32 0
   %307 = load i8*, i8** %306, align 8
   %308 = call i32 @strcmp(i8* %307, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.27, i32 0, i32 0)) #9
-  %309 = call i1 @ext_callee(i32 32, i32 %308, i32 0)
+  %309 = icmp eq i32 %308, 0
   br i1 %309, label %310, label %311
 
 ; <label>:310:                                    ; preds = %304
@@ -821,7 +821,7 @@ define i32 @main(i32, i8**) #0 {
   %356 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %355, i32 0, i32 0
   %357 = load i8*, i8** %356, align 8
   %358 = call i32 @strcmp(i8* %357, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.33, i32 0, i32 0)) #9
-  %359 = call i1 @ext_callee(i32 32, i32 %358, i32 0)
+  %359 = icmp eq i32 %358, 0
   br i1 %359, label %360, label %362
 
 ; <label>:360:                                    ; preds = %354
@@ -835,7 +835,7 @@ define i32 @main(i32, i8**) #0 {
   %364 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %363, i32 0, i32 0
   %365 = load i8*, i8** %364, align 8
   %366 = call i32 @strncmp(i8* %365, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0), i64 2) #9
-  %367 = call i1 @ext_callee(i32 32, i32 %366, i32 0)
+  %367 = icmp eq i32 %366, 0
   br i1 %367, label %368, label %376
 
 ; <label>:368:                                    ; preds = %362
@@ -913,7 +913,7 @@ define i32 @main(i32, i8**) #0 {
 
 ; <label>:398:                                    ; preds = %233, %224
   %399 = load i32, i32* @verbosity, align 4
-  %400 = call i1 @ext_callee(i32 38, i32 %399, i32 4)
+  %400 = icmp sgt i32 %399, 4
   br i1 %400, label %401, label %402
 
 ; <label>:401:                                    ; preds = %398
@@ -922,13 +922,13 @@ define i32 @main(i32, i8**) #0 {
 
 ; <label>:402:                                    ; preds = %401, %398
   %403 = load i32, i32* @opMode, align 4
-  %404 = call i1 @ext_callee(i32 32, i32 %403, i32 1)
+  %404 = icmp eq i32 %403, 1
   br i1 %404, label %405, label %413
 
 ; <label>:405:                                    ; preds = %402
   %406 = load i8, i8* @smallMode, align 1
   %407 = zext i8 %406 to i32
-  %408 = call i1 @ext_callee(i32 33, i32 %407, i32 0)
+  %408 = icmp ne i32 %407, 0
   br i1 %408, label %409, label %413
 
 ; <label>:409:                                    ; preds = %405
@@ -973,7 +973,7 @@ define i32 @main(i32, i8**) #0 {
 
 ; <label>:430:                                    ; preds = %429, %426, %423
   %431 = load i32, i32* @opMode, align 4
-  %432 = call i1 @ext_callee(i32 33, i32 %431, i32 1)
+  %432 = icmp ne i32 %431, 1
   br i1 %432, label %433, label %434
 
 ; <label>:433:                                    ; preds = %430
@@ -982,7 +982,7 @@ define i32 @main(i32, i8**) #0 {
 
 ; <label>:434:                                    ; preds = %433, %430
   %435 = load i32, i32* @srcMode, align 4
-  %436 = call i1 @ext_callee(i32 32, i32 %435, i32 3)
+  %436 = icmp eq i32 %435, 3
   br i1 %436, label %437, label %441
 
 ; <label>:437:                                    ; preds = %434
@@ -993,12 +993,12 @@ define i32 @main(i32, i8**) #0 {
 
 ; <label>:441:                                    ; preds = %437, %434
   %442 = load i32, i32* @opMode, align 4
-  %443 = call i1 @ext_callee(i32 32, i32 %442, i32 1)
+  %443 = icmp eq i32 %442, 1
   br i1 %443, label %444, label %485
 
 ; <label>:444:                                    ; preds = %441
   %445 = load i32, i32* @srcMode, align 4
-  %446 = call i1 @ext_callee(i32 32, i32 %445, i32 1)
+  %446 = icmp eq i32 %445, 1
   br i1 %446, label %447, label %448
 
 ; <label>:447:                                    ; preds = %444
@@ -1021,7 +1021,7 @@ define i32 @main(i32, i8**) #0 {
   %455 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %454, i32 0, i32 0
   %456 = load i8*, i8** %455, align 8
   %457 = call i32 @strcmp(i8* %456, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0)) #9
-  %458 = call i1 @ext_callee(i32 32, i32 %457, i32 0)
+  %458 = icmp eq i32 %457, 0
   br i1 %458, label %459, label %460
 
 ; <label>:459:                                    ; preds = %453
@@ -1115,13 +1115,13 @@ define i32 @main(i32, i8**) #0 {
   %508 = getelementptr inbounds i8, i8* %507, i64 0
   %509 = load i8, i8* %508, align 1
   %510 = sext i8 %509 to i32
-  %511 = call i1 @ext_callee(i32 32, i32 %510, i32 45)
+  %511 = icmp eq i32 %510, 45
   br i1 %511, label %512, label %517
 
 ; <label>:512:                                    ; preds = %504
   %513 = load i8, i8* %11, align 1
   %514 = zext i8 %513 to i32
-  %515 = call i1 @ext_callee(i32 33, i32 %514, i32 0)
+  %515 = icmp ne i32 %514, 0
   br i1 %515, label %516, label %517
 
 ; <label>:516:                                    ; preds = %512
@@ -1164,7 +1164,7 @@ define i32 @main(i32, i8**) #0 {
 ; <label>:534:                                    ; preds = %485
   store i8 0, i8* @testFailsExist, align 1
   %535 = load i32, i32* @srcMode, align 4
-  %536 = call i1 @ext_callee(i32 32, i32 %535, i32 1)
+  %536 = icmp eq i32 %535, 1
   br i1 %536, label %537, label %538
 
 ; <label>:537:                                    ; preds = %534
@@ -1187,7 +1187,7 @@ define i32 @main(i32, i8**) #0 {
   %545 = getelementptr inbounds %struct.zzzz, %struct.zzzz* %544, i32 0, i32 0
   %546 = load i8*, i8** %545, align 8
   %547 = call i32 @strcmp(i8* %546, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0)) #9
-  %548 = call i1 @ext_callee(i32 32, i32 %547, i32 0)
+  %548 = icmp eq i32 %547, 0
   br i1 %548, label %549, label %550
 
 ; <label>:549:                                    ; preds = %543
@@ -1201,7 +1201,7 @@ define i32 @main(i32, i8**) #0 {
   %554 = getelementptr inbounds i8, i8* %553, i64 0
   %555 = load i8, i8* %554, align 1
   %556 = sext i8 %555 to i32
-  %557 = call i1 @ext_callee(i32 32, i32 %556, i32 45)
+  %557 = icmp eq i32 %556, 45
   br i1 %557, label %558, label %563
 
 ; <label>:558:                                    ; preds = %550
@@ -1402,7 +1402,7 @@ define internal void @addFlagsFromEnvVar(%struct.zzzz**, i8*) #0 {
   %20 = getelementptr inbounds i8, i8* %17, i64 %19
   %21 = load i8, i8* %20, align 1
   %22 = sext i8 %21 to i32
-  %23 = call i1 @ext_callee(i32 32, i32 %22, i32 0)
+  %23 = icmp eq i32 %22, 0
   br i1 %23, label %24, label %25
 
 ; <label>:24:                                     ; preds = %16
@@ -1429,7 +1429,7 @@ define internal void @addFlagsFromEnvVar(%struct.zzzz**, i8*) #0 {
   %39 = load i16, i16* %38, align 2
   %40 = zext i16 %39 to i32
   %41 = and i32 %40, 8192
-  %42 = call i1 @ext_callee(i32 33, i32 %41, i32 0)
+  %42 = icmp ne i32 %41, 0
   br i1 %42, label %43, label %46
 
 ; <label>:43:                                     ; preds = %30
@@ -1448,7 +1448,7 @@ define internal void @addFlagsFromEnvVar(%struct.zzzz**, i8*) #0 {
   %51 = getelementptr inbounds i8, i8* %48, i64 %50
   %52 = load i8, i8* %51, align 1
   %53 = sext i8 %52 to i32
-  %54 = call i1 @ext_callee(i32 33, i32 %53, i32 0)
+  %54 = icmp ne i32 %53, 0
   br i1 %54, label %55, label %71
 
 ; <label>:55:                                     ; preds = %47
@@ -1481,14 +1481,14 @@ define internal void @addFlagsFromEnvVar(%struct.zzzz**, i8*) #0 {
 
 ; <label>:76:                                     ; preds = %71
   %77 = load i32, i32* %5, align 4
-  %78 = call i1 @ext_callee(i32 38, i32 %77, i32 0)
+  %78 = icmp sgt i32 %77, 0
   br i1 %78, label %79, label %109
 
 ; <label>:79:                                     ; preds = %76
   %80 = load i32, i32* %5, align 4
   store i32 %80, i32* %7, align 4
   %81 = load i32, i32* %7, align 4
-  %82 = call i1 @ext_callee(i32 38, i32 %81, i32 1024)
+  %82 = icmp sgt i32 %81, 1024
   br i1 %82, label %83, label %84
 
 ; <label>:83:                                     ; preds = %79
@@ -1778,7 +1778,7 @@ define internal void @compress(i8*) #0 {
 
 ; <label>:53:                                     ; preds = %76, %52
   %54 = load i32, i32* %6, align 4
-  %55 = call i1 @ext_callee(i32 40, i32 %54, i32 4)
+  %55 = icmp slt i32 %54, 4
   br i1 %55, label %56, label %79
 
 ; <label>:56:                                     ; preds = %53
@@ -1820,12 +1820,12 @@ define internal void @compress(i8*) #0 {
 
 ; <label>:79:                                     ; preds = %53
   %80 = load i32, i32* @srcMode, align 4
-  %81 = call i1 @ext_callee(i32 32, i32 %80, i32 3)
+  %81 = icmp eq i32 %80, 3
   br i1 %81, label %85, label %82
 
 ; <label>:82:                                     ; preds = %79
   %83 = load i32, i32* @srcMode, align 4
-  %84 = call i1 @ext_callee(i32 32, i32 %83, i32 2)
+  %84 = icmp eq i32 %83, 2
   br i1 %84, label %85, label %96
 
 ; <label>:85:                                     ; preds = %82, %79
@@ -1833,7 +1833,7 @@ define internal void @compress(i8*) #0 {
   %87 = getelementptr inbounds %struct.stat, %struct.stat* %7, i32 0, i32 3
   %88 = load i32, i32* %87, align 8
   %89 = and i32 %88, 61440
-  %90 = call i1 @ext_callee(i32 32, i32 %89, i32 16384)
+  %90 = icmp eq i32 %89, 16384
   br i1 %90, label %91, label %95
 
 ; <label>:91:                                     ; preds = %85
@@ -1848,7 +1848,7 @@ define internal void @compress(i8*) #0 {
 
 ; <label>:96:                                     ; preds = %95, %82
   %97 = load i32, i32* @srcMode, align 4
-  %98 = call i1 @ext_callee(i32 32, i32 %97, i32 3)
+  %98 = icmp eq i32 %97, 3
   br i1 %98, label %99, label %114
 
 ; <label>:99:                                     ; preds = %96
@@ -1937,7 +1937,7 @@ define internal void @compress(i8*) #0 {
 
 ; <label>:149:                                    ; preds = %137, %134, %131
   %150 = load i32, i32* @srcMode, align 4
-  %151 = call i1 @ext_callee(i32 32, i32 %150, i32 3)
+  %151 = icmp eq i32 %150, 3
   br i1 %151, label %152, label %153
 
 ; <label>:152:                                    ; preds = %149
@@ -1960,7 +1960,7 @@ define internal void @compress(i8*) #0 {
   %158 = load %struct._IO_FILE*, %struct._IO_FILE** @stdout, align 8
   %159 = call i32 @fileno(%struct._IO_FILE* %158) #8
   %160 = call i32 @isatty(i32 %159) #8
-  %161 = call i1 @ext_callee(i32 33, i32 %160, i32 0)
+  %161 = icmp ne i32 %160, 0
   br i1 %161, label %162, label %170
 
 ; <label>:162:                                    ; preds = %155
@@ -1985,7 +1985,7 @@ define internal void @compress(i8*) #0 {
   %174 = load %struct._IO_FILE*, %struct._IO_FILE** @stdout, align 8
   %175 = call i32 @fileno(%struct._IO_FILE* %174) #8
   %176 = call i32 @isatty(i32 %175) #8
-  %177 = call i1 @ext_callee(i32 33, i32 %176, i32 0)
+  %177 = icmp ne i32 %176, 0
   br i1 %177, label %178, label %192
 
 ; <label>:178:                                    ; preds = %171
@@ -2090,7 +2090,7 @@ define internal void @compress(i8*) #0 {
 
 ; <label>:239:                                    ; preds = %237, %202, %170
   %240 = load i32, i32* @verbosity, align 4
-  %241 = call i1 @ext_callee(i32 39, i32 %240, i32 1)
+  %241 = icmp sge i32 %240, 1
   br i1 %241, label %242, label %247
 
 ; <label>:242:                                    ; preds = %239
@@ -2110,7 +2110,7 @@ define internal void @compress(i8*) #0 {
   call void @compressStream(%struct._IO_FILE* %249, %struct._IO_FILE* %250)
   store %struct._IO_FILE* null, %struct._IO_FILE** @outputHandleJustInCase, align 8
   %251 = load i32, i32* @srcMode, align 4
-  %252 = call i1 @ext_callee(i32 32, i32 %251, i32 3)
+  %252 = icmp eq i32 %251, 3
   br i1 %252, label %253, label %263
 
 ; <label>:253:                                    ; preds = %247
@@ -2266,7 +2266,7 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:63:                                     ; preds = %51, %48
   %64 = load i32, i32* @srcMode, align 4
-  %65 = call i1 @ext_callee(i32 33, i32 %64, i32 1)
+  %65 = icmp ne i32 %64, 1
   br i1 %65, label %66, label %76
 
 ; <label>:66:                                     ; preds = %63
@@ -2286,12 +2286,12 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:76:                                     ; preds = %66, %63
   %77 = load i32, i32* @srcMode, align 4
-  %78 = call i1 @ext_callee(i32 32, i32 %77, i32 3)
+  %78 = icmp eq i32 %77, 3
   br i1 %78, label %82, label %79
 
 ; <label>:79:                                     ; preds = %76
   %80 = load i32, i32* @srcMode, align 4
-  %81 = call i1 @ext_callee(i32 32, i32 %80, i32 2)
+  %81 = icmp eq i32 %80, 2
   br i1 %81, label %82, label %93
 
 ; <label>:82:                                     ; preds = %79, %76
@@ -2299,7 +2299,7 @@ define internal void @uncompress(i8*) #0 {
   %84 = getelementptr inbounds %struct.stat, %struct.stat* %9, i32 0, i32 3
   %85 = load i32, i32* %84, align 8
   %86 = and i32 %85, 61440
-  %87 = call i1 @ext_callee(i32 32, i32 %86, i32 16384)
+  %87 = icmp eq i32 %86, 16384
   br i1 %87, label %88, label %92
 
 ; <label>:88:                                     ; preds = %82
@@ -2314,7 +2314,7 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:93:                                     ; preds = %92, %79
   %94 = load i32, i32* @srcMode, align 4
-  %95 = call i1 @ext_callee(i32 32, i32 %94, i32 3)
+  %95 = icmp eq i32 %94, 3
   br i1 %95, label %96, label %111
 
 ; <label>:96:                                     ; preds = %93
@@ -2422,7 +2422,7 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:157:                                    ; preds = %145, %142, %139
   %158 = load i32, i32* @srcMode, align 4
-  %159 = call i1 @ext_callee(i32 32, i32 %158, i32 3)
+  %159 = icmp eq i32 %158, 3
   br i1 %159, label %160, label %161
 
 ; <label>:160:                                    ; preds = %157
@@ -2445,7 +2445,7 @@ define internal void @uncompress(i8*) #0 {
   %166 = load %struct._IO_FILE*, %struct._IO_FILE** @stdin, align 8
   %167 = call i32 @fileno(%struct._IO_FILE* %166) #8
   %168 = call i32 @isatty(i32 %167) #8
-  %169 = call i1 @ext_callee(i32 33, i32 %168, i32 0)
+  %169 = icmp ne i32 %168, 0
   br i1 %169, label %170, label %178
 
 ; <label>:170:                                    ; preds = %163
@@ -2557,7 +2557,7 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:234:                                    ; preds = %232, %197, %178
   %235 = load i32, i32* @verbosity, align 4
-  %236 = call i1 @ext_callee(i32 39, i32 %235, i32 1)
+  %236 = icmp sge i32 %235, 1
   br i1 %236, label %237, label %242
 
 ; <label>:237:                                    ; preds = %234
@@ -2583,7 +2583,7 @@ define internal void @uncompress(i8*) #0 {
 
 ; <label>:249:                                    ; preds = %242
   %250 = load i32, i32* @srcMode, align 4
-  %251 = call i1 @ext_callee(i32 32, i32 %250, i32 3)
+  %251 = icmp eq i32 %250, 3
   br i1 %251, label %252, label %262
 
 ; <label>:252:                                    ; preds = %249
@@ -2597,7 +2597,7 @@ define internal void @uncompress(i8*) #0 {
   %256 = call i32 @remove(i8* getelementptr inbounds ([1034 x i8], [1034 x i8]* @inName, i32 0, i32 0)) #8
   store i32 %256, i32* %10, align 4
   %257 = load i32, i32* %10, align 4
-  %258 = call i1 @ext_callee(i32 33, i32 %257, i32 0)
+  %258 = icmp ne i32 %257, 0
   br i1 %258, label %259, label %260
 
 ; <label>:259:                                    ; preds = %255
@@ -2712,7 +2712,7 @@ define internal void @testf(i8*) #0 {
 
 ; <label>:8:                                      ; preds = %1
   %9 = load i32, i32* @srcMode, align 4
-  %10 = call i1 @ext_callee(i32 33, i32 %9, i32 1)
+  %10 = icmp ne i32 %9, 1
   br i1 %10, label %11, label %12
 
 ; <label>:11:                                     ; preds = %8
@@ -2744,13 +2744,13 @@ define internal void @testf(i8*) #0 {
 
 ; <label>:19:                                     ; preds = %17, %15, %14, %12
   %20 = load i32, i32* @srcMode, align 4
-  %21 = call i1 @ext_callee(i32 33, i32 %20, i32 1)
+  %21 = icmp ne i32 %20, 1
   br i1 %21, label %22, label %34
 
 ; <label>:22:                                     ; preds = %19
   %23 = call zeroext i8 @containsDubiousChars(i8* getelementptr inbounds ([1034 x i8], [1034 x i8]* @inName, i32 0, i32 0))
   %24 = zext i8 %23 to i32
-  %25 = call i1 @ext_callee(i32 33, i32 %24, i32 0)
+  %25 = icmp ne i32 %24, 0
   br i1 %25, label %26, label %34
 
 ; <label>:26:                                     ; preds = %22
@@ -2770,7 +2770,7 @@ define internal void @testf(i8*) #0 {
 
 ; <label>:34:                                     ; preds = %22, %19
   %35 = load i32, i32* @srcMode, align 4
-  %36 = call i1 @ext_callee(i32 33, i32 %35, i32 1)
+  %36 = icmp ne i32 %35, 1
   br i1 %36, label %37, label %47
 
 ; <label>:37:                                     ; preds = %34
@@ -2790,7 +2790,7 @@ define internal void @testf(i8*) #0 {
 
 ; <label>:47:                                     ; preds = %37, %34
   %48 = load i32, i32* @srcMode, align 4
-  %49 = call i1 @ext_callee(i32 33, i32 %48, i32 1)
+  %49 = icmp ne i32 %48, 1
   br i1 %49, label %50, label %61
 
 ; <label>:50:                                     ; preds = %47
@@ -2937,25 +2937,25 @@ define internal void @cleanUpAndFail(i32) #5 {
   %4 = alloca %struct.stat, align 8
   store i32 %0, i32* %2, align 4
   %5 = load i32, i32* @srcMode, align 4
-  %6 = call i1 @ext_callee(i32 32, i32 %5, i32 3)
+  %6 = icmp eq i32 %5, 3
   br i1 %6, label %7, label %54
 
 ; <label>:7:                                      ; preds = %1
   %8 = load i32, i32* @opMode, align 4
-  %9 = call i1 @ext_callee(i32 33, i32 %8, i32 3)
+  %9 = icmp ne i32 %8, 3
   br i1 %9, label %10, label %54
 
 ; <label>:10:                                     ; preds = %7
   %11 = load i8, i8* @deleteOutputOnInterrupt, align 1
   %12 = zext i8 %11 to i32
-  %13 = call i1 @ext_callee(i32 33, i32 %12, i32 0)
+  %13 = icmp ne i32 %12, 0
   br i1 %13, label %14, label %54
 
 ; <label>:14:                                     ; preds = %10
   %15 = call i32 @stat(i8* getelementptr inbounds ([1034 x i8], [1034 x i8]* @inName, i32 0, i32 0), %struct.stat* %4) #8
   store i32 %15, i32* %3, align 4
   %16 = load i32, i32* %3, align 4
-  %17 = call i1 @ext_callee(i32 32, i32 %16, i32 0)
+  %17 = icmp eq i32 %16, 0
   br i1 %17, label %18, label %40
 
 ; <label>:18:                                     ; preds = %14
@@ -2983,7 +2983,7 @@ define internal void @cleanUpAndFail(i32) #5 {
   %32 = call i32 @remove(i8* getelementptr inbounds ([1034 x i8], [1034 x i8]* @outName, i32 0, i32 0)) #8
   store i32 %32, i32* %3, align 4
   %33 = load i32, i32* %3, align 4
-  %34 = call i1 @ext_callee(i32 33, i32 %33, i32 0)
+  %34 = icmp ne i32 %33, 0
   br i1 %34, label %35, label %39
 
 ; <label>:35:                                     ; preds = %31
@@ -3264,7 +3264,7 @@ define internal zeroext i8 @notAStandardFile(i8*) #0 {
   %7 = call i32 @lstat(i8* %6, %struct.stat* %5) #8
   store i32 %7, i32* %4, align 4
   %8 = load i32, i32* %4, align 4
-  %9 = call i1 @ext_callee(i32 33, i32 %8, i32 0)
+  %9 = icmp ne i32 %8, 0
   br i1 %9, label %10, label %11
 
 ; <label>:10:                                     ; preds = %1
@@ -3275,7 +3275,7 @@ define internal zeroext i8 @notAStandardFile(i8*) #0 {
   %12 = getelementptr inbounds %struct.stat, %struct.stat* %5, i32 0, i32 3
   %13 = load i32, i32* %12, align 8
   %14 = and i32 %13, 61440
-  %15 = call i1 @ext_callee(i32 32, i32 %14, i32 32768)
+  %15 = icmp eq i32 %14, 32768
   br i1 %15, label %16, label %17
 
 ; <label>:16:                                     ; preds = %11
@@ -3302,7 +3302,7 @@ define internal i32 @countHardLinks(i8*) #0 {
   %7 = call i32 @lstat(i8* %6, %struct.stat* %5) #8
   store i32 %7, i32* %4, align 4
   %8 = load i32, i32* %4, align 4
-  %9 = call i1 @ext_callee(i32 33, i32 %8, i32 0)
+  %9 = icmp ne i32 %8, 0
   br i1 %9, label %10, label %11
 
 ; <label>:10:                                     ; preds = %1
@@ -3331,7 +3331,7 @@ define internal void @saveInputFileMetaInfo(i8*) #0 {
   %5 = call i32 @stat(i8* %4, %struct.stat* @fileMetaInfo) #8
   store i32 %5, i32* %3, align 4
   %6 = load i32, i32* %3, align 4
-  %7 = call i1 @ext_callee(i32 33, i32 %6, i32 0)
+  %7 = icmp ne i32 %6, 0
   br i1 %7, label %8, label %9
 
 ; <label>:8:                                      ; preds = %1
@@ -3363,7 +3363,7 @@ define internal %struct._IO_FILE* @fopen_output_safely(i8*, i8*) #0 {
   %9 = call i32 (i8*, i32, ...) @open(i8* %8, i32 193, i32 384)
   store i32 %9, i32* %7, align 4
   %10 = load i32, i32* %7, align 4
-  %11 = call i1 @ext_callee(i32 32, i32 %10, i32 -1)
+  %11 = icmp eq i32 %10, -1
   br i1 %11, label %12, label %13
 
 ; <label>:12:                                     ; preds = %2
@@ -3497,7 +3497,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
 
 ; <label>:40:                                     ; preds = %31
   %41 = load i32, i32* @verbosity, align 4
-  %42 = call i1 @ext_callee(i32 39, i32 %41, i32 2)
+  %42 = icmp sge i32 %41, 2
   br i1 %42, label %43, label %46
 
 ; <label>:43:                                     ; preds = %40
@@ -3525,7 +3525,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
   store i32 %56, i32* %7, align 4
   %57 = load %struct._IO_FILE*, %struct._IO_FILE** %3, align 8
   %58 = call i32 @ferror(%struct._IO_FILE* %57) #8
-  %59 = call i1 @ext_callee(i32 33, i32 %58, i32 0)
+  %59 = icmp ne i32 %58, 0
   br i1 %59, label %60, label %61
 
 ; <label>:60:                                     ; preds = %52
@@ -3533,7 +3533,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
 
 ; <label>:61:                                     ; preds = %52
   %62 = load i32, i32* %7, align 4
-  %63 = call i1 @ext_callee(i32 38, i32 %62, i32 0)
+  %63 = icmp sgt i32 %62, 0
   br i1 %63, label %64, label %68
 
 ; <label>:64:                                     ; preds = %61
@@ -3545,7 +3545,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
 
 ; <label>:68:                                     ; preds = %64, %61
   %69 = load i32, i32* %12, align 4
-  %70 = call i1 @ext_callee(i32 33, i32 %69, i32 0)
+  %70 = icmp ne i32 %69, 0
   br i1 %70, label %71, label %72
 
 ; <label>:71:                                     ; preds = %68
@@ -3558,7 +3558,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
   %74 = load i8*, i8** %5, align 8
   call void @BZ2_bzWriteClose64(i32* %12, i8* %74, i32 0, i32* %8, i32* %9, i32* %10, i32* %11)
   %75 = load i32, i32* %12, align 4
-  %76 = call i1 @ext_callee(i32 33, i32 %75, i32 0)
+  %76 = icmp ne i32 %75, 0
   br i1 %76, label %77, label %78
 
 ; <label>:77:                                     ; preds = %73
@@ -3633,7 +3633,7 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
   %114 = call i32 @fclose(%struct._IO_FILE* %113)
   store i32 %114, i32* %14, align 4
   %115 = load i32, i32* %14, align 4
-  %116 = call i1 @ext_callee(i32 32, i32 %115, i32 -1)
+  %116 = icmp eq i32 %115, -1
   br i1 %116, label %117, label %118
 
 ; <label>:117:                                    ; preds = %112
@@ -3641,17 +3641,17 @@ define internal void @compressStream(%struct._IO_FILE*, %struct._IO_FILE*) #0 {
 
 ; <label>:118:                                    ; preds = %112
   %119 = load i32, i32* @verbosity, align 4
-  %120 = call i1 @ext_callee(i32 39, i32 %119, i32 1)
+  %120 = icmp sge i32 %119, 1
   br i1 %120, label %121, label %156
 
 ; <label>:121:                                    ; preds = %118
   %122 = load i32, i32* %8, align 4
-  %123 = call i1 @ext_callee(i32 32, i32 %122, i32 0)
+  %123 = icmp eq i32 %122, 0
   br i1 %123, label %124, label %130
 
 ; <label>:124:                                    ; preds = %121
   %125 = load i32, i32* %9, align 4
-  %126 = call i1 @ext_callee(i32 32, i32 %125, i32 0)
+  %126 = icmp eq i32 %125, 0
   br i1 %126, label %127, label %130
 
 ; <label>:127:                                    ; preds = %124
@@ -3744,7 +3744,7 @@ define internal void @applySavedTimeInfoToOutputFile(i8*) #0 {
   %10 = call i32 @utime(i8* %9, %struct.utimbuf* %4) #8
   store i32 %10, i32* %3, align 4
   %11 = load i32, i32* %3, align 4
-  %12 = call i1 @ext_callee(i32 33, i32 %11, i32 0)
+  %12 = icmp ne i32 %11, 0
   br i1 %12, label %13, label %14
 
 ; <label>:13:                                     ; preds = %1
@@ -4131,7 +4131,7 @@ define internal zeroext i8 @uInt64_isZero(%struct.UInt64*) #0 {
 
 ; <label>:5:                                      ; preds = %19, %1
   %6 = load i32, i32* %4, align 4
-  %7 = call i1 @ext_callee(i32 40, i32 %6, i32 8)
+  %7 = icmp slt i32 %6, 8
   br i1 %7, label %8, label %22
 
 ; <label>:8:                                      ; preds = %5
@@ -4142,7 +4142,7 @@ define internal zeroext i8 @uInt64_isZero(%struct.UInt64*) #0 {
   %13 = getelementptr inbounds [8 x i8], [8 x i8]* %10, i64 0, i64 %12
   %14 = load i8, i8* %13, align 1
   %15 = zext i8 %14 to i32
-  %16 = call i1 @ext_callee(i32 33, i32 %15, i32 0)
+  %16 = icmp ne i32 %15, 0
   br i1 %16, label %17, label %18
 
 ; <label>:17:                                     ; preds = %8
@@ -4236,7 +4236,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   store i32 0, i32* %11, align 4
   %19 = load %struct._IO_FILE*, %struct._IO_FILE** %5, align 8
   %20 = call i32 @ferror(%struct._IO_FILE* %19) #8
-  %21 = call i1 @ext_callee(i32 33, i32 %20, i32 0)
+  %21 = icmp ne i32 %20, 0
   br i1 %21, label %22, label %23
 
 ; <label>:22:                                     ; preds = %2
@@ -4245,7 +4245,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 ; <label>:23:                                     ; preds = %2
   %24 = load %struct._IO_FILE*, %struct._IO_FILE** %4, align 8
   %25 = call i32 @ferror(%struct._IO_FILE* %24) #8
-  %26 = call i1 @ext_callee(i32 33, i32 %25, i32 0)
+  %26 = icmp ne i32 %25, 0
   br i1 %26, label %27, label %28
 
 ; <label>:27:                                     ; preds = %23
@@ -4269,7 +4269,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 
 ; <label>:39:                                     ; preds = %29
   %40 = load i32, i32* %7, align 4
-  %41 = call i1 @ext_callee(i32 33, i32 %40, i32 0)
+  %41 = icmp ne i32 %40, 0
   br i1 %41, label %42, label %43
 
 ; <label>:42:                                     ; preds = %39, %29
@@ -4324,7 +4324,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 ; <label>:71:                                     ; preds = %65, %62, %59
   %72 = load %struct._IO_FILE*, %struct._IO_FILE** %5, align 8
   %73 = call i32 @ferror(%struct._IO_FILE* %72) #8
-  %74 = call i1 @ext_callee(i32 33, i32 %73, i32 0)
+  %74 = icmp ne i32 %73, 0
   br i1 %74, label %75, label %76
 
 ; <label>:75:                                     ; preds = %71
@@ -4335,7 +4335,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 
 ; <label>:77:                                     ; preds = %46
   %78 = load i32, i32* %7, align 4
-  %79 = call i1 @ext_callee(i32 33, i32 %78, i32 4)
+  %79 = icmp ne i32 %78, 4
   br i1 %79, label %80, label %81
 
 ; <label>:80:                                     ; preds = %77
@@ -4345,7 +4345,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   %82 = load i8*, i8** %6, align 8
   call void @BZ2_bzReadGetUnused(i32* %7, i8* %82, i8** %16, i32* %15)
   %83 = load i32, i32* %7, align 4
-  %84 = call i1 @ext_callee(i32 33, i32 %83, i32 0)
+  %84 = icmp ne i32 %83, 0
   br i1 %84, label %85, label %86
 
 ; <label>:85:                                     ; preds = %81
@@ -4361,7 +4361,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 ; <label>:88:                                     ; preds = %101, %86
   %89 = load i32, i32* %12, align 4
   %90 = load i32, i32* %15, align 4
-  %91 = call i1 @ext_callee(i32 40, i32 %89, i32 %90)
+  %91 = icmp slt i32 %89, %90
   br i1 %91, label %92, label %104
 
 ; <label>:92:                                     ; preds = %88
@@ -4386,7 +4386,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   %105 = load i8*, i8** %6, align 8
   call void @BZ2_bzReadClose(i32* %7, i8* %105)
   %106 = load i32, i32* %7, align 4
-  %107 = call i1 @ext_callee(i32 33, i32 %106, i32 0)
+  %107 = icmp ne i32 %106, 0
   br i1 %107, label %108, label %109
 
 ; <label>:108:                                    ; preds = %104
@@ -4459,7 +4459,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 ; <label>:143:                                    ; preds = %137
   %144 = load %struct._IO_FILE*, %struct._IO_FILE** %5, align 8
   %145 = call i32 @ferror(%struct._IO_FILE* %144) #8
-  %146 = call i1 @ext_callee(i32 33, i32 %145, i32 0)
+  %146 = icmp ne i32 %145, 0
   br i1 %146, label %147, label %148
 
 ; <label>:147:                                    ; preds = %143
@@ -4470,7 +4470,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   %150 = call i32 @fflush(%struct._IO_FILE* %149)
   store i32 %150, i32* %9, align 4
   %151 = load i32, i32* %9, align 4
-  %152 = call i1 @ext_callee(i32 33, i32 %151, i32 0)
+  %152 = icmp ne i32 %151, 0
   br i1 %152, label %153, label %154
 
 ; <label>:153:                                    ; preds = %148
@@ -4488,7 +4488,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   store i32 %160, i32* %9, align 4
   store %struct._IO_FILE* null, %struct._IO_FILE** @outputHandleJustInCase, align 8
   %161 = load i32, i32* %9, align 4
-  %162 = call i1 @ext_callee(i32 32, i32 %161, i32 -1)
+  %162 = icmp eq i32 %161, -1
   br i1 %162, label %163, label %164
 
 ; <label>:163:                                    ; preds = %158
@@ -4500,7 +4500,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
 ; <label>:165:                                    ; preds = %164, %154
   store %struct._IO_FILE* null, %struct._IO_FILE** @outputHandleJustInCase, align 8
   %166 = load i32, i32* @verbosity, align 4
-  %167 = call i1 @ext_callee(i32 39, i32 %166, i32 2)
+  %167 = icmp sge i32 %166, 2
   br i1 %167, label %168, label %171
 
 ; <label>:168:                                    ; preds = %165
@@ -4539,7 +4539,7 @@ define internal zeroext i8 @uncompressStream(%struct._IO_FILE*, %struct._IO_FILE
   store i32 %186, i32* %10, align 4
   %187 = load %struct._IO_FILE*, %struct._IO_FILE** %4, align 8
   %188 = call i32 @ferror(%struct._IO_FILE* %187) #8
-  %189 = call i1 @ext_callee(i32 33, i32 %188, i32 0)
+  %189 = icmp ne i32 %188, 0
   br i1 %189, label %190, label %191
 
 ; <label>:190:                                    ; preds = %182
@@ -4775,7 +4775,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
 
 ; <label>:38:                                     ; preds = %48, %35
   %39 = load i32, i32* %5, align 4
-  %40 = call i1 @ext_callee(i32 32, i32 %39, i32 0)
+  %40 = icmp eq i32 %39, 0
   br i1 %40, label %41, label %49
 
 ; <label>:41:                                     ; preds = %38
@@ -4784,7 +4784,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
   %44 = call i32 @BZ2_bzRead(i32* %5, i8* %42, i8* %43, i32 5000)
   store i32 %44, i32* %8, align 4
   %45 = load i32, i32* %5, align 4
-  %46 = call i1 @ext_callee(i32 32, i32 %45, i32 -5)
+  %46 = icmp eq i32 %45, -5
   br i1 %46, label %47, label %48
 
 ; <label>:47:                                     ; preds = %41
@@ -4795,7 +4795,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
 
 ; <label>:49:                                     ; preds = %38
   %50 = load i32, i32* %5, align 4
-  %51 = call i1 @ext_callee(i32 33, i32 %50, i32 4)
+  %51 = icmp ne i32 %50, 4
   br i1 %51, label %52, label %53
 
 ; <label>:52:                                     ; preds = %49
@@ -4805,7 +4805,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
   %54 = load i8*, i8** %4, align 8
   call void @BZ2_bzReadGetUnused(i32* %5, i8* %54, i8** %14, i32* %13)
   %55 = load i32, i32* %5, align 4
-  %56 = call i1 @ext_callee(i32 33, i32 %55, i32 0)
+  %56 = icmp ne i32 %55, 0
   br i1 %56, label %57, label %58
 
 ; <label>:57:                                     ; preds = %53
@@ -4821,7 +4821,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
 ; <label>:60:                                     ; preds = %73, %58
   %61 = load i32, i32* %10, align 4
   %62 = load i32, i32* %13, align 4
-  %63 = call i1 @ext_callee(i32 40, i32 %61, i32 %62)
+  %63 = icmp slt i32 %61, %62
   br i1 %63, label %64, label %76
 
 ; <label>:64:                                     ; preds = %60
@@ -4893,7 +4893,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
 
 ; <label>:102:                                    ; preds = %96
   %103 = load i32, i32* @verbosity, align 4
-  %104 = call i1 @ext_callee(i32 39, i32 %103, i32 2)
+  %104 = icmp sge i32 %103, 2
   br i1 %104, label %105, label %108
 
 ; <label>:105:                                    ; preds = %102
@@ -4909,7 +4909,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
   %110 = load i8*, i8** %4, align 8
   call void @BZ2_bzReadClose(i32* %6, i8* %110)
   %111 = load i32, i32* @verbosity, align 4
-  %112 = call i1 @ext_callee(i32 32, i32 %111, i32 0)
+  %112 = icmp eq i32 %111, 0
   br i1 %112, label %113, label %117
 
 ; <label>:113:                                    ; preds = %109
@@ -4969,7 +4969,7 @@ define internal zeroext i8 @testStream(%struct._IO_FILE*) #0 {
 
 ; <label>:136:                                    ; preds = %133, %129
   %137 = load i32, i32* %9, align 4
-  %138 = call i1 @ext_callee(i32 32, i32 %137, i32 1)
+  %138 = icmp eq i32 %137, 1
   br i1 %138, label %139, label %142
 
 ; <label>:139:                                    ; preds = %136

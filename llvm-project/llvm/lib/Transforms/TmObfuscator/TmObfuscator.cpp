@@ -131,8 +131,8 @@ namespace {
 			}
 			
 			
-			if (candidate_counter % 10 <= 2 && obfuscation_counter < total_cap){			       
-			  errs() << "candidate counter :"<< candidate_counter << '\n';
+			if (candidate_counter % 10 <= -1 && obfuscation_counter < total_cap){			       
+			  errs() << "candidate counter :"<< candidate_counter;
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
 			  ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
@@ -158,14 +158,13 @@ namespace {
 			  ReplaceInstWithInst(inst->getParent()->getInstList(), inst,newInst);
 			  obfuscation_counter += 1;
 			  errs() << "\033[1;31m function ->\033[0m";
-			  errs().write_escaped(tmp->getName());			  
+			  errs().write_escaped(tmp->getName());	  
 			  newInst -> print(errs());
 			  errs() << "replace former icmp inst";
 			  //inst->print(errs());			  
 			  errs() << "\033[1;31m ob num: \033[0m";
 			  errs() << obfuscation_counter << '\n';
 			  //change branch condition to the callinst instruction
-			  //errs() << "predicate changed\n";
 			 
 			  if(AI->isConditional()){//have to check isconditional, or will prompt segmment fault 
 			    AI->setCondition(newInst);

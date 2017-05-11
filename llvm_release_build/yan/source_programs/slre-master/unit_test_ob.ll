@@ -353,7 +353,7 @@ define i32 @main() #0 {
   %13 = add nsw i32 %12, 1
   store i32 %13, i32* @static_total_tests, align 4
   %14 = call i32 @slre_match(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str, i32 0, i32 0), i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.1, i32 0, i32 0), i32 4, %struct.slre_cap* null, i32 0, i32 0)
-  %15 = call i1 @ext_callee(i32 32, i32 %14, i32 4)
+  %15 = icmp eq i32 %14, 4
   br i1 %15, label %22, label %16
 
 ; <label>:16:                                     ; preds = %11
@@ -380,7 +380,7 @@ define i32 @main() #0 {
   %26 = add nsw i32 %25, 1
   store i32 %26, i32* @static_total_tests, align 4
   %27 = call i32 @slre_match(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.4, i32 0, i32 0), i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.1, i32 0, i32 0), i32 4, %struct.slre_cap* null, i32 0, i32 0)
-  %28 = call i1 @ext_callee(i32 32, i32 %27, i32 0)
+  %28 = icmp eq i32 %27, 0
   br i1 %28, label %35, label %29
 
 ; <label>:29:                                     ; preds = %24
@@ -596,7 +596,7 @@ define i32 @main() #0 {
   %130 = add nsw i32 %129, 1
   store i32 %130, i32* @static_total_tests, align 4
   %131 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.22, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i32 0, i32 0), i32 1, %struct.slre_cap* null, i32 0, i32 0)
-  %132 = call i1 @ext_callee(i32 32, i32 %131, i32 -6)
+  %132 = icmp eq i32 %131, -6
   br i1 %132, label %139, label %133
 
 ; <label>:133:                                    ; preds = %128
@@ -623,7 +623,7 @@ define i32 @main() #0 {
   %143 = add nsw i32 %142, 1
   store i32 %143, i32* @static_total_tests, align 4
   %144 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.24, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.25, i32 0, i32 0), i32 1, %struct.slre_cap* null, i32 0, i32 0)
-  %145 = call i1 @ext_callee(i32 32, i32 %144, i32 1)
+  %145 = icmp eq i32 %144, 1
   br i1 %145, label %152, label %146
 
 ; <label>:146:                                    ; preds = %141
@@ -650,7 +650,7 @@ define i32 @main() #0 {
   %156 = add nsw i32 %155, 1
   store i32 %156, i32* @static_total_tests, align 4
   %157 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.27, i32 0, i32 0), i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.28, i32 0, i32 0), i32 0, %struct.slre_cap* null, i32 0, i32 0)
-  %158 = call i1 @ext_callee(i32 32, i32 %157, i32 -1)
+  %158 = icmp eq i32 %157, -1
   br i1 %158, label %165, label %159
 
 ; <label>:159:                                    ; preds = %154
@@ -881,7 +881,7 @@ define i32 @main() #0 {
   store i32 %274, i32* @static_total_tests, align 4
   %275 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i32 0, i32 0
   %276 = call i32 @slre_match(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.42, i32 0, i32 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.43, i32 0, i32 0), i32 23, %struct.slre_cap* %275, i32 10, i32 0)
-  %277 = call i1 @ext_callee(i32 32, i32 %276, i32 19)
+  %277 = icmp eq i32 %276, 19
   br i1 %277, label %284, label %278
 
 ; <label>:278:                                    ; preds = %272
@@ -910,7 +910,7 @@ define i32 @main() #0 {
   %289 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i64 0, i64 0
   %290 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %289, i32 0, i32 1
   %291 = load i32, i32* %290, align 8
-  %292 = call i1 @ext_callee(i32 32, i32 %291, i32 14)
+  %292 = icmp eq i32 %291, 14
   br i1 %292, label %299, label %293
 
 ; <label>:293:                                    ; preds = %286
@@ -940,7 +940,7 @@ define i32 @main() #0 {
   %305 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %304, i32 0, i32 0
   %306 = load i8*, i8** %305, align 16
   %307 = call i32 @memcmp(i8* %306, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.46, i32 0, i32 0), i64 14) #5
-  %308 = call i1 @ext_callee(i32 32, i32 %307, i32 0)
+  %308 = icmp eq i32 %307, 0
   br i1 %308, label %315, label %309
 
 ; <label>:309:                                    ; preds = %301
@@ -1156,7 +1156,7 @@ define i32 @main() #0 {
   %410 = add nsw i32 %409, 1
   store i32 %410, i32* @static_total_tests, align 4
   %411 = call i32 @slre_match(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.63, i32 0, i32 0), i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.57, i32 0, i32 0), i32 5, %struct.slre_cap* null, i32 0, i32 0)
-  %412 = call i1 @ext_callee(i32 32, i32 %411, i32 1)
+  %412 = icmp eq i32 %411, 1
   br i1 %412, label %419, label %413
 
 ; <label>:413:                                    ; preds = %408
@@ -1183,7 +1183,7 @@ define i32 @main() #0 {
   %423 = add nsw i32 %422, 1
   store i32 %423, i32* @static_total_tests, align 4
   %424 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.65, i32 0, i32 0), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.66, i32 0, i32 0), i32 6, %struct.slre_cap* null, i32 0, i32 0)
-  %425 = call i1 @ext_callee(i32 32, i32 %424, i32 3)
+  %425 = icmp eq i32 %424, 3
   br i1 %425, label %432, label %426
 
 ; <label>:426:                                    ; preds = %421
@@ -1210,7 +1210,7 @@ define i32 @main() #0 {
   %436 = add nsw i32 %435, 1
   store i32 %436, i32* @static_total_tests, align 4
   %437 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.68, i32 0, i32 0), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.69, i32 0, i32 0), i32 9, %struct.slre_cap* null, i32 0, i32 0)
-  %438 = call i1 @ext_callee(i32 32, i32 %437, i32 5)
+  %438 = icmp eq i32 %437, 5
   br i1 %438, label %445, label %439
 
 ; <label>:439:                                    ; preds = %434
@@ -1426,7 +1426,7 @@ define i32 @main() #0 {
   %540 = add nsw i32 %539, 1
   store i32 %540, i32* @static_total_tests, align 4
   %541 = call i32 @slre_match(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.88, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.89, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %542 = call i1 @ext_callee(i32 32, i32 %541, i32 -1)
+  %542 = icmp eq i32 %541, -1
   br i1 %542, label %549, label %543
 
 ; <label>:543:                                    ; preds = %538
@@ -1453,7 +1453,7 @@ define i32 @main() #0 {
   %553 = add nsw i32 %552, 1
   store i32 %553, i32* @static_total_tests, align 4
   %554 = call i32 @slre_match(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.88, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.89, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 1)
-  %555 = call i1 @ext_callee(i32 32, i32 %554, i32 2)
+  %555 = icmp eq i32 %554, 2
   br i1 %555, label %562, label %556
 
 ; <label>:556:                                    ; preds = %551
@@ -1480,7 +1480,7 @@ define i32 @main() #0 {
   %566 = add nsw i32 %565, 1
   store i32 %566, i32* @static_total_tests, align 4
   %567 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.92, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.89, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %568 = call i1 @ext_callee(i32 32, i32 %567, i32 -2)
+  %568 = icmp eq i32 %567, -2
   br i1 %568, label %575, label %569
 
 ; <label>:569:                                    ; preds = %564
@@ -1696,7 +1696,7 @@ define i32 @main() #0 {
   %670 = add nsw i32 %669, 1
   store i32 %670, i32* @static_total_tests, align 4
   %671 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.109, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.101, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %672 = call i1 @ext_callee(i32 32, i32 %671, i32 -1)
+  %672 = icmp eq i32 %671, -1
   br i1 %672, label %679, label %673
 
 ; <label>:673:                                    ; preds = %668
@@ -1723,7 +1723,7 @@ define i32 @main() #0 {
   %683 = add nsw i32 %682, 1
   store i32 %683, i32* @static_total_tests, align 4
   %684 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.111, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.101, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %685 = call i1 @ext_callee(i32 32, i32 %684, i32 -1)
+  %685 = icmp eq i32 %684, -1
   br i1 %685, label %692, label %686
 
 ; <label>:686:                                    ; preds = %681
@@ -1750,7 +1750,7 @@ define i32 @main() #0 {
   %696 = add nsw i32 %695, 1
   store i32 %696, i32* @static_total_tests, align 4
   %697 = call i32 @slre_match(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.113, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.101, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %698 = call i1 @ext_callee(i32 32, i32 %697, i32 2)
+  %698 = icmp eq i32 %697, 2
   br i1 %698, label %705, label %699
 
 ; <label>:699:                                    ; preds = %694
@@ -1966,7 +1966,7 @@ define i32 @main() #0 {
   %800 = add nsw i32 %799, 1
   store i32 %800, i32* @static_total_tests, align 4
   %801 = call i32 @slre_match(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.128, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.129, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %802 = call i1 @ext_callee(i32 32, i32 %801, i32 7)
+  %802 = icmp eq i32 %801, 7
   br i1 %802, label %809, label %803
 
 ; <label>:803:                                    ; preds = %798
@@ -1993,7 +1993,7 @@ define i32 @main() #0 {
   %813 = add nsw i32 %812, 1
   store i32 %813, i32* @static_total_tests, align 4
   %814 = call i32 @slre_match(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.131, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.129, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %815 = call i1 @ext_callee(i32 32, i32 %814, i32 7)
+  %815 = icmp eq i32 %814, 7
   br i1 %815, label %822, label %816
 
 ; <label>:816:                                    ; preds = %811
@@ -2020,7 +2020,7 @@ define i32 @main() #0 {
   %826 = add nsw i32 %825, 1
   store i32 %826, i32* @static_total_tests, align 4
   %827 = call i32 @slre_match(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.133, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.129, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %828 = call i1 @ext_callee(i32 32, i32 %827, i32 7)
+  %828 = icmp eq i32 %827, 7
   br i1 %828, label %835, label %829
 
 ; <label>:829:                                    ; preds = %824
@@ -2236,7 +2236,7 @@ define i32 @main() #0 {
   %930 = add nsw i32 %929, 1
   store i32 %930, i32* @static_total_tests, align 4
   %931 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.149, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.147, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %932 = call i1 @ext_callee(i32 32, i32 %931, i32 3)
+  %932 = icmp eq i32 %931, 3
   br i1 %932, label %939, label %933
 
 ; <label>:933:                                    ; preds = %928
@@ -2263,7 +2263,7 @@ define i32 @main() #0 {
   %943 = add nsw i32 %942, 1
   store i32 %943, i32* @static_total_tests, align 4
   %944 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.151, i32 0, i32 0), i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.152, i32 0, i32 0), i32 9, %struct.slre_cap* null, i32 0, i32 0)
-  %945 = call i1 @ext_callee(i32 32, i32 %944, i32 6)
+  %945 = icmp eq i32 %944, 6
   br i1 %945, label %952, label %946
 
 ; <label>:946:                                    ; preds = %941
@@ -2290,7 +2290,7 @@ define i32 @main() #0 {
   %956 = add nsw i32 %955, 1
   store i32 %956, i32* @static_total_tests, align 4
   %957 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.154, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.101, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %958 = call i1 @ext_callee(i32 32, i32 %957, i32 -3)
+  %958 = icmp eq i32 %957, -3
   br i1 %958, label %965, label %959
 
 ; <label>:959:                                    ; preds = %954
@@ -2512,7 +2512,7 @@ define i32 @main() #0 {
   %1065 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i64 0, i64 0
   %1066 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %1065, i32 0, i32 1
   %1067 = load i32, i32* %1066, align 8
-  %1068 = call i1 @ext_callee(i32 32, i32 %1067, i32 2)
+  %1068 = icmp eq i32 %1067, 2
   br i1 %1068, label %1075, label %1069
 
 ; <label>:1069:                                   ; preds = %1062
@@ -2542,7 +2542,7 @@ define i32 @main() #0 {
   %1081 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %1080, i32 0, i32 0
   %1082 = load i8*, i8** %1081, align 16
   %1083 = call i32 @memcmp(i8* %1082, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.173, i32 0, i32 0), i64 2) #5
-  %1084 = call i1 @ext_callee(i32 32, i32 %1083, i32 0)
+  %1084 = icmp eq i32 %1083, 0
   br i1 %1084, label %1091, label %1085
 
 ; <label>:1085:                                   ; preds = %1077
@@ -2570,7 +2570,7 @@ define i32 @main() #0 {
   store i32 %1095, i32* @static_total_tests, align 4
   %1096 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i32 0, i32 0
   %1097 = call i32 @slre_match(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.175, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.176, i32 0, i32 0), i32 3, %struct.slre_cap* %1096, i32 10, i32 0)
-  %1098 = call i1 @ext_callee(i32 32, i32 %1097, i32 3)
+  %1098 = icmp eq i32 %1097, 3
   br i1 %1098, label %1105, label %1099
 
 ; <label>:1099:                                   ; preds = %1093
@@ -2800,7 +2800,7 @@ define i32 @main() #0 {
   store i32 %1213, i32* @static_total_tests, align 4
   %1214 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i32 0, i32 0
   %1215 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.187, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.176, i32 0, i32 0), i32 3, %struct.slre_cap* %1214, i32 10, i32 0)
-  %1216 = call i1 @ext_callee(i32 32, i32 %1215, i32 2)
+  %1216 = icmp eq i32 %1215, 2
   br i1 %1216, label %1223, label %1217
 
 ; <label>:1217:                                   ; preds = %1211
@@ -2828,7 +2828,7 @@ define i32 @main() #0 {
   store i32 %1227, i32* @static_total_tests, align 4
   %1228 = getelementptr inbounds [10 x %struct.slre_cap], [10 x %struct.slre_cap]* %2, i32 0, i32 0
   %1229 = call i32 @slre_match(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.189, i32 0, i32 0), i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.190, i32 0, i32 0), i32 5, %struct.slre_cap* %1228, i32 10, i32 0)
-  %1230 = call i1 @ext_callee(i32 32, i32 %1229, i32 5)
+  %1230 = icmp eq i32 %1229, 5
   br i1 %1230, label %1237, label %1231
 
 ; <label>:1231:                                   ; preds = %1225
@@ -2855,7 +2855,7 @@ define i32 @main() #0 {
   %1241 = add nsw i32 %1240, 1
   store i32 %1241, i32* @static_total_tests, align 4
   %1242 = call i32 @slre_match(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.192, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.193, i32 0, i32 0), i32 8, %struct.slre_cap* null, i32 0, i32 0)
-  %1243 = call i1 @ext_callee(i32 32, i32 %1242, i32 8)
+  %1243 = icmp eq i32 %1242, 8
   br i1 %1243, label %1250, label %1244
 
 ; <label>:1244:                                   ; preds = %1239
@@ -3073,7 +3073,7 @@ define i32 @main() #0 {
   %1347 = add nsw i32 %1346, 1
   store i32 %1347, i32* @static_total_tests, align 4
   %1348 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.211, i32 0, i32 0), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.166, i32 0, i32 0), i32 6, %struct.slre_cap* null, i32 0, i32 0)
-  %1349 = call i1 @ext_callee(i32 32, i32 %1348, i32 1)
+  %1349 = icmp eq i32 %1348, 1
   br i1 %1349, label %1356, label %1350
 
 ; <label>:1350:                                   ; preds = %1345
@@ -3100,7 +3100,7 @@ define i32 @main() #0 {
   %1360 = add nsw i32 %1359, 1
   store i32 %1360, i32* @static_total_tests, align 4
   %1361 = call i32 @slre_match(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.213, i32 0, i32 0), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.166, i32 0, i32 0), i32 6, %struct.slre_cap* null, i32 0, i32 0)
-  %1362 = call i1 @ext_callee(i32 32, i32 %1361, i32 3)
+  %1362 = icmp eq i32 %1361, 3
   br i1 %1362, label %1369, label %1363
 
 ; <label>:1363:                                   ; preds = %1358
@@ -3127,7 +3127,7 @@ define i32 @main() #0 {
   %1373 = add nsw i32 %1372, 1
   store i32 %1373, i32* @static_total_tests, align 4
   %1374 = call i32 @slre_match(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.215, i32 0, i32 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.216, i32 0, i32 0), i32 7, %struct.slre_cap* null, i32 0, i32 0)
-  %1375 = call i1 @ext_callee(i32 32, i32 %1374, i32 4)
+  %1375 = icmp eq i32 %1374, 4
   br i1 %1375, label %1382, label %1376
 
 ; <label>:1376:                                   ; preds = %1371
@@ -3344,7 +3344,7 @@ define i32 @main() #0 {
   %1478 = add nsw i32 %1477, 1
   store i32 %1478, i32* @static_total_tests, align 4
   %1479 = call i32 @slre_match(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.234, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.138, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %1480 = call i1 @ext_callee(i32 32, i32 %1479, i32 1)
+  %1480 = icmp eq i32 %1479, 1
   br i1 %1480, label %1487, label %1481
 
 ; <label>:1481:                                   ; preds = %1476
@@ -3371,7 +3371,7 @@ define i32 @main() #0 {
   %1491 = add nsw i32 %1490, 1
   store i32 %1491, i32* @static_total_tests, align 4
   %1492 = call i32 @slre_match(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.236, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.138, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %1493 = call i1 @ext_callee(i32 32, i32 %1492, i32 2)
+  %1493 = icmp eq i32 %1492, 2
   br i1 %1493, label %1500, label %1494
 
 ; <label>:1494:                                   ; preds = %1489
@@ -3398,7 +3398,7 @@ define i32 @main() #0 {
   %1504 = add nsw i32 %1503, 1
   store i32 %1504, i32* @static_total_tests, align 4
   %1505 = call i32 @slre_match(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.238, i32 0, i32 0), i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.222, i32 0, i32 0), i32 6, %struct.slre_cap* null, i32 0, i32 0)
-  %1506 = call i1 @ext_callee(i32 32, i32 %1505, i32 4)
+  %1506 = icmp eq i32 %1505, 4
   br i1 %1506, label %1513, label %1507
 
 ; <label>:1507:                                   ; preds = %1502
@@ -3620,7 +3620,7 @@ define i32 @main() #0 {
   %1614 = add nsw i32 %1613, 1
   store i32 %1614, i32* @static_total_tests, align 4
   %1615 = call i32 @slre_match(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.246, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.252, i32 0, i32 0), i32 1, %struct.slre_cap* null, i32 0, i32 0)
-  %1616 = call i1 @ext_callee(i32 32, i32 %1615, i32 -1)
+  %1616 = icmp eq i32 %1615, -1
   br i1 %1616, label %1623, label %1617
 
 ; <label>:1617:                                   ; preds = %1612
@@ -3647,7 +3647,7 @@ define i32 @main() #0 {
   %1627 = add nsw i32 %1626, 1
   store i32 %1627, i32* @static_total_tests, align 4
   %1628 = call i32 @slre_match(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.254, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.138, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 0)
-  %1629 = call i1 @ext_callee(i32 32, i32 %1628, i32 3)
+  %1629 = icmp eq i32 %1628, 3
   br i1 %1629, label %1636, label %1630
 
 ; <label>:1630:                                   ; preds = %1625
@@ -3674,7 +3674,7 @@ define i32 @main() #0 {
   %1640 = add nsw i32 %1639, 1
   store i32 %1640, i32* @static_total_tests, align 4
   %1641 = call i32 @slre_match(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.256, i32 0, i32 0), i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.138, i32 0, i32 0), i32 3, %struct.slre_cap* null, i32 0, i32 1)
-  %1642 = call i1 @ext_callee(i32 32, i32 %1641, i32 3)
+  %1642 = icmp eq i32 %1641, 3
   br i1 %1642, label %1649, label %1643
 
 ; <label>:1643:                                   ; preds = %1638
@@ -3890,7 +3890,7 @@ define i32 @main() #0 {
   %1744 = add nsw i32 %1743, 1
   store i32 %1744, i32* @static_total_tests, align 4
   %1745 = call i32 @slre_match(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.273, i32 0, i32 0), i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.259, i32 0, i32 0), i32 2, %struct.slre_cap* null, i32 0, i32 0)
-  %1746 = call i1 @ext_callee(i32 32, i32 %1745, i32 2)
+  %1746 = icmp eq i32 %1745, 2
   br i1 %1746, label %1753, label %1747
 
 ; <label>:1747:                                   ; preds = %1742
@@ -3917,7 +3917,7 @@ define i32 @main() #0 {
   %1757 = add nsw i32 %1756, 1
   store i32 %1757, i32* @static_total_tests, align 4
   %1758 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.275, i32 0, i32 0), i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.259, i32 0, i32 0), i32 2, %struct.slre_cap* null, i32 0, i32 0)
-  %1759 = call i1 @ext_callee(i32 32, i32 %1758, i32 2)
+  %1759 = icmp eq i32 %1758, 2
   br i1 %1759, label %1766, label %1760
 
 ; <label>:1760:                                   ; preds = %1755
@@ -3944,7 +3944,7 @@ define i32 @main() #0 {
   %1770 = add nsw i32 %1769, 1
   store i32 %1770, i32* @static_total_tests, align 4
   %1771 = call i32 @slre_match(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.277, i32 0, i32 0), i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.278, i32 0, i32 0), i32 2, %struct.slre_cap* null, i32 0, i32 0)
-  %1772 = call i1 @ext_callee(i32 32, i32 %1771, i32 2)
+  %1772 = icmp eq i32 %1771, 2
   br i1 %1772, label %1779, label %1773
 
 ; <label>:1773:                                   ; preds = %1768
@@ -4160,7 +4160,7 @@ define i32 @main() #0 {
   %1874 = add nsw i32 %1873, 1
   store i32 %1874, i32* @static_total_tests, align 4
   %1875 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.285, i32 0, i32 0), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.289, i32 0, i32 0), i32 11, %struct.slre_cap* null, i32 0, i32 1)
-  %1876 = call i1 @ext_callee(i32 32, i32 %1875, i32 8)
+  %1876 = icmp eq i32 %1875, 8
   br i1 %1876, label %1883, label %1877
 
 ; <label>:1877:                                   ; preds = %1872
@@ -4187,7 +4187,7 @@ define i32 @main() #0 {
   %1887 = add nsw i32 %1886, 1
   store i32 %1887, i32* @static_total_tests, align 4
   %1888 = call i32 @slre_match(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.288, i32 0, i32 0), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.292, i32 0, i32 0), i32 11, %struct.slre_cap* null, i32 0, i32 1)
-  %1889 = call i1 @ext_callee(i32 32, i32 %1888, i32 8)
+  %1889 = icmp eq i32 %1888, 8
   br i1 %1889, label %1896, label %1890
 
 ; <label>:1890:                                   ; preds = %1885
@@ -4214,7 +4214,7 @@ define i32 @main() #0 {
   %1901 = trunc i64 %1900 to i32
   %1902 = getelementptr inbounds [4 x %struct.slre_cap], [4 x %struct.slre_cap]* %4, i32 0, i32 0
   %1903 = call i32 @slre_match(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.297, i32 0, i32 0), i8* %1898, i32 %1901, %struct.slre_cap* %1902, i32 4, i32 0)
-  %1904 = call i1 @ext_callee(i32 38, i32 %1903, i32 0)
+  %1904 = icmp sgt i32 %1903, 0
   br i1 %1904, label %1905, label %1919
 
 ; <label>:1905:                                   ; preds = %1897
@@ -4454,7 +4454,7 @@ define i32 @main() #0 {
   %2046 = getelementptr inbounds [3 x %struct.slre_cap], [3 x %struct.slre_cap]* %10, i64 0, i64 1
   %2047 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %2046, i32 0, i32 1
   %2048 = load i32, i32* %2047, align 8
-  %2049 = call i1 @ext_callee(i32 32, i32 %2048, i32 2)
+  %2049 = icmp eq i32 %2048, 2
   br i1 %2049, label %2056, label %2050
 
 ; <label>:2050:                                   ; preds = %2043
@@ -4483,7 +4483,7 @@ define i32 @main() #0 {
   %2061 = getelementptr inbounds [3 x %struct.slre_cap], [3 x %struct.slre_cap]* %10, i64 0, i64 2
   %2062 = getelementptr inbounds %struct.slre_cap, %struct.slre_cap* %2061, i32 0, i32 1
   %2063 = load i32, i32* %2062, align 8
-  %2064 = call i1 @ext_callee(i32 32, i32 %2063, i32 1)
+  %2064 = icmp eq i32 %2063, 1
   br i1 %2064, label %2071, label %2065
 
 ; <label>:2065:                                   ; preds = %2058
@@ -4515,7 +4515,7 @@ define i32 @main() #0 {
   %2079 = getelementptr inbounds i8, i8* %2078, i64 0
   %2080 = load i8, i8* %2079, align 1
   %2081 = sext i8 %2080 to i32
-  %2082 = call i1 @ext_callee(i32 32, i32 %2081, i32 122)
+  %2082 = icmp eq i32 %2081, 122
   br i1 %2082, label %2089, label %2083
 
 ; <label>:2083:                                   ; preds = %2073
