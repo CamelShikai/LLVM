@@ -19,8 +19,8 @@
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
-\author{Yan Wang\inst{1} \and Dinghao Wu\inst{2}
-Shuai Wang \and Pei Wnag}
+\author{Yan Wang\inst{1} \and Dinghao Wu,\inst{2}
+Shuai Wang \and Pei Wang}
 %
 \authorrunning{Ivar Ekeland et al.}   % abbreviated author list (for running head)
 %
@@ -44,19 +44,27 @@ Craig Chambers, Kim B. Bruce, Elisa Bertino}
 
 \begin{abstract}        % give a summary of your paper
 Software security is a fundamental research domain in this threat emerging technology world. Leveraging system vulnerbilities is one of the common ways to hack into 
-computer system. Hackers have to understand the program control flow in order to figure out the hacking logic and technique. In this way, consealing important branch trigger condition logics are crucial for protecting softwares from being hacked. In this paper we propose a novel control flow obfuscation method with Turing machine. By entwining the original software programs with Turing machine executio, software control flow graphs could be significantly obfuscated which means it is much more harder or even impossible for hackers to embed malicious execution codes into Turing machine obfuscated programs. Evaluation results demonstrate that software programs become much more complicated after Turing maching obfuscation. At current stage, we only obfuscated the interger operand instructions which are vital to the whole program.
+computer system. Hackers have to understand the program control flow in order to figure out the hacking logic and technique. In this way, consealing important branch trigger condition logics are crucial for protecting softwares from being hacked. In this paper we propose a novel control flow obfuscation method with Turing machine. By entwining the original software programs with Turing machine executio, software control flow graphs could be significantly obfuscated which means it is much more harder or even impossible for hackers to embed malicious execution codes into Turing machine obfuscated programs.We implemented a obfuscation tool to gernerate obfuscated binaries using LLVM. Evaluation results demonstrate that software programs become much more complicated after Turing maching obfuscation. At current stage, we only obfuscated the interger operand instructions which are vital to the whole program.
 %                         please supply keywords within your abstract
-\keywords {software security,control flow obfuscation, Turing machine}
+\keywords {software security,control flow obfuscation, Turing machine,LLVM}
 \end{abstract}
 %
 \section{Introduction}
 %
-Obfuscation derives from intellectual property protection.Consealing the algorithm of a software means a lot for the society especially for high-tech industry.Harden the process of reverse engineering is the general objective of obfuscation. 
+Obfuscation derives from intellectual property protection. Internet brings us unprecedent convience and threat of idea plagiarism and copyright infringement at the same time. Consealing the algorithm of a software means a lot for the society especially for high-tech industry. Generally speaking, obfuscation means to harden the process of reverse engineering.
 
-Recently,Software security has become a bigger and bigger concern in research community because of infamous ransomware attack and severe vulnerbiliy such as the recent ``Wanncry'' insidence and the openssl heartbleeding bug.This incidences challenge the computer world greatly. Hackers endevors to figure out vulnerbilities inside a software program. Knowing the software architecture and program logic like control flow graph is an indispensible prerequisite for hackers to analyze the original codes. With the help of some monitoring techniques hackers could even iterate all possible paths to try to restore all important branch information along the execution paths.\textit{Concolic testing} is an example which expoits symbolic execution given a certain input while it keeps changing input data until the code coverage proceed a threshhold\cite{Sen}.It has been proved to work in restoring the branch information in the original source codes.
-Besides, intellectual property protection is a big concern in mordern society especially in high-tech industry. Reverse engineering technologies are developing rapidly which pose a great threat.Hence, a lot of research focus on preventing bad guys from figuring out the essential logic. Consealing important ``crossroad'' in a source program. Control flow obfuscation is one of these techniques.
+Recently, Software security has become a bigger and bigger concern in research community because of infamous ransomware attack and severe vulnerbiliy such as the recent ``Wanncry'' insidence and the openssl heartbleeding bug.This incidences challenge the computer world greatly. Hackers endevors to figure out vulnerbilities inside a software program. Knowing the software architecture and program logic like control flow graph is an indispensible prerequisite for hackers to analyze the original codes. With the help of some monitoring techniques hackers could even iterate all possible paths to try to restore all important branch information along the execution paths.\textit{Concolic testing} is an example which expoits symbolic execution given a certain input while it keeps changing input data until the code coverage proceed a threshhold\cite{Sen}. It has been proved to work in restoring the branch information in the original source codes. Hence, a lot of research focus on preventing bad guys from figuring out the essential logic. Consealing important ``crossroad'' in a source program. Control flow obfuscation is one of these techniques. Control flow obfuscation aims at complicating the execution path within a source program. Through replacing or insering extra contrlo flow graph edges, the original software logic become harder or even impossible to trace. Previous research\cite{Ma} have prove the effectiveness of contral flow obfuscation.
+
+In this paper,we propose a novel control flow obfuscation method with Turing machine embedded in the original program source codes. Turing machine is the essence of computaion so it could calculate accurately all kinds of computer operation. In this way, important branch conditions in original source code could be replaced by a Turing machine execution which yields the very identical conditional value. Besides, a Turing machine behaves like a state machine so it contains a lot of branch condition checks in Turing machine transition table. In this whole process, sensitive branch information could be successfully hided in Turing machine call graphs. In the mean time, Turing machine execution greatly introduce computational complexity to the target program so it is almost impossible to read the obfuscated programs to do reverse engineering. 
+
+Currently, we are more interested in integer operation condition instructions. Utilizing LLVM, we could turn original program source codes into intermediate representation(IR).Turing machine obfuscator take over from IR and select interested instruction candidates which would be redirected to semantic equivalent Turing machine execution. After all paths finished in the Turing machine ``blackbox'', the original call graph resumes from the the obfuscator interrupt and the whole program control flow graph is greatly expanded and complicated. Since LLVM is the implementation foundation, currently our proposed obfuscator could only be applied to C/C++ source programs. Inspired by previous previous works\cite{Collberg},we evaluate our obfuscator from four demensions which are potency,resilence, cost and stealth respectively. Results indicates that Turing machin obfuscator could effectively obfuscate target source codes with acceptable cost overhead.
+
+This paper is organized as follows. Section 2 discusses related works on obfuscation, especially control flow obfuscation. Section 3 illustrate the idea and archetecture of Turing machine obfuscator. Obfuscator implementation is discussed in section 4. Section 5 discusses the evaluation result of our proposed obfuscator. Finally, we conclude thsi paper in section 6.
+
+
+
 %
-\subsection{Autonomous Systems}
+\subsection{Related Works}
 %
 In this section, we will consider the case when the Hamiltonian $H(x)$
 is autonomous. For the sake of simplicity, we shall also assume that it
@@ -426,6 +434,11 @@ Sect.~5.2 of this article.
 
 \bibitem{Sen} Sen, Koushik, Darko Marinov, and Gul Agha. "CUTE: a concolic unit testing engine for C." ACM SIGSOFT Software Engineering Notes. Vol. 30. No. 5. ACM, 2005.
 
+\bibitem{Ma} Ma, Haoyu, et al. "Control flow obfuscation using neural network to fight concolic testing." International Conference on Security and Privacy in Communication Systems. Springer International Publishing, 2014.
+
+\bibitem{Trans} Wang, Pei, et al. "Translingual obfuscation." Security and Privacy (EuroS\&P), 2016 IEEE European Symposium on. IEEE, 2016.
+
+\bibitem{Collberg} Collberg, Christian, Clark Thomborson, and Douglas Low. "Manufacturing cheap, resilient, and stealthy opaque constructs." Proceedings of the 25th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1998.
 %%
 
 \bibitem{smit:wat} Smith, T.F., Waterman, M.S.: Identification of Common Molecular

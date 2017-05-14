@@ -2,6 +2,9 @@
  (lambda ()
     (LaTeX-add-bibitems
      "Sen"
+     "Ma"
+     "Trans"
+     "Collberg"
      "smit:wat"
      "mes"
      "fos:kes"
