@@ -1,6 +1,7 @@
 (TeX-add-style-hook "lnicst"
  (lambda ()
     (LaTeX-add-bibitems
+     "Sen"
      "smit:wat"
      "mes"
      "fos:kes"

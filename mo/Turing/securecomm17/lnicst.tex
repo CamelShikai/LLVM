@@ -43,27 +43,18 @@ Craig Chambers, Kim B. Bruce, Elisa Bertino}
 % \index{Dean, Jeffrey}
 
 \begin{abstract}        % give a summary of your paper
-The abstract should summarize the contents of the paper
-using at least 70 and at most 150 words. It will be set in 9-point
-font size and be inset 1.0 cm from the right and left margins.
-There will be two blank lines before and after the Abstract.
+Software security is a fundamental research domain in this threat emerging technology world. Leveraging system vulnerbilities is one of the common ways to hack into 
+computer system. Hackers have to understand the program control flow in order to figure out the hacking logic and technique. In this way, consealing important branch trigger condition logics are crucial for protecting softwares from being hacked. In this paper we propose a novel control flow obfuscation method with Turing machine. By entwining the original software programs with Turing machine executio, software control flow graphs could be significantly obfuscated which means it is much more harder or even impossible for hackers to embed malicious execution codes into Turing machine obfuscated programs. Evaluation results demonstrate that software programs become much more complicated after Turing maching obfuscation. At current stage, we only obfuscated the interger operand instructions which are vital to the whole program.
 %                         please supply keywords within your abstract
-\keywords {high-level Petri nets, net components, dynamic software architecture,
-modeling, agents, software development approach}
+\keywords {software security,control flow obfuscation, Turing machine}
 \end{abstract}
 %
-\section{Fixed-Period Problems: The Sublinear Case}
+\section{Introduction}
 %
-With this chapter, the preliminaries are over, and we begin the search
-for periodic solutions to Hamiltonian systems. All this will be done in
-the convex case; that is, we shall study the boundary-value problem
-\begin{eqnarray*}
-  \dot{x}&=&JH' (t,x)\\
-  x(0) &=& x(T)
-\end{eqnarray*}
-with $H(t,\cdot)$ a convex function of $x$, going to $+\infty$ when
-$\left\|x\right\| \to \infty$.
+Obfuscation derives from intellectual property protection.Consealing the algorithm of a software means a lot for the society especially for high-tech industry.Harden the process of reverse engineering is the general objective of obfuscation. 
 
+Recently,Software security has become a bigger and bigger concern in research community because of infamous ransomware attack and severe vulnerbiliy such as the recent ``Wanncry'' insidence and the openssl heartbleeding bug.This incidences challenge the computer world greatly. Hackers endevors to figure out vulnerbilities inside a software program. Knowing the software architecture and program logic like control flow graph is an indispensible prerequisite for hackers to analyze the original codes. With the help of some monitoring techniques hackers could even iterate all possible paths to try to restore all important branch information along the execution paths.\textit{Concolic testing} is an example which expoits symbolic execution given a certain input while it keeps changing input data until the code coverage proceed a threshhold\cite{Sen}.It has been proved to work in restoring the branch information in the original source codes.
+Besides, intellectual property protection is a big concern in mordern society especially in high-tech industry. Reverse engineering technologies are developing rapidly which pose a great threat.Hence, a lot of research focus on preventing bad guys from figuring out the essential logic. Consealing important ``crossroad'' in a source program. Control flow obfuscation is one of these techniques.
 %
 \subsection{Autonomous Systems}
 %
@@ -432,6 +423,10 @@ Sect.~5.2 of this article.
 % ---- Bibliography ----
 %
 \begin{thebibliography}{5}
+
+\bibitem{Sen} Sen, Koushik, Darko Marinov, and Gul Agha. "CUTE: a concolic unit testing engine for C." ACM SIGSOFT Software Engineering Notes. Vol. 30. No. 5. ACM, 2005.
+
+%%
 
 \bibitem{smit:wat} Smith, T.F., Waterman, M.S.: Identification of Common Molecular
 Subsequences. J. Mol. Biol. 147, 195--197 (1981)
