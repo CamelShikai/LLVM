@@ -6,6 +6,8 @@
      "Trans"
      "Collberg"
      "Sharif"
+     "Popov"
+     "Zhi"
      "smit:wat"
      "mes"
      "fos:kes"
@@ -13,6 +15,7 @@
      "fos:kes:2"
      "url")
     (LaTeX-add-labels
+     "Figure 1"
      "eq:one"
      "eq:two"
      "eq:three"
@@ -21,6 +24,7 @@
      "ghou:pre")
     (TeX-run-style-hooks
      "makeidx"
+     "graphicx"
      ""
      "latex2e"
      "svmultln10"

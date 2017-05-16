@@ -6,6 +6,7 @@
 %
 \documentclass[lnicst]{svmultln}
 %
+\usepackage{graphicx} % includegraphics
 \usepackage{makeidx}  % allows for indexgeneration
 % \makeindex          % be prepared for an author index
 %
@@ -51,9 +52,15 @@ computer system. Hackers have to understand the program control flow in order to
 %
 \section{Introduction}
 %
-Obfuscation derives from intellectual property protection. Internet brings us unprecedent convience and threat of idea plagiarism and copyright infringement at the same time. Consealing the algorithm of a software means a lot for the society especially for high-tech industry. Generally speaking, obfuscation means to harden the process of reverse engineering.
+Obfuscation derives from intellectual property protection. Internet brings us unprecedent convience and threat of idea plagiarism and copyright infringement at the same time.  Consealing the algorithm of a software means a lot for the society especially for high-tech industry. Reverse engineering is often used by to recover source code from binaries to analyze software vulnerbilities or to steal software ideas or algorithms. Obfuscation is a technique to block or harden the process of reverse engineering.
 
-Recently, Software security has become a bigger and bigger concern in research community because of infamous ransomware attack and severe vulnerbiliy such as the recent ``Wanncry'' insidence and the openssl heartbleeding bug.This incidences challenge the computer world greatly. Hackers endevors to figure out vulnerbilities inside a software program. Knowing the software architecture and program logic like control flow graph is an indispensible prerequisite for hackers to analyze the original codes. With the help of some monitoring techniques hackers could even iterate all possible paths to try to restore all important branch information along the execution paths.\textit{Concolic testing} is an example which expoits symbolic execution given a certain input while it keeps changing input data until the code coverage proceed a threshhold\cite{Sen}. It has been proved to work in restoring the branch information in the original source codes. Hence, a lot of research focus on preventing bad guys from figuring out the essential logic. Consealing important ``crossroad'' in a source program. Control flow obfuscation is one of these techniques. Control flow obfuscation aims at complicating the execution path within a source program. Through replacing or insering extra contrlo flow graph edges, the original software logic become harder or even impossible to trace. Previous research\cite{Ma} have prove the effectiveness of contral flow obfuscation.
+Recently, Software security has become a bigger and bigger concern in research community because of infamous ransomware attack and severe vulnerbiliy such as the recent ``Wanncry'' insidence and the openssl heartbleeding bug.This incidences challenge the computer world greatly. Hackers endevors to figure out vulnerbilities inside a software program. Knowing the software architecture and program logic like control flow graph is an indispensible prerequisite for hackers to analyze the original codes. With the help of some monitoring techniques hackers could even iterate all possible paths to try to restore all important branch information along the execution paths.\textit{Concolic testing} is an example which expoits symbolic execution given a certain input while it keeps changing input data until the code coverage proceed a threshhold\cite{Sen} as shown in Figure 1. It has been proved to work in restoring the branch information in the original source codes. Hence, a lot of research focus on preventing bad guys from figuring out the essential logic. Consealing important ``crossroad'' in a source program. Control flow obfuscation is one of these techniques. Control flow obfuscation aims at hiding conditional transfers and complicating the execution path within a source program. Through replacing or insering extra contrlo flow graph edges, the original software logic become harder or even impossible to trace. Previous research\cite{Ma} have prove the effectiveness of contral flow obfuscation.
+
+\begin{figure}
+  \includegraphics[width=0.9\linewidth]{reverse_engineering.eps}
+  \caption{Reverse engineering with concolic testing}
+  \label{Figure 1}
+\end{figure}
 
 In this paper,we propose a novel control flow obfuscation method with Turing machine embedded in the original program source codes. Turing machine is the essence of computaion so it could calculate accurately all kinds of computer operation. In this way, important branch conditions in original source code could be replaced by a Turing machine execution which yields the very identical conditional value. Besides, a Turing machine behaves like a state machine so it contains a lot of branch condition checks in Turing machine transition table. In this whole process, sensitive branch information could be successfully hided in Turing machine call graphs. In the mean time, Turing machine execution greatly introduce computational complexity to the target program so it is almost impossible to read the obfuscated programs to do reverse engineering. 
 
@@ -62,16 +69,23 @@ Currently, we are more interested in integer operation condition instructions. U
 This paper is organized as follows. Section 2 discusses related works on obfuscation, especially control flow obfuscation. Section 3 illustrate the idea and archetecture of Turing machine obfuscator. Obfuscator implementation is discussed in section 4. Section 5 discusses the evaluation result of our proposed obfuscator. Finally, we conclude thsi paper in section 6.
 
 
-
 %
-\subsection{Related Works}
+\section{Related Works}
 %
+Generally speaking, reverse engineering is devided into static analysis such and dynamic analysis. To compete static reverse engineering, researchers usually focus on hardening disassembling and decompiling process. To compete the dynamic reverse engineering techniques such concolic testing, conditional transfer logic must be hidden from adversaries. Control flow obfuscation has been proved effective in previous works.
 
-In \cite{Sharif}, the authors identified conditions that could trigger malware execution then using hash function to transform the values which could launch malware. Afterwards, correspondent conditional codes which would be ran with satisfied value was encryped with a key generated based on the instruction trigger value.
+In \cite{Sharif}, the authors identified conditions that could trigger malware execution then using hash function to transform the values which could launch malware. Afterwards, correspondent conditional codes which would be ran with satisfied value were encryped with a key generated based on the instruction trigger value.
 By this means the obfuscation analyzer could never get a chance to get the expected ``launching code'' consequently planted malware could never be executed. This technology works on certain fixed trigger value but not in senarios that trigger values are intervals such as \textgreater \   and  \textless. This limitation narrows the applicable conditions greatly since a large volume of branch conditions are comparsion operations. In addition, the encrytion and decryption process in this methodology also introduce inneglectable overhead.
 
+In \cite{Popov}, the authors used signals(``traps'') to replace the control transfers unconditional instructions like ``jmp'' and ``call'' in order to confuse disassembly operation which is the first step of reverse engineering. Dummy control transfers and junk instructions were also inserted after signal replacements. This method seems to be effective in fooling disassemblers but it can't be applied in senarios that conditional instruction logic needs to be protected from being figured out.
+
+In \cite{Zhi}, the authors endevors to conseal branch information leveraging a remote trusted third party environment. The idea seemed to work while it not only introduced a great network overhead, but also rely on trusted network accessiblity which can't be guranteed in reality. This drwaback means this idea can't be applied in common obfuscation cases.
+
+In \cite{Ma}, the authors took advantage of neural network to replace appropriate conditional instructions in source programs in order to achieve the goal of consealing conditional instruction logic thus dynamic analysis like concolic testing could never dig useful branch information. Although the idea looks promising and the results indicates the effectiveness of this methodology to some degree, fundamentally we don't believe neural networks solution is suitable for such senarios. To the best of our knowledge,
+neural networks works like a blackbox. It lacks the rigorous mathmatical proof to illustrate a correct result must be generated given a input. Neural networks not only introduced complexity but also unpredictability to the original source programs. Trained models may behave very differently if given initial parameters with only some nuances, which means that it is also very hard to train a accurate enough model to simulate the conditional instruction. In addition, we noticed that neural networks consume too much memory in the evaluation experiments.
+
 %
-\subsubsection{The General Case: Nontriviality.}
+\section{Turing machine obfuscation overview}
 %
 We assume that $H$ is
 $\left(A_{\infty},B_{\infty}\right)$-sub\-qua\-dra\-tic at infinity,
@@ -435,6 +449,10 @@ Sect.~5.2 of this article.
 \bibitem{Collberg} Collberg, Christian, Clark Thomborson, and Douglas Low. "Manufacturing cheap, resilient, and stealthy opaque constructs." Proceedings of the 25th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1998.
 
 \bibitem{Sharif} Sharif, Monirul I., et al. "Impeding Malware Analysis Using Conditional Code Obfuscation." NDSS. 2008.
+
+\bibitem{Popov} Popov, Igor V., Saumya K. Debray, and Gregory R. Andrews. "Binary Obfuscation Using Signals." Usenix Security. 2007.
+
+\bibitem{Zhi} Wang, Zhi, et al. "Branch obfuscation using code mobility and signal." Computer Software and Applications Conference Workshops (COMPSACW), 2012 IEEE 36th Annual. IEEE, 2012.
 %%
 
 \bibitem{smit:wat} Smith, T.F., Waterman, M.S.: Identification of Common Molecular
