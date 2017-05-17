@@ -8,6 +8,7 @@
 %
 \usepackage{graphicx} % includegraphics
 \usepackage{makeidx}  % allows for indexgeneration
+\usepackage{url} %for url citing
 % \makeindex          % be prepared for an author index
 %
 \begin{document}
@@ -102,9 +103,8 @@ In a computer program, conditional transfer instruction compare two operands and
 \section{Evaluation}
 Inspired by previous work\cite{Collberg}, we evaluated our obfuscation method based on four metrics which are \textit{potency}, \textit{resilience}, \textit{stealth} and \textit{cost} respectively. Potency indicates the complexity of a certain obfuscated program. It shows how complex or how unreadable obfuscated codes are. To measure how well an obfuscated program could withstand automatic deobfuscation techniques, metric resilience is introduced. Besides automated deobfuscators, a lot of reverse engineering works are conducted by hackers, obfuscated program should not be too different from the original one or it would be easy for experienced hackers to discern it. Stealth is used to measure to how well a obfuscated program resembles the original one. Cost is natually used the measure running overhead of a obfuscated program. Obfuscation would inevitably induce more overhead while it should be constricted to an acceptable level.
 
-We choose two popular open source programs as source programs to verify effectiveness of our Turing machien obfuscator: compress tool bzip2 and regular expression engine slre
+We choose two popular open source programs as source programs to verify effectiveness of our Turing machien obfuscator: compress tool bzip2\cite{bzip2} and regular expression engine slre\cite{slre}.
 %
-
 
 
 
@@ -128,6 +128,11 @@ We choose two popular open source programs as source programs to verify effectiv
 \bibitem{Popov} Popov, Igor V., Saumya K. Debray, and Gregory R. Andrews. "Binary Obfuscation Using Signals." Usenix Security. 2007.
 
 \bibitem{Zhi} Wang, Zhi, et al. "Branch obfuscation using code mobility and signal." Computer Software and Applications Conference Workshops (COMPSACW), 2012 IEEE 36th Annual. IEEE, 2012.
+
+\bibitem{bzip2} \url{http://www.bzip.org/}
+
+\bibitem{slre} \url{https://github.com/cesanta/slre}
+
 %%
 
 
