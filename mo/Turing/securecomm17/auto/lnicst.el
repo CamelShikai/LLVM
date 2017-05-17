@@ -7,21 +7,10 @@
      "Collberg"
      "Sharif"
      "Popov"
-     "Zhi"
-     "smit:wat"
-     "mes"
-     "fos:kes"
-     "cff"
-     "fos:kes:2"
-     "url")
+     "Zhi")
     (LaTeX-add-labels
      "Figure 1"
-     "eq:one"
-     "eq:two"
-     "eq:three"
-     "eq:four"
-     "eq:five"
-     "ghou:pre")
+     "Figure 2")
     (TeX-run-style-hooks
      "makeidx"
      "graphicx"
