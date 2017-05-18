@@ -119,10 +119,9 @@ for line in sys.stdin:
     classifier[tup[1]] = classifier.get(tup[1], 0) + int(tup[0])
 
 del classifier['']
-
 total = float(sum(classifier.values()))
 for k in sorted(classifier):
     if classifier[k] == 0.0:
         print str(0.0001) + ', '
     else:
-        print str(classifier[k]/total)+', '
+        print k,":", str(classifier[k]/total)+', '
