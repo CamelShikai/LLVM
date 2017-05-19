@@ -16,7 +16,9 @@
      "Woodward")
     (LaTeX-add-labels
      "Figure 1"
-     "Figure 2")
+     "Figure 2"
+     "Figure 3"
+     "Figure 4")
     (TeX-run-style-hooks
      "url"
      "makeidx"
