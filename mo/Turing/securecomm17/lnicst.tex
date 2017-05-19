@@ -17,7 +17,7 @@
 %
 \title{Obfuscation with Turing Machine}
 %
-\titlerunning{Hamiltonian Mechanics}  % abbreviated title (for running head)
+\titlerunning{Turing Machine Obfuscation}  % abbreviated title (for running head)
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
@@ -110,17 +110,17 @@ Control flow graph(CFG) and call  graph provide useful information about the gen
 
 
 \begin{center}
- \begin{tabular}{|c | c | c | c | c|} 
+ \begin{tabular}{|c | c | c | c|} 
  \hline 
- Program & \# of Call Graph Edges & \# of CFG Edges & \# of Basic Blocks & \# of Function \\
+ Program & \# of CFG Edges & \# of Basic Blocks & \# of Function \\
  \hline
-bzip2 & 473 & 4283 & 2837 & 78 \\ 
+bzip2 & 4283 & 2837 & 78 \\ 
  \hline
-obfuscated bzip2 & 799 & 4195 & 2828 & 134 \\
+obfuscated bzip2 & 4195 & 2828 & 134 \\
  \hline
-regexp & 353 & 906 & 619 & 25 \\ 
+regexp & 906 & 619 & 25 \\ 
  \hline
-obfuscated regexp & 401 & 1122 & 773 & 43 \\
+obfuscated regexp & 1122 & 773 & 43 \\
  \hline
 \end{tabular}
 \end{center}
@@ -142,9 +142,20 @@ obfuscated regexp & 351 & 1068 \\
  \hline
 \end{tabular}
 \end{center}
+
+We pick 50\% as the obfuscation level to demonstrate the performance of Turing machine obfuscator while we also conducted experiments with other obfuscation level as \%30,\%80 and \%100. Figue 3 demostrated that with more control transfer instruction candidates transformed to Turing machine execution, binary call graph edges increases which indicates obfuscated binary become more and more complicated. 
+\begin{figure}
+  \includegraphics[width=0.9\linewidth]{cg.eps}
+  \caption{Call graph Edge Number versus obfuscatio level}
+  \label{Figure 3}
+\end{figure}
 \subsection{Stealth}
 As mentioned in previous section, software obfuscation technique should not only combat automated deobfuscation tools, but also manual deobfuscation methods. In the evaluation of stealth, authors of \cite{Trans} calculated the statistics of instruction distribution of both regular and obfuscated programs to draw a comparison. If instruction distribution statistics of a obfuscated program is distinct from normal programs(e.g call instruction proportion is abnormally high), it would be easy for reverse engineer to discern the program has been instrumented. We employed this same metric to evaluate our Turing obfuscator. Obfuscation level for stealth evaluation is set to 50\%.
-
+\begin{figure}
+  \includegraphics[width=0.9\linewidth]{st_bzip2.eps}
+  \caption{bzip2 instruction distribution}
+  \label{Figure 4}
+\end{figure}
 %
 % ---- Bibliography ----
 %
