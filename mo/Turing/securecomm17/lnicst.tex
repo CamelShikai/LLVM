@@ -165,6 +165,7 @@ As mentioned in previous section, software obfuscation technique should not only
  We classfied binary instructions into 27 different classes. Figure 4 and Figure 5 present the instruction distribution of the original and obufuscated version of target programs(bzip2 and regexp). Experiment results indicates that the instruction distribution after obfuscation is close to the origin distribution. Given the fact that obfuscated binaries contains extra instructions of Turing machine obfuscator, obfuscated slre changed more than obfuscated bzip2 since the former binary contains 1391 lines of code and the later binary contains only 1391 lines of code. After all, Turing machine obfuscator is proved to obfuscate source binaries with good stealth performance because of small instruction distribution variation.
 
 \section{Cost}
+Software running cost is another important aspect in obufacation evaluation. In most obfuscation cases, overhead increase is inevitable because obfuscation would induce extra instructions execution in one way or another. Time consumption is a traditional metric to evaluation to what extent a obfuscator induces execution overhead.
 
 %
 % ---- Bibliography ----
