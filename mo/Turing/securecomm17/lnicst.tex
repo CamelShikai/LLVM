@@ -153,11 +153,19 @@ We pick 50\% as the obfuscation level to demonstrate the performance of Turing m
 As mentioned in previous section, software obfuscation technique should not only combat automated deobfuscation tools, but also manual deobfuscation methods. In the evaluation of stealth, authors of \cite{Trans} calculated the statistics of instruction distribution of both regular and obfuscated programs to draw a comparison. If instruction distribution statistics of a obfuscated program is distinct from normal programs(e.g call instruction proportion is abnormally high), it would be easy for reverse engineer to discern the program has been instrumented. We employed this same metric to evaluate our Turing obfuscator. Obfuscation level for stealth evaluation is set to 50\%.
 \begin{figure}
   \includegraphics[width=0.9\linewidth]{st_bzip2.eps}
-  \caption{bzip2 instruction distribution}
+  \caption{bzip2 instruction distribution comparison}
   \label{Figure 4}
 \end{figure}
 
-We classified program instructions into 27 
+\begin{figure}
+  \includegraphics[width=0.9\linewidth]{st_regexp.eps}
+  \caption{regexp instruction distribution comparison}
+  \label{Figure 5}
+\end{figure}
+ We classfied binary instructions into 27 different classes. Figure 4 and Figure 5 present the instruction distribution of the original and obufuscated version of target programs(bzip2 and regexp). Experiment results indicates that the instruction distribution after obfuscation is close to the origin distribution. Given the fact that obfuscated binaries contains extra instructions of Turing machine obfuscator, obfuscated slre changed more than obfuscated bzip2 since the former binary contains 1391 lines of code and the later binary contains only 1391 lines of code. After all, Turing machine obfuscator is proved to obfuscate source binaries with good stealth performance because of small instruction distribution variation.
+
+\section{Cost}
+
 %
 % ---- Bibliography ----
 %
