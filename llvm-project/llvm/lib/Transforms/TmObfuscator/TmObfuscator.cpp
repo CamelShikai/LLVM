@@ -22,6 +22,7 @@ Turing Machine Obfuscator Pass
 #include <unordered_set>
 #include <fstream>
 #include <iostream>
+#include <stdlib.h>
 
 using namespace llvm;
 
@@ -130,9 +131,11 @@ namespace {
 			  continue;
 			}
 			
-			
-			if (candidate_counter % 10 <= 5 && obfuscation_counter < total_cap){			       
-			  errs() << "candidate counter :"<< candidate_counter;
+			//by mod:candidate_counter % 10 <= 5 && obfuscation_counter < total_cap
+			int roll = rand() % 10;
+			errs() << "roll number:" << roll;
+			if (roll < 9){			       
+			  errs() << "candidate counter :"<< candidate_counter << "\n";
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
 			  ConstantInt* Arg1 = ConstantInt::get(bb->getContext(), APInt(32,p));
