@@ -124,6 +124,7 @@ where:
 
 Given any program algorithm, there must be a corresponding Turing machine simulation. Since our Turing machine obfuscator concentrate on integer control transfer instruction replacement, Turing machine obfuscator contains transition tables which could do arithmatic operations like \(+, -, \times, \div\) and all compare operations like \(\leq,\geq , \neq\) \textit{etc.} Arithmatic operation result is displayed on tape when Turing machine reached the ``accept'' state. Compare operation result is 0 or 1 returned by Turing machine obfuscator.
 \subsection{Universal Turing machine}
+Although Turing machine could perform powerful and rigorous algorithm simulation, its inner logic is fixed and determined by the transition table. For instance, a Turing machine capable of doing adding operation could only simulate ``add'' operations. While in practical programs, control transfer could be any kinds of operation. Universal Turing machine is used to construction any kinds of Turing machine to simulate all necessary control flow transfer logic with different transition rules.
 
 \section{Implementation}
 
