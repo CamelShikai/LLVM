@@ -421,7 +421,7 @@ int calculator (int op1,int op2,char op){
   return ret;
 }
 
-bool ext_callee(int operator,int op1,int op2){
+bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   bool result;
   int tmp;
   // ICMP_EQ    = 32,  ///< equal
@@ -445,6 +445,14 @@ bool ext_callee(int operator,int op1,int op2){
       }
       tmp = calculator(op1,op2,'-');
       result = tmp == 0 ? true : false;
+      
+      if(result){
+	void (*foo)(void) = pt1;
+	foo();
+      }else{
+	void (*foo)(void) = pt2;
+	foo();
+      }
       //if(op1 != op2 && result) printf("\033[32;1m wrong answer \033[0m\n");
       break;
     case 33:
@@ -527,12 +535,19 @@ bool ext_callee(int operator,int op1,int op2){
   return result;
 }
 
+void label1(){
+  printf("branch 1\n");
+}
 
-/* int main() { */
-/*   printf("result:%d",ext_callee(32,19000,4)); */
-/*   printf("result:%d",ext_callee(32,19100,4)); */
-/*   //int tmp = calculator(-1,3,'-'); */
-/*   //printf("tmp:%d",tmp); */
-/*   return 0; */
-/* } */
+void label2(){
+  printf("branch 1\n");
+}
+int main() {
+
+  printf("result:%d",ext_callee(32,4,4,&label1,&label2));
+  //printf("result:%d",ext_callee(32,19100,4));
+  //int tmp = calculator(-1,3,'-');
+  //printf("tmp:%d",tmp);
+  return 0;
+}
 

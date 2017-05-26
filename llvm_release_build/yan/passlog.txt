@@ -22,3 +22,7 @@ Module:<stdin>candidate_counter:2obfuscation_counter2
 Module:<stdin>candidate_counter:1obfuscation_counter1
 Module:<stdin>candidate_counter:2obfuscation_counter2
 Module:<stdin>candidate_counter:1obfuscation_counter1
+Module:<stdin>candidate_counter:2obfuscation_counter2
+Module:<stdin>candidate_counter:1obfuscation_counter1
+Module:<stdin>candidate_counter:2obfuscation_counter2
+Module:<stdin>candidate_counter:2obfuscation_counter2
