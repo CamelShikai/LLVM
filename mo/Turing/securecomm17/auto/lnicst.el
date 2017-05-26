@@ -13,7 +13,8 @@
      "Chen"
      "ida"
      "McCabe"
-     "Woodward")
+     "Woodward"
+     "Turing")
     (LaTeX-add-labels
      "Figure 1"
      "Figure 2"

@@ -10,6 +10,7 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage{url} %for url citing
 \usepackage{caption}
+
 % \makeindex          % be prepared for an author index
 %
 \begin{document}
@@ -94,8 +95,34 @@ In a computer program, conditional transfer instruction compares two operands an
  \caption{Turing Machine Obfuscation Overview}
  \label{Figure 2}
 \end{figure}
-\subsection{Turing Machine}
 
+\subsection{Turing Machine}
+Turing Machine is a mathematical model which could operate any computer program algorithm through reading and writing a infinite tape. Turing machine contains four components shown as Figure 4\cite{Turing}:
+\begin{itemize}
+  \item An infinite tape composed of cells. Each cell holds a symbol defined in the tape alphabet.
+  \item A tape head which could conduct read, write, move left and move right operations.
+  \item A state register used to record the state of the Turing machine. Turing machine states are finite.
+  \item A transition table that consists of all the transition rules denoting how Turing machine transfer from one state to another.
+\end{itemize}
+\begin{figure}
+ \includegraphics[width=0.9\linewidth]{Tm_tape.png}
+ \caption{Turing Machine Components\cite{Turing}}
+ \label{Figure 3}
+\end{figure}
+Formally a Turing machine could be represented by a 7 element tuple\cite{Turing}: \[ (Q, \Gamma, b, \Sigma, \delta, q_0, F) \] 
+where:
+\begin{itemize}
+  %\renewcommand{\labelitemi}{$\star$}
+  \item \(Q\) is finite state set
+  \item \(\Gamma\) is finite tape symbol set named alphabet
+  \item \(b\) is the tape blank symbol. \(b \in \Gamma\)
+  \item \(\Sigma \subset \Gamma \)\textbackslash  \(\{b\}\) is the actual input symbol set without blank symbol
+  \item \(\delta\) is the transition table composed of transition rules in form of \((Q\)\textbackslash \(F)\times\Gamma \rightarrow Q \times \Gamma \times \{L,R\}\) 
+  \item \(q_0 \in Q \) is the initial state
+  \item \(F\) is finite acceptable states set. \(F \subset Q\)
+\end{itemize}
+
+Given any program algorithm, there must be a corresponding Turing machine simulation. Since our Turing machine obfuscator concentrate on integer control transfer instruction replacement, Turing machine obfuscator contains transition tables which could do arithmatic operations like \(+, -, \times, \div\) and all compare operations like \(\leq,\geq , \neq\) \textit{etc.} Arithmatic operation result is displayed on tape when Turing machine reached the ``accept'' state. Compare operation result is 0 or 1 returned by Turing machine obfuscator.
 \subsection{Universal Turing machine}
 
 \section{Implementation}
@@ -213,6 +240,8 @@ Figure 6 demonstrates time cost monotonically increases with higher obfuscation 
 \bibitem{McCabe} McCabe, Thomas J. "A complexity measure." IEEE Transactions on software Engineering 4 (1976): 308-320.
 
 \bibitem{Woodward} Woodward, Martin R., Michael A. Hennell, and David Hedley. "A measure of control flow complexity in program text." IEEE Transactions on Software Engineering 1 (1979): 45-50.
+
+\bibitem{Turing} \url{https://en.wikipedia.org/wiki/Turing_machine}
 %%
 
 
