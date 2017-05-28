@@ -1,0 +1,6 @@
+ Log:op:32,op1:4,op2:4,pt1:0x4018a7,ptr:0x4018b7[0m 
+ Log:op:32,op1:4,op2:5,pt1:0x4018a7,ptr:0x4018b7[0m 
+ Log:op:32,op1:4,op2:5,pt1:0x4018bc,ptr:0x4018cc[0m 
+ Log:op:32,op1:4,op2:5,pt1:0x4018bc,ptr:0x4018cc[0m 
+ Log:op:32,op1:4,op2:5,pt1:0x4018bc,ptr:0x4018cc[0m 
+ Log:op:32,op1:4,op2:5,pt1:0x4018bc,ptr:0x4018cc[0m 

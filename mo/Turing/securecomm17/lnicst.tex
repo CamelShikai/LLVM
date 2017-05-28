@@ -124,10 +124,19 @@ where:
 
 Given any program algorithm, there must be a corresponding Turing machine simulation. Since our Turing machine obfuscator concentrate on integer control transfer instruction replacement, Turing machine obfuscator contains transition tables which could do arithmatic operations like \(+, -, \times, \div\) and all compare operations like \(\leq,\geq , \neq\) \textit{etc.} Arithmatic operation result is displayed on tape when Turing machine reached the ``accept'' state. Compare operation result is 0 or 1 returned by Turing machine obfuscator.
 \subsection{Universal Turing machine}
-Although Turing machine could perform powerful and rigorous algorithm simulation, its inner logic is fixed and determined by the transition table. For instance, a Turing machine capable of doing adding operation could only simulate ``add'' operations. While in practical programs, control transfer could be any kinds of operation. Universal Turing machine is used to construction any kinds of Turing machine to simulate all necessary control flow transfer logic with different transition rules.
+Although Turing machine could perform powerful and rigorous algorithm simulation, its inner logic is fixed and determined by the transition table. For instance, a Turing machine capable of doing adding operation could only simulate ``add'' operations. To some degree, every Turing machine is encoded with a internal fixed algorithm. However, in practical programs, control transfer could be any kinds of operation. Consequently, we need an algorithm translator to interpret the transformation rules of evey Turing machine. Universal Turing machine is used to store the inner algorithm logic of a Turing machine on a single tape. As shown in Figure 4, both the input and the transition table are written on a single universial Turing machine tape. In some sense, universal Turing machine is the interface for us to utilize the strong computability of a certain Turing machine.
 
+\begin{figure}
+ \includegraphics[width=\linewidth]{UTM.png}
+ \caption{Universal Turing Machine \cite{UTM}}
+ \label{Figure 4}
+\end{figure}
+
+Universal Tuing machine bears the essence of modern computer which is being programmable. Through storing the transition table on the first several cells on the tape, an universal Turing machine actually loaded a piece of program which could yield identical results with the control transfer we could replace with. In our Turing machine obfuscator, we invoke a Universal Turing machine function call on interested control transfer instructions.
 \section{Implementation}
-
+\subsection{LLVM}
+\subsection{Control Transfer Candidates}
+\subsection{Obfuscation Level}
 \section{Evaluation}
 Inspired by previous work\cite{Collberg}, we evaluated our Turing machine obfuscator based on four metrics which are \textit{potency}, \textit{resilience}, \textit{stealth} and \textit{cost} respectively. Potency weighs the complexity of a program in order to show how competent an obfuscator is. A good obfuscator also need to protect itself from being deobfuscated by tools. To measure how well an obfuscated program could withstand automatic deobfuscation techniques, metric resilience is introduced. Besides automated deobfuscators, a lot of reverse engineering works are conducted by hackers, obfuscated program should not be too different from the original one or it would be easy for adversaries to recognize. We used stealth to measure to how well a obfuscated program resembles the original one. Cost is naturally employed to measure computing overhead of a software program. Obfuscation would inevitably induce more overhead while the cost should be constricted to an acceptable level.
 
@@ -243,6 +252,8 @@ Figure 6 demonstrates time cost monotonically increases with higher obfuscation 
 \bibitem{Woodward} Woodward, Martin R., Michael A. Hennell, and David Hedley. "A measure of control flow complexity in program text." IEEE Transactions on Software Engineering 1 (1979): 45-50.
 
 \bibitem{Turing} \url{https://en.wikipedia.org/wiki/Turing_machine}
+
+\bibitem{UTM} \url{https://en.wikipedia.org/wiki/Universal_Turing_machine#/media/File:Universal_Turing_machine.svg}
 %%
 
 

@@ -14,7 +14,8 @@
      "ida"
      "McCabe"
      "Woodward"
-     "Turing")
+     "Turing"
+     "UTM")
     (LaTeX-add-labels
      "Figure 1"
      "Figure 2"

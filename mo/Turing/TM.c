@@ -435,8 +435,10 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   // ICMP_SLT   = 40,  ///< signed less than
   // ICMP_SLE   = 41,  ///< signed less or equal
   //printf("parameters operator %d,op1 %d,op2 %d.",operator,op1,op2);
-  //FILE *f = fopen("turinglog.txt","a");
-  //fprintf(f," Log:op:%d,op1:%d,op2:%d\033[0m \n",operator,op1,op2);
+  FILE *f = fopen("turinglog.txt","a");
+  fprintf(f,"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\n",operator,op1,op2,pt1,pt2);
+  //f.close();
+  return 0;
   switch(operator){    
     case 32:
       if (abs(op1) > 10000 || abs(op2) > 10000) {
@@ -445,7 +447,7 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
       }
       tmp = calculator(op1,op2,'-');
       result = tmp == 0 ? true : false;
-      
+      printf("%d",result);
       if(result){
 	void (*foo)(void) = pt1;
 	foo();
@@ -535,19 +537,18 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   return result;
 }
 
-void label1(){
-  printf("branch 1\n");
-}
+/* void label1(){ */
+/*   printf("branch 1\n"); */
+/* } */
 
-void label2(){
-  printf("branch 1\n");
-}
-int main() {
+/* void label2(){ */
+/*   printf("branch 2\n"); */
+/* } */
+/* int main() { */
 
-  printf("result:%d",ext_callee(32,4,4,&label1,&label2));
-  //printf("result:%d",ext_callee(32,19100,4));
-  //int tmp = calculator(-1,3,'-');
-  //printf("tmp:%d",tmp);
-  return 0;
-}
+/*   printf("result:%d",ext_callee(32,4,5,&label1,&label2)); */
+/*   int tmp = calculator(-1,3,'-'); */
+/*   printf("tmp:%d",tmp); */
+/*   return 0; */
+/* } */
 
