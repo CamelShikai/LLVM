@@ -15,7 +15,8 @@
      "McCabe"
      "Woodward"
      "Turing"
-     "UTM")
+     "UTM"
+     "LLVM")
     (LaTeX-add-labels
      "Figure 1"
      "Figure 2"

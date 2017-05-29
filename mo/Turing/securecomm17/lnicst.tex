@@ -134,9 +134,19 @@ Although Turing machine could perform powerful and rigorous algorithm simulation
 
 Universal Tuing machine bears the essence of modern computer which is being programmable. Through storing the transition table on the first several cells on the tape, an universal Turing machine actually loaded a piece of program which could yield identical results with the control transfer we could replace with. In our Turing machine obfuscator, we invoke a Universal Turing machine function call on interested control transfer instructions.
 \section{Implementation}
-\subsection{LLVM}
-\subsection{Control Transfer Candidates}
-\subsection{Obfuscation Level}
+We implemented Turing Obfuscator on Intermediate Representation(IR) level with the help of LLVM\cite{LLVM}. In general Turing obfuscator employed three phases to generated target obfuscated binary as shown in Figure 5. The first is to compile both target source program and obfuscator source code to IR, then the obfuscator processes IR instructions with several passes. At last these instrumented IR codes are compiled again and linked to the final obfuscated binary. Turing machine obfuscator is implemented with C. 
+\begin{figure}
+ \includegraphics[width=\linewidth]{llvm-flow.eps}
+ \caption{LLVM work flow}
+ \label{Figure 5}
+\end{figure}
+\subsection{Translating Source code to IR}
+Turing machine obfuscator converts target source program to LLVM IR in phase 1. The reason behind this is LLVM could generalize our Turing machine obfuscator in consequence of the abundance of LLVM front end compilers. LLVM provides many front end compilers which could turn source programs written in C, C++, Python and other languages into LLVM IR. Since obfuscation transformation takes place in IR level, the applicable range of Turing obfuscator is significantly broadened compared to previous works\cite{Ma},\cite{Zhi}. In experiments, we use software programs in C as target source codes so Clang-5.0 is the front end compiler.
+\subsection{Static Analysis Pass}
+After preparation phase 1, Turing machine obfuscator does some static analysis on source program IR to locate all transformation candidates. LLVM Pass framework is a core module of LLVM to conduct instruction granularity analysis, transformation or other compiler level optimization.
+We built a Pass with this framework to iterate and analyze every IR instruction in each module of a source program. Currently we only extract control transfer instructions with integer operands as obfuscation candidates. These candidates comprise 10 kinds of instructions including : equal, not equal, unsigned greater than, unsigned greater or equal,  unsigned less than, unsigned less or equal, signed greater than, signed greater or equal, signed less than, signed less or equal. 
+\subsection{Transformation Pass}
+After the static analysis Pass we got all eligible instruction candidates. Afterwards, we built another Transformation pass to transform some or all of these candidate control transfers to a function call to universal Turing machine interface. Result of universial Turing machine call is stored to a register inside LLVM which is used to direct following path label.The essence of Turing obfuscator is to hide important control tranfers inside IR codes. Turing machine obfuscator could obfuscate any designated control transfer inside a target program. In experiments we randomly select a portion of the candidates and do the transformation.
 \section{Evaluation}
 Inspired by previous work\cite{Collberg}, we evaluated our Turing machine obfuscator based on four metrics which are \textit{potency}, \textit{resilience}, \textit{stealth} and \textit{cost} respectively. Potency weighs the complexity of a program in order to show how competent an obfuscator is. A good obfuscator also need to protect itself from being deobfuscated by tools. To measure how well an obfuscated program could withstand automatic deobfuscation techniques, metric resilience is introduced. Besides automated deobfuscators, a lot of reverse engineering works are conducted by hackers, obfuscated program should not be too different from the original one or it would be easy for adversaries to recognize. We used stealth to measure to how well a obfuscated program resembles the original one. Cost is naturally employed to measure computing overhead of a software program. Obfuscation would inevitably induce more overhead while the cost should be constricted to an acceptable level.
 
@@ -254,6 +264,8 @@ Figure 6 demonstrates time cost monotonically increases with higher obfuscation 
 \bibitem{Turing} \url{https://en.wikipedia.org/wiki/Turing_machine}
 
 \bibitem{UTM} \url{https://en.wikipedia.org/wiki/Universal_Turing_machine#/media/File:Universal_Turing_machine.svg}
+
+\bibitem{LLVM} \url{https://en.wikipedia.org/wiki/LLVM}
 %%
 
 
