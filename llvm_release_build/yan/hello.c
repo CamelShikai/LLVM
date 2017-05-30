@@ -11,9 +11,9 @@ int main() {
     y = y + j;
   }
 	
-  if(x < 100){
+  if(x == 100){
     tobecalled();
-    printf("x:%d,this is x<100 branch\n",x);
+    printf("in x==100 branch \n");
   }else{
     tobecalled();
     printf("x:%d,this is x>= 100 branch\n",x);

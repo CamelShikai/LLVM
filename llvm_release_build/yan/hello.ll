@@ -3,7 +3,7 @@ source_filename = "hello.c"
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.str = private unnamed_addr constant [27 x i8] c"x:%d,this is x<100 branch\0A\00", align 1
+@.str = private unnamed_addr constant [19 x i8] c"in x==100 branch \0A\00", align 1
 @.str.1 = private unnamed_addr constant [29 x i8] c"x:%d,this is x>= 100 branch\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
@@ -43,25 +43,24 @@ define i32 @main() #0 {
 
 ; <label>:19:                                     ; preds = %9
   %20 = load i32, i32* %2, align 4
-  %21 = icmp slt i32 %20, 100
-  br i1 %21, label %22, label %26
+  %21 = icmp eq i32 %20, 100
+  br i1 %21, label %22, label %25
 
 ; <label>:22:                                     ; preds = %19
   %23 = call i32 (...) @tobecalled()
-  %24 = load i32, i32* %2, align 4
-  %25 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str, i32 0, i32 0), i32 %24)
-  br label %32
+  %24 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
+  br label %31
 
-; <label>:26:                                     ; preds = %19
-  %27 = call i32 (...) @tobecalled()
-  %28 = load i32, i32* %2, align 4
-  %29 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.1, i32 0, i32 0), i32 %28)
-  %30 = load i32, i32* %2, align 4
-  %31 = add nsw i32 %30, -1
-  store i32 %31, i32* %2, align 4
-  br label %32
+; <label>:25:                                     ; preds = %19
+  %26 = call i32 (...) @tobecalled()
+  %27 = load i32, i32* %2, align 4
+  %28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.1, i32 0, i32 0), i32 %27)
+  %29 = load i32, i32* %2, align 4
+  %30 = add nsw i32 %29, -1
+  store i32 %30, i32* %2, align 4
+  br label %31
 
-; <label>:32:                                     ; preds = %26, %22
+; <label>:31:                                     ; preds = %25, %22
   ret i32 0
 }
 

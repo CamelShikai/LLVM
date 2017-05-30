@@ -438,7 +438,7 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   FILE *f = fopen("turinglog.txt","a");
   fprintf(f,"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\n",operator,op1,op2,pt1,pt2);
   //f.close();
-  return 0;
+  //return 0;
   switch(operator){    
     case 32:
       if (abs(op1) > 10000 || abs(op2) > 10000) {
@@ -449,11 +449,11 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
       result = tmp == 0 ? true : false;
       printf("%d",result);
       if(result){
-	void (*foo)(void) = pt1;
-	foo();
+      	void (*foo)(void) = pt1;
+      	foo();
       }else{
-	void (*foo)(void) = pt2;
-	foo();
+      	void (*foo)(void) = pt2;
+      	foo();
       }
       //if(op1 != op2 && result) printf("\033[32;1m wrong answer \033[0m\n");
       break;

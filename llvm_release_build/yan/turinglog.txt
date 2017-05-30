@@ -1,6 +1,0 @@
-Log:op:32,op1:0,op2:-4,pt1:0x4013f7,ptr:0x4013fe
-Log:op:40,op1:100,op2:100,pt1:0x40149b,ptr:0x4014b3
-Log:op:40,op1:0,op2:100,pt1:0x401450,ptr:0x40147a
-Log:op:32,op1:0,op2:-4,pt1:0x4013f7,ptr:0x4013fe
-Log:op:40,op1:100,op2:100,pt1:0x40149b,ptr:0x4014b3
-Log:op:40,op1:0,op2:100,pt1:0x401450,ptr:0x40147a
