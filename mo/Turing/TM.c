@@ -439,8 +439,8 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   // ICMP_SLT   = 40,  ///< signed less than
   // ICMP_SLE   = 41,  ///< signed less or equal
   //printf("parameters operator %d,op1 %d,op2 %d.",operator,op1,op2);
-  FILE *f = fopen("turinglog.txt","w");
-  fprintf(f,"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\n",operator,op1,op2,pt1,pt2);
+  //FILE *f = fopen("turinglog.txt","w");
+  //fprintf(f,"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\n",operator,op1,op2,pt1,pt2);
   //f.close();
   //return 0;
   /* static const void *codetable[] = {pt1,pt2} */
@@ -457,16 +457,16 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
       tmp = calculator(op1,op2,'-');
       result = tmp == 0 ? true : false;
       //printf("%d",result);
-      if(result){
-	void (*foo)(void) = pt1;
-      	foo();
-      }else{
-        void (*foo)(void) = pt2;
-      	foo();
-      }
+      /* if(result){ */
+      /* 	void (*foo)(void) = pt1; */
+      /* 	foo(); */
+      /* }else{ */
+      /*   void (*foo)(void) = pt2; */
+      /* 	foo(); */
+      /* } */
       //if(op1 != op2 && result) printf("\033[32;1m wrong answer \033[0m\n");
-      printf("ext case 32 returned\n");
-      return 1;
+      //printf("ext case 32 returned\n");
+      break;
     case 33:
       if (abs(op1) > 10000 || abs(op2) > 10000) {
 	//fprintf(f,"op1:%d op2:%d\n",op1,op2);
@@ -544,7 +544,7 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
     default:
       break;
   }
-  printf("ext_finish\n");
+  //printf("ext_finish\n");
   return result;
 }
 
