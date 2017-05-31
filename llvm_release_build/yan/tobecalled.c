@@ -7,5 +7,7 @@ int tobecalled(){
   }else{
     printf("x not equal -4\n");
   }
+
+  printf("tobecalled finished\n");
   return 0;
 }

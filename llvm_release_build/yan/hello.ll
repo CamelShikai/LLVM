@@ -5,6 +5,7 @@ target triple = "x86_64-unknown-linux-gnu"
 
 @.str = private unnamed_addr constant [19 x i8] c"in x==100 branch \0A\00", align 1
 @.str.1 = private unnamed_addr constant [29 x i8] c"x:%d,this is x>= 100 branch\0A\00", align 1
+@.str.2 = private unnamed_addr constant [15 x i8] c"main finished\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
 define i32 @main() #0 {
@@ -14,57 +15,49 @@ define i32 @main() #0 {
   %4 = alloca i32, align 4
   store i32 0, i32* %1, align 4
   store i32 100, i32* %2, align 4
-  %5 = load i32, i32* %2, align 4
-  %6 = add nsw i32 %5, 2
-  store i32 %6, i32* %3, align 4
-  %7 = load i32, i32* %3, align 4
-  %8 = add nsw i32 %7, 1
-  store i32 %8, i32* %3, align 4
+  store i32 0, i32* %3, align 4
   store i32 0, i32* %4, align 4
-  br label %9
+  br label %5
 
-; <label>:9:                                      ; preds = %16, %0
+; <label>:5:                                      ; preds = %12, %0
+  %6 = load i32, i32* %4, align 4
+  %7 = icmp slt i32 %6, 100
+  br i1 %7, label %8, label %15
+
+; <label>:8:                                      ; preds = %5
+  %9 = load i32, i32* %3, align 4
   %10 = load i32, i32* %4, align 4
-  %11 = icmp slt i32 %10, 100
-  br i1 %11, label %12, label %19
+  %11 = add nsw i32 %9, %10
+  store i32 %11, i32* %3, align 4
+  br label %12
 
-; <label>:12:                                     ; preds = %9
-  %13 = load i32, i32* %3, align 4
-  %14 = load i32, i32* %4, align 4
-  %15 = add nsw i32 %13, %14
-  store i32 %15, i32* %3, align 4
-  br label %16
+; <label>:12:                                     ; preds = %8
+  %13 = load i32, i32* %4, align 4
+  %14 = add nsw i32 %13, 1
+  store i32 %14, i32* %4, align 4
+  br label %5
 
-; <label>:16:                                     ; preds = %12
-  %17 = load i32, i32* %4, align 4
-  %18 = add nsw i32 %17, 1
-  store i32 %18, i32* %4, align 4
-  br label %9
+; <label>:15:                                     ; preds = %5
+  %16 = load i32, i32* %2, align 4
+  %17 = icmp eq i32 %16, 100
+  br i1 %17, label %18, label %20
 
-; <label>:19:                                     ; preds = %9
-  %20 = load i32, i32* %2, align 4
-  %21 = icmp eq i32 %20, 100
-  br i1 %21, label %22, label %25
+; <label>:18:                                     ; preds = %15
+  %19 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
+  br label %25
 
-; <label>:22:                                     ; preds = %19
-  %23 = call i32 (...) @tobecalled()
-  %24 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
-  br label %31
+; <label>:20:                                     ; preds = %15
+  %21 = load i32, i32* %2, align 4
+  %22 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.1, i32 0, i32 0), i32 %21)
+  %23 = load i32, i32* %2, align 4
+  %24 = add nsw i32 %23, -1
+  store i32 %24, i32* %2, align 4
+  br label %25
 
-; <label>:25:                                     ; preds = %19
-  %26 = call i32 (...) @tobecalled()
-  %27 = load i32, i32* %2, align 4
-  %28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.1, i32 0, i32 0), i32 %27)
-  %29 = load i32, i32* %2, align 4
-  %30 = add nsw i32 %29, -1
-  store i32 %30, i32* %2, align 4
-  br label %31
-
-; <label>:31:                                     ; preds = %25, %22
+; <label>:25:                                     ; preds = %20, %18
+  %26 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0))
   ret i32 0
 }
-
-declare i32 @tobecalled(...) #1
 
 declare i32 @printf(i8*, ...) #1
 

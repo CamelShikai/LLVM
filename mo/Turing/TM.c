@@ -338,8 +338,12 @@ int compare(char operator, char* tape_input){
   return 0;
 }
 
+//dummy functions
+void label1(){
+}
 
-
+void label2(){
+}
 
 //whole process including create TM and intepret TM with UTM
 int calculator (int op1,int op2,char op){
@@ -435,10 +439,15 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
   // ICMP_SLT   = 40,  ///< signed less than
   // ICMP_SLE   = 41,  ///< signed less or equal
   //printf("parameters operator %d,op1 %d,op2 %d.",operator,op1,op2);
-  FILE *f = fopen("turinglog.txt","a");
+  FILE *f = fopen("turinglog.txt","w");
   fprintf(f,"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\n",operator,op1,op2,pt1,pt2);
   //f.close();
   //return 0;
+  /* static const void *codetable[] = {pt1,pt2} */
+  /* L1: */
+  /*   goto codetable[0]; */
+  /* L2: */
+  /*   goto codetable[1]; */
   switch(operator){    
     case 32:
       if (abs(op1) > 10000 || abs(op2) > 10000) {
@@ -447,16 +456,17 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
       }
       tmp = calculator(op1,op2,'-');
       result = tmp == 0 ? true : false;
-      printf("%d",result);
+      //printf("%d",result);
       if(result){
-      	void (*foo)(void) = pt1;
+	void (*foo)(void) = pt1;
       	foo();
       }else{
-      	void (*foo)(void) = pt2;
+        void (*foo)(void) = pt2;
       	foo();
       }
       //if(op1 != op2 && result) printf("\033[32;1m wrong answer \033[0m\n");
-      break;
+      printf("ext case 32 returned\n");
+      return 1;
     case 33:
       if (abs(op1) > 10000 || abs(op2) > 10000) {
 	//fprintf(f,"op1:%d op2:%d\n",op1,op2);
@@ -533,18 +543,13 @@ bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
       break;
     default:
       break;
-  }  
+  }
+  printf("ext_finish\n");
   return result;
 }
 
-/* void label1(){ */
-/*   printf("branch 1\n"); */
-/* } */
 
-/* void label2(){ */
-/*   printf("branch 2\n"); */
-/* } */
-/* int main() { */
+/*int main() {
 
 /*   printf("result:%d",ext_callee(32,4,5,&label1,&label2)); */
 /*   int tmp = calculator(-1,3,'-'); */

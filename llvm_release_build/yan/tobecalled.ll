@@ -5,6 +5,7 @@ target triple = "x86_64-unknown-linux-gnu"
 
 @.str = private unnamed_addr constant [12 x i8] c"x equal -4\0A\00", align 1
 @.str.1 = private unnamed_addr constant [16 x i8] c"x not equal -4\0A\00", align 1
+@.str.2 = private unnamed_addr constant [21 x i8] c"tobecalled finished\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
 define i32 @tobecalled() #0 {
@@ -25,6 +26,7 @@ define i32 @tobecalled() #0 {
   br label %9
 
 ; <label>:9:                                      ; preds = %7, %5
+  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.2, i32 0, i32 0))
   ret i32 0
 }
 

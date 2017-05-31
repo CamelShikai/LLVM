@@ -41,7 +41,9 @@ namespace {
     //set up
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
-      hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),PointerType::get(IntegerType::get(M.getContext(),8),0) ,PointerType::get(IntegerType::get(M.getContext(),8),0) ,NULL);       
+      hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),PointerType::get(IntegerType::get(M.getContext(),8),0) ,PointerType::get(IntegerType::get(M.getContext(),8),0) ,NULL);
+      //hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), Type::LabelTyID, Type::LabelTyID, NULL);
+				       
       insert = cast<Function>(hookFunc);
       
       //read while list file
@@ -138,7 +140,7 @@ namespace {
 			BlockAddress *label1_addr = llvm::BlockAddress::get(label1);
 			BlockAddress *label2_addr = llvm::BlockAddress::get(label2);
 			//label1_addr->getType()->print(errs());
-			label1_addr->print(errs());
+			label1->print(errs());
 			//by mod:candidate_counter % 10 <= 5 && obfuscation_counter < total_cap
 			int roll = rand() % 10;
 			errs() << "roll number:" << roll;
