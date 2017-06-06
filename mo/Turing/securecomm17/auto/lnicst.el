@@ -16,7 +16,8 @@
      "Woodward"
      "Turing"
      "UTM"
-     "LLVM")
+     "LLVM"
+     "klee")
     (LaTeX-add-labels
      "Figure 1"
      "Figure 2"

@@ -201,7 +201,7 @@ We pick 50\% as the obfuscation level to demonstrate the performance of Turing m
 \end{figure}
 
 \subsection{Resilence}
-
+Concolic testing is an advanced deobfuscation techniques aiming at finding bugs or vulnerbilities in software development through symbolic execution. Whereas, it is also used by adversaries to analyse or restore software inner logic eg. control flow graph. KLEE\cite{klee} is static analysis tool based on LLVM platform and it could generate enough test cases to ensure a code coverage threshhold. With the help of KLEE, it would be easy to conduct conduct automated deobfuscation. We chose KLEE as the deobfuscation tool to evaluation resilence of Turing Machine obfuscator.
 \subsection{Stealth}
 As mentioned in the beginning, software obfuscation technique should not only combat automated deobfuscation tools, but also manual deobfuscation methods. In the evaluation of stealth, authors of \cite{Trans} calculated the statistics of instruction distribution of both original and obfuscated programs to draw a comparison. If instruction distribution statistics of a obfuscated program is distinct from normal programs(e.g call or jmp instruction proportion is abnormally high), it would be a obvious indicator that denotes this program has been instrumented. We adopted this metric to evaluate our Turing obfuscator. Obfuscation level for stealth evaluation is set to 50\%.
 \begin{figure}
@@ -266,6 +266,8 @@ Figure 6 demonstrates time cost monotonically increases with higher obfuscation 
 \bibitem{UTM} \url{https://en.wikipedia.org/wiki/Universal_Turing_machine#/media/File:Universal_Turing_machine.svg}
 
 \bibitem{LLVM} \url{https://en.wikipedia.org/wiki/LLVM}
+
+\bibitem{klee} \url{https://klee.github.io/}
 %%
 
 
