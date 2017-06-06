@@ -26,6 +26,7 @@
      "Figure 5"
      "Figure 6")
     (TeX-run-style-hooks
+     "listings"
      "caption"
      "url"
      "makeidx"

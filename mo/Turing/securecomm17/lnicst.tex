@@ -10,6 +10,7 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage{url} %for url citing
 \usepackage{caption}
+\usepackage{listings}
 
 % \makeindex          % be prepared for an author index
 %
@@ -144,7 +145,7 @@ We implemented Turing Obfuscator on Intermediate Representation(IR) level with t
 Turing machine obfuscator converts target source program to LLVM IR in phase 1. The reason behind this is LLVM could generalize our Turing machine obfuscator in consequence of the abundance of LLVM front end compilers. LLVM provides many front end compilers which could turn source programs written in C, C++, Python and other languages into LLVM IR. Since obfuscation transformation takes place in IR level, the applicable range of Turing obfuscator is significantly broadened compared to previous works\cite{Ma},\cite{Zhi}. In experiments, we use software programs in C as target source codes so Clang-5.0 is the front end compiler.
 \subsection{Static Analysis Pass}
 After preparation phase 1, Turing machine obfuscator does some static analysis on source program IR to locate all transformation candidates. LLVM Pass framework is a core module of LLVM to conduct instruction granularity analysis, transformation or other compiler level optimization.
-We built a Pass with this framework to iterate and analyze every IR instruction in each module of a source program. Currently we only extract control transfer instructions with integer operands as obfuscation candidates. These candidates comprise 10 kinds of instructions including : equal, not equal, unsigned greater than, unsigned greater or equal,  unsigned less than, unsigned less or equal, signed greater than, signed greater or equal, signed less than, signed less or equal. 
+We built a Pass with this framework to iterate and analyze every IR instruction in each module of a source program. Instructions of Turing machine are filtered out and prevented from being obfuscated to avoid endless recursion. Currently we only extract control transfer instructions with integer operands as obfuscation candidates. These candidates comprise 10 kinds of instructions including : equal, not equal, unsigned greater than, unsigned greater or equal,  unsigned less than, unsigned less or equal, signed greater than, signed greater or equal, signed less than, signed less or equal. 
 \subsection{Transformation Pass}
 After the static analysis Pass we got all eligible instruction candidates. Afterwards, we built another Transformation pass to transform some or all of these candidate control transfers to a function call to universal Turing machine interface. Result of universial Turing machine call is stored to a register inside LLVM which is used to direct following path label.The essence of Turing obfuscator is to hide important control tranfers inside IR codes. Turing machine obfuscator could obfuscate any designated control transfer inside a target program. In experiments we randomly select a portion of the candidates and do the transformation.
 \section{Evaluation}
@@ -201,7 +202,34 @@ We pick 50\% as the obfuscation level to demonstrate the performance of Turing m
 \end{figure}
 
 \subsection{Resilence}
-Concolic testing is an advanced deobfuscation techniques aiming at finding bugs or vulnerbilities in software development through symbolic execution. Whereas, it is also used by adversaries to analyse or restore software inner logic eg. control flow graph. KLEE\cite{klee} is static analysis tool based on LLVM platform and it could generate enough test cases to ensure a code coverage threshhold. With the help of KLEE, it would be easy to conduct conduct automated deobfuscation. We chose KLEE as the deobfuscation tool to evaluation resilence of Turing Machine obfuscator.
+A good obfuscation technique should resist deobfuscation tools well. Concolic testing is an advanced deobfuscation techniques aiming at finding bugs or vulnerbilities in software development through symbolic execution. Whereas, it is also used by adversaries to analyse or restore software inner logic eg. control flow graph. KLEE\cite{klee} is static analysis tool based on LLVM platform and it could generate enough test cases to ensure a code coverage threshhold. With the help of KLEE, it would be easy to conduct  automated deobfuscation by concolic testing. We chose KLEE as the deobfuscation tool to evaluation resilence of Turing Machine obfuscator.
+We used a piece of sample code from KLEE\cite{klee} as the subject program. The subject program need to be converted to IR codes since KLEE works on IR level.
+\begin{center}
+\begin{tabular}{c}
+\begin{lstlisting}
+    int get_sign(int x) {
+      if (x == 0)
+        return 0; 
+
+      if (x < 0)
+        return -1;
+      else 
+        return 1;
+    }
+
+    int main() {
+      int a;
+      klee_make_symbolic(&a, sizeof(a), "a");
+      return get_sign(a);
+    }
+\end{lstlisting}
+\end{tabular}
+\end{center}
+KLEE could detect three completed paths in the original subject program as expected. Based on different value of x, this program may traverse branches in which x equals 0, x is less than 0 and x is greater than 0 repectively. In contrust, after subjuct program is obfuscated by our Turing machine obfuscator, KLEE could only figure out one completed path. This result proved that Turing machine obfuscator can hinder  automated deobfuscation tools from restoring the structure of a subject program.
+
+Due to limited information released by KLEE, we could not dig deeper to understand why KLEE fails. We assume it is because the other constraint solvers can't find another symbolic input to make sure the other branches could also be reached in consequence of the complextiy of Turing machine obfuscator.
+
+
 \subsection{Stealth}
 As mentioned in the beginning, software obfuscation technique should not only combat automated deobfuscation tools, but also manual deobfuscation methods. In the evaluation of stealth, authors of \cite{Trans} calculated the statistics of instruction distribution of both original and obfuscated programs to draw a comparison. If instruction distribution statistics of a obfuscated program is distinct from normal programs(e.g call or jmp instruction proportion is abnormally high), it would be a obvious indicator that denotes this program has been instrumented. We adopted this metric to evaluate our Turing obfuscator. Obfuscation level for stealth evaluation is set to 50\%.
 \begin{figure}
