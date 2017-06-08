@@ -1,0 +1,554 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.5.12)  7 JUN 2017 22:10
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input lnicst.tex
+(./lnicst.tex (./svmultln.cls
+Document Class: svmultln 2007/08/08 v3.27 
+Springer Verlag global LaTeX document class for lecture notes and contributed b
+ooks
+(./svlnicst.clo
+File: svlnicst.clo 2008/02/25 v1.0 SVMult class option for the Springer LNICST 
+series
+) (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
+\c@tracingmulticols=\count87
+\mult@box=\box26
+\multicol@leftmargin=\dimen103
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
+\full@width=\dimen104
+\page@free=\dimen105
+\premulticols=\dimen106
+\postmulticols=\dimen107
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
+\last@try=\dimen108
+\multicolovershoot=\dimen109
+\multicolundershoot=\dimen110
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+\multicol@sort@counter=\count95
+)
+\betweenumberspace=\dimen111
+\headlineindent=\dimen112
+\minitoc=\write3
+\c@minitocdepth=\count96
+\c@chapter=\count97
+\svitemindent=\dimen113
+\verbatimindent=\dimen114
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 722.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 723.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 724.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 725.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 726.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 727.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 728.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 729.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 730.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 731.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 732.
+\tocchpnum=\dimen115
+\tocsecnum=\dimen116
+\tocsectotal=\dimen117
+\tocsubsecnum=\dimen118
+\tocsubsectotal=\dimen119
+\tocsubsubsecnum=\dimen120
+\tocsubsubsectotal=\dimen121
+\tocparanum=\dimen122
+\tocparatotal=\dimen123
+\tocsubparanum=\dimen124
+\foot@parindent=\dimen125
+\spthmsep=\dimen126
+\c@theorem=\count98
+\c@case=\count99
+\c@conjecture=\count100
+\c@corollary=\count101
+\c@definition=\count102
+\c@example=\count103
+\c@exercise=\count104
+\c@lemma=\count105
+\c@note=\count106
+\c@problem=\count107
+\c@property=\count108
+\c@proposition=\count109
+\c@question=\count110
+\c@solution=\count111
+\c@remark=\count112
+\instindent=\dimen127
+\figgap=\dimen128
+\figcapgap=\dimen129
+\tabcapgap=\dimen130
+\c@merk=\count113
+\c@@inst=\count114
+\c@@auth=\count115
+\c@auco=\count116
+\instindent=\dimen131
+\authrun=\box52
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box53
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@contribution=\count117
+)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
++ svlnicst.clo 2008/02/25 v1.0 SVMono/SVMult class option + 
++ to establish the layout for Springer LNICST volumes     + 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\svitemindent=\dimen132
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count118
+))
+\Gin@req@height=\dimen133
+\Gin@req@width=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen135
+\captionmargin@=\dimen136
+\captionwidth=\dimen137
+\caption@tempdima=\dimen138
+\caption@indent=\dimen139
+\caption@parindent=\dimen140
+\caption@hangindent=\dimen141
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\captionstyle \ifx \@ca
+ptype \fig@type \vskip \figcapgap \fi \setbox \@tempboxa \hbox {{\floatlegendst
+yle #1\floatcounterend }\capstrut #2}\ifdim \wd \@tempboxa >\hsize {\floatlegen
+dstyle #1\floatcounterend }\capstrut #2\par \else \hbox to\hsize {\leftlegendgl
+ue \unhbox \@tempboxa \hfil }\fi \ifx \@captype \fig@type \else \vskip \tabcapg
+ap \fi .
+\c@ContinuedFloat=\count119
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count120
+\lst@gtempboxa=\box54
+\lst@token=\toks19
+\lst@length=\count121
+\lst@currlwidth=\dimen142
+\lst@column=\count122
+\lst@pos=\count123
+\lst@lostspace=\dimen143
+\lst@width=\dimen144
+\lst@newlines=\count124
+\lst@lineno=\count125
+\lst@maxwidth=\dimen145
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+\c@lstnumber=\count126
+\lst@skipnumbers=\count127
+\lst@framebox=\box55
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/08/26 1.5b listings configuration
+))
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
+ (./lnicst.aux
+
+LaTeX Warning: Label `Figure 3' multiply defined.
+
+
+LaTeX Warning: Label `Figure 4' multiply defined.
+
+
+LaTeX Warning: Label `Figure 5' multiply defined.
+
+
+LaTeX Warning: Label `Figure 6' multiply defined.
+
+)
+\openout1 = `lnicst.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count128
+\scratchdimen=\dimen146
+\scratchbox=\box56
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen147
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks21
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: Incompatible package detected (regarding \@caption).
+(caption)             \@caption = \long macro:#1[#2]#3->\par \addcontentsline {
+\csname ext@#1\endcsname }{#1}{\protect \numberline {\csname the#1\endcsname }{
+\ignorespaces #2}}\begingroup \@parboxrestore \if@minipage \@setminipage \fi \@
+makecaption {\csname fnum@#1\endcsname }{\ignorespaces #3}\par \endgroup .
+
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count134
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 44.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 44.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 44.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 44.
+[1
+
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Package epstopdf Info: Source file: <reverse_engineering.eps>
+(epstopdf)                    date: 2017-05-15 23:11:49
+(epstopdf)                    size: 103527 bytes
+(epstopdf)             Output file: <reverse_engineering-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-15 23:25:25
+(epstopdf)                    size: 25644 bytes
+(epstopdf)             Command: <repstopdf --outfile=reverse_engineering-eps-co
+nverted-to.pdf reverse_engineering.eps>
+(epstopdf)             \includegraphics on input line 63.
+Package epstopdf Info: Output file is already uptodate.
+
+<reverse_engineering-eps-converted-to.pdf, id=13, 1195.46625pt x 494.84875pt>
+File: reverse_engineering-eps-converted-to.pdf Graphic file (type pdf)
+
+<use reverse_engineering-eps-converted-to.pdf>
+Package pdftex.def Info: reverse_engineering-eps-converted-to.pdf used on input
+ line 63.
+(pdftex.def)             Requested size: 312.40906pt x 129.31456pt.
+ [2 <./reverse_engineering-eps-converted-to.pdf>]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 81.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
+
+[3]
+Package epstopdf Info: Source file: <figure2.eps>
+(epstopdf)                    date: 2017-05-16 22:56:49
+(epstopdf)                    size: 92273 bytes
+(epstopdf)             Output file: <figure2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-16 23:26:41
+(epstopdf)                    size: 20805 bytes
+(epstopdf)             Command: <repstopdf --outfile=figure2-eps-converted-to.p
+df figure2.eps>
+(epstopdf)             \includegraphics on input line 95.
+Package epstopdf Info: Output file is already uptodate.
+ <figure2-eps-converted-to.pdf, id=27, 918.43124pt x 286.06876pt>
+File: figure2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figure2-eps-converted-to.pdf>
+Package pdftex.def Info: figure2-eps-converted-to.pdf used on input line 95.
+(pdftex.def)             Requested size: 347.12354pt x 108.12233pt.
+ [4 <./figure2-eps-converted-to.pdf>]
+<Tm_tape.png, id=40, 552.0625pt x 130.4875pt>
+File: Tm_tape.png Graphic file (type png)
+ <use Tm_tape.png>
+Package pdftex.def Info: Tm_tape.png used on input line 109.
+(pdftex.def)             Requested size: 312.40906pt x 73.84503pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
+ [5 <./Tm_tape.png>]
+<UTM.png, id=47, 1359.0775pt x 630.355pt>
+File: UTM.png Graphic file (type png)
+ <use UTM.png>
+Package pdftex.def Info: UTM.png used on input line 131.
+(pdftex.def)             Requested size: 347.12354pt x 160.99329pt.
+Package epstopdf Info: Source file: <llvm-flow.eps>
+(epstopdf)                    date: 2017-05-30 22:05:09
+(epstopdf)                    size: 113707 bytes
+(epstopdf)             Output file: <llvm-flow-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-30 22:06:54
+(epstopdf)                    size: 27919 bytes
+(epstopdf)             Command: <repstopdf --outfile=llvm-flow-eps-converted-to
+.pdf llvm-flow.eps>
+(epstopdf)             \includegraphics on input line 140.
+Package epstopdf Info: Output file is already uptodate.
+
+<llvm-flow-eps-converted-to.pdf, id=48, 1330.9725pt x 642.4pt>
+File: llvm-flow-eps-converted-to.pdf Graphic file (type pdf)
+
+<use llvm-flow-eps-converted-to.pdf>
+Package pdftex.def Info: llvm-flow-eps-converted-to.pdf used on input line 140.
+
+(pdftex.def)             Requested size: 347.12354pt x 167.53958pt.
+ [6 <./UTM.png>] [7 <./llvm-flow-eps-converted-to.pdf>] <transform_pass.pdf, id
+=59, 621.82312pt x 423.08063pt>
+File: transform_pass.pdf Graphic file (type pdf)
+
+<use transform_pass.pdf>
+Package pdftex.def Info: transform_pass.pdf used on input line 154.
+(pdftex.def)             Requested size: 347.12354pt x 236.18112pt.
+ [8 <./transform_pass.pdf>] [9]
+Package epstopdf Info: Source file: <cg.eps>
+(epstopdf)                    date: 2017-05-18 22:52:29
+(epstopdf)                    size: 20289 bytes
+(epstopdf)             Output file: <cg-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-18 23:15:49
+(epstopdf)                    size: 6977 bytes
+(epstopdf)             Command: <repstopdf --outfile=cg-eps-converted-to.pdf cg
+.eps>
+(epstopdf)             \includegraphics on input line 207.
+Package epstopdf Info: Output file is already uptodate.
+
+<cg-eps-converted-to.pdf, id=74, 361.35pt x 252.945pt>
+File: cg-eps-converted-to.pdf Graphic file (type pdf)
+
+<use cg-eps-converted-to.pdf>
+Package pdftex.def Info: cg-eps-converted-to.pdf used on input line 207.
+(pdftex.def)             Requested size: 312.40906pt x 218.68634pt.
+ [10] [11 <./cg-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <st_bzip2.eps>
+(epstopdf)                    date: 2017-05-19 22:24:52
+(epstopdf)                    size: 25879 bytes
+(epstopdf)             Output file: <st_bzip2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-19 22:24:52
+(epstopdf)                    size: 7951 bytes
+(epstopdf)             Command: <repstopdf --outfile=st_bzip2-eps-converted-to.
+pdf st_bzip2.eps>
+(epstopdf)             \includegraphics on input line 244.
+Package epstopdf Info: Output file is already uptodate.
+
+<st_bzip2-eps-converted-to.pdf, id=86, 361.35pt x 252.945pt>
+File: st_bzip2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use st_bzip2-eps-converted-to.pdf>
+Package pdftex.def Info: st_bzip2-eps-converted-to.pdf used on input line 244.
+(pdftex.def)             Requested size: 312.40906pt x 218.68634pt.
+Package epstopdf Info: Source file: <st_regexp.eps>
+(epstopdf)                    date: 2017-05-19 22:24:52
+(epstopdf)                    size: 26446 bytes
+(epstopdf)             Output file: <st_regexp-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-19 23:30:00
+(epstopdf)                    size: 8059 bytes
+(epstopdf)             Command: <repstopdf --outfile=st_regexp-eps-converted-to
+.pdf st_regexp.eps>
+(epstopdf)             \includegraphics on input line 250.
+Package epstopdf Info: Output file is already uptodate.
+
+<st_regexp-eps-converted-to.pdf, id=87, 361.35pt x 252.945pt>
+File: st_regexp-eps-converted-to.pdf Graphic file (type pdf)
+
+<use st_regexp-eps-converted-to.pdf>
+Package pdftex.def Info: st_regexp-eps-converted-to.pdf used on input line 250.
+
+(pdftex.def)             Requested size: 312.40906pt x 218.68634pt.
+Package epstopdf Info: Source file: <cost.eps>
+(epstopdf)                    date: 2017-05-20 21:46:22
+(epstopdf)                    size: 20561 bytes
+(epstopdf)             Output file: <cost-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-20 21:50:02
+(epstopdf)                    size: 6955 bytes
+(epstopdf)             Command: <repstopdf --outfile=cost-eps-converted-to.pdf 
+cost.eps>
+(epstopdf)             \includegraphics on input line 259.
+Package epstopdf Info: Output file is already uptodate.
+
+<cost-eps-converted-to.pdf, id=88, 361.35pt x 252.945pt>
+File: cost-eps-converted-to.pdf Graphic file (type pdf)
+
+<use cost-eps-converted-to.pdf>
+Package pdftex.def Info: cost-eps-converted-to.pdf used on input line 259.
+(pdftex.def)             Requested size: 312.40906pt x 218.68634pt.
+ [12 <./st_bzip2-eps-converted-to.pdf>] [13 <./st_regexp-eps-converted-to.pdf>]
+ [14 <./cost-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
+[]$\OT1/cmtt/m/n/9 https : / / en . wikipedia . org / wiki / Universal _ Turing
+ _ machine # /media / File :
+ []
+
+[15] (./lnicst.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4479 strings out of 495028
+ 67067 string characters out of 6181497
+ 139452 words of memory out of 5000000
+ 7647 multiletter control sequences out of 15000+600000
+ 7802 words of font info for 28 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,14n,38p,1553b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmtt9.pfb>
+Output written on lnicst.pdf (15 pages, 479694 bytes).
+PDF statistics:
+ 151 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+
