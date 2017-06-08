@@ -7,8 +7,6 @@ target triple = "x86_64-unknown-linux-gnu"
 %struct.transition = type { i8, i8, i8, i8, i32 }
 %struct.list = type { %struct.transition*, %struct.list* }
 %struct.tm = type { i8*, i8*, i8*, i8, i8, i8, %struct.list* }
-%struct._IO_FILE = type { i32, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, %struct._IO_marker*, %struct._IO_FILE*, i32, i32, i64, i16, i8, [1 x i8], i8*, i64, i8*, i8*, i8*, i8*, i64, i32, [20 x i8] }
-%struct._IO_marker = type { %struct._IO_marker*, %struct._IO_FILE*, i32 }
 
 @print_transition.s1 = private unnamed_addr constant [5 x i8] c"Left\00", align 1
 @print_transition.s2 = private unnamed_addr constant [6 x i8] c"Right\00", align 1
@@ -24,11 +22,6 @@ target triple = "x86_64-unknown-linux-gnu"
 @.str.9 = private unnamed_addr constant [2 x i8] c":\00", align 1
 @.str.10 = private unnamed_addr constant [85 x i8] c"function parsetm\0Ainput_alpha:%s\0Ainput:%s\0Atape_alpha:%s\0Astart:%c\0Aaccept:%c\0Areject:%c\0A\00", align 1
 @.str.11 = private unnamed_addr constant [23 x i8] c"Turing Machine Reject\0A\00", align 1
-@.str.12 = private unnamed_addr constant [14 x i8] c"turinglog.txt\00", align 1
-@.str.13 = private unnamed_addr constant [2 x i8] c"w\00", align 1
-@.str.14 = private unnamed_addr constant [39 x i8] c"Log:op:%d,op1:%d,op2:%d,pt1:%p,ptr:%p\0A\00", align 1
-@.str.15 = private unnamed_addr constant [22 x i8] c"ext case 32 returned\0A\00", align 1
-@.str.16 = private unnamed_addr constant [12 x i8] c"ext_finish\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
 define %struct.tapes* @insert_tape(%struct.tapes*, i32, i8 signext) #0 {
@@ -1466,417 +1459,373 @@ define i32 @calculator(i32, i32, i8 signext) #0 {
 declare i32 @abs(i32) #7
 
 ; Function Attrs: noinline nounwind uwtable
-define zeroext i1 @ext_callee(i32, i32, i32, i8*, i8*) #0 {
-  %6 = alloca i1, align 1
+define zeroext i1 @ext_callee(i32, i32, i32) #0 {
+  %4 = alloca i1, align 1
+  %5 = alloca i32, align 4
+  %6 = alloca i32, align 4
   %7 = alloca i32, align 4
-  %8 = alloca i32, align 4
+  %8 = alloca i8, align 1
   %9 = alloca i32, align 4
-  %10 = alloca i8*, align 8
-  %11 = alloca i8*, align 8
-  %12 = alloca i8, align 1
-  %13 = alloca i32, align 4
-  %14 = alloca %struct._IO_FILE*, align 8
-  %15 = alloca void ()*, align 8
-  %16 = alloca void ()*, align 8
-  store i32 %0, i32* %7, align 4
-  store i32 %1, i32* %8, align 4
-  store i32 %2, i32* %9, align 4
-  store i8* %3, i8** %10, align 8
-  store i8* %4, i8** %11, align 8
-  %17 = call %struct._IO_FILE* @fopen(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.12, i32 0, i32 0), i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.13, i32 0, i32 0))
-  store %struct._IO_FILE* %17, %struct._IO_FILE** %14, align 8
-  %18 = load %struct._IO_FILE*, %struct._IO_FILE** %14, align 8
-  %19 = load i32, i32* %7, align 4
-  %20 = load i32, i32* %8, align 4
-  %21 = load i32, i32* %9, align 4
-  %22 = load i8*, i8** %10, align 8
-  %23 = load i8*, i8** %11, align 8
-  %24 = call i32 (%struct._IO_FILE*, i8*, ...) @fprintf(%struct._IO_FILE* %18, i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str.14, i32 0, i32 0), i32 %19, i32 %20, i32 %21, i8* %22, i8* %23)
-  %25 = load i32, i32* %7, align 4
-  switch i32 %25, label %258 [
-    i32 32, label %26
-    i32 33, label %60
-    i32 34, label %82
-    i32 35, label %104
-    i32 36, label %126
-    i32 37, label %148
-    i32 38, label %170
-    i32 39, label %192
-    i32 40, label %214
-    i32 41, label %236
+  store i32 %0, i32* %5, align 4
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  %10 = load i32, i32* %5, align 4
+  switch i32 %10, label %231 [
+    i32 32, label %11
+    i32 33, label %33
+    i32 34, label %55
+    i32 35, label %77
+    i32 36, label %99
+    i32 37, label %121
+    i32 38, label %143
+    i32 39, label %165
+    i32 40, label %187
+    i32 41, label %209
   ]
 
-; <label>:26:                                     ; preds = %5
-  %27 = load i32, i32* %8, align 4
-  %28 = call i32 @abs(i32 %27) #10
-  %29 = icmp sgt i32 %28, 10000
-  br i1 %29, label %34, label %30
+; <label>:11:                                     ; preds = %3
+  %12 = load i32, i32* %6, align 4
+  %13 = call i32 @abs(i32 %12) #10
+  %14 = icmp sgt i32 %13, 10000
+  br i1 %14, label %19, label %15
 
-; <label>:30:                                     ; preds = %26
-  %31 = load i32, i32* %9, align 4
-  %32 = call i32 @abs(i32 %31) #10
-  %33 = icmp sgt i32 %32, 10000
-  br i1 %33, label %34, label %38
+; <label>:15:                                     ; preds = %11
+  %16 = load i32, i32* %7, align 4
+  %17 = call i32 @abs(i32 %16) #10
+  %18 = icmp sgt i32 %17, 10000
+  br i1 %18, label %19, label %23
 
-; <label>:34:                                     ; preds = %30, %26
-  %35 = load i32, i32* %8, align 4
-  %36 = load i32, i32* %9, align 4
-  %37 = icmp eq i32 %35, %36
-  store i1 %37, i1* %6, align 1
-  br label %263
+; <label>:19:                                     ; preds = %15, %11
+  %20 = load i32, i32* %6, align 4
+  %21 = load i32, i32* %7, align 4
+  %22 = icmp eq i32 %20, %21
+  store i1 %22, i1* %4, align 1
+  br label %235
 
-; <label>:38:                                     ; preds = %30
-  %39 = load i32, i32* %8, align 4
-  %40 = load i32, i32* %9, align 4
-  %41 = call i32 @calculator(i32 %39, i32 %40, i8 signext 45)
-  store i32 %41, i32* %13, align 4
-  %42 = load i32, i32* %13, align 4
-  %43 = icmp eq i32 %42, 0
-  %44 = zext i1 %43 to i64
-  %45 = select i1 %43, i32 1, i32 0
-  %46 = icmp ne i32 %45, 0
-  %47 = zext i1 %46 to i8
-  store i8 %47, i8* %12, align 1
-  %48 = load i8, i8* %12, align 1
-  %49 = trunc i8 %48 to i1
-  br i1 %49, label %50, label %54
+; <label>:23:                                     ; preds = %15
+  %24 = load i32, i32* %6, align 4
+  %25 = load i32, i32* %7, align 4
+  %26 = call i32 @calculator(i32 %24, i32 %25, i8 signext 45)
+  store i32 %26, i32* %9, align 4
+  %27 = load i32, i32* %9, align 4
+  %28 = icmp eq i32 %27, 0
+  %29 = zext i1 %28 to i64
+  %30 = select i1 %28, i32 1, i32 0
+  %31 = icmp ne i32 %30, 0
+  %32 = zext i1 %31 to i8
+  store i8 %32, i8* %8, align 1
+  br label %232
 
-; <label>:50:                                     ; preds = %38
-  %51 = load i8*, i8** %10, align 8
-  %52 = bitcast i8* %51 to void ()*
-  store void ()* %52, void ()** %15, align 8
-  %53 = load void ()*, void ()** %15, align 8
-  call void %53()
-  br label %58
+; <label>:33:                                     ; preds = %3
+  %34 = load i32, i32* %6, align 4
+  %35 = call i32 @abs(i32 %34) #10
+  %36 = icmp sgt i32 %35, 10000
+  br i1 %36, label %41, label %37
 
-; <label>:54:                                     ; preds = %38
-  %55 = load i8*, i8** %11, align 8
-  %56 = bitcast i8* %55 to void ()*
-  store void ()* %56, void ()** %16, align 8
-  %57 = load void ()*, void ()** %16, align 8
-  call void %57()
-  br label %58
+; <label>:37:                                     ; preds = %33
+  %38 = load i32, i32* %7, align 4
+  %39 = call i32 @abs(i32 %38) #10
+  %40 = icmp sgt i32 %39, 10000
+  br i1 %40, label %41, label %45
 
-; <label>:58:                                     ; preds = %54, %50
-  %59 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.15, i32 0, i32 0))
-  store i1 true, i1* %6, align 1
-  br label %263
+; <label>:41:                                     ; preds = %37, %33
+  %42 = load i32, i32* %6, align 4
+  %43 = load i32, i32* %7, align 4
+  %44 = icmp ne i32 %42, %43
+  store i1 %44, i1* %4, align 1
+  br label %235
 
-; <label>:60:                                     ; preds = %5
-  %61 = load i32, i32* %8, align 4
-  %62 = call i32 @abs(i32 %61) #10
-  %63 = icmp sgt i32 %62, 10000
-  br i1 %63, label %68, label %64
+; <label>:45:                                     ; preds = %37
+  %46 = load i32, i32* %6, align 4
+  %47 = load i32, i32* %7, align 4
+  %48 = call i32 @calculator(i32 %46, i32 %47, i8 signext 45)
+  store i32 %48, i32* %9, align 4
+  %49 = load i32, i32* %9, align 4
+  %50 = icmp ne i32 %49, 0
+  %51 = zext i1 %50 to i64
+  %52 = select i1 %50, i32 1, i32 0
+  %53 = icmp ne i32 %52, 0
+  %54 = zext i1 %53 to i8
+  store i8 %54, i8* %8, align 1
+  br label %232
 
-; <label>:64:                                     ; preds = %60
-  %65 = load i32, i32* %9, align 4
-  %66 = call i32 @abs(i32 %65) #10
-  %67 = icmp sgt i32 %66, 10000
-  br i1 %67, label %68, label %72
+; <label>:55:                                     ; preds = %3
+  %56 = load i32, i32* %6, align 4
+  %57 = call i32 @abs(i32 %56) #10
+  %58 = icmp sgt i32 %57, 10000
+  br i1 %58, label %63, label %59
 
-; <label>:68:                                     ; preds = %64, %60
-  %69 = load i32, i32* %8, align 4
-  %70 = load i32, i32* %9, align 4
-  %71 = icmp ne i32 %69, %70
-  store i1 %71, i1* %6, align 1
-  br label %263
+; <label>:59:                                     ; preds = %55
+  %60 = load i32, i32* %7, align 4
+  %61 = call i32 @abs(i32 %60) #10
+  %62 = icmp sgt i32 %61, 10000
+  br i1 %62, label %63, label %67
 
-; <label>:72:                                     ; preds = %64
-  %73 = load i32, i32* %8, align 4
-  %74 = load i32, i32* %9, align 4
-  %75 = call i32 @calculator(i32 %73, i32 %74, i8 signext 45)
-  store i32 %75, i32* %13, align 4
-  %76 = load i32, i32* %13, align 4
-  %77 = icmp ne i32 %76, 0
-  %78 = zext i1 %77 to i64
-  %79 = select i1 %77, i32 1, i32 0
-  %80 = icmp ne i32 %79, 0
-  %81 = zext i1 %80 to i8
-  store i8 %81, i8* %12, align 1
-  br label %259
+; <label>:63:                                     ; preds = %59, %55
+  %64 = load i32, i32* %6, align 4
+  %65 = load i32, i32* %7, align 4
+  %66 = icmp sgt i32 %64, %65
+  store i1 %66, i1* %4, align 1
+  br label %235
 
-; <label>:82:                                     ; preds = %5
-  %83 = load i32, i32* %8, align 4
-  %84 = call i32 @abs(i32 %83) #10
-  %85 = icmp sgt i32 %84, 10000
-  br i1 %85, label %90, label %86
+; <label>:67:                                     ; preds = %59
+  %68 = load i32, i32* %6, align 4
+  %69 = load i32, i32* %7, align 4
+  %70 = call i32 @calculator(i32 %68, i32 %69, i8 signext 45)
+  store i32 %70, i32* %9, align 4
+  %71 = load i32, i32* %9, align 4
+  %72 = icmp sgt i32 %71, 0
+  %73 = zext i1 %72 to i64
+  %74 = select i1 %72, i32 1, i32 0
+  %75 = icmp ne i32 %74, 0
+  %76 = zext i1 %75 to i8
+  store i8 %76, i8* %8, align 1
+  br label %232
 
-; <label>:86:                                     ; preds = %82
-  %87 = load i32, i32* %9, align 4
-  %88 = call i32 @abs(i32 %87) #10
-  %89 = icmp sgt i32 %88, 10000
-  br i1 %89, label %90, label %94
+; <label>:77:                                     ; preds = %3
+  %78 = load i32, i32* %6, align 4
+  %79 = call i32 @abs(i32 %78) #10
+  %80 = icmp sgt i32 %79, 10000
+  br i1 %80, label %85, label %81
 
-; <label>:90:                                     ; preds = %86, %82
-  %91 = load i32, i32* %8, align 4
-  %92 = load i32, i32* %9, align 4
-  %93 = icmp sgt i32 %91, %92
-  store i1 %93, i1* %6, align 1
-  br label %263
+; <label>:81:                                     ; preds = %77
+  %82 = load i32, i32* %7, align 4
+  %83 = call i32 @abs(i32 %82) #10
+  %84 = icmp sgt i32 %83, 10000
+  br i1 %84, label %85, label %89
 
-; <label>:94:                                     ; preds = %86
-  %95 = load i32, i32* %8, align 4
-  %96 = load i32, i32* %9, align 4
-  %97 = call i32 @calculator(i32 %95, i32 %96, i8 signext 45)
-  store i32 %97, i32* %13, align 4
-  %98 = load i32, i32* %13, align 4
-  %99 = icmp sgt i32 %98, 0
-  %100 = zext i1 %99 to i64
-  %101 = select i1 %99, i32 1, i32 0
-  %102 = icmp ne i32 %101, 0
-  %103 = zext i1 %102 to i8
-  store i8 %103, i8* %12, align 1
-  br label %259
+; <label>:85:                                     ; preds = %81, %77
+  %86 = load i32, i32* %6, align 4
+  %87 = load i32, i32* %7, align 4
+  %88 = icmp sge i32 %86, %87
+  store i1 %88, i1* %4, align 1
+  br label %235
 
-; <label>:104:                                    ; preds = %5
-  %105 = load i32, i32* %8, align 4
-  %106 = call i32 @abs(i32 %105) #10
-  %107 = icmp sgt i32 %106, 10000
-  br i1 %107, label %112, label %108
+; <label>:89:                                     ; preds = %81
+  %90 = load i32, i32* %6, align 4
+  %91 = load i32, i32* %7, align 4
+  %92 = call i32 @calculator(i32 %90, i32 %91, i8 signext 45)
+  store i32 %92, i32* %9, align 4
+  %93 = load i32, i32* %9, align 4
+  %94 = icmp sge i32 %93, 0
+  %95 = zext i1 %94 to i64
+  %96 = select i1 %94, i32 1, i32 0
+  %97 = icmp ne i32 %96, 0
+  %98 = zext i1 %97 to i8
+  store i8 %98, i8* %8, align 1
+  br label %232
 
-; <label>:108:                                    ; preds = %104
-  %109 = load i32, i32* %9, align 4
-  %110 = call i32 @abs(i32 %109) #10
-  %111 = icmp sgt i32 %110, 10000
-  br i1 %111, label %112, label %116
+; <label>:99:                                     ; preds = %3
+  %100 = load i32, i32* %6, align 4
+  %101 = call i32 @abs(i32 %100) #10
+  %102 = icmp sgt i32 %101, 10000
+  br i1 %102, label %107, label %103
 
-; <label>:112:                                    ; preds = %108, %104
-  %113 = load i32, i32* %8, align 4
-  %114 = load i32, i32* %9, align 4
-  %115 = icmp sge i32 %113, %114
-  store i1 %115, i1* %6, align 1
-  br label %263
+; <label>:103:                                    ; preds = %99
+  %104 = load i32, i32* %7, align 4
+  %105 = call i32 @abs(i32 %104) #10
+  %106 = icmp sgt i32 %105, 10000
+  br i1 %106, label %107, label %111
 
-; <label>:116:                                    ; preds = %108
-  %117 = load i32, i32* %8, align 4
-  %118 = load i32, i32* %9, align 4
-  %119 = call i32 @calculator(i32 %117, i32 %118, i8 signext 45)
-  store i32 %119, i32* %13, align 4
-  %120 = load i32, i32* %13, align 4
-  %121 = icmp sge i32 %120, 0
-  %122 = zext i1 %121 to i64
-  %123 = select i1 %121, i32 1, i32 0
-  %124 = icmp ne i32 %123, 0
-  %125 = zext i1 %124 to i8
-  store i8 %125, i8* %12, align 1
-  br label %259
+; <label>:107:                                    ; preds = %103, %99
+  %108 = load i32, i32* %6, align 4
+  %109 = load i32, i32* %7, align 4
+  %110 = icmp slt i32 %108, %109
+  store i1 %110, i1* %4, align 1
+  br label %235
 
-; <label>:126:                                    ; preds = %5
-  %127 = load i32, i32* %8, align 4
-  %128 = call i32 @abs(i32 %127) #10
-  %129 = icmp sgt i32 %128, 10000
-  br i1 %129, label %134, label %130
+; <label>:111:                                    ; preds = %103
+  %112 = load i32, i32* %6, align 4
+  %113 = load i32, i32* %7, align 4
+  %114 = call i32 @calculator(i32 %112, i32 %113, i8 signext 45)
+  store i32 %114, i32* %9, align 4
+  %115 = load i32, i32* %9, align 4
+  %116 = icmp slt i32 %115, 0
+  %117 = zext i1 %116 to i64
+  %118 = select i1 %116, i32 1, i32 0
+  %119 = icmp ne i32 %118, 0
+  %120 = zext i1 %119 to i8
+  store i8 %120, i8* %8, align 1
+  br label %232
 
-; <label>:130:                                    ; preds = %126
-  %131 = load i32, i32* %9, align 4
-  %132 = call i32 @abs(i32 %131) #10
-  %133 = icmp sgt i32 %132, 10000
-  br i1 %133, label %134, label %138
+; <label>:121:                                    ; preds = %3
+  %122 = load i32, i32* %6, align 4
+  %123 = call i32 @abs(i32 %122) #10
+  %124 = icmp sgt i32 %123, 10000
+  br i1 %124, label %129, label %125
 
-; <label>:134:                                    ; preds = %130, %126
-  %135 = load i32, i32* %8, align 4
-  %136 = load i32, i32* %9, align 4
-  %137 = icmp slt i32 %135, %136
-  store i1 %137, i1* %6, align 1
-  br label %263
+; <label>:125:                                    ; preds = %121
+  %126 = load i32, i32* %7, align 4
+  %127 = call i32 @abs(i32 %126) #10
+  %128 = icmp sgt i32 %127, 10000
+  br i1 %128, label %129, label %133
 
-; <label>:138:                                    ; preds = %130
-  %139 = load i32, i32* %8, align 4
-  %140 = load i32, i32* %9, align 4
-  %141 = call i32 @calculator(i32 %139, i32 %140, i8 signext 45)
-  store i32 %141, i32* %13, align 4
-  %142 = load i32, i32* %13, align 4
-  %143 = icmp slt i32 %142, 0
-  %144 = zext i1 %143 to i64
-  %145 = select i1 %143, i32 1, i32 0
-  %146 = icmp ne i32 %145, 0
-  %147 = zext i1 %146 to i8
-  store i8 %147, i8* %12, align 1
-  br label %259
+; <label>:129:                                    ; preds = %125, %121
+  %130 = load i32, i32* %6, align 4
+  %131 = load i32, i32* %7, align 4
+  %132 = icmp sle i32 %130, %131
+  store i1 %132, i1* %4, align 1
+  br label %235
 
-; <label>:148:                                    ; preds = %5
-  %149 = load i32, i32* %8, align 4
-  %150 = call i32 @abs(i32 %149) #10
-  %151 = icmp sgt i32 %150, 10000
-  br i1 %151, label %156, label %152
+; <label>:133:                                    ; preds = %125
+  %134 = load i32, i32* %6, align 4
+  %135 = load i32, i32* %7, align 4
+  %136 = call i32 @calculator(i32 %134, i32 %135, i8 signext 45)
+  store i32 %136, i32* %9, align 4
+  %137 = load i32, i32* %9, align 4
+  %138 = icmp sle i32 %137, 0
+  %139 = zext i1 %138 to i64
+  %140 = select i1 %138, i32 1, i32 0
+  %141 = icmp ne i32 %140, 0
+  %142 = zext i1 %141 to i8
+  store i8 %142, i8* %8, align 1
+  br label %232
 
-; <label>:152:                                    ; preds = %148
-  %153 = load i32, i32* %9, align 4
-  %154 = call i32 @abs(i32 %153) #10
-  %155 = icmp sgt i32 %154, 10000
-  br i1 %155, label %156, label %160
+; <label>:143:                                    ; preds = %3
+  %144 = load i32, i32* %6, align 4
+  %145 = call i32 @abs(i32 %144) #10
+  %146 = icmp sgt i32 %145, 10000
+  br i1 %146, label %151, label %147
 
-; <label>:156:                                    ; preds = %152, %148
-  %157 = load i32, i32* %8, align 4
-  %158 = load i32, i32* %9, align 4
-  %159 = icmp sle i32 %157, %158
-  store i1 %159, i1* %6, align 1
-  br label %263
+; <label>:147:                                    ; preds = %143
+  %148 = load i32, i32* %7, align 4
+  %149 = call i32 @abs(i32 %148) #10
+  %150 = icmp sgt i32 %149, 10000
+  br i1 %150, label %151, label %155
 
-; <label>:160:                                    ; preds = %152
-  %161 = load i32, i32* %8, align 4
-  %162 = load i32, i32* %9, align 4
-  %163 = call i32 @calculator(i32 %161, i32 %162, i8 signext 45)
-  store i32 %163, i32* %13, align 4
-  %164 = load i32, i32* %13, align 4
-  %165 = icmp sle i32 %164, 0
-  %166 = zext i1 %165 to i64
-  %167 = select i1 %165, i32 1, i32 0
-  %168 = icmp ne i32 %167, 0
-  %169 = zext i1 %168 to i8
-  store i8 %169, i8* %12, align 1
-  br label %259
+; <label>:151:                                    ; preds = %147, %143
+  %152 = load i32, i32* %6, align 4
+  %153 = load i32, i32* %7, align 4
+  %154 = icmp sgt i32 %152, %153
+  store i1 %154, i1* %4, align 1
+  br label %235
 
-; <label>:170:                                    ; preds = %5
-  %171 = load i32, i32* %8, align 4
-  %172 = call i32 @abs(i32 %171) #10
-  %173 = icmp sgt i32 %172, 10000
-  br i1 %173, label %178, label %174
+; <label>:155:                                    ; preds = %147
+  %156 = load i32, i32* %6, align 4
+  %157 = load i32, i32* %7, align 4
+  %158 = call i32 @calculator(i32 %156, i32 %157, i8 signext 45)
+  store i32 %158, i32* %9, align 4
+  %159 = load i32, i32* %9, align 4
+  %160 = icmp sgt i32 %159, 0
+  %161 = zext i1 %160 to i64
+  %162 = select i1 %160, i32 1, i32 0
+  %163 = icmp ne i32 %162, 0
+  %164 = zext i1 %163 to i8
+  store i8 %164, i8* %8, align 1
+  br label %232
 
-; <label>:174:                                    ; preds = %170
-  %175 = load i32, i32* %9, align 4
-  %176 = call i32 @abs(i32 %175) #10
-  %177 = icmp sgt i32 %176, 10000
-  br i1 %177, label %178, label %182
+; <label>:165:                                    ; preds = %3
+  %166 = load i32, i32* %6, align 4
+  %167 = call i32 @abs(i32 %166) #10
+  %168 = icmp sgt i32 %167, 10000
+  br i1 %168, label %173, label %169
 
-; <label>:178:                                    ; preds = %174, %170
-  %179 = load i32, i32* %8, align 4
-  %180 = load i32, i32* %9, align 4
-  %181 = icmp sgt i32 %179, %180
-  store i1 %181, i1* %6, align 1
-  br label %263
+; <label>:169:                                    ; preds = %165
+  %170 = load i32, i32* %7, align 4
+  %171 = call i32 @abs(i32 %170) #10
+  %172 = icmp sgt i32 %171, 10000
+  br i1 %172, label %173, label %177
 
-; <label>:182:                                    ; preds = %174
-  %183 = load i32, i32* %8, align 4
-  %184 = load i32, i32* %9, align 4
-  %185 = call i32 @calculator(i32 %183, i32 %184, i8 signext 45)
-  store i32 %185, i32* %13, align 4
-  %186 = load i32, i32* %13, align 4
-  %187 = icmp sgt i32 %186, 0
-  %188 = zext i1 %187 to i64
-  %189 = select i1 %187, i32 1, i32 0
-  %190 = icmp ne i32 %189, 0
-  %191 = zext i1 %190 to i8
-  store i8 %191, i8* %12, align 1
-  br label %259
+; <label>:173:                                    ; preds = %169, %165
+  %174 = load i32, i32* %6, align 4
+  %175 = load i32, i32* %7, align 4
+  %176 = icmp sge i32 %174, %175
+  store i1 %176, i1* %4, align 1
+  br label %235
 
-; <label>:192:                                    ; preds = %5
-  %193 = load i32, i32* %8, align 4
-  %194 = call i32 @abs(i32 %193) #10
-  %195 = icmp sgt i32 %194, 10000
-  br i1 %195, label %200, label %196
+; <label>:177:                                    ; preds = %169
+  %178 = load i32, i32* %6, align 4
+  %179 = load i32, i32* %7, align 4
+  %180 = call i32 @calculator(i32 %178, i32 %179, i8 signext 45)
+  store i32 %180, i32* %9, align 4
+  %181 = load i32, i32* %9, align 4
+  %182 = icmp sge i32 %181, 0
+  %183 = zext i1 %182 to i64
+  %184 = select i1 %182, i32 1, i32 0
+  %185 = icmp ne i32 %184, 0
+  %186 = zext i1 %185 to i8
+  store i8 %186, i8* %8, align 1
+  br label %232
 
-; <label>:196:                                    ; preds = %192
-  %197 = load i32, i32* %9, align 4
-  %198 = call i32 @abs(i32 %197) #10
-  %199 = icmp sgt i32 %198, 10000
-  br i1 %199, label %200, label %204
+; <label>:187:                                    ; preds = %3
+  %188 = load i32, i32* %6, align 4
+  %189 = call i32 @abs(i32 %188) #10
+  %190 = icmp sgt i32 %189, 10000
+  br i1 %190, label %195, label %191
 
-; <label>:200:                                    ; preds = %196, %192
-  %201 = load i32, i32* %8, align 4
-  %202 = load i32, i32* %9, align 4
-  %203 = icmp sge i32 %201, %202
-  store i1 %203, i1* %6, align 1
-  br label %263
+; <label>:191:                                    ; preds = %187
+  %192 = load i32, i32* %7, align 4
+  %193 = call i32 @abs(i32 %192) #10
+  %194 = icmp sgt i32 %193, 10000
+  br i1 %194, label %195, label %199
 
-; <label>:204:                                    ; preds = %196
-  %205 = load i32, i32* %8, align 4
-  %206 = load i32, i32* %9, align 4
-  %207 = call i32 @calculator(i32 %205, i32 %206, i8 signext 45)
-  store i32 %207, i32* %13, align 4
-  %208 = load i32, i32* %13, align 4
-  %209 = icmp sge i32 %208, 0
-  %210 = zext i1 %209 to i64
-  %211 = select i1 %209, i32 1, i32 0
-  %212 = icmp ne i32 %211, 0
-  %213 = zext i1 %212 to i8
-  store i8 %213, i8* %12, align 1
-  br label %259
+; <label>:195:                                    ; preds = %191, %187
+  %196 = load i32, i32* %6, align 4
+  %197 = load i32, i32* %7, align 4
+  %198 = icmp slt i32 %196, %197
+  store i1 %198, i1* %4, align 1
+  br label %235
 
-; <label>:214:                                    ; preds = %5
-  %215 = load i32, i32* %8, align 4
-  %216 = call i32 @abs(i32 %215) #10
-  %217 = icmp sgt i32 %216, 10000
-  br i1 %217, label %222, label %218
+; <label>:199:                                    ; preds = %191
+  %200 = load i32, i32* %6, align 4
+  %201 = load i32, i32* %7, align 4
+  %202 = call i32 @calculator(i32 %200, i32 %201, i8 signext 45)
+  store i32 %202, i32* %9, align 4
+  %203 = load i32, i32* %9, align 4
+  %204 = icmp slt i32 %203, 0
+  %205 = zext i1 %204 to i64
+  %206 = select i1 %204, i32 1, i32 0
+  %207 = icmp ne i32 %206, 0
+  %208 = zext i1 %207 to i8
+  store i8 %208, i8* %8, align 1
+  br label %232
 
-; <label>:218:                                    ; preds = %214
-  %219 = load i32, i32* %9, align 4
-  %220 = call i32 @abs(i32 %219) #10
-  %221 = icmp sgt i32 %220, 10000
-  br i1 %221, label %222, label %226
+; <label>:209:                                    ; preds = %3
+  %210 = load i32, i32* %6, align 4
+  %211 = call i32 @abs(i32 %210) #10
+  %212 = icmp sgt i32 %211, 10000
+  br i1 %212, label %217, label %213
 
-; <label>:222:                                    ; preds = %218, %214
-  %223 = load i32, i32* %8, align 4
-  %224 = load i32, i32* %9, align 4
-  %225 = icmp slt i32 %223, %224
-  store i1 %225, i1* %6, align 1
-  br label %263
+; <label>:213:                                    ; preds = %209
+  %214 = load i32, i32* %7, align 4
+  %215 = call i32 @abs(i32 %214) #10
+  %216 = icmp sgt i32 %215, 10000
+  br i1 %216, label %217, label %221
 
-; <label>:226:                                    ; preds = %218
-  %227 = load i32, i32* %8, align 4
-  %228 = load i32, i32* %9, align 4
-  %229 = call i32 @calculator(i32 %227, i32 %228, i8 signext 45)
-  store i32 %229, i32* %13, align 4
-  %230 = load i32, i32* %13, align 4
-  %231 = icmp slt i32 %230, 0
-  %232 = zext i1 %231 to i64
-  %233 = select i1 %231, i32 1, i32 0
-  %234 = icmp ne i32 %233, 0
-  %235 = zext i1 %234 to i8
-  store i8 %235, i8* %12, align 1
-  br label %259
+; <label>:217:                                    ; preds = %213, %209
+  %218 = load i32, i32* %6, align 4
+  %219 = load i32, i32* %7, align 4
+  %220 = icmp sle i32 %218, %219
+  store i1 %220, i1* %4, align 1
+  br label %235
 
-; <label>:236:                                    ; preds = %5
-  %237 = load i32, i32* %8, align 4
-  %238 = call i32 @abs(i32 %237) #10
-  %239 = icmp sgt i32 %238, 10000
-  br i1 %239, label %244, label %240
+; <label>:221:                                    ; preds = %213
+  %222 = load i32, i32* %6, align 4
+  %223 = load i32, i32* %7, align 4
+  %224 = call i32 @calculator(i32 %222, i32 %223, i8 signext 45)
+  store i32 %224, i32* %9, align 4
+  %225 = load i32, i32* %9, align 4
+  %226 = icmp sle i32 %225, 0
+  %227 = zext i1 %226 to i64
+  %228 = select i1 %226, i32 1, i32 0
+  %229 = icmp ne i32 %228, 0
+  %230 = zext i1 %229 to i8
+  store i8 %230, i8* %8, align 1
+  br label %232
 
-; <label>:240:                                    ; preds = %236
-  %241 = load i32, i32* %9, align 4
-  %242 = call i32 @abs(i32 %241) #10
-  %243 = icmp sgt i32 %242, 10000
-  br i1 %243, label %244, label %248
+; <label>:231:                                    ; preds = %3
+  br label %232
 
-; <label>:244:                                    ; preds = %240, %236
-  %245 = load i32, i32* %8, align 4
-  %246 = load i32, i32* %9, align 4
-  %247 = icmp sle i32 %245, %246
-  store i1 %247, i1* %6, align 1
-  br label %263
+; <label>:232:                                    ; preds = %231, %221, %199, %177, %155, %133, %111, %89, %67, %45, %23
+  %233 = load i8, i8* %8, align 1
+  %234 = trunc i8 %233 to i1
+  store i1 %234, i1* %4, align 1
+  br label %235
 
-; <label>:248:                                    ; preds = %240
-  %249 = load i32, i32* %8, align 4
-  %250 = load i32, i32* %9, align 4
-  %251 = call i32 @calculator(i32 %249, i32 %250, i8 signext 45)
-  store i32 %251, i32* %13, align 4
-  %252 = load i32, i32* %13, align 4
-  %253 = icmp sle i32 %252, 0
-  %254 = zext i1 %253 to i64
-  %255 = select i1 %253, i32 1, i32 0
-  %256 = icmp ne i32 %255, 0
-  %257 = zext i1 %256 to i8
-  store i8 %257, i8* %12, align 1
-  br label %259
-
-; <label>:258:                                    ; preds = %5
-  br label %259
-
-; <label>:259:                                    ; preds = %258, %248, %226, %204, %182, %160, %138, %116, %94, %72
-  %260 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.16, i32 0, i32 0))
-  %261 = load i8, i8* %12, align 1
-  %262 = trunc i8 %261 to i1
-  store i1 %262, i1* %6, align 1
-  br label %263
-
-; <label>:263:                                    ; preds = %259, %244, %222, %200, %178, %156, %134, %112, %90, %68, %58, %34
-  %264 = load i1, i1* %6, align 1
-  ret i1 %264
+; <label>:235:                                    ; preds = %232, %217, %195, %173, %151, %129, %107, %85, %63, %41, %19
+  %236 = load i1, i1* %4, align 1
+  ret i1 %236
 }
-
-declare %struct._IO_FILE* @fopen(i8*, i8*) #2
-
-declare i32 @fprintf(%struct._IO_FILE*, i8*, ...) #2
 
 attributes #0 = { noinline nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }

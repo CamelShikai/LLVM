@@ -425,7 +425,7 @@ int calculator (int op1,int op2,char op){
   return ret;
 }
 
-bool ext_callee(int operator,int op1,int op2, void *pt1,void *pt2){
+bool ext_callee(int operator,int op1,int op2){
   bool result;
   int tmp;
   // ICMP_EQ    = 32,  ///< equal

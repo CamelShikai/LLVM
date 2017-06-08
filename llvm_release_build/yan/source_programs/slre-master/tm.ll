@@ -1166,6 +1166,16 @@ define i32 @compare(i8 signext, i8*) #0 {
 }
 
 ; Function Attrs: noinline nounwind uwtable
+define void @label1() #0 {
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
+define void @label2() #0 {
+  ret void
+}
+
+; Function Attrs: noinline nounwind uwtable
 define i32 @calculator(i32, i32, i8 signext) #0 {
   %4 = alloca i32, align 4
   %5 = alloca i32, align 4

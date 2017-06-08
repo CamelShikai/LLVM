@@ -41,7 +41,7 @@ namespace {
     //set up
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
-      hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),PointerType::get(IntegerType::get(M.getContext(),8),0) ,PointerType::get(IntegerType::get(M.getContext(),8),0) ,NULL);
+      hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);
       //hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), Type::LabelTyID, Type::LabelTyID, NULL);
 				       
       insert = cast<Function>(hookFunc);
@@ -135,12 +135,12 @@ namespace {
 			}
 			unsigned successor_num = br_ins->getNumSuccessors();
 			errs() << "total successor number :" << successor_num << "\n";
-			BasicBlock *label1 = br_ins->getSuccessor(0);
-			BasicBlock *label2 = br_ins->getSuccessor(1);
-			BlockAddress *label1_addr = llvm::BlockAddress::get(label1);
-			BlockAddress *label2_addr = llvm::BlockAddress::get(label2);
+			//BasicBlock *label1 = br_ins->getSuccessor(0);
+			//BasicBlock *label2 = br_ins->getSuccessor(1);
+			//BlockAddress *label1_addr = llvm::BlockAddress::get(label1);
+			//BlockAddress *label2_addr = llvm::BlockAddress::get(label2);
 			//label1_addr->getType()->print(errs());
-			label1->print(errs());
+			//label1->print(errs());
 			//by mod:candidate_counter % 10 <= 5 && obfuscation_counter < total_cap
 			int roll = rand() % 10;
 			errs() << "roll number:" << roll;
@@ -152,8 +152,8 @@ namespace {
 			  putsArgs->push_back(Arg1);
 			  putsArgs->push_back(op1);
 			  putsArgs->push_back(op2);
-			  putsArgs->push_back(label1_addr);
-			  putsArgs->push_back(label2_addr);
+			  //putsArgs->push_back(label1_addr);
+			  //putsArgs->push_back(label2_addr);
 			  // if(auto* Arg2 = dyn_cast<llvm::ConstantInt>(op1)){
 			  //   errs() << "could be1\n";
 			  //   putsArgs->push_back(Arg2);

@@ -48,7 +48,7 @@ Craig Chambers, Kim B. Bruce, Elisa Bertino}
 % \index{Dean, Jeffrey}
 
 \begin{abstract}        % give a summary of your paper
-Software security is a fundamental research domain in this threat emerging technology world. Control flow obfuscation one of important techniques to prevent hackers from understanding the program internal logic and leveraging software vulnerabilities to do damage. Hence, concealing important conditional branch logics are crucial for protecting software from being compromised. In this paper, we propose a novel control flow obfuscation method by leveraging the complexity of Turing machine. By entwining the original software programs with Turing machine execution, software control flow graph and call graph could be significantly complicated. We implemented an obfuscation tool named Turing machine obfuscator with LLVM. We evaluate the obfuscator by potency, resilience, stealth and cost respectively. Experiment results show that Turing machine obfuscator could obfuscate programs in stealth with good performance and robustness. 
+Software security is a fundamental research domain in this threat emerging technology world. Control flow obfuscation one of important techniques to prevent hackers from understanding the program internal logic and leveraging software vulnerabilities to do damage. Hence, concealing important conditional branch logics are crucial for protecting software from being compromised. In this paper, we propose a novel control flow obfuscation method by leveraging the complexity of Turing machine. By entwining the original software programs with Turing machine execution, software control flow graph and call graph could be significantly complicated. We implemented an obfuscation tool named Turing machine obfuscator with LLVM. Compared with previous works, our control flow obfuscation technique bears two distinct advantages:1.Complexity. Complicated implementation of Turing machine makes it hard for attackers to follow the control flow graph logic.2.Universality. Our obfuscation happens on intermediate representative level so the application scope is broadened to almost every language with a LLVM front-end compiler.  We evaluate the obfuscator by potency, resilience, stealth and cost respectively. Experiment results show that Turing machine obfuscator could obfuscate programs in stealth with good performance and robustness. 
 %                         please supply keywords within your abstract
 \keywords {software security, control flow obfuscation, Turing machine, LLVM}
 \end{abstract}
@@ -264,6 +264,15 @@ Software running cost is another important aspect in obfuscation evaluation. In 
 Figure 6 demonstrates time cost monotonically increases with higher obfuscation levels for both target binaries. Obfuscated program takes more time to finish running as expected and we believe time cost is still confined to a reasonable level. We also noticed that there is a difference between slopes of the two curves. Turing obfuscator only randomly and statically obfuscates candidates instructions within a binary, so it does not ensure each chosen instruction candidate will be executed in the runtime. The curve slope difference probably result from the uncertainty of obfuscated instruction execution. In addition, the regexp program employs more recursive calls than the bzip2 program, this characteristic may also contribute to the rapid time cost increase of the regexp curve.
 
 \section{Discussion}
+In this section, we make a discussion to illustrate strengths and weakness of Turing machine technique to provide more insight about it.
+\subsection{Strengths}
+\subsubsection{Compexity}
+Turing machine model is a  powerful calculator used to solve any algorithm problem. However, a simple ``add'' operation may involve hundreds of times of Turing machine state change. Every ``move left'' and ``move right'' operation induces tape modification and ``read'' or ``write'' operation. Turing machine is a state machine. For advarsaries manually do reverse engineering, it is hard or impossible to follow the calculation logic of Turing machine  without understanding the transition table and each state variable. On the other hand, the intrinsic Turing machine implementation complexity also defeat automated deobfuscation tool KLEE. Constraint slover of KLEE failed to calculate input value of other paths. 
+\subsubsection{Popularity}
+\subsubsection{Discreetness}
+\subsection{Weakness}
+\subsubsection{Operand number}
+\section{Conclusion}
 \section{Conclusion}
 
 %

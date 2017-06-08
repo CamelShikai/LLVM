@@ -18,3 +18,5 @@ Module:<stdin>candidate_counter:124obfuscation_counter0
 Module:<stdin>candidate_counter:156obfuscation_counter0
 Module:<stdin>candidate_counter:124obfuscation_counter0
 Module:<stdin>candidate_counter:156obfuscation_counter0
+Module:<stdin>candidate_counter:124obfuscation_counter110
+Module:<stdin>candidate_counter:156obfuscation_counter137
