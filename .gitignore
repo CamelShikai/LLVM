@@ -1,1 +1,9 @@
 llvm_build/
+llvm-project/
+klee/
+llvm_release_build/*
+!llvm_release_build/yan
+clang_build/
+mo/*
+!mo/Turing
+minisat/
