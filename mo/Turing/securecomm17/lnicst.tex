@@ -267,13 +267,15 @@ Figure 6 demonstrates time cost monotonically increases with higher obfuscation 
 In this section, we make a discussion to illustrate strengths and weakness of Turing machine technique to provide more insight about it.
 \subsection{Strengths}
 \subsubsection{Compexity}
-Turing machine model is a  powerful calculator used to solve any algorithm problem. However, a simple ``add'' operation may involve hundreds of times of Turing machine state change. Every ``move left'' and ``move right'' operation induces tape modification and ``read'' or ``write'' operation. Turing machine is a state machine. For advarsaries manually do reverse engineering, it is hard or impossible to follow the calculation logic of Turing machine  without understanding the transition table and each state variable. On the other hand, the intrinsic Turing machine implementation complexity also defeat automated deobfuscation tool KLEE. Constraint slover of KLEE failed to calculate input value of other paths. 
+Turing machine model is a  powerful calculator used to solve any algorithm problem. However, a simple ``add'' operation may involve hundreds of times of Turing machine state change. Every ``move left'' and ``move right'' operation induces tape modification and ``read'' or ``write'' operation. Turing machine is a state machine. For advarsaries manually do reverse engineering, it is hard or impossible to follow the calculation logic of Turing machine  without understanding the transition table rules and each state variable. On the other hand, the intrinsic Turing machine implementation complexity also defeat automated deobfuscation tool KLEE. Constraint slover of KLEE failed to calculate input value of other paths. 
 \subsubsection{Popularity}
+Previous obfuscation works\cite{Sharif} usually only could be on some specific predicate expressions and most of them only works on source codes written in a specific language\cite{Trans}. Turing obfuscator broaden the applicaion range to any conditional expressions. Furthermore, it works for programs written in any language as long as they could be transformed to IR of LLVM. LLVM becomes popular which makes Turing machine obfuscator a mature enough obfuscation tool.
+
 \subsubsection{Discreetness}
 \subsection{Weakness}
 \subsubsection{Operand number}
 \section{Conclusion}
-\section{Conclusion}
+ 
 
 %
 % ---- Bibliography ----
