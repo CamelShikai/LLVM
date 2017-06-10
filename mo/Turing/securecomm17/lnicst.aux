@@ -17,7 +17,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{3}}
 \citation{Turing}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Turing machine obfuscation}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Design Overview}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Turing Machine Obfuscation Overview}}{4}}
 \newlabel{Figure 2}{{2}{4}}
 \citation{Turing}
@@ -32,21 +32,22 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Universal Turing machine}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Universal Turing Machine \cite  {UTM}}}{6}}
 \newlabel{Figure 4}{{4}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{6}}
 \citation{Ma}
 \citation{Zhi}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Turing Mahine Obfuscator work flow}}{7}}
 \newlabel{Figure 5}{{5}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Translating Source code to IR}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Static Analysis Pass}{7}}
 \citation{Ma}
+\citation{Trans}
 \citation{Collberg}
-\citation{bzip2}
-\citation{slre}
 \@writefile{toc}{\contentsline {subsubsection}{Locate Candidate Predicates}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Transformation Pass}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{Random Chosen instructions}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{Obfuscation Level}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{8}}
+\citation{bzip2}
+\citation{slre}
 \citation{ida}
 \citation{Chen}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Transformation Pass}}{9}}
@@ -62,27 +63,32 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Call graph Edge Number versus obfuscation level}}{11}}
 \newlabel{Figure 3}{{7}{11}}
 \citation{Trans}
-\citation{slre}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Stealth}{12}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces bzip2 instruction distribution comparison}}{12}}
 \newlabel{Figure 4}{{8}{12}}
+\citation{slre}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces regexp instruction distribution comparison}}{13}}
 \newlabel{Figure 5}{{9}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Cost}{13}}
-\citation{Sharif}
-\citation{Trans}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Time cost versus obfuscation level}}{14}}
 \newlabel{Figure 6}{{10}{14}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Strengths}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{Compexity}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{Popularity}{14}}
+\citation{Sharif}
+\citation{Trans}
 \bibcite{Sen}{1}
 \bibcite{Ma}{2}
 \bibcite{Trans}{3}
 \bibcite{Collberg}{4}
 \bibcite{Sharif}{5}
 \bibcite{Popov}{6}
+\@writefile{toc}{\contentsline {subsubsection}{Popularity}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Weakness}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{Operand number}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{15}}
+\@writefile{toc}{\contentsline {section}{References}{15}}
+\@mtwritefile{\contentsline {mtchap}{References}{15}}
 \bibcite{Zhi}{7}
 \bibcite{bzip2}{8}
 \bibcite{slre}{9}
@@ -90,13 +96,9 @@
 \bibcite{ida}{11}
 \bibcite{McCabe}{12}
 \bibcite{Woodward}{13}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Weakness}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{Operand number}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{15}}
-\@writefile{toc}{\contentsline {section}{References}{15}}
-\@mtwritefile{\contentsline {mtchap}{References}{15}}
 \bibcite{Turing}{14}
 \bibcite{UTM}{15}
 \bibcite{LLVM}{16}
 \bibcite{klee}{17}
+\bibcite{Opaque}{18}
 \immediate\closeout\minitoc
