@@ -14,19 +14,21 @@ define i32 @tobecalled() #0 {
   store i32 0, i32* %1, align 4
   store i32 1, i32* %2, align 4
   %3 = load i32, i32* %1, align 4
-  %4 = icmp eq i32 %3, -4
-  br i1 %4, label %5, label %7
-
-; <label>:5:                                      ; preds = %0
-  %6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str, i32 0, i32 0))
-  br label %9
+  %4 = sub nsw i32 %3, 5
+  %5 = add nsw i32 %4, 1
+  %6 = icmp eq i32 %5, -4
+  br i1 %6, label %7, label %9
 
 ; <label>:7:                                      ; preds = %0
-  %8 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i32 0, i32 0))
-  br label %9
+  %8 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str, i32 0, i32 0))
+  br label %11
 
-; <label>:9:                                      ; preds = %7, %5
-  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.2, i32 0, i32 0))
+; <label>:9:                                      ; preds = %0
+  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1, i32 0, i32 0))
+  br label %11
+
+; <label>:11:                                     ; preds = %9, %7
+  %12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.2, i32 0, i32 0))
   ret i32 0
 }
 

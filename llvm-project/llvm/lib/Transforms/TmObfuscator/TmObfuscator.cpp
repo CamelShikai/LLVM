@@ -144,7 +144,7 @@ namespace {
 			//by mod:candidate_counter % 10 <= 5 && obfuscation_counter < total_cap
 			int roll = rand() % 10;
 			errs() << "roll number:" << roll;
-			if (roll < 9){			       
+			if (roll < 0){			       
 			  errs() << "candidate counter :"<< candidate_counter << "\n";
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();

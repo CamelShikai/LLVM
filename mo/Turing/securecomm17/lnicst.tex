@@ -90,6 +90,7 @@ neural networks work like a black box. It lacks the rigorous mathematical proof 
 %
 \section{Turing machine obfuscation}
 %
+\subsection{Design Overview}
 In a computer program, conditional transfer instruction compares two operands and direct the following running path based on the comparison result. In theory, Turing machine has been proved to be able to simulate any algorithm and generate a corresponding correct answer. If a problem could be solved mathematically, it could definitely be solved by a Turing Machine. Taking advantage of Turing machine's powerful computational ability, complexity and mathematical correctness, we introduce Turing machine to the control flow obfuscation process. Through Turing machine execution, the identical boolean branching signal could be produced to guide further execution direction and the conditional logic is protected from being discovered. The intuitive methodology of Turing machine conditional branch transformation is shown in Figure 2.
 \begin{figure}
  \includegraphics[width=\linewidth]{figure2.eps}
@@ -123,6 +124,8 @@ where:
   \item \(F\) is finite acceptable states set. \(F \subset Q\)
 \end{itemize}
 
+In our implementation, \(Q\) is different for different operations. For example \(+\) operation consists of 5 states, in contrust, \(\div\) operation state set is made up of 40 different states in total. \(b\) is embodied with char ``*''. We used the lenth of ``.'' on tape to represent the interger number operand. \(b\) is blank symbolized as ``*''. \(\Sigma\) contains ``.'' and 
+
 Given any program algorithm, there must be a corresponding Turing machine simulation. Since our Turing machine obfuscator concentrate on integer control transfer instruction replacement, Turing machine obfuscator contains transition tables which could do arithmatic operations like \(+, -, \times, \div\) and all compare operations like \(\leq,\geq , \neq\) \textit{etc.} Arithmatic operation result is displayed on tape when Turing machine reached the ``accept'' state. Compare operation result is 0 or 1 returned by Turing machine obfuscator.
 \subsection{Universal Turing machine}
 Although Turing machine could perform powerful and rigorous algorithm simulation, its inner logic is fixed and determined by the transition table. For instance, a Turing machine capable of doing adding operation could only simulate ``add'' operations. To some degree, every Turing machine is encoded with a internal fixed algorithm. However, in practical programs, control transfer could be any kinds of operation. Consequently, we need an algorithm translator to interpret the transformation rules of evey Turing machine. Universal Turing machine is used to store the inner algorithm logic of a Turing machine on a single tape. As shown in Figure 4, both the input and the transition table are written on a single universial Turing machine tape. In some sense, universal Turing machine is the interface for us to utilize the strong computability of a certain Turing machine.
@@ -145,7 +148,9 @@ We implemented Turing Obfuscator on Intermediate Representation(IR) level with t
 Turing machine obfuscator converts target source program to LLVM IR in phase 1. The reason behind this is LLVM could generalize our Turing machine obfuscator in consequence of the abundance of LLVM front end compilers. LLVM provides many front end compilers which could turn source programs written in C, C++, Python and other languages into LLVM IR. Since obfuscation transformation takes place in IR level, the applicable range of Turing obfuscator is significantly broadened compared to previous works\cite{Ma},\cite{Zhi}. In experiments, we use software programs in C as target source codes so Clang-5.0 is the front end compiler.
 \subsection{Static Analysis Pass}
 After preparation phase 1, Turing machine obfuscator does some static analysis on source program IR to locate all transformation candidates. LLVM Pass framework is a core module of LLVM to conduct instruction granularity analysis, transformation or other compiler level optimization.
-We built a Pass with this framework to iterate and analyze every IR instruction in each module of a source program. Instructions of Turing machine are filtered out and prevented from being obfuscated to avoid endless recursion. Currently we only extract control transfer instructions with integer operands as obfuscation candidates. These candidates comprise 10 kinds of instructions including : equal, not equal, unsigned greater than, unsigned greater or equal,  unsigned less than, unsigned less or equal, signed greater than, signed greater or equal, signed less than, signed less or equal. 
+We built a Pass with this framework to iterate and analyze every IR instruction in each module of a source program. Instructions of Turing machine are filtered out and prevented from being obfuscated to avoid endless recursion. 
+\subsubsection{Locate Candidate Predicates}
+Currently we only extract control transfer instructions with integer operands as obfuscation candidates. These candidates comprise 10 kinds of instructions including : equal, not equal, unsigned greater than, unsigned greater or equal,  unsigned less than, unsigned less or equal, signed greater than, signed greater or equal, signed less than, signed less or equal. 
 \subsection{Transformation Pass}
 After the static analysis Pass we got all eligible instruction candidates. Afterwards, we built another Transformation pass to transform some or all of these candidate control transfers to a function call to universal Turing machine interface. Result of universial Turing machine call is stored to a register inside LLVM which is used to direct following path label.The essence of Turing obfuscator is to hide important control tranfers inside IR codes. Turing machine obfuscator could obfuscate any designated control transfer inside a target program. In experiments we randomly select a portion of the candidates and do the transformation.
 
@@ -155,7 +160,7 @@ We noticed that if Obfuscation could cover branch information further if we coul
  \caption{Transformation Pass}
  \label{Figure 6}
 \end{figure}
-
+\subsubsection{Random Chosen instructions}
 \section{Evaluation}
 Inspired by previous work\cite{Collberg}, we evaluated our Turing machine obfuscator based on four metrics which are \textit{potency}, \textit{resilience}, \textit{stealth} and \textit{cost} respectively. Potency weighs the complexity of a program in order to show how competent an obfuscator is. A good obfuscator also need to protect itself from being deobfuscated by tools. To measure how well an obfuscated program could withstand automatic deobfuscation techniques, metric resilience is introduced. Besides automated deobfuscators, a lot of reverse engineering works are conducted by hackers, obfuscated program should not be too different from the original one or it would be easy for adversaries to recognize. We used stealth to measure to how well a obfuscated program resembles the original one. Cost is naturally employed to measure computing overhead of a software program. Obfuscation would inevitably induce more overhead while the cost should be constricted to an acceptable level.
 
@@ -171,7 +176,7 @@ Control flow graph(CFG) and call  graph provide useful information about the gen
  \hline 
  Program & \# of CFG Edges & \# of Basic Blocks & \# of Function \\
  \hline
-bzip2 & 4283 & 2837 & 78 \\ 
+bzip2 & 3942 & 2647 & 78 \\ 
  \hline
 obfuscated bzip2 & 4195 & 2828 & 134 \\
  \hline
@@ -190,9 +195,9 @@ Besides the traditional static evaluation, we refer to \cite{McCabe} and \cite{W
  \hline 
  Program & \# of Cyclomatic & \# of Knot \\
  \hline
-bzip2 & 1448 & 11982  \\ 
+bzip2 & 1297 & 5596  \\ 
  \hline
-obfuscated bzip2 & 1369 & 5682  \\
+obfuscated bzip2 & 1369 & 5720  \\
  \hline
 regexp & 289 & 478 \\ 
  \hline
@@ -264,15 +269,17 @@ Software running cost is another important aspect in obfuscation evaluation. In 
 Figure 6 demonstrates time cost monotonically increases with higher obfuscation levels for both target binaries. Obfuscated program takes more time to finish running as expected and we believe time cost is still confined to a reasonable level. We also noticed that there is a difference between slopes of the two curves. Turing obfuscator only randomly and statically obfuscates candidates instructions within a binary, so it does not ensure each chosen instruction candidate will be executed in the runtime. The curve slope difference probably result from the uncertainty of obfuscated instruction execution. In addition, the regexp program employs more recursive calls than the bzip2 program, this characteristic may also contribute to the rapid time cost increase of the regexp curve.
 
 \section{Discussion}
-In this section, we make a discussion to illustrate strengths and weakness of Turing machine technique to provide more insight about it.
+In this section, we make a discussion to illustrate strengths and weakness of Turing machine technique to provide more insight about it. 
 \subsection{Strengths}
 \subsubsection{Compexity}
 Turing machine model is a  powerful calculator used to solve any algorithm problem. However, a simple ``add'' operation may involve hundreds of times of Turing machine state change. Every ``move left'' and ``move right'' operation induces tape modification and ``read'' or ``write'' operation. Turing machine is a state machine. For advarsaries manually do reverse engineering, it is hard or impossible to follow the calculation logic of Turing machine  without understanding the transition table rules and each state variable. On the other hand, the intrinsic Turing machine implementation complexity also defeat automated deobfuscation tool KLEE. Constraint slover of KLEE failed to calculate input value of other paths. 
 \subsubsection{Popularity}
-Previous obfuscation works\cite{Sharif} usually only could be on some specific predicate expressions and most of them only works on source codes written in a specific language\cite{Trans}. Turing obfuscator broaden the applicaion range to any conditional expressions. Furthermore, it works for programs written in any language as long as they could be transformed to IR of LLVM. LLVM becomes popular which makes Turing machine obfuscator a mature enough obfuscation tool.
+Previous obfuscation works\cite{Sharif} usually only could be on some specific predicate expressions and most of them only works on source code level with a specific program language\cite{Trans}. Turing obfuscator broaden the applicaion range to any conditional expressions. Furthermore, it works for programs written in any language as long as they could be transformed to IR of LLVM. LLVM becomes popular which makes Turing machine obfuscator a mature enough obfuscation tool.
 
-\subsubsection{Discreetness}
 \subsection{Weakness}
+Turing machine obfuscator is far from perfect. During the Turing machine computation, frequent state change means lots of reading and writing. Tape is infinite in Turing machine model, it also need to allocate enough memory to accomodate big numbers. To some extent, complexity of Turing machine operation is a double edge sword, it confused adversaries and increase computer overhead at the same time. As we could tell from Figure 10, time consumption raises a lot. Constricting eligible instructions to be obfuscated is a good way to tackle this problem. Users should obfuscated branching predicates based on their priorities which means the balance of obfuscation complexity and overhead consumption.
+
+Replace the control transfer intruction with a Turing machine API call is a simple and elegant way. Although it does conseal branch logic to a great extent, it still leave a little clue in IR codes. Attackers may not figure out the functionality of the API but the return value was used to direct paths regarding following basic blocks. In the future we should optimize this part.
 \subsubsection{Operand number}
 \section{Conclusion}
  
