@@ -65,7 +65,9 @@ Recently, Software security research again draws people's attention because of i
   \label{Figure 1}
 \end{figure}
 
-In this paper, we propose a novel control flow obfuscation method with Turing machine embedded in the original program source codes. Turing machine is the essence of computation so it could calculate accurately all kinds of computer operation. In this way, important branch conditions in original source code could be replaced by a Turing machine execution which yields the very identical conditional value. Besides, a Turing machine behaves like a state machine so it contains a lot of branch condition checks in Turing machine transition table. In this whole process, sensitive branch information could be successfully hidden in Turing machine call graphs. In the meantime, Turing machine execution greatly introduces computational complexity to the target program so it is almost impossible to read the obfuscated programs to do reverse engineering. 
+In this paper, we propose a novel control flow obfuscation method with Turing machine embedded in the original program source codes.
+\textit{Church---Turing thesis} told us that any function is computable by a human being without resource limitaion concerns if and only if this function is computable by a Turing machine\cite{Church}. This means a Turing machine could always be implemented based on any part of software codes. The original piece of codes and the constructed Turing machine are \textit{Turing Equivalent}.
+Consequently, important branch conditions in original source code could be simulated by a \textit{Turing Equivalent} Turing machine which yields the very identical conditional value. A Turing machine behaves as a state machine so it contains a lot of conditional predicates and basic blocks. In this simulation process, sensitive branch information could be  hidden among Turing machine call graphs.  These redundant basic blocks further complicates the original execution paths. Turing machine transition table guides the state transition. Turing machine execution greatly introduces computational complexity to the target program so it is almost impossible for attackers to read the obfuscated programs to do reverse engineering. 
 
 At the current stage, we only obfuscated conditional transfer instructions with integer operands. Utilizing LLVM, we could turn original program source codes into intermediate the representation(IR). Turing machine obfuscator takes over from IR and selects interested instruction candidates which would be redirected to semantic equivalent Turing machine execution. After iterating the call graph in the Turing machine ``black box'', the original call graph resumes from the  obfuscator interrupt and the whole program control flow graph is greatly expanded and complicated. Since LLVM is the implementation foundation, currently our proposed obfuscator could only be applied to C/C++ source programs. Inspired by previous works\cite{Collberg}, we evaluate our obfuscator from four dimensions which are potency, resilience, cost and stealth respectively. Results indicate that Turing machine obfuscator could effectively obfuscate target source codes with acceptable cost overhead.
 
@@ -338,6 +340,7 @@ Replace the control transfer intruction with a Turing machine API call is a simp
 
 \bibitem{Molnar} Molnar, David, Xue Cong Li, and David Wagner. "Dynamic Test Generation to Find Integer Bugs in x86 Binary Linux Programs." USENIX Security Symposium. Vol. 9. 2009.
 
+\bibitem{Church} \url{https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis}
 %%
 
 
