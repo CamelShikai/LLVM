@@ -17,7 +17,11 @@
      "Turing"
      "UTM"
      "LLVM"
-     "klee")
+     "klee"
+     "Opaque"
+     "Loop"
+     "Lee"
+     "Molnar")
     (LaTeX-add-labels
      "Figure 1"
      "Figure 2"
