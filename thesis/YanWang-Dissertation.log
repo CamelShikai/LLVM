@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.21)  17 JUN 2017 16:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.21)  17 JUN 2017 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -539,36 +539,36 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 406.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 411.
 
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 406.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 411.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 406
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 411
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 406
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 411
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 406.
+(Font)              <12> on input line 411.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 406.
+(Font)              <8> on input line 411.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 406.
-LaTeX Font Info:    Try loading font information for U+msa on input line 406.
+(Font)              <6> on input line 411.
+LaTeX Font Info:    Try loading font information for U+msa on input line 411.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -576,14 +576,14 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 406.
+LaTeX Font Info:    Try loading font information for U+msb on input line 411.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [2] [2]
+) [2]
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 415.
 
 
@@ -755,14 +755,11 @@ ngmaschine.klickagent.ch/einband/\T1/lmr/m/n/12 (-20) .
 ) [19
 
 
-] (./SupplementaryMaterial/Vita.tex) [20
-
-] (./YanWang-Dissertation.aux
-(./Chapter-1/Chapter-1.aux) (./Chapter-2/Chapter-2.aux)
-(./Chapter-3/Chapter-3.aux) (./Chapter-4/Chapter-4.aux)
-(./Chapter-5/Chapter-5.aux) (./Appendix-A/Appendix-A.aux)
-(./Appendix-B/Appendix-B.aux) (./Appendix-C/Appendix-C.aux)
-(./Appendix-D/Appendix-D.aux)
+] (./YanWang-Dissertation.aux (./Chapter-1/Chapter-1.aux)
+(./Chapter-2/Chapter-2.aux) (./Chapter-3/Chapter-3.aux)
+(./Chapter-4/Chapter-4.aux) (./Chapter-5/Chapter-5.aux)
+(./Appendix-A/Appendix-A.aux) (./Appendix-B/Appendix-B.aux)
+(./Appendix-C/Appendix-C.aux) (./Appendix-D/Appendix-D.aux)
 \eqp@first@eqlistboxi=\dimen129
 )
 
@@ -770,9 +767,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7333 strings out of 495028
- 109579 string characters out of 6181497
- 194736 words of memory out of 5000000
+ 7330 strings out of 495028
+ 109513 string characters out of 6181497
+ 194694 words of memory out of 5000000
  10205 multiletter control sequences out of 15000+600000
  60626 words of font info for 83 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -786,10 +783,10 @@ onts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12
 type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmtt12.pfb>
-Output written on YanWang-Dissertation.pdf (31 pages, 191356 bytes).
+Output written on YanWang-Dissertation.pdf (29 pages, 189878 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
+ 138 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16897 words of extra memory for PDF output out of 17280 (max. 10000000)
 
