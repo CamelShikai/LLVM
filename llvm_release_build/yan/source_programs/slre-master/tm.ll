@@ -1459,6 +1459,66 @@ define i32 @calculator(i32, i32, i8 signext) #0 {
 declare i32 @abs(i32) #7
 
 ; Function Attrs: noinline nounwind uwtable
+define i32 @TM_add(i32, i32) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i32 %1, i32* %4, align 4
+  %6 = load i32, i32* %3, align 4
+  %7 = load i32, i32* %4, align 4
+  %8 = call i32 @calculator(i32 %6, i32 %7, i8 signext 43)
+  store i32 %8, i32* %5, align 4
+  %9 = load i32, i32* %5, align 4
+  ret i32 %9
+}
+
+; Function Attrs: noinline nounwind uwtable
+define i32 @TM_sub(i32, i32) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i32 %1, i32* %4, align 4
+  %6 = load i32, i32* %3, align 4
+  %7 = load i32, i32* %4, align 4
+  %8 = call i32 @calculator(i32 %6, i32 %7, i8 signext 45)
+  store i32 %8, i32* %5, align 4
+  %9 = load i32, i32* %5, align 4
+  ret i32 %9
+}
+
+; Function Attrs: noinline nounwind uwtable
+define i32 @TM_mul(i32, i32) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i32 %1, i32* %4, align 4
+  %6 = load i32, i32* %3, align 4
+  %7 = load i32, i32* %4, align 4
+  %8 = call i32 @calculator(i32 %6, i32 %7, i8 signext 42)
+  store i32 %8, i32* %5, align 4
+  %9 = load i32, i32* %5, align 4
+  ret i32 %9
+}
+
+; Function Attrs: noinline nounwind uwtable
+define i32 @TM_div(i32, i32) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i32 %1, i32* %4, align 4
+  %6 = load i32, i32* %3, align 4
+  %7 = load i32, i32* %4, align 4
+  %8 = call i32 @calculator(i32 %6, i32 %7, i8 signext 47)
+  store i32 %8, i32* %5, align 4
+  %9 = load i32, i32* %5, align 4
+  ret i32 %9
+}
+
+; Function Attrs: noinline nounwind uwtable
 define zeroext i1 @ext_callee(i32, i32, i32) #0 {
   %4 = alloca i1, align 1
   %5 = alloca i32, align 4

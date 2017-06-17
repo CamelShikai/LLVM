@@ -1,0 +1,37 @@
+\contentsline {chapter}{List of Figures}{vi}
+\contentsline {chapter}{List of Tables}{vii}
+\contentsline {chapter}{List of Symbols}{viii}
+\contentsline {chapter}{Acknowledgments}{ix}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}\tolerance 9999\emergencystretch 3em\hfuzz .5\p@ \vfuzz \hfuzz Software Obfuscation}{1}
+\contentsline {subsubsection}{\numberline {1.1.0.1}Obfuscation Benefits}{1}
+\contentsline {section}{\numberline {1.2}Obfuscation Research Situation}{2}
+\contentsline {chapter}{\numberline {2}Title of the Second Chapter}{3}
+\contentsline {section}{\numberline {2.1}Introduction}{3}
+\contentsline {section}{\numberline {2.2}More Declaration}{3}
+\contentsline {chapter}{\numberline {3}Title of the Third Chapter}{5}
+\contentsline {section}{\numberline {3.1}Introduction}{5}
+\contentsline {section}{\numberline {3.2}More Declaration}{5}
+\contentsline {chapter}{\numberline {4}Title of the Fourth Chapter}{7}
+\contentsline {section}{\numberline {4.1}Introduction}{7}
+\contentsline {section}{\numberline {4.2}More Declaration}{7}
+\contentsline {subsection}{\numberline {4.2.1}Some nonsense here}{8}
+\contentsline {subsection}{\numberline {4.2.2}Some additional nonsense here}{8}
+\contentsline {chapter}{\numberline {5}Title of the Fifth Chapter}{9}
+\contentsline {section}{\numberline {5.1}Introduction}{9}
+\contentsline {section}{\numberline {5.2}More Declaration}{9}
+\renewcommand {\cftchappresnum }{Appendix }
+\contentsline {chapter}{\numberline {A}Title of the First Appendix}{11}
+\contentsline {section}{\numberline {A.1}Introduction}{11}
+\contentsline {section}{\numberline {A.2}More Declaration}{11}
+\contentsline {subsection}{\numberline {A.2.1}Some Subsection Title Here}{11}
+\contentsline {chapter}{\numberline {B}Title of the Second Appendix}{13}
+\contentsline {section}{\numberline {B.1}Introduction}{13}
+\contentsline {section}{\numberline {B.2}More Declaration}{13}
+\contentsline {chapter}{\numberline {C}Title of the Third Appendix}{15}
+\contentsline {section}{\numberline {C.1}Introduction}{15}
+\contentsline {section}{\numberline {C.2}More Declaration}{15}
+\contentsline {chapter}{\numberline {D}Title of the Fourth Appendix}{17}
+\contentsline {section}{\numberline {D.1}Introduction}{17}
+\contentsline {section}{\numberline {D.2}More Declaration}{17}
+\contentsline {chapter}{Bibliography}{19}

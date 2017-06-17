@@ -14,8 +14,8 @@ define i32 @tobecalled() #0 {
   store i32 0, i32* %1, align 4
   store i32 1, i32* %2, align 4
   %3 = load i32, i32* %1, align 4
-  %4 = sub nsw i32 %3, 5
-  %5 = add nsw i32 %4, 1
+  %4 = add nsw i32 %3, 1
+  %5 = sdiv i32 %4, 1
   %6 = icmp eq i32 %5, -4
   br i1 %6, label %7, label %9
 

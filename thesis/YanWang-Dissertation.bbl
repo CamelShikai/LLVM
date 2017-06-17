@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Sen}
+\textsc{{Gul Agha}, S. K.~D.} (2005) \enquote{CUTE: a concolic unit testing
+  engine for C.} in \emph{ACM SIGSOFT Software Engineering Notes.}, p. Vol. 30.
+  No. 5. ACM.
+
+\bibitem{lynn2004positive}
+\textsc{Lynn, B.}, \textsc{M.~Prabhakaran}, and \textsc{A.~Sahai} (2004)
+  \enquote{Positive results and techniques for obfuscation,} in
+  \emph{International conference on the theory and applications of
+  cryptographic techniques}, Springer, pp. 20--39.
+
+\bibitem{TuringmachineSimulation}
+\enquote{TuringmachineSimulation,}
+  \url{http://turingmaschine.klickagent.ch/einband/}.
+
+\end{thebibliography}

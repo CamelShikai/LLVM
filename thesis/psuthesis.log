@@ -1,0 +1,1087 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.21)  17 JUN 2017 16:08
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\input psuthesis.cls
+(./psuthesis.cls
+
+LaTeX Warning: You have requested package `',
+               but the package provides `psuthesis'.
+
+Package: psuthesis 2013/10/18 v2.4.0 psuthesis class
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count88
+\calc@Bcount=\count89
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count90
+\calc@Cskip=\skip45
+)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (./tocloft.sty
+Package: tocloft 1999/09/19 v1.0 parameterised ToC, etc., typesetting
+
+(./stdclsdv.sty
+Package: stdclsdv 1999/01/18 v1.0 Sectional divisions
+)
+\cftbeforetoctitleskip=\skip46
+\cftaftertoctitleskip=\skip47
+\cftbeforepartskip=\skip48
+\cftpartnumwidth=\skip49
+\cftbeforechapskip=\skip50
+\cftchapindent=\skip51
+\cftchapnumwidth=\skip52
+\cftbeforesecskip=\skip53
+\cftsecindent=\skip54
+\cftsecnumwidth=\skip55
+\cftbeforesubsecskip=\skip56
+\cftsubsecindent=\skip57
+\cftsubsecnumwidth=\skip58
+\cftbeforesubsubsecskip=\skip59
+\cftsubsubsecindent=\skip60
+\cftsubsubsecnumwidth=\skip61
+\cftbeforeparaskip=\skip62
+\cftparaindent=\skip63
+\cftparanumwidth=\skip64
+\cftbeforesubparaskip=\skip65
+\cftsubparaindent=\skip66
+\cftsubparanumwidth=\skip67
+\cftbeforeloftitleskip=\skip68
+\cftafterloftitleskip=\skip69
+\cftbeforefigskip=\skip70
+\cftfigindent=\skip71
+\cftfignumwidth=\skip72
+\cftbeforelottitleskip=\skip73
+\cftafterlottitleskip=\skip74
+\cftbeforetabskip=\skip75
+\cfttabindent=\skip76
+\cfttabnumwidth=\skip77
+)
+
+LaTeX Warning: You have requested, on input line 188, version
+               `2003/09/26' of package tocloft,
+               but only version
+               `1999/09/19 v1.0 parameterised ToC, etc., typesetting'
+               is available.
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip78
+\f@ncyO@elh=\skip79
+\f@ncyO@erh=\skip80
+\f@ncyO@olh=\skip81
+\f@ncyO@orh=\skip82
+\f@ncyO@elf=\skip83
+\f@ncyO@erf=\skip84
+\f@ncyO@olf=\skip85
+\f@ncyO@orf=\skip86
+)
+(/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
+)
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 \renewcommand{\@pnumwidth}
+                                {1.75em} % remove TOC margin errors
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+\mylength=\skip87
+\mylonglength=\skip88
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.239 ...command{\psu@title}{Theory of Everything}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   t
+l.239 ...command{\psu@title}{Theory of Everything}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  t{
+l.239 ...command{\psu@title}{Theory of Everything}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.243 \newcommand{\psu@author}{Richard Feynman}
+                                               
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   a
+l.243 \newcommand{\psu@author}{Richard Feynman}
+                                               
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  a{
+l.243 \newcommand{\psu@author}{Richard Feynman}
+                                               
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 \newcommand{\psu@dept}{ESM}
+                                 
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   d
+l.247 \newcommand{\psu@dept}{ESM}
+                                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  d{
+l.247 \newcommand{\psu@dept}{ESM}
+                                 
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.251 \newcommand{\psu@degreedate}{May 1900}
+                                            
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   d
+l.251 \newcommand{\psu@degreedate}{May 1900}
+                                            
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  d{
+l.251 \newcommand{\psu@degreedate}{May 1900}
+                                            
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.255 \newcommand{\psu@copyrightyear}{1900}
+                                           
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   c
+l.255 \newcommand{\psu@copyrightyear}{1900}
+                                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  c{
+l.255 \newcommand{\psu@copyrightyear}{1900}
+                                           
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.259 \newcommand{\psu@documenttype}{Thesis}
+                                            
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   d
+l.259 \newcommand{\psu@documenttype}{Thesis}
+                                            
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  d{
+l.259 \newcommand{\psu@documenttype}{Thesis}
+                                            
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.263 ...nd{\psu@submittedto}{The Graduate School}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   s
+l.263 ...nd{\psu@submittedto}{The Graduate School}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  s{
+l.263 ...nd{\psu@submittedto}{The Graduate School}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.267 ...llegesubmittedto}{College of Engineering}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   c
+l.267 ...llegesubmittedto}{College of Engineering}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  c{
+l.267 ...llegesubmittedto}{College of Engineering}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.271 ...s \\ with honors in Computer Engineering}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   h
+l.271 ...s \\ with honors in Computer Engineering}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  h{
+l.271 ...s \\ with honors in Computer Engineering}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.275 ...{\psu@honorsadviser}{Your Honors Adviser}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   h
+l.275 ...{\psu@honorsadviser}{Your Honors Adviser}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  h{
+l.275 ...{\psu@honorsadviser}{Your Honors Adviser}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.279 ...{\psu@honorsdepthead}{Department Q. Head}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   h
+l.279 ...{\psu@honorsdepthead}{Department Q. Head}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  h{
+l.279 ...{\psu@honorsdepthead}{Department Q. Head}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.283 ...@secondthesissupervisor}{Second Q. Jones}
+                                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   s
+l.283 ...@secondthesissupervisor}{Second Q. Jones}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  s{
+l.283 ...@secondthesissupervisor}{Second Q. Jones}
+                                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.315 {}
+        
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   d
+l.315 {}
+        
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  d{
+l.315 {}
+        
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.324 \newcommand{\psu@readers}{4}
+                                  
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.324 \newcommand{\psu@readers}{4}
+                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.324 \newcommand{\psu@readers}{4}
+                                  
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.333 \newcommand{\psu@advisor}{John Doe}
+                                         
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   a
+l.333 \newcommand{\psu@advisor}{John Doe}
+                                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  a{
+l.333 \newcommand{\psu@advisor}{John Doe}
+                                         
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   a
+l.334 \newcommand{\psu@advisortitle}{John Doe}
+                                              
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  a{
+l.334 \newcommand{\psu@advisortitle}{John Doe}
+                                              
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   a
+l.335 \newcommand{\psu@advisoroption}{}
+                                       %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  a{
+l.335 \newcommand{\psu@advisoroption}{}
+                                       %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.341 \newcommand{\psu@readerone}{John Doe}
+                                           
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.341 \newcommand{\psu@readerone}{John Doe}
+                                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.341 \newcommand{\psu@readerone}{John Doe}
+                                           
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.342 \newcommand{\psu@readeronetitle}{John Doe}
+                                                
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.342 \newcommand{\psu@readeronetitle}{John Doe}
+                                                
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.343 \newcommand{\psu@readeroneoption}{}
+                                         %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.343 \newcommand{\psu@readeroneoption}{}
+                                         %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.349 \newcommand{\psu@readertwo}{John Doe}
+                                           
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.349 \newcommand{\psu@readertwo}{John Doe}
+                                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.349 \newcommand{\psu@readertwo}{John Doe}
+                                           
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.350 \newcommand{\psu@readertwotitle}{John Doe}
+                                                
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.350 \newcommand{\psu@readertwotitle}{John Doe}
+                                                
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.351 \newcommand{\psu@readertwooption}{}
+                                         %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.351 \newcommand{\psu@readertwooption}{}
+                                         %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.357 \newcommand{\psu@readerthree}{John Doe}
+                                             
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.357 \newcommand{\psu@readerthree}{John Doe}
+                                             
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.357 \newcommand{\psu@readerthree}{John Doe}
+                                             
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.358 \newcommand{\psu@readerthreetitle}{John Doe}
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.358 \newcommand{\psu@readerthreetitle}{John Doe}
+                                                  
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.359 \newcommand{\psu@readerthreeoption}{}
+                                           %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.359 \newcommand{\psu@readerthreeoption}{}
+                                           %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.365 \newcommand{\psu@readerfour}{John Doe}
+                                            
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.365 \newcommand{\psu@readerfour}{John Doe}
+                                            
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.365 \newcommand{\psu@readerfour}{John Doe}
+                                            
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.366 \newcommand{\psu@readerfourtitle}{John Doe}
+                                                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.366 \newcommand{\psu@readerfourtitle}{John Doe}
+                                                 
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.367 \newcommand{\psu@readerfouroption}{}
+                                          %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.367 \newcommand{\psu@readerfouroption}{}
+                                          %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.373 \newcommand{\psu@readerfive}{John Doe}
+                                            
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.373 \newcommand{\psu@readerfive}{John Doe}
+                                            
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.373 \newcommand{\psu@readerfive}{John Doe}
+                                            
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.374 \newcommand{\psu@readerfivetitle}{John Doe}
+                                                 
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.374 \newcommand{\psu@readerfivetitle}{John Doe}
+                                                 
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.375 \newcommand{\psu@readerfiveoption}{}
+                                          %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.375 \newcommand{\psu@readerfiveoption}{}
+                                          %
+I'm going to ignore the # sign you just used.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.381 \newcommand{\psu@readersix}{John Doe}
+                                           
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.381 \newcommand{\psu@readersix}{John Doe}
+                                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.381 \newcommand{\psu@readersix}{John Doe}
+                                           
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.382 \newcommand{\psu@readersixtitle}{John Doe}
+                                                
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.382 \newcommand{\psu@readersixtitle}{John Doe}
+                                                
+I'm going to ignore the # sign you just used.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   r
+l.383 \newcommand{\psu@readersixoption}{}
+                                         %
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! You already have nine parameters.
+\reserved@a ...f \expandafter \psu \reserved@b #10
+                                                  r{
+l.383 \newcommand{\psu@readersixoption}{}
+                                         %
+I'm going to ignore the # sign you just used.
+
+\tempbox=\box26
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.391 \renewcommand{\@makecaption}
+                                  [2]{%
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.392 ...pt}\sbox{\tempbox}{\small\textbf{#1.} #2}
+                                                  %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@b.
+<to be read again> 
+                   }
+l.392 ...pt}\sbox{\tempbox}{\small\textbf{#1.} #2}
+                                                  %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<recently read> ##
+                  
+l.392 ...pt}\sbox{\tempbox}{\small\textbf{#1.} #2}
+                                                  %
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in restricted horizontal mode.
+<argument> \small \textbf {##1.} ##
+                                   2
+l.392 ...pt}\sbox{\tempbox}{\small\textbf{#1.} #2}
+                                                  %
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Illegal parameter number in definition of \reserved@a.
+<to be read again> 
+                   1
+l.395 {\centering \small\textbf{#1.} #2}
+                                        %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! Illegal parameter number in definition of \reserved@b.
+<to be read again> 
+                   }
+l.395 {\centering \small\textbf{#1.} #2}
+                                        %
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<recently read> ##
+                  
+l.395 {\centering \small\textbf{#1.} #2}
+                                        %
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> \centering \small \textbf {##1.} ##
+                                              2
+l.395 {\centering \small\textbf{#1.} #2}
+                                        %
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.538 \newlength{\psu@sigoptionskip}
+                                    
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+\psu=\skip89
+
+! LaTeX Error: Command \psu already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.539 \newlength{\psu@sigafteroptionskip}
+                                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+\psu=\skip90
+
+! LaTeX Error: Command \psu already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.540 \newlength{\psu@intersigspace}
+                                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+\psu=\skip91
+
+Overfull \hbox (85.22318pt too wide) in paragraph at lines 538--541
+[]\OT1/cmr/m/n/10 @sigoptionskip@sigoptionskip sigafterop-tion-skip@sigafteropt
+ionskip in-ter-sigspace@intersigspace 
+ []
+
+)
+! Emergency stop.
+<*> \input psuthesis.cls
+                        
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 797 strings out of 495028
+ 10104 string characters out of 6181497
+ 65012 words of memory out of 5000000
+ 4070 multiletter control sequences out of 15000+600000
+ 4555 words of font info for 17 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 23i,2n,43p,276b,107s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

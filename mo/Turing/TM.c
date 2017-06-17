@@ -425,6 +425,26 @@ int calculator (int op1,int op2,char op){
   return ret;
 }
 
+int TM_add(int p1, int p2){
+  int tmp = calculator(p1,p2,'+');
+  return tmp;
+}
+
+int TM_sub(int p1, int p2){
+  int tmp = calculator(p1,p2,'-');
+  return tmp;
+}
+
+int TM_mul(int p1, int p2){
+  int tmp = calculator(p1,p2,'*');
+  return tmp;
+}
+
+int TM_div(int p1, int p2){
+  int tmp = calculator(p1,p2,'/');
+  return tmp;
+}
+
 bool ext_callee(int operator,int op1,int op2){
   bool result;
   int tmp;
@@ -549,11 +569,12 @@ bool ext_callee(int operator,int op1,int op2){
 }
 
 
-/*int main() {
+/* int main() { */
 
-/*   printf("result:%d",ext_callee(32,4,5,&label1,&label2)); */
-/*   int tmp = calculator(-1,3,'-'); */
-/*   printf("tmp:%d",tmp); */
+/*   /\* printf("result:%d",ext_callee(32,4,5,&label1,&label2)); *\/ */
+/*   /\* int tmp = calculator(-1,3,'-'); *\/ */
+/*   /\* printf("tmp:%d",tmp); *\/ */
+/*   printf("%d\n",add(1,8)); */
 /*   return 0; */
 /* } */
 

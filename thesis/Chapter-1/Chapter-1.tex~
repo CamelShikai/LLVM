@@ -1,0 +1,36 @@
+\vspace*{-80mm}
+\chapter{Introduction}
+\section{\sloppy Software Obfuscation}
+Software Obfuscation is an important cryptographic concept with wide applications.However until recently there
+was little theoretical investigation of obfuscation, despite the
+great success theoretical cryptography has had in tackling
+other challenging notions of security\cite{lynn2004positive}. 
+
+Usually we would like our source codes to be readable while software obfuscation research does exactly the opposite process which harden the understanding process or make it even impossible. 
+The final goal of conducting
+software obfuscation is to hide those classified or sensitive
+information which could be extracted by some reverse engineering means and  at the same time preserving software’s functionality. We can always treat obfuscation method as a virtual
+black box or a compiler which could transform the primitive
+source code to instrumented codes that will behave exactly
+the same as the original codes. Which means, the obfuscated programs will yield outputs the same with the original out-
+puts given identical inputs.\cite{TuringmachineSimulation}
+
+
+
+
+% %%%
+% \begin{figure}[htb]
+%     \centering
+% %    \includegraphics{\FigPath{FigureFileName}}
+%     \caption{CaptionText.}
+%     \label{ChX-figure: FigureLabel}
+% \end{figure}
+% %%%
+
+\subsubsection{Obfuscation Benefits}
+There are many reasons to obfuscate source codes. Software obfuscation could help companies or individuals protect their intellectual property from being theft. With the development of distributed system and cloud computing, more and more users begin to store data on public web services like Amazon Web Service, it induces privacy leak risk which would do huge damage to Internet community if not dealt properly. Obfuscation could exert great  influence on protect end users' privacy. Another big battle filed of software obfuscation is to compete with the dark side of the software security - Hackers. Hackers do a lot harm to the world exploiting vulnerabilities of software every year. On important step to hack victims' system is to reverse engineer the software binaries and figure out the logic of it. Although an experienced hacker could always reverse engineer a software given enough time and energy, software obfuscation could make this extremely hard.
+
+
+\section{Obfuscation Research Situation}
+In early days, most obfuscation protection systems encrypt the code and then decrypt it at the application's startup. This method is easy to implement while it is also risky and could be easily deobfuscated if an hacker figured out the encryption algorithm.
+

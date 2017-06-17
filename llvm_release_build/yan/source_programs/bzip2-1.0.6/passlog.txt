@@ -13,3 +13,11 @@ Module:<stdin>candidate_counter:202obfuscation_counter202
 Module:<stdin>candidate_counter:202obfuscation_counter62
 Module:<stdin>candidate_counter:202obfuscation_counter0
 Module:<stdin>candidate_counter:202obfuscation_counter0
+Module:<stdin>candidate_counter:202obfuscation_counter0
+Module:<stdin>candidate_counter:202obfuscation_counter15
+Module:<stdin>candidate_counter:202obfuscation_counter15
+Module:<stdin>candidate_counter:202obfuscation_counter53
+Module:<stdin>candidate_counter:202obfuscation_counter179
+Module:<stdin>candidate_counter:202obfuscation_counter179
+Module:<stdin>candidate_counter:202obfuscation_counter179
+Module:<stdin>candidate_counter:202obfuscation_counter202

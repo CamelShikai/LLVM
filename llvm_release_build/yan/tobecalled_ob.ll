@@ -14,8 +14,8 @@ define i32 @tobecalled() #0 {
   store i32 0, i32* %1, align 4
   store i32 1, i32* %2, align 4
   %3 = load i32, i32* %1, align 4
-  %4 = sub nsw i32 %3, 5
-  %5 = add nsw i32 %4, 1
+  %4 = add nsw i32 %3, 1
+  %5 = call i32 @TM_div(i32 %4, i32 1)
   %6 = call i1 @ext_callee(i32 32, i32 %5, i32 -4)
   br i1 %6, label %7, label %9
 
@@ -35,6 +35,14 @@ define i32 @tobecalled() #0 {
 declare i32 @printf(i8*, ...) #1
 
 declare i1 @ext_callee(i32, i32, i32)
+
+declare i32 @TM_add(i32, i32)
+
+declare i32 @TM_sub(i32, i32)
+
+declare i32 @TM_mul(i32, i32)
+
+declare i32 @TM_div(i32, i32)
 
 attributes #0 = { noinline nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }

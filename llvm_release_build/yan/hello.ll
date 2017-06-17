@@ -4,7 +4,7 @@ target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
 @.str = private unnamed_addr constant [19 x i8] c"in x==100 branch \0A\00", align 1
-@.str.1 = private unnamed_addr constant [29 x i8] c"x:%d,this is x>= 100 branch\0A\00", align 1
+@.str.1 = private unnamed_addr constant [30 x i8] c"x:%d,this is x != 100 branch\0A\00", align 1
 @.str.2 = private unnamed_addr constant [15 x i8] c"main finished\0A\00", align 1
 
 ; Function Attrs: noinline nounwind uwtable
@@ -14,7 +14,7 @@ define i32 @main() #0 {
   %3 = alloca i32, align 4
   %4 = alloca i32, align 4
   store i32 0, i32* %1, align 4
-  store i32 100, i32* %2, align 4
+  store i32 99, i32* %2, align 4
   store i32 0, i32* %3, align 4
   store i32 0, i32* %4, align 4
   br label %5
@@ -39,23 +39,25 @@ define i32 @main() #0 {
 
 ; <label>:15:                                     ; preds = %5
   %16 = load i32, i32* %2, align 4
-  %17 = icmp eq i32 %16, 100
-  br i1 %17, label %18, label %20
-
-; <label>:18:                                     ; preds = %15
-  %19 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
-  br label %25
+  %17 = add nsw i32 %16, 2
+  %18 = sub nsw i32 %17, 1
+  %19 = icmp eq i32 %18, 100
+  br i1 %19, label %20, label %22
 
 ; <label>:20:                                     ; preds = %15
-  %21 = load i32, i32* %2, align 4
-  %22 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.1, i32 0, i32 0), i32 %21)
-  %23 = load i32, i32* %2, align 4
-  %24 = add nsw i32 %23, -1
-  store i32 %24, i32* %2, align 4
-  br label %25
+  %21 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
+  br label %27
 
-; <label>:25:                                     ; preds = %20, %18
-  %26 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0))
+; <label>:22:                                     ; preds = %15
+  %23 = load i32, i32* %2, align 4
+  %24 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.1, i32 0, i32 0), i32 %23)
+  %25 = load i32, i32* %2, align 4
+  %26 = add nsw i32 %25, -1
+  store i32 %26, i32* %2, align 4
+  br label %27
+
+; <label>:27:                                     ; preds = %22, %20
+  %28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0))
   ret i32 0
 }
 

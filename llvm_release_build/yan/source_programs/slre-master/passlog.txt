@@ -20,3 +20,9 @@ Module:<stdin>candidate_counter:124obfuscation_counter0
 Module:<stdin>candidate_counter:156obfuscation_counter0
 Module:<stdin>candidate_counter:124obfuscation_counter110
 Module:<stdin>candidate_counter:156obfuscation_counter137
+Module:<stdin>candidate_counter:124obfuscation_counter37
+Module:<stdin>candidate_counter:156obfuscation_counter43
+Module:<stdin>candidate_counter:124obfuscation_counter110
+Module:<stdin>candidate_counter:156obfuscation_counter137
+Module:<stdin>candidate_counter:124obfuscation_counter124
+Module:<stdin>candidate_counter:156obfuscation_counter156

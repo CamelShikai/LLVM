@@ -1,0 +1,219 @@
+# ------------------------------------------------------------------
+# This file is part of bzip2/libbzip2, a program and library for
+# lossless, block-sorting data compression.
+#
+# bzip2/libbzip2 version 1.0.6 of 6 September 2010
+# Copyright (C) 1996-2010 Julian Seward <jseward@bzip.org>
+#
+# Please read the WARNING, DISCLAIMER and PATENTS sections in the 
+# README file.
+#
+# This program is released under the terms of the license contained
+# in the file LICENSE.
+# ------------------------------------------------------------------
+
+SHELL=/bin/sh
+
+# To assist in cross-compiling
+CC=gcc
+AR=ar
+RANLIB=ranlib
+LDFLAGS=
+
+BIGFILES=-D_FILE_OFFSET_BITS=64
+CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
+
+# Where you want it installed when you do 'make install'
+PREFIX=/usr/local
+TMSO_PREFIX=/home/sk/Tech_Folder/Research/llvm_release_build/lib
+TMC_PREFIX=/home/sk/Tech_Folder/Research/mo/Turing
+
+OBJS= blocksort.o  \
+      huffman.o    \
+      crctable.o   \
+      randtable.o  \
+      compress.o   \
+      decompress.o \
+      bzlib.o \
+      tm.o
+
+all: libbz2.a bzip2 bzip2recover test
+
+bzip2: blocksort.o huffman.o crctable.o randtable.o compress.o decompress.o bzlib.o bzip2.o
+	#$(CC) $(CFLAGS) $(LDFLAGS) -o bzip2 bzip2.o -L. -lbz2
+	#llvm-link -S blocksort.ll huffman.ll crctable.ll randtable.ll compress.ll decompress.ll bzlib.ll tm.ll -o bzip2_comp.ll	
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator -S < bzip2_comp.ll > bzip2_final.ll
+	#llc -filetype obj bzip2_final.ll -o bzip2.o
+	gcc  blocksort.o huffman.o crctable.o randtable.o compress.o decompress.o bzlib.o  bzip2.o -o bzip2
+bzip2recover: bzip2recover.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o bzip2recover bzip2recover.o
+
+libbz2.a: $(OBJS)
+	rm -f libbz2.a
+	$(AR) cq libbz2.a $(OBJS)
+	@if ( test -f $(RANLIB) -o -f /usr/bin/ranlib -o \
+		-f /bin/ranlib -o -f /usr/ccs/bin/ranlib ) ; then \
+		echo $(RANLIB) libbz2.a ; \
+		$(RANLIB) libbz2.a ; \
+	fi
+
+check: test
+test: 
+	@cat words1
+	./bzip2 -1  < sample1.ref > sample1.rb2
+	./bzip2 -2  < sample2.ref > sample2.rb2
+	./bzip2 -3  < sample3.ref > sample3.rb2
+	./bzip2 -d  < sample1.bz2 > sample1.tst
+	./bzip2 -d  < sample2.bz2 > sample2.tst
+	./bzip2 -ds < sample3.bz2 > sample3.tst
+	cmp sample1.bz2 sample1.rb2 
+	cmp sample2.bz2 sample2.rb2
+	cmp sample3.bz2 sample3.rb2
+	cmp sample1.tst sample1.ref
+	cmp sample2.tst sample2.ref
+	cmp sample3.tst sample3.ref
+	@cat words3
+
+
+clean: 
+	rm -f *.o libbz2.a bzip2 bzip2recover \
+	sample1.rb2 sample2.rb2 sample3.rb2 \
+	sample1.tst sample2.tst sample3.tst
+	rm *.ll
+	#rm turinglog.txt
+
+blocksort.o: blocksort.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#@cat words0
+	#$(CC) $(CFLAGS) -c blocksort.c
+	clang -emit-llvm -S -c blocksort.c -o blocksort.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < blocksort.ll > blocksort_ob.ll
+	llc -filetype obj -o blocksort.o blocksort.ll
+huffman.o: huffman.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c huffman.c
+	clang -emit-llvm -S -c huffman.c -o huffman.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < huffman.ll > huffman_ob.ll
+	llc -filetype obj  huffman.ll -o huffman.o 
+crctable.o: crctable.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c crctable.c
+	clang -emit-llvm -S -c crctable.c -o crctable.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < crctable.ll > crctable_ob.ll
+	llc -filetype obj crctable.ll -o crctable.o 
+randtable.o: randtable.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c randtable.c
+	clang -emit-llvm -S -c randtable.c -o randtable.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < randtable.ll > randtable_ob.ll
+	llc -filetype obj -o randtable.o  randtable.ll
+compress.o: compress.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c compress.c
+	clang -emit-llvm -S -c compress.c -o compress.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < compress.ll > compress_ob.ll
+	llc -filetype obj compress.ll -o compress.o 
+decompress.o: decompress.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c decompress.c
+	clang -emit-llvm -S -c decompress.c -o decompress.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < decompress.ll > decompress_ob.ll
+	llc -filetype obj decompress.ll -o decompress.o 
+bzlib.o: bzlib.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c bzlib.c
+	clang -emit-llvm -S -c bzlib.c -o bzlib.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -TmObfuscator < bzlib.ll > bzlib_ob.ll
+	llc -filetype obj -o bzlib.o bzlib.ll
+
+bzip2.o: bzip2.c $(TMSO_PREFIX)/LLVMTmObfuscator.so
+	#$(CC) $(CFLAGS) -c bzip2.c
+	clang -emit-llvm -S -c bzip2.c -o bzip2.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -S -TmObfuscator < bzip2.ll > bzip2_ob.ll
+	llc -filetype obj -o bzip2.o bzip2.ll
+
+bzip2recover.o: bzip2recover.c
+	#$(CC) $(CFLAGS) -c bzip2recover.c
+	clang -emit-llvm -S -c bzip2recover.c -o bzip2recover.ll
+	#opt -load $(TMSO_PREFIX)/LLVMTmObfuscator.so -S -TmObfuscator < bzip2recover.ll > bzip2recover_ob.ll
+	llc -filetype obj -o bzip2recover.o bzip2recover.ll
+
+
+tm.o: TM.c
+	clang -emit-llvm -S -c $(TMC_PREFIX)/TM.c -o tm.ll
+	llc -filetype obj -o tm.o tm.ll
+
+distclean: clean
+	rm -f manual.ps manual.html manual.pdf
+
+DISTNAME=bzip2-1.0.6
+dist: check manual
+	rm -f $(DISTNAME)
+	ln -s -f . $(DISTNAME)
+	tar cvf $(DISTNAME).tar \
+	   $(DISTNAME)/blocksort.c \
+	   $(DISTNAME)/huffman.c \
+	   $(DISTNAME)/crctable.c \
+	   $(DISTNAME)/randtable.c \
+	   $(DISTNAME)/compress.c \
+	   $(DISTNAME)/decompress.c \
+	   $(DISTNAME)/bzlib.c \
+	   $(DISTNAME)/bzip2.c \
+	   $(DISTNAME)/bzip2recover.c \
+	   $(DISTNAME)/bzlib.h \
+	   $(DISTNAME)/bzlib_private.h \
+	   $(DISTNAME)/Makefile \
+	   $(DISTNAME)/LICENSE \
+	   $(DISTNAME)/bzip2.1 \
+	   $(DISTNAME)/bzip2.1.preformatted \
+	   $(DISTNAME)/bzip2.txt \
+	   $(DISTNAME)/words0 \
+	   $(DISTNAME)/words1 \
+	   $(DISTNAME)/words2 \
+	   $(DISTNAME)/words3 \
+	   $(DISTNAME)/sample1.ref \
+	   $(DISTNAME)/sample2.ref \
+	   $(DISTNAME)/sample3.ref \
+	   $(DISTNAME)/sample1.bz2 \
+	   $(DISTNAME)/sample2.bz2 \
+	   $(DISTNAME)/sample3.bz2 \
+	   $(DISTNAME)/dotest.c \
+	   $(DISTNAME)/manual.html \
+	   $(DISTNAME)/manual.pdf \
+	   $(DISTNAME)/manual.ps \
+	   $(DISTNAME)/README \
+	   $(DISTNAME)/README.COMPILATION.PROBLEMS \
+	   $(DISTNAME)/README.XML.STUFF \
+	   $(DISTNAME)/CHANGES \
+	   $(DISTNAME)/libbz2.def \
+	   $(DISTNAME)/libbz2.dsp \
+	   $(DISTNAME)/dotest.dsp \
+	   $(DISTNAME)/makefile.msc \
+	   $(DISTNAME)/unzcrash.c \
+	   $(DISTNAME)/spewG.c \
+	   $(DISTNAME)/mk251.c \
+	   $(DISTNAME)/bzdiff \
+	   $(DISTNAME)/bzdiff.1 \
+	   $(DISTNAME)/bzmore \
+	   $(DISTNAME)/bzmore.1 \
+	   $(DISTNAME)/bzgrep \
+	   $(DISTNAME)/bzgrep.1 \
+	   $(DISTNAME)/Makefile-libbz2_so \
+	   $(DISTNAME)/bz-common.xsl \
+	   $(DISTNAME)/bz-fo.xsl \
+	   $(DISTNAME)/bz-html.xsl \
+	   $(DISTNAME)/bzip.css \
+	   $(DISTNAME)/entities.xml \
+	   $(DISTNAME)/manual.xml \
+	   $(DISTNAME)/format.pl \
+	   $(DISTNAME)/xmlproc.sh
+	gzip -v $(DISTNAME).tar
+
+# For rebuilding the manual from sources on my SuSE 9.1 box
+
+MANUAL_SRCS= 	bz-common.xsl bz-fo.xsl bz-html.xsl bzip.css \
+		entities.xml manual.xml 
+
+manual: manual.html manual.ps manual.pdf
+
+manual.ps: $(MANUAL_SRCS)
+	./xmlproc.sh -ps manual.xml
+
+manual.pdf: $(MANUAL_SRCS)
+	./xmlproc.sh -pdf manual.xml
+
+manual.html: $(MANUAL_SRCS)
+	./xmlproc.sh -html manual.xml

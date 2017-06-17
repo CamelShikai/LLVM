@@ -31,6 +31,10 @@ namespace {
     static char ID;
     TmObfuscator() : FunctionPass(ID){}
     Function* insert;
+    Function* tm_add;
+    Function* tm_sub;
+    Function* tm_mul;
+    Function* tm_div;
     std::unordered_set<std::string> white_list = {};
     std::unordered_set<std::string>::iterator got;
     int total_cap = INT_MAX;
@@ -41,11 +45,21 @@ namespace {
     //set up
     bool doInitialization(Module &M) override{
       Constant *hookFunc;
+      Constant *addFunc;
+      Constant *subFunc;
+      Constant *mulFunc;
+      Constant *divFunc;
       hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), NULL);
+      addFunc = M.getOrInsertFunction("TM_add", IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), NULL);
       //hookFunc = M.getOrInsertFunction("ext_callee",IntegerType::get(M.getContext(),1),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32),IntegerType::get(M.getContext(),32), Type::LabelTyID, Type::LabelTyID, NULL);
-				       
+      subFunc =  M.getOrInsertFunction("TM_sub", IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), NULL);
+      mulFunc =  M.getOrInsertFunction("TM_mul", IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), NULL);
+      divFunc =  M.getOrInsertFunction("TM_div", IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), IntegerType::get(M.getContext(),32), NULL);
       insert = cast<Function>(hookFunc);
-      
+      tm_add = cast<Function>(addFunc);
+      tm_sub = cast<Function>(subFunc);
+      tm_mul = cast<Function>(mulFunc);
+      tm_div = cast<Function>(divFunc);
       //read while list file
       std::ifstream skip_file("/media/windows/win2/Research/llvm_release_build/yan/white_list.txt");
       for(std::string line;getline(skip_file,line);){
@@ -67,6 +81,11 @@ namespace {
       return false;
     }
     
+    bool tm_replace(Value* v1){
+      v1->print(errs());
+      return true;
+    }
+
     //per function
     bool runOnFunction(Function &F) override {
             Function *tmp = &F;
@@ -89,6 +108,8 @@ namespace {
 			
 		if (inst->getOpcode() == Instruction::ICmp) {
 		  Instruction* next_inst = inst->getNextNode();
+		 
+
 		  if(next_inst->getOpcode() == Instruction::Br) {
 		    //make sure br instrucion follows the icmp instruction		       
 		    llvm::TerminatorInst* br_ins = &*(inst->getParent()->getTerminator());
@@ -97,6 +118,84 @@ namespace {
 		      continue;
 		    }
 		    
+
+		    //use-def
+		    for(Use &U :inst->operands()){		   
+		      Value *v = U.get();		    
+		      if(auto* inst1 = dyn_cast<Instruction>(v)){
+			if (inst1->isBinaryOp()) {
+			  if (inst1->getOpcode() == Instruction::Add) {
+			    errs() << "\033[1;31m add function invoke \033[0m  ";
+			    Value* p1 = inst1->getOperand(0);
+			    Value* p2 = inst1->getOperand(1);
+			    
+			    errs() << "\nadd parameter1: ";
+			    p1->print(errs());
+			    errs() << " add parameter2:";
+			    p2->print(errs());
+			    errs() << "\n";
+			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+			    addArgs->push_back(p1);
+			    addArgs->push_back(p2);
+			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+			    Instruction *insertadd = CallInst::Create(tm_add,temp);
+			    ReplaceInstWithInst(inst1,insertadd);			 
+			  }
+			  else if(inst1->getOpcode() == Instruction::Sub){
+			    errs() << "\033[1;31m sub function invoke \033[0m  ";
+			    Value* p1 = inst1->getOperand(0);
+			    Value* p2 = inst1->getOperand(1);
+			    errs() << "\nadd parameter1: ";
+			    p1->print(errs());
+			    errs() << " add parameter2:";
+			    p2->print(errs());
+			    errs() << "\n";
+			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+			    addArgs->push_back(p1);
+			    addArgs->push_back(p2);
+			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+			    Instruction *insertsub = CallInst::Create(tm_sub,temp);
+			    ReplaceInstWithInst(inst1,insertsub);
+			  }
+			  else if(inst1->getOpcode() == Instruction::Mul){
+			    errs() << "\033[1;31m mul function invoke \033[0m  ";
+			    Value* p1 = inst1->getOperand(0);
+			    Value* p2 = inst1->getOperand(1);
+			    errs() << "\nadd parameter1: ";
+			    p1->print(errs());
+			    errs() << " add parameter2:";
+			    p2->print(errs());
+			    errs() << "\n";
+			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+			    addArgs->push_back(p1);
+			    addArgs->push_back(p2);
+			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+			    Instruction *insertmul = CallInst::Create(tm_mul,temp);
+			    ReplaceInstWithInst(inst1,insertmul);
+			  }
+			  else if(inst1->getOpcode() == Instruction::SDiv){
+			    errs() << "\033[1;31m div function invoke \033[0m  ";
+			    Value* p1 = inst1->getOperand(0);
+			    Value* p2 = inst1->getOperand(1);
+			    errs() << "\nadd parameter1: ";
+			    p1->print(errs());
+			    errs() << " add parameter2:";
+			    p2->print(errs());
+			    errs() << "\n";
+			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+			    addArgs->push_back(p1);
+			    addArgs->push_back(p2);
+			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+			    Instruction *insertdiv = CallInst::Create(tm_div,temp);
+			    ReplaceInstWithInst(inst1,insertdiv);
+			  }
+			}
+		
+		      }
+		    }
+
+		    /*     */
+
 		    if (auto* AI = dyn_cast<BranchInst>(br_ins)){			 
 		      //inst->eraseFromParent();
 		      //errs() << "1\n";
@@ -133,8 +232,8 @@ namespace {
 			  errs() << "not 32 bit integer,skip\n";
 			  continue;
 			}
-			unsigned successor_num = br_ins->getNumSuccessors();
-			errs() << "total successor number :" << successor_num << "\n";
+			//unsigned successor_num = br_ins->getNumSuccessors();
+			//errs() << "total successor number :" << successor_num << "\n";
 			//BasicBlock *label1 = br_ins->getSuccessor(0);
 			//BasicBlock *label2 = br_ins->getSuccessor(1);
 			//BlockAddress *label1_addr = llvm::BlockAddress::get(label1);
@@ -143,8 +242,8 @@ namespace {
 			//label1->print(errs());
 			//by mod:candidate_counter % 10 <= 5 && obfuscation_counter < total_cap
 			int roll = rand() % 10;
-			errs() << "roll number:" << roll;
-			if (roll < 0){			       
+			//errs() << "roll number:" << roll << "\n";
+			if (roll < 10){			       
 			  errs() << "candidate counter :"<< candidate_counter << "\n";
 			  //construct 3 parameters
 			  std::vector<llvm::Value*>* putsArgs = new std::vector<llvm::Value*>();
