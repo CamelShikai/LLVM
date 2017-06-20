@@ -9,7 +9,7 @@ int main() {
     y = y + j;
   }
   //x = x - 5;	
-  if(x + 2 - 1 == 100){
+  if(x * 3 + 2 - 1 == 100){
     printf("in x==100 branch \n");
     //tobecalled();
   }else{

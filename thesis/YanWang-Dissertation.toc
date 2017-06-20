@@ -6,6 +6,7 @@
 \contentsline {section}{\numberline {1.1}\tolerance 9999\emergencystretch 3em\hfuzz .5\p@ \vfuzz \hfuzz Software Obfuscation}{1}
 \contentsline {subsubsection}{\numberline {1.1.0.1}Obfuscation Benefits}{1}
 \contentsline {section}{\numberline {1.2}Obfuscation Research Situation}{2}
+\contentsline {subsubsection}{\numberline {1.2.0.2}Negative Integer Operand Preprocess}{2}
 \contentsline {chapter}{\numberline {2}Title of the Second Chapter}{3}
 \contentsline {section}{\numberline {2.1}Introduction}{3}
 \contentsline {section}{\numberline {2.2}More Declaration}{3}

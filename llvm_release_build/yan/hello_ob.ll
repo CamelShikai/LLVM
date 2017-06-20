@@ -39,25 +39,26 @@ define i32 @main() #0 {
 
 ; <label>:15:                                     ; preds = %5
   %16 = load i32, i32* %2, align 4
-  %17 = add nsw i32 %16, 2
-  %18 = call i32 @TM_sub(i32 %17, i32 1)
-  %19 = call i1 @ext_callee(i32 32, i32 %18, i32 100)
-  br i1 %19, label %20, label %22
+  %17 = mul nsw i32 %16, 3
+  %18 = add nsw i32 %17, 2
+  %19 = sub nsw i32 %18, 1
+  %20 = call i1 @ext_callee(i32 32, i32 %19, i32 100)
+  br i1 %20, label %21, label %23
 
-; <label>:20:                                     ; preds = %15
-  %21 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
-  br label %27
+; <label>:21:                                     ; preds = %15
+  %22 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
+  br label %28
 
-; <label>:22:                                     ; preds = %15
-  %23 = load i32, i32* %2, align 4
-  %24 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.1, i32 0, i32 0), i32 %23)
-  %25 = load i32, i32* %2, align 4
-  %26 = add nsw i32 %25, -1
-  store i32 %26, i32* %2, align 4
-  br label %27
+; <label>:23:                                     ; preds = %15
+  %24 = load i32, i32* %2, align 4
+  %25 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.1, i32 0, i32 0), i32 %24)
+  %26 = load i32, i32* %2, align 4
+  %27 = add nsw i32 %26, -1
+  store i32 %27, i32* %2, align 4
+  br label %28
 
-; <label>:27:                                     ; preds = %22, %20
-  %28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0))
+; <label>:28:                                     ; preds = %23, %21
+  %29 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2, i32 0, i32 0))
   ret i32 0
 }
 

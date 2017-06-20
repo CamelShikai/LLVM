@@ -40,6 +40,7 @@ namespace {
     int total_cap = INT_MAX;
     int obfuscation_counter = 0;
     int candidate_counter = 0;
+    //std::vector<llvm::Value*>* TMargs;
     
           
     //set up
@@ -81,9 +82,41 @@ namespace {
       return false;
     }
     
-    bool tm_replace(Value* v1){
-      v1->print(errs());
-      return true;
+    std::string usedef(Instruction *v1){
+      //TMargs->push_back(p1);
+      std::string ret = "";
+      for (Use &U : v1->operands()) {
+	Value *v = U.get();	
+	if(auto *opx = dyn_cast<Instruction>(v)){
+	  errs() << "instruction\n";
+	  switch(opx->getOpcode()){
+	    case Instruction::SDiv:
+	      ret += "/";
+	      ret += usedef(opx);
+	      break;
+	    case Instruction::Add:
+	      ret += "+";
+	      ret += usedef(opx);
+	      break;
+  	    case Instruction::Mul:
+	      ret += "*";
+	      ret += usedef(opx);
+	      break;
+	    case Instruction::Sub:
+	      ret += "-";
+ 	      ret += usedef(opx);
+	      break;
+	    default:
+	      break;
+	  }
+	  
+	}else if(auto *consint = dyn_cast<ConstantInt>(v)){
+	  //errs() << "int" << consint->getSExtValue() << "\n";
+	  std::string tmp = std::to_string(consint->getSExtValue());
+	  ret += tmp;
+	}
+      }
+      return ret;
     }
 
     //per function
@@ -120,79 +153,79 @@ namespace {
 		    
 
 		    //use-def
-		    for(Use &U :inst->operands()){		   
-		      Value *v = U.get();		    
-		      if(auto* inst1 = dyn_cast<Instruction>(v)){
-			if (inst1->isBinaryOp()) {
-			  if (inst1->getOpcode() == Instruction::Add) {
-			    errs() << "\033[1;31m add function invoke \033[0m  ";
-			    Value* p1 = inst1->getOperand(0);
-			    Value* p2 = inst1->getOperand(1);
+		    // for(Use &U :inst->operands()){		   
+		    //   Value *v = U.get();		    
+		    //   if(auto* inst1 = dyn_cast<Instruction>(v)){
+		    // 	if (inst1->isBinaryOp()) {
+		    // 	  if (inst1->getOpcode() == Instruction::Add) {
+		    // 	    errs() << "\033[1;31m add function invoke \033[0m  ";
+		    // 	    Value* p1 = inst1->getOperand(0);
+		    // 	    Value* p2 = inst1->getOperand(1);
 			    
-			    errs() << "\nadd parameter1: ";
-			    p1->print(errs());
-			    errs() << " add parameter2:";
-			    p2->print(errs());
-			    errs() << "\n";
-			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
-			    addArgs->push_back(p1);
-			    addArgs->push_back(p2);
-			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
-			    Instruction *insertadd = CallInst::Create(tm_add,temp);
-			    ReplaceInstWithInst(inst1,insertadd);			 
-			  }
-			  else if(inst1->getOpcode() == Instruction::Sub){
-			    errs() << "\033[1;31m sub function invoke \033[0m  ";
-			    Value* p1 = inst1->getOperand(0);
-			    Value* p2 = inst1->getOperand(1);
-			    errs() << "\nadd parameter1: ";
-			    p1->print(errs());
-			    errs() << " add parameter2:";
-			    p2->print(errs());
-			    errs() << "\n";
-			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
-			    addArgs->push_back(p1);
-			    addArgs->push_back(p2);
-			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
-			    Instruction *insertsub = CallInst::Create(tm_sub,temp);
-			    ReplaceInstWithInst(inst1,insertsub);
-			  }
-			  else if(inst1->getOpcode() == Instruction::Mul){
-			    errs() << "\033[1;31m mul function invoke \033[0m  ";
-			    Value* p1 = inst1->getOperand(0);
-			    Value* p2 = inst1->getOperand(1);
-			    errs() << "\nadd parameter1: ";
-			    p1->print(errs());
-			    errs() << " add parameter2:";
-			    p2->print(errs());
-			    errs() << "\n";
-			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
-			    addArgs->push_back(p1);
-			    addArgs->push_back(p2);
-			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
-			    Instruction *insertmul = CallInst::Create(tm_mul,temp);
-			    ReplaceInstWithInst(inst1,insertmul);
-			  }
-			  else if(inst1->getOpcode() == Instruction::SDiv){
-			    errs() << "\033[1;31m div function invoke \033[0m  ";
-			    Value* p1 = inst1->getOperand(0);
-			    Value* p2 = inst1->getOperand(1);
-			    errs() << "\nadd parameter1: ";
-			    p1->print(errs());
-			    errs() << " add parameter2:";
-			    p2->print(errs());
-			    errs() << "\n";
-			    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
-			    addArgs->push_back(p1);
-			    addArgs->push_back(p2);
-			    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
-			    Instruction *insertdiv = CallInst::Create(tm_div,temp);
-			    ReplaceInstWithInst(inst1,insertdiv);
-			  }
-			}
-		
-		      }
-		    }
+		    // 	    errs() << "\nadd parameter1: ";
+		    // 	    p1->print(errs());
+		    // 	    errs() << " add parameter2:";
+		    // 	    p2->print(errs());
+		    // 	    errs() << "\n";
+		    // 	    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+		    // 	    addArgs->push_back(p1);
+		    // 	    addArgs->push_back(p2);
+		    // 	    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+		    // 	    Instruction *insertadd = CallInst::Create(tm_add,temp);
+		    // 	    ReplaceInstWithInst(inst1,insertadd);			 
+		    // 	  }
+		    // 	  else if(inst1->getOpcode() == Instruction::Sub){
+		    // 	    errs() << "\033[1;31m sub function invoke \033[0m  ";
+		    // 	    Value* p1 = inst1->getOperand(0);
+		    // 	    Value* p2 = inst1->getOperand(1);
+		    // 	    errs() << "\nadd parameter1: ";
+		    // 	    p1->print(errs());
+		    // 	    errs() << " add parameter2:";
+		    // 	    p2->print(errs());
+		    // 	    errs() << "\n";
+		    // 	    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+		    // 	    addArgs->push_back(p1);
+		    // 	    addArgs->push_back(p2);
+		    // 	    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+		    // 	    Instruction *insertsub = CallInst::Create(tm_sub,temp);
+		    // 	    ReplaceInstWithInst(inst1,insertsub);
+		    // 	  }
+		    // 	  else if(inst1->getOpcode() == Instruction::Mul){
+		    // 	    errs() << "\033[1;31m mul function invoke \033[0m  ";
+		    // 	    Value* p1 = inst1->getOperand(0);
+		    // 	    Value* p2 = inst1->getOperand(1);
+		    // 	    errs() << "\nadd parameter1: ";
+		    // 	    p1->print(errs());
+		    // 	    errs() << " add parameter2:";
+		    // 	    p2->print(errs());
+		    // 	    errs() << "\n";
+		    // 	    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+		    // 	    addArgs->push_back(p1);
+		    // 	    addArgs->push_back(p2);
+		    // 	    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+		    // 	    Instruction *insertmul = CallInst::Create(tm_mul,temp);
+		    // 	    ReplaceInstWithInst(inst1,insertmul);
+		    // 	  }
+		    // 	  else if(inst1->getOpcode() == Instruction::SDiv){
+		    // 	    errs() << "\033[1;31m div function invoke \033[0m  ";
+		    // 	    Value* p1 = inst1->getOperand(0);
+		    // 	    Value* p2 = inst1->getOperand(1);
+		    // 	    errs() << "\nadd parameter1: ";
+		    // 	    p1->print(errs());
+		    // 	    errs() << " add parameter2:";
+		    // 	    p2->print(errs());
+		    // 	    errs() << "\n";
+		    // 	    std::vector<llvm::Value*>* addArgs = new std::vector<llvm::Value*>();
+		    // 	    addArgs->push_back(p1);
+		    // 	    addArgs->push_back(p2);
+		    // 	    ArrayRef<llvm::Value*> temp =  ArrayRef<llvm::Value*>(*addArgs);
+		    // 	    Instruction *insertdiv = CallInst::Create(tm_div,temp);
+		    // 	    ReplaceInstWithInst(inst1,insertdiv);
+		    // 	  }
+		    // 	}
+				        
+		    //   }
+		    // }
 
 		    /*     */
 
@@ -200,7 +233,7 @@ namespace {
 		      //inst->eraseFromParent();
 		      //errs() << "1\n";
 		      if (auto* icmp = dyn_cast<ICmpInst>(&*inst)){	
-			
+			errs() << usedef(icmp) << "\n";
 			// If it is a icmp instruction then we do transformation
 			// ICMP_EQ    = 32,  ///< equal
 			// ICMP_NE    = 33,  ///< not equal
