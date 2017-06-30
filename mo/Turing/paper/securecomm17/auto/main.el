@@ -17,6 +17,7 @@
      "McCabe"
      "Woodward"
      "Turing"
+     "Sage"
      "UTM"
      "LLVM"
      "klee"
@@ -28,10 +29,10 @@
      "Cute"
      "Cadar")
     (LaTeX-add-labels
-     "fig:one"
      "fig:two"
      "fig:three"
      "table:1"
+     "fig:turing_outcome"
      "adding"
      "fig:four"
      "Figure 5"
@@ -47,7 +48,8 @@
      "fig:cost")
     (TeX-add-symbols
      "F"
-     "DejaVuttfamily")
+     "DejaVuttfamily"
+     "eg")
     (TeX-run-style-hooks
      "algpseudocode"
      "noend"

@@ -15,7 +15,7 @@ define i32 @tobecalled() #0 {
   store i32 1, i32* %2, align 4
   %3 = load i32, i32* %1, align 4
   %4 = add nsw i32 %3, 1
-  %5 = call i32 @TM_div(i32 %4, i32 1)
+  %5 = sdiv i32 %4, 1
   %6 = call i1 @ext_callee(i32 32, i32 %5, i32 -4)
   br i1 %6, label %7, label %9
 

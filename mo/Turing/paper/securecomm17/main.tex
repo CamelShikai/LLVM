@@ -17,7 +17,7 @@
 \newcommand\DejaVuttfamily{%
   \fontfamily{DejaVuSansMono-TLF}\selectfont
 }
-
+\newcommand{\eg}{\textit{e}.\textit{g}.}
 \lstset{
   language=C,numbers=left,xleftmargin=2.5em,
   basicstyle=\DejaVuttfamily\scriptsize,
@@ -43,17 +43,15 @@
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
-\author{Yan Wang\inst{1} \and Dinghao Wu,\inst{2}
-Shuai Wang \and Pei Wang}
+\author{Yan Wang \and Shuai Wang \and Pei Wang \and Dinghao Wu}
 %
-%\authorrunning{Yan,Dinghao}   % abbreviated author list (for running head)
+%\authorrunning{Wang et al.}   % abbreviated author list (for running head)
 %
 %%%% list of authors for the TOC (use if author list has to be modified)
-\tocauthor{Ivar Ekeland, Roger Temam, Jeffrey Dean, David Grove,
-Craig Chambers, Kim B. Bruce, Elisa Bertino}
+\tocauthor{Yan Wang, Shuai Wang, Pei Wang, Dinghao Wu}
 %
-\institute{Pennsylvania State University, State College,PA 16801, USA,\\
-\email{ybw5084@ist.psu.edu} %\\ WWW home page:
+\institute{The Pennsylvania State University\\University Park, PA 16802, USA\\
+\email{{ybw5084,szw175,pxw172,dwu}@ist.psu.edu} %\\ WWW home page:
 %\texttt{http://users/\homedir iekeland/web/welcome.html}
 % \and
 % Universit\'{e} de Paris-Sud,
@@ -68,7 +66,7 @@ Craig Chambers, Kim B. Bruce, Elisa Bertino}
 
 \begin{abstract}        % give a summary of your paper
 Software security is a fundamental research domain in this threat emerging
-technology world. Control flow obfuscation one of important techniques to
+technology world. Control flow obfuscation is one of the important techniques to
 prevent hackers from understanding the program internal logic and leveraging
 software vulnerabilities to do damage. Hence, concealing important conditional
 branch logics are crucial for protecting software from being compromised. In
@@ -78,19 +76,19 @@ Turing machine execution, control transfers could be selectively obfuscated.
 Control flow graph and call graph could be significantly complicated. We
 implemented an obfuscation tool named Turing machine obfuscator with LLVM.
 Compared with previous works, our control flow obfuscation technique bears two
-distinct advantages:1.Complexity. Complicated implementation of Turing machine
+distinct advantages. 1). Complexity: Complicated implementation of Turing machine
 makes it hard for attackers to follow the control flow graph
-logic.2.Universality. Our obfuscation happens on intermediate representative
-level so the application scope is broadened to almost every language with a LLVM
-front-end compiler. We evaluate the obfuscator by potency, resilience, stealth
-and cost respectively. Experiment results show that Turing machine obfuscator
+logic. 2). Universality: Our obfuscation happens on intermediate representative
+level so the application scope is broadened to almost every language with an LLVM
+front-end compiler. We evaluate the obfuscator by potency, resilience, stealth,
+and cost, respectively. Experimental results show that Turing machine obfuscator
 could obfuscate programs in stealth with good performance and robustness.
 %please supply keywords within your abstract
 \keywords {software security, control flow obfuscation, Turing machine, LLVM}
 \end{abstract}
 %
 \section{Introduction}
-%
+\label{sec:introduction}
 Obfuscation derives from intellectual property protection. The Internet brings
 us unprecedented convenience along with idea plagiarism threat and copyright
 infringement. Concealing the algorithm of a software means a lot for the society
@@ -108,25 +106,27 @@ attackers usually need to recover the program control-flow structures first.
 Dynamic code analysis is a popular and effective technique to explore inner
 logic of a program. \textit{Concolic testing} is well-developed and
 widely-adopted technique which leverages both symbolic and concrete execution to
-exhaust the program path coverage~\cite{Sen}. A common reverse engineering flow
-with the help of concolic execution is shown in \F~\ref{fig:one}. The concolic
-testing engine yields new input which leads to new execution path by solving
-path conditions as constraints. Hence, a lot of anti-reverse
-  engineering research has focused on preventing adversaries from analyzing
-  important path conditions in a program\cite{Opaque,Sharif,Popov,Zhi,Wang:Zhi}.
-% citation?
-Control flow obfuscation is one of these cutting-edge techniques. Control flow
-obfuscation aims at hiding path conditions and complicating the execution flow
-within a program. By rewriting or adding extra control flow components, the
-program path conditions become difficult or even impossible to analyze. Existing
-research (e.g., \cite{Ma}) have successfully demonstrated the effectiveness of
+cover all the program paths\cite{Sen}. 
+The concolic
+testing engines like SAGE\cite{Sage} and KLEE\cite{klee} could yield new input which leads to a new execution path by solving
+path conditions as constraints based on previous execution. 
+It has been proved effective in analysing control flow graph(CFG) of software\cite{Cute}.
+
+Hence, a lot of anti-reverse engineering research has focused on preventing
+adversaries from analyzing important path conditions in a
+program\cite{Opaque,Sharif,Popov,Zhi, Wang:Zhi}. Control flow obfuscation is one
+of these cutting-edge techniques to combat these reverse engineering tools.
+Control flow obfuscation aims at hiding path conditions and complicating the
+execution flow within a program. By rewriting or adding extra control flow
+components, the program path conditions become difficult or even impossible to
+analyze. Existing research \cite{Ma} have demonstrated the effectiveness of
 control flow obfuscation.
 
-\begin{figure}
-  \includegraphics[width=0.9\linewidth]{reverse_engineering.eps}
-  \caption{Reverse engineering with concolic testing}
-  \label{fig:one}
-\end{figure}
+% \begin{figure}
+%   \includegraphics[width=0.9\linewidth]{reverse_engineering.eps}
+%   \caption{Reverse engineering with concolic testing}
+%   \label{fig:one}
+% \end{figure}
 
 In this paper, we propose a novel control flow obfuscation method which
 leverages Turing machine to compute path conditions. \textit{Church---Turing
@@ -202,27 +202,28 @@ trusted third party environment~\cite{Zhi}. In general, their technique mostly
 introduces notable network overhead and also relies on trusted network
 accessibility which may not be feasible in practice. 
 
-Ma et al. (\cite{Ma}) take advantage of neural network to replace certain branch
-condition statements in source programs; the propose technique is evaluated to
-conceal conditional instructions and dynamic analysis such as concolic testing
-would be trapped to cover the protected branches. Although the idea is promising
-and the experimental results indicate the effectiveness to certain degree, in
-general neural network-based solution may not be suitable for such scenarios. To
-the best of our knowledge, neural network works like a black box; it lacks a
-rigorous theoretical foundation to show a correct result can always to generated
-given an input. In other words, neural networks may yield results which lead to
-the selection of incorrect branches. Overall, neural networks not only introduce
-complexity but also unpredictability to the transformed programs. Trained models
-may behave very differently if given initial parameters with only some nuances,
-which means that it is very challenging to train an accurate enough model to
-simulate the conditional instruction. In addition, we notice that neural network
-usually consumes too much memory in the evaluations.
+Ma et al. (\cite{Ma, Maieee}) take advantage of neural network to replace
+certain branch condition statements in source programs; the propose technique is
+evaluated to conceal conditional instructions and dynamic analysis such as
+concolic testing would be trapped to cover the protected branches. Although the
+idea is promising and the experimental results indicate the effectiveness to
+certain degree, in general neural network-based solution may not be suitable for
+such scenarios. To the best of our knowledge, neural network works like a black
+box; it lacks a rigorous theoretical foundation to show a correct result can
+always to generated given an input. In other words, neural networks may yield
+results which lead to the selection of incorrect branches. Overall, neural
+networks not only introduce complexity but also unpredictability to the
+transformed programs. Trained models may behave very differently if given
+initial parameters with only some nuances, which means that it is very
+challenging to train an accurate enough model to simulate the conditional
+instruction. In addition, we notice that neural network usually consumes too
+much memory in the evaluations.
 
 %
 \section{Turing machine obfuscation}
 %
 \subsection{Design Overview}
-In a program, a path condition statement compares two operands and select a
+In a program, a path condition statement compares two operands and selects a
 branch for control transfer based on the comparison result. In theory, Turing
 machine has been proved to be able to simulate the semantics of any computer
 algorithm. Hence, any program path condition statement can be modeled by a
@@ -236,7 +237,7 @@ let the Turing machine to simulate the execution.
 
 \begin{figure}
  \includegraphics[width=\linewidth]{figure2.eps}
- \caption{Workflow of a Turing machine obfuscated path condition statement.}
+ \caption{Obfuscate a path condition statement through a Turing machine.}
  \label{fig:two}
 \end{figure}
 
@@ -246,7 +247,8 @@ program. As shown in \F~\ref{fig:three}, a typical Turing machine consists of
 four components:
 \begin{itemize}
   \item An infinite-long tape which consists of a sequence of cells. Each cell
-    holds a symbol defined in the tape alphabet.
+    holds a symbol defined in the tape alphabet. In implementation,  Turing machine obfuscator dynamically allocates new
+  tape cells to construct an infinite tape used to store intermediate results.
   \item A tape head which could conduct read, write, move left and move right
     operations.
   \item A state register used to record the state of the Turing machine. Turing
@@ -261,6 +263,7 @@ four components:
  \label{fig:three}
 \end{figure}
 
+
 % Formally a Turing machine could be represented by a 7 element tuple\cite{Turing}: \[ (Q, \Gamma, b, \Sigma, \delta, q_0, F) \] 
 % where:
 % \begin{itemize}
@@ -274,28 +277,7 @@ four components:
 %   \item \(F\) is finite acceptable states set. \(F \subset Q\)
 % \end{itemize}
 
-Although simple, Turing machine model includes all necessary parts of a modern
-computer. The head is I/O device. The infinite tape acts as the computer memory.
-\textcolor{red}{The transition table acts as a computer processor which embeds
-  the algorithm of a piece of program.} Hence, Turing machine is also deemed as
-the foundation of modern computer science development.
-
-
-\subsubsection{Turing machine initialization}
-\textcolor{red}{TODO this paragraph needs to be rephrased. difficult to understand the point.}
-
-Initially, Turing machine is in ``start'' (\(S_0\)) state and tape records the
-Turing machine input. Blank symbol is symbolized as Char ``*'' on tape.
-Consistent with existing Turing machine simulator project~\cite{SingleTape}, we
-use the length of ``$\cdot$'' to represent an operand of integer type. For
-instance, integer 5 is represented as five continuous ``$\cdot$'' on tape.
-Turing machine tape alphabet is $\{\cdot,* \}$. The tape in \F~\ref{fig:three}
-displayed an initial state of Turing machine. The head of Turing machine is
-placed on the leftmost cell. Different integer operands are separated by a
-single blank symbol ``*''. \textcolor{red}{Operands encoded on the tape of
-  \F~\ref{fig:three} are 5 and 1}. When Turing machine starts to run, the head
-reads the current tape cell, combining with current state register value it
-could locate one and only one match transition rule in the transition table.
+\subsubsection{Transition Table}
 Mathematically a transition rule could be represented by a 5 element
 tuple:\[(S_c, T_c, S_n, T_n, D)\] where:
 
@@ -307,6 +289,31 @@ tuple:\[(S_c, T_c, S_n, T_n, D)\] where:
   \item \(D\) is the direction the head should move (i.e., ``left'' or
     ``right'')
 \end{itemize}
+
+Every 5 element tuple represents a transition table rule in \ref{fig:three}.
+Although simple, Turing machine model resembles a modern computer in several ways. 
+The head is I/O device. The infinite tape acts as the computer memory.
+The transition table defines the mission of this Turing machine which is like program
+code and data. Hence, Turing machine is also deemed as
+the foundation of modern computer science development.
+
+
+\subsubsection{Turing machine initialization}
+
+Initially, Turing machine is in ``start'' (\(S_0\)) state and tape records the
+Turing machine input. Blank symbol is symbolized as Char ``*'' on tape.
+Consistent with existing Turing machine simulator project~\cite{SingleTape}, we
+use the length of ``$\cdot$'' to represent an operand of integer type. For
+instance, integer 5 is represented as five continuous ``$\cdot$'' on tape.
+Turing machine tape alphabet is $\{\cdot,* \}$. The tape in \F~\ref{fig:three}
+displayed an initial state of Turing machine. The head of Turing machine is
+placed on the leftmost cell. Different integer operands are separated by a
+single blank symbol ``*''. Operands encoded on the tape of
+  \F~\ref{fig:three} are 5 and 1. When Turing machine starts to run, the head
+reads the current tape cell, combining with current state register value it
+could locate one and only one match transition rule in the transition table. This matched 
+transition rule entry will direct Turing machine to change to next step.
+
 
 \subsubsection{Turing machine running}
 The Turing machine keeps running step by step directed by the transition table
@@ -352,20 +359,34 @@ implementation.
 \end{table}
 
 \subsubsection{Addition Turing Machine}
-\textcolor{red}{TODO this paragraph needs to be rephrased. difficult to understand the point.}
+
 In this section, we elaborate the design of ``add'' Turing machine which
-simulates the semantics of the addition operation. \textcolor{red}{Other Turing
-  machines used in this research are designed in a similar way.}
-\textcolor{red}{Through constructing this transition table, we essentially
-  realize rules which could concatenate two integer dot cells together. After a
-  sequence of reading and writing operations based on the transition table, two
-  operand dot strings are merged into one long string on tape; the length of
-  result string is the sum of two inputs. Adding Turing Machine Transition table
-  encodes the running algorithm which is simplified in Algorithm~\ref{adding}.
-  When Turing machine completes execution process, the sum of left and right
-  operand is yield on the tape. The length of the result is exactly the sum of
-  two operands because Turing machine erase one dot cell of right operand and
-  complement with one dot cell between the two input operands.}
+simulates the semantics of the addition operation. Other Turing
+  machines(\texttt{substractiong} Turing machine, \texttt{multiplication} Turing machine and \texttt{division} Turing machine) used in this research are designed in a similar way.
+  Through constructing this transition table, we essentially
+  build rules which could concatenate two integer dot cells together. 
+  Take initial tape in \F~\ref{fig:three} as an example. Following the rules in table \ref{table:1}, after a
+  sequence of reading and writing operations based on the transition table, left operand 5 and right operand 1(enbodied by two series of
+  operand dot cells) which are splited by \textit{blank symbol} ``*'' are merged into a long series of dot cells on tape; the length of
+  outcome dot cells is the sum of two operands 6 as shown in \F~\ref{fig:turing_outcome}. 
+
+\begin{figure}
+ \includegraphics[width=0.9\linewidth]{Turingaddoutcome.pdf}
+ \caption{Turing machine execution result}
+ \label{fig:turing_outcome}
+\end{figure}
+
+Adding Turing Machine Transition table encodes the running algorithm which is
+simplified in Algorithm~\ref{adding}. Algorithm~\ref{adding} in fact states a
+method how to combine two series of dot cells on tape together. Following the
+algorithm, the isolator cell \textit{blank symbol} is erased when Turing machine
+finally enter the ``Halt'' state.
+
+
+  % When Turing machine completes execution process, the sum of left and right
+  % operand is yield on the tape. The length of the result is exactly the sum of
+  % two operands because Turing machine erase one dot cell of right operand and
+  % complement with one dot cell between the two input operands.
 
 \begin{algorithm}
 \caption{Transition table algorithm for the ``add'' Turing machine.}
@@ -392,48 +413,55 @@ simulates the semantics of the addition operation. \textcolor{red}{Other Turing
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-
+`
 \subsubsection{Turing Machine of other operations}
 As previously discussed, given any program algorithm, there must exist a
 corresponding Turing machine. Since our Turing machine obfuscator concentrates
-on obfuscating \textcolor{red}{integer control transfer instruction}, Turing
+on obfuscating conditional branch instruction with arithmetic operations(\eg\lstinline{if(a*b>c)... }), Turing
 machine obfuscator need to contain transition tables which is capable of doing
-arithmetic operations such as \(+, -, \times, \div\) and all the involved
-comparison operations like \(\leq, \geq, \neq\), etc.
+arithmetic operations such as \(+, -, \times, \div\).
 
-To implement the arithmetic operations, besides the addition table shown in
+To implement the arithmetic operations, besides the addition transition table shown in
 Table~\ref{table:1}, we construct three more tables for subtraction,
 multiplication and division operations. Their transition tables are relatively
 more complex than Table~\ref{table:1}. Actually in our implementation, we build
-transition table of 16, 34 and 80 transition rule entries for subtraction,
+transition table consisting of 16, 34 and 80 transition rules entries for subtraction,
 multiplication and division Turing machines, respectively.
+As for the comparison operations such as \(\leq, \geq, \neq\) between operands, we take advantage of 
+subtraction Turing machine to calculated the difference of them. Based on calculation result, \lstinline{True/False} is 
+returned. In sum, we construct 4 transition tables, with overall 140
+  transition table entries.
 
-% TODO: the following stuff need to be extended.
-\textcolor{red}{As for the comparison operations, XXX}
 
-\textcolor{red}{In sum, we construct XXX transition tables, with overall XXX
-  transition table entries.}
-
-% what is the relation bewteen this paragraph and the context?
-\textcolor{red}{By design, our Turing machine could dynamically allocate new
-  tape cells to construct an infinite tape used to store intermediate results.}
 
 \subsection{Universal Turing Machine}
 While a Turing machine could perform powerful algorithm simulation, its
-computation ability is predetermined by its embedded transition table. For
+computation ability is predetermined by its initial tape state and embedded transition table. For
 instance, a Turing machine capable of doing addition operation could only
 simulate the ``add'' operation since other operations would have very distinct
-transition rules; a ``add'' Turing machine could not represent ``subtract''
-operations. To some degree, each Turing machine is encoded with a fixed
-algorithm. However, in non-trivial programs, path conditions could be any kind
+transition rules. A ``add'' Turing machine could not represent ``subtract''
+operations. A Turing machine encoded with 2 + 3 could not conduct addtion operation 5 + 6.
+To some degree, each Turing machine is encoded with a fixed
+algorithm and input data. However, in non-trivial programs, path condition operands could be any kind
 of operation such as \(x + 5\) or \(6 \times 7 \). Many of these algebra
 expressions would correspond to different Turing machines. Hence, we need an
 unified translator to represent arbitrary computations. Universal Turing machine
 is designed to simulate arbitrary Turing machines. It stores and interprets
-arbitrary Turing machines on a single tape. As shown in \F~\ref{fig:four}, both
-the inputs and the transition tables are written on the tape of the universal
+arbitrary a Turing machine on a single tape. As shown in \F~\ref{fig:four}, both
+input data and transition table are written on the tape of the universal
 Turing machine. In some sense, a universal Turing machine acts as the interface
 for us to employ Turing machines of different semantics.
+
+
+Universal Turing machine bears the essence of the modern computer which is being
+programmable. Through storing different transition tables on a sequence of cells
+on the tape, an universal Turing machine can actually perform semantic
+equivalent computation to arbitrary programs; as aforementioned, such Universal
+Turing Machine and the replaced algebra expression are \textit{Turing
+  Equivalent}. In our Turing machine obfuscator, we can invoke a Universal
+Turing machine function call on interested conditional control transfer instructions and related arithmetic operation
+instructions.
+
 
 \begin{figure}
  \includegraphics[width=\linewidth]{UTM.pdf}
@@ -442,134 +470,148 @@ for us to employ Turing machines of different semantics.
 \end{figure}
 
 \subsubsection{Tape construction}
-Before universal Turing machine execution, a tape which contains the inputs and
-Turing machine transition tables is generated. For each operation of ``\(+\)'',
-``\(-\)'', ``\(\times\)'' and ``\(\div\)'', there is a corresponding transition
-table. As aforementioned, integer inputs are encoded as strings of ``.'' with
-different lengths. \textcolor{red}{Following the standard tape formatting
-  protocol},
-% Are I right here? a citation would be good.
-we then concatenate transition tables and inputs to form a tape for the
-universal Turing machine. In this way, all the information needed for
-computations exists on the tape. During the execution of universal Turing
-machine, it would first extract a proper transition table then perform one step
-computation.
-
-% what is the meaning of the following paragraph *in this section*? Maybe
-% consider to move it to the above section?
-\textcolor{red}{please see the notes in the tex file}
-Universal Turing machine bears the essence of the modern computer which is being
-programmable. Through storing different transition tables on a sequence of cells
-on the tape, an universal Turing machine can actually perform semantic
-equivalent computation to arbitrary programs; as aforementioned, such Universal
-Turing Machine and the replaced algebra expression are \textit{Turing
-  Equivalent}. In our Turing machine obfuscator, we can invoke a Universal
-Turing machine function call on interested control transfer instructions.
+Before universal Turing machine execution, a tape which contains the input
+operands and Turing machine transition tables is generated. For each operation
+of ``\(+\)'', ``\(-\)'', ``\(\times\)'' and ``\(\div\)'', corresponding
+transition table is also embedded on tape. As aforementioned, integer inputs are
+encoded as strings of ``.'' with different lengths. Following a universalized
+tape formatting protocol across Turing machine obfuscator, we concatenate
+transition tables and inputs to form a tape for the universal Turing machine. In
+this way, all the information needed for computations exists on the tape. During
+the execution of universal Turing machine, it would first extract a proper
+transition table then perform one step computation.
 
 \subsubsection{Negative Integer Operand Preprocess}
 % what if 4 + (-6)?  would you translate it into 4 + 6?
-\textcolor{red}{please see the notes in the tex file}
+\textcolor{red}{still not clear}
 In software programs, integer operands comprise both positive and negative
 cases. Turing machine could only dispose of positive operands in consequence of
 we use the length of dot cell on tape to represent a integer. This means we have
 to preprocess the invalid operands in Turing machine obfuscator. In the
 preprocessing stage, Turing machine obfuscator could convert invalid operands to
 its opposite number to run Turing machine. Calculate result from Turing machine
-is also changed before returning. For instance, $-4 + (-6)$ is preprocessed to
-$4 + 6$, afterwards -10 which is the opposite number of 10 is returned.
+is also revised before returning. For instance, $-4 + (-6)$ is preprocessed to
+$4 + 6$, afterwards -10 which is the opposite number of 10 is returned. $4 +
+(-6)$ is preprocessed to Turing machine operation $6 - 4$, and the opposite
+number of the outcome 2 (i.e., -2) is returned. In preprocess stage, any
+arithmetic operation would be transformed to a valid integer operation with $+$,
+$-$, $\times$, $\div$ for Turing machine.
 
 \section{Implementation}
-We implemented Turing Obfuscator on Intermediate Representation(IR) level with
-the help of LLVM~\cite{LLVM}. In general Turing obfuscator employed three phases
-to generated target obfuscated binary as shown in Figure 5. The first is to
-compile both target source program and obfuscator source code to IR, then the
-obfuscator processes IR instructions with several passes. At last these
-instrumented IR codes are compiled again and linked to the final obfuscated
-binary. Turing machine obfuscator is implemented with C.
-\begin{figure}
- \includegraphics[width=\linewidth]{llvm-flow.eps}
- \caption{Turing Machine Obfuscator work flow}
- \label{Figure 5}
-\end{figure}
-\subsection{Translating Source code to IR}
-Turing machine obfuscator converts target source program to LLVM IR in phase 1.
-The reason behind this is LLVM could generalize our Turing machine obfuscator in
-consequence of the abundance of LLVM front end compilers. LLVM provides many
-front end compilers which could turn source programs written in C, C++, Python
-and other languages into LLVM IR. Since obfuscation transformation takes place
-in IR level, the applicable range of Turing obfuscator is significantly
-broadened compared to previous works~\cite{Ma,Zhi}. In experiments, we use
-software programs in C as target source codes so Clang-5.0 is the front end
-compiler.
-\subsection{Static Analysis Pass}
-After preparation phase 1, Turing machine obfuscator does some static analysis
-on source program IR to locate all transformation candidates. LLVM Pass
-framework is a core module of LLVM to conduct instruction granularity analysis,
-transformation or other compiler level optimization. We built a Pass with this
-framework to iterate and analyze every IR instruction in each module of a source
-program. Instructions of Turing machine are filtered out and prevented from
-being obfuscated to avoid endless recursion.
-\subsubsection{Locate Candidate Predicates}
-Currently we only extract control transfer instructions with integer operands as
-obfuscation candidates. These candidates comprise 10 kinds of instructions
-including : equal, not equal, unsigned greater than, unsigned greater or equal,
-unsigned less than, unsigned less or equal, signed greater than, signed greater
-or equal, signed less than, signed less or equal.
-\subsection{Transformation Pass}
-After the static analysis Pass we got all eligible instruction candidates.
-Afterwards, we built another Transformation pass to transform some or all of
-these candidate control transfers to a function call to universal Turing machine
-interface. Result of universal Turing machine call is stored to a register
-inside LLVM which is used to direct following path label.The essence of Turing
-obfuscator is to hide important control transfers inside IR codes. Turing machine
-obfuscator could obfuscate any designated control transfer inside a target
-program. In experiments we randomly select a portion of the candidates and do
-the transformation.
+Our proposed technique is implemented as a transformation pass of the LLVM
+compiler suite~\cite{LLVM}; the LLVM intermediate representation (IR) is
+obfuscated and then compiled into binary executable. As shown in
+\F~\ref{fig:five}, our Turing obfuscator performs a three-phase process to
+generate the obfuscated output. The first step translates both target program
+and obfuscator's source code into LLVM IR. The obfuscator then iterates IR
+instructions to identify obfuscation candidates and perform the transformation.
+The instrumented IR codes are further compiled into the executable file in the
+final step. \textcolor{red}{We implement the Turing machine obfuscator in C,
+  with in total XXX lines of code}.
 
-We noticed that if Obfuscation could cover branch information further if we
-could jump back to a caller function basic block based on the Turing machine
-running result like in \cite{Ma}, but essentially it still expose branch trace
-since we need to record the basic block addresses of each branch. To the best of
-our knowledge, perfecting branch hiding technique does not exist since there is
-always a way to figure out inner logic of a certain program given enough time
-and energy. We need to harden this process as much as possible. Currently we
-adopt the IR replacement way to invoke Turing machine.
+\begin{figure}
+ \includegraphics[width=\linewidth]{overview.pdf}
+ \caption{Workflow of Turing machine obfuscator.}
+ \label{fig:five}
+\end{figure}
+
+\subsection{Phase One: Translating Source Code to IR}
+\label{subsec:phase-one}
+As aforementioned, we first compiles the target source program into LLVM IR; the
+obfuscation transformation is performed on the IR level. Considering a broad set
+of front end compilers provided by LLVM which can turn programs written by
+various programming languages into LLVM IR, this IR-based implementation could
+broaden the application scope our tool comparing with previous
+work~\cite{Ma, Zhi, Maieee}. On the other hand, since we employ C programs for
+the evaluation, Clang (version 5.0) is used as the front end compiler in this
+paper.
+
+\subsection{Phase Two: Collect Transformation Candidate}
+During the static analysis pass, our Turing machine obfuscator locates all
+transformation candidates on the IR instructions. The LLVM Pass framework is a
+core module of the LLVM compiler suite to conduct analysis, transformation and
+optimization during the compile time~\cite{llvmpass}. We build a extra pass
+within this framework to iterate and analyze every IR instruction in each module
+of the input program. 
+\\\\
+\noindent \textbf{Locate Candidate Predicates} While the proposed technique is
+fundamentally capable of obfuscating any program component, the implementation
+currently focuses on branch predicate since control-flow obfuscation is
+efficient to defeat many reverse engineering activities
+(\S~\ref{sec:introduction}). In general, the transformation candidate set
+includes instructions to compute different branch predicates (in total 10 kinds)
+such as: equal, not equal, less than, greater than. \textcolor{red}{integer
+  predicate}
+
+\subsection{Phase Three: Transformation Pass}
+The second phase provides all the eligible transformation candidates. In this
+step, we build another transformation pass within the LLVM Pass framework to
+perform the obfuscation transformation. As shown in \F~\ref{fig:six}, predicate
+instructions are obfuscated; we rewrite the instructions into function calls to
+the universal Turing machine interface. The computation of the branch predicate
+is launched inside the Turing machine, and the computation result is passed to a
+register which directs the associated path selection. The essence of Turing
+obfuscator is to hide program control transfers; our technique is able to
+obfuscate all the branch predicates in a program or only transform a subset of
+(security sensitive) candidates. Such partial obfuscation is denoted as
+``obfuscation level'' and we present discussion on this shortly.
+
 \begin{figure}
  \includegraphics[width=\linewidth]{transform_pass.pdf}
- \caption{Transformation Pass}
- \label{Figure 6}
+ \caption{Phase Three: Transformation Pass}
+ \label{fig:six}
 \end{figure}
-\subsubsection{Obfuscation Level}
-Similar with \cite{Trans}, Obfuscation level is an indicator which weighs how much of a program is transformed by the transform pass. 
-We defined obfuscation level as the percentage between obfuscated instruction and total eligible instructions:
+
+For an obfuscated predicate, our current ``transform to function call''
+implementation utilizes the boolean return value to select a branch for control
+transfer. On the other hand, we notice existing work (e.g., \cite{Ma, Maieee})
+leverages a cross-procedure jump at this step; an indirect jump from the black
+box of the Turing machine to a selected branch. We present further discussion on
+both branch determination strategies in \S~\ref{sec:discussion}.
+%% We also notice that if obfuscation could cover branch information further if we
+%% could jump back to a caller function basic block based on the Turing machine
+%% running result like in \cite{Ma}, but essentially it still expose branch trace
+%% since we need to record the basic block addresses of each branch. To the best of
+%% our knowledge, perfecting branch hiding technique does not exist since there is
+%% always a way to figure out inner logic of a certain program given enough time
+%% and energy. We need to harden this process as much as possible. Currently we
+%% adopt the IR replacement way to invoke Turing machine.
+\\\\
+\noindent \textbf{Obfuscation Level} Obfuscation level is an indicator which
+weighs how much of a program is transformed by the obfuscation pass. Consistent
+with previous work (\cite{Trans}), the obfuscation level is defined as the ratio
+between the obfuscated instruction and total eligible candidates:
+
 \[ O = M / N \]
+
 \begin{itemize}
-  \item \(M\) is the number of instructions replaced by transformation pass.
-  \item \(N\) is the number of all instruction candidates filtered by static analysis pass.
+  \item \(M\) is the number of instructions transformed by the obfuscation pass.
+  \item \(N\) is the number of all the transformable instructions (i.e., the
+    branch predicate instructions identified in \S~\ref{subsec:phase-one}).
 \end{itemize}
 
 \section{Evaluation}
 \label{sec:evaluation}
-Inspired by previous research~\cite{Collberg, Ma}, we evaluate our Turing machine
-obfuscator based on four metrics which are \textit{potency},
+Inspired by previous research~\cite{Collberg, Ma, Maieee}, we evaluate our
+Turing machine obfuscator based on four metrics which are \textit{potency},
 \textit{resilience}, \textit{stealth} and \textit{cost}, respectively. Potency
 weighs the complexity of the obfuscated programs, which is straightforward to
 show how competent an obfuscator is. A good obfuscator also needs to protect
 itself from being deobfuscated; to measure how well an obfuscated program is
 resilient to automatic deobfuscation techniques, we evaluate the resilience of
-our Turing machine obfuscator. Moreover, in the battle against experienced attackers,
-obfuscated programs should not be too distinguishable from its origins otherwise it would be easy to
-be recognized. Hence, we measure the stealth to show how well an obfuscated
-program resembles the original one. Cost is naturally employed to measure the
-execution overhead of a software program. While obfuscation would inevitably
-introduce performance penalty, we measure the execution time of the obfuscated
-code to show the overall cost is acceptable.
+our Turing machine obfuscator. Moreover, in the battle against experienced
+attackers, obfuscated programs should not be too distinguishable from its
+origins otherwise it would be easy to be recognized. Hence, we measure the
+stealth to show how well an obfuscated program resembles the original one. Cost
+is naturally employed to measure the execution overhead of a software program.
+While obfuscation would inevitably introduce performance penalty, we measure the
+execution time of the obfuscated code to show the overall cost is acceptable.
 
 Two widely-used open source programs are employed in our evaluation: compress
 tool \textsc{bzip2}~\cite{bzip2} and regular expression engine slre~\cite{slre}.
-In Turing machine obfuscator, we collect all path condition instructions (e.g.,
-\texttt{cmp} and \texttt{test} instructions), \textcolor{red}{variables and
-  expressions which could affect the value of the conditional branch} as
+In Turing machine obfuscator, we collect all path conditional branch instructions (e.g.,
+\texttt{icmp}). Through \textit{Use-Define chain}, we also locate all  instructions that determine the value of the
+conditional branch instruction, all these instructions are deemed as
 transformation candidates. Obfuscation level is an index which represents the
 ratio between obfuscated instructions and all candidates. In our experiments,
 the ratio is set as 50\% which means half of all conditional transfer candidates
@@ -777,13 +819,12 @@ of execution. In addition, the regexp program employs more recursive calls than
 
 
 \section{Discussion}
+\label{sec:discussion}
 To provide more insights and guideline for further adoption of our proposed
-technique, we discuss the strengths and weakness of Turing machine technique in
-this section.
+technique, we discuss the multiple aspects of the proposed Turing machine
+technique in this section.
 
-\subsection{Strength}
-
-\subsubsection{Complexity}
+\subsection{Complexity}
 In general, Turing machine model is a powerful calculator that is capable of
 solving any algorithm problem. Note that even a simple operation (e.g., ``add'')
 may lead to the change of Turing machine states for hundreds of times; every
@@ -795,13 +836,10 @@ all---for adversaries with manual reverse engineering to follow the calculation
 logic without understanding the transition table rules and state variables. In
 addition, the intrinsic Turing machine complexity can also defeat automated
 deobfuscation tools (e.g., KLEE). As reported in our resilience evaluation
-(Sec.~\ref{subsec:resilience}), the constraint solver of KLEE failed to yield
+(\S~\ref{subsec:resilience}), the constraint solver of KLEE failed to yield
 proper inputs to cover two of three execution paths.
 
-\subsubsection{Opaque Obfuscation Enhanced}
-Opaque obfuscation enhanced
-
-\subsubsection{Application Scope}
+\subsection{Application Scope}
 Previous obfuscation work~\cite{Sharif} usually targets one or several specific
 kinds of predicate expressions. Also, most of them performs source code level
 transformations for specific kind of program languages~\cite{Trans}. Turing
@@ -809,9 +847,34 @@ obfuscator broadens the application scope to any kind of conditional expression.
 In addition, it works for programs written in any language as long as they could
 be transformed into the LLVM IR. Considering a large portion of programming
 languages have been supported by LLVM, we envision Turning machine obfuscator
-would serve to harden many commonly used programming languages.
+would serve to harden many softwares implemented with various kinds of
+programming languages.
 
-\subsection{Weakness}
+\subsection{Branch Selection Techniques}
+As previously presented, our current implementation rewrites path condition
+instructions to invoke the Turing machine component. While it is mostly
+impossible for attackers to reason the functionality of the Turing machine code,
+return value of executing the Turing machine component is observable (since the
+predicate computation is modeled as a function call to the Turing machine
+component). Certain amount of information leakage may become feasible at this
+point.
+
+We notice that existing work (\cite{Ma, Maieee}) proposes a different approach
+at this step; control flow is directly guided (via \texttt{goto}) to the
+selected branch from the Neural network obfuscator. While intuitively this
+approach seems to hide the explicit return value, such approach is not
+fundamentally more secure since the hidden return value can be inferred by
+observing the execution flow. Another solution that may be employed to protect
+the predicate computation result is to use matrix branch logic~\cite{Samjam}.
+Suppose we model a branch predicate with a Turing machine function (e.g., $TM$),
+the general idea is to further transform $TM$ into a matrix function, then
+randomize the matrix branching function. The involved matrix branch logic and
+randomness shall provide additional security consideration at this step.
+Overall, we argue the current implementation is reasonable, and we leave it as
+one future work to present quantitative analysis of the potential information
+leakage and countermeasures at this step.
+
+\subsection{Execution Overhead}
 During the Turing machine computation, frequent state change would indicate lots
 of read and write operations. Also, since tape is infinite in Turing machine
 model, it needs to allocate enough memory to accommodate complex computations.
@@ -819,22 +882,22 @@ In general, the complexity of Turing machine is a double edge sword; it impedes
 adversaries and increases execution overhead at the same time. As reported in
 the cost evaluation (Fig.~\ref{fig:cost}), we observed non-negligible
 performance penalty for both cases. One solution is to perform selective
-obfuscation; users can mark sensitive program components and Turing machine
+obfuscation; users can mark sensitive program codes and Turing machine
 obfuscator would only harden those parts. Such strategy would improve the
 overall execution speed without sacrificing the major security requirements.
 
-Moreover, our current implementation rewrites path condition instructions to
-invoke the Turing machine component. While it is mostly impossible for attackers
-to reason the functionality of the Turing machine code, return value of
-executing the Turing machine component is observable (since the return value is
-used to select branches). Certain amount of information leakage may become
-feasible at this point. We leave it as one future work to study the potential
-information leakage and countermeasures.
-
-\subsubsection{Operand number}
-
 \section{Conclusion}
- 
+In this paper we proposed a novel obfuscation technique taking advantage of the
+merits of Turing machine execution. We designed a prototype called Turing
+machine obfuscator will LLVM platform. We implmented Turing machine and
+universal Turing machine for arithmetic operators $+, -, *$ and $\div$. Return
+value of Universal Turing machine execution is used to direct control flow. We
+evaluated Turing machine obfuscator with respect to pontency, resilience,
+stealth and cost with two open source software as subjects. Evaluation results
+indicated effectiveness and robustness of Turing machine obfuscator. We believe
+Turing machine obfuscator could be a solid and pratical obfuscation tool to
+protect software security.
+
 
 %
 % ---- Bibliography ----
@@ -843,9 +906,9 @@ information leakage and countermeasures.
 
 \bibitem{Sen} Sen, Koushik, Darko Marinov, and Gul Agha. "CUTE: a concolic unit testing engine for C." ACM SIGSOFT Software Engineering Notes. Vol. 30. No. 5. ACM, 2005.
 
-\bibitem{Ma} Ma, Haoyu, et al. "Control flow obfuscation using neural network to fight concolic testing." International Conference on Security and Privacy in Communication Systems. Springer International Publishing, 2014.
+\bibitem{Ma} Haoyu Ma, Xinjie Ma, Weijie Liu, Zhipeng Huang, Debin Gao and Chunfu Jia. "Control flow obfuscation using neural network to fight concolic testing." International Conference on Security and Privacy in Communication Systems. Springer International Publishing, 2014.
 
-\bibitem{Trans} Wang, Pei, et al. "Translingual obfuscation." Security and Privacy (EuroS\&P), 2016 IEEE European Symposium on. IEEE, 2016.
+\bibitem{Trans} Pei Wang, Shuai Wang, Jiang Ming, Yufei Jiang, Dinghao Wu. "Translingual obfuscation." Security and Privacy (EuroS\&P), 2016 IEEE European Symposium on. IEEE, 2016.
 
 \bibitem{Collberg} Collberg, Christian, Clark Thomborson, and Douglas Low. "Manufacturing cheap, resilient, and stealthy opaque constructs." Proceedings of the 25th ACM SIGPLAN-SIGACT symposium on Principles of programming languages. ACM, 1998.
 
@@ -856,9 +919,9 @@ information leakage and countermeasures.
 
 \bibitem{Popov} Popov, Igor V., Saumya K. Debray, and Gregory R. Andrews. "Binary Obfuscation Using Signals." Usenix Security. 2007.
 
-\bibitem{Zhi} Wang, Zhi, et al. "Branch obfuscation using code mobility and signal." Computer Software and Applications Conference Workshops (COMPSACW), 2012 IEEE 36th Annual. IEEE, 2012.
+\bibitem{Zhi} Zhi Wang, Chunfu Jia, Min Liu. "Branch obfuscation using code mobility and signal." Computer Software and Applications Conference Workshops (COMPSACW), 2012 IEEE 36th Annual. IEEE, 2012.
 
-\bibitem{Wang:Zhi} Wang, Zhi, et al. "Linear obfuscation to combat symbolic execution." European Symposium on Research in Computer Security. Springer Berlin Heidelberg, 2011.
+\bibitem{Wang:Zhi} Zhi Wang, Jiang Ming, Chunfu Jia, Debin Gao. "Linear obfuscation to combat symbolic execution." European Symposium on Research in Computer Security. Springer Berlin Heidelberg, 2011.
 
 \bibitem{bzip2} \url{http://www.bzip.org/}
 
@@ -873,6 +936,8 @@ information leakage and countermeasures.
 \bibitem{Woodward} Woodward, Martin R., Michael A. Hennell, and David Hedley. "A measure of control flow complexity in program text." IEEE Transactions on Software Engineering 1 (1979): 45-50.
 
 \bibitem{Turing} \url{https://en.wikipedia.org/wiki/Turing_machine}
+
+\bibitem{Sage} Godefroid, Patrice, Michael Y. Levin, and David A. Molnar. "Automated Whitebox Fuzz Testing." NDSS. Vol. 8. 2008.
 
 \bibitem{UTM} \url{https://en.wikipedia.org/wiki/Universal_Turing_machine#/media/File:Universal_Turing_machine.svg}
 
@@ -890,13 +955,17 @@ information leakage and countermeasures.
 
 \bibitem{Church} \url{https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis}
 
-\bibitem{Sen} Sen, Koushik, Darko Marinov, and Gul Agha. "CUTE: a concolic unit testing engine for C." ACM SIGSOFT Software Engineering Notes. Vol. 30. No. 5. ACM, 2005.
+\bibitem{llvmpass} \url{http://llvm.org/docs/WritingAnLLVMPass.html}
+
+%\bibitem{Sen} Sen, Koushik, Darko Marinov, and Gul Agha. "CUTE: a concolic unit testing engine for C." ACM SIGSOFT Software Engineering Notes. Vol. 30. No. 5. ACM, 2005.
 
 \bibitem{Cute} Sen, Koushik, and Gul Agha. "CUTE and jCUTE: Concolic unit testing and explicit path model-checking tools." International Conference on Computer Aided Verification. Springer Berlin Heidelberg, 2006.
 
-\bibitem{Cadar} Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." OSDI. Vol. 8. 2008.
-%%
+\bibitem{Cadar} Cadar, Cristian, Daniel Dunbar, and Dawson R. Engler. "KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs." The 11st USENIX Symposium on Operating Systems Design and Implementation (OSDI). 2008.
 
+\bibitem{Samjam} Garg, Sanjam and Gentry, Craig and Halevi, Shai and Raykova, Mariana and Sahai, Amit and Waters, Brent. ``Candidate Indistinguishability Obfuscation and Functional Encryption for All Circuits.'' The 53rd Annual Symposium on Foundations of Computer Science (FOCS). 2013.
+
+\bibitem{Maieee} Hanoyu Ma, Ruiqi Li, Xiaoxu Yu, Chunfu Jia, Debin Gao. ``Integrated Software Fingerprinting via Neural-Network-Based Control Flow Obfuscation.'' IEEE Transactions on Information Forensics \& Security (TIFS). 2016.
 
 \end{thebibliography}
 %

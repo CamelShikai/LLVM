@@ -38,6 +38,7 @@
 
 
 
+<<<<<<< HEAD
 % \subsubsection{Negative Integer Operand Preprocess}
 % % what if 4 + (-6)?  would you translate it into 4 + 6?
 % \textcolor{red}{still not clear}
@@ -158,3 +159,20 @@ predicate instructions (e.g., \texttt{icmp}). Through use-def chain analysis,
 we also locate all instructions that determine the value of the conditional
 branch instruction, all these instructions are deemed as transformation
 candidates.
+=======
+\subsubsection{Negative Integer Operand Preprocess}
+% what if 4 + (-6)?  would you translate it into 4 + 6?
+\textcolor{red}{still not clear}
+In software programs, integer operands comprise both positive and negative
+cases. Turing machine could only dispose of positive operands in consequence of
+we use the length of dot cell on tape to represent a integer. This means we have
+to preprocess the invalid operands in Turing machine obfuscator. In the
+preprocessing stage, Turing machine obfuscator could convert invalid operands to
+its opposite number to run Turing machine. Calculate result from Turing machine
+is also revised before returning. For instance, $-4 + (-6)$ is preprocessed to
+$4 + 6$, afterwards -10 which is the opposite number of 10 is returned. $4 +
+(-6)$ is preprocessed to Turing machine operation $6 - 4$, and the opposite
+number of the outcome 2 (i.e., -2) is returned. In preprocess stage, any
+arithmetic operation would be transformed to a valid integer operation with $+$,
+$-$, $\times$, $\div$ for Turing machine.
+>>>>>>> e49a644b666da86f78dcd082fd52d1c6d25a270f
