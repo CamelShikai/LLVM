@@ -1,0 +1,68 @@
+\chapter{Discussion}
+\label{sec:discussion}
+To provide more insights and guideline for further adoption of our proposed
+technique, we discuss the multiple aspects of the proposed Turing machine obfuscation
+technique in this section.
+
+\subsection{Complexity}
+In general, Turing machine model is a powerful calculator that is capable of
+solving any algorithm problem. Note that even a simple operation (e.g., ``add'')
+may lead to the change of Turing machine states for hundreds of times; every
+``move left'' and ``move right'' operation lead to the tape modification and
+``read tape'' or ``write tape'' operations.
+
+Considering Turing machine as a state machine, it is hard---if possible at
+all---for adversaries with manual reverse engineering to follow the calculation
+logic without understanding the transition table rules and state variables. In
+addition, automated deobfuscation tools (e.g., KLEE) can also be defeated due to
+the intrinsic complexity of a Turing machine. As reported in our resilience
+evaluation (\S\ref{subsec:resilience}), the constraint solver of KLEE failed to
+yield proper inputs to cover two of three execution paths.
+
+\subsection{Application Scope}
+Previous obfuscation work~\cite{Sharif} usually targets one or several specific
+kinds of predicate expressions. Also, most of them performs source code level
+transformations for specific kind of program languages~\cite{Trans}. Turing
+obfuscator broadens the application scope to any kind of conditional expression.
+In addition, it works for programs written in any language as long as they could
+be transformed into the LLVM IR. Considering a large portion of programming
+languages have been supported by LLVM, we envision Turning machine obfuscator
+would serve to harden many softwares implemented with various kinds of
+programming languages.
+
+\subsection{Branch Selection Techniques}
+As previously presented, our current implementation rewrites path condition
+instructions to invoke the Turing machine component. While it is mostly
+impossible for attackers to reason the semanic of the Turing machine code,
+return value of executing the Turing machine component is observable (since the
+predicate computation is modeled as a function call to the Turing machine
+component). Certain amount of information leakage may become feasible at this
+point.
+
+We notice that existing work (\cite{Ma, Maieee}) proposes a different approach
+at this step; control flow is directly guided (via \texttt{goto}) to the
+selected branch from the neural network obfuscator. While this approach seems to
+hide the explicit return value, we argue such technique is not fundamentally
+more secure since the hidden return value can be inferred by observing the
+execution flow. Another solution that may be employed to protect the predicate
+computation result is to use matrix branch logic~\cite{Samjam}. Suppose we model
+a branch predicate with a Turing machine function, the general idea is to
+further transform Turing machine into a matrix function, and then randomize the
+matrix branching function. The involved matrix branch logic and randomness shall
+provide additional security consideration at this step. Overall, we argue the
+current implementation is reasonable, and we leave it as one future work to
+present quantitative analysis of the potential information leakage and
+countermeasures at this step.
+
+\subsection{Execution Overhead}
+During the Turing machine computation, frequent state change would indicate lots
+of read and write operations. Also, since tape is infinite in Turing machine
+model, it needs to allocate enough memory to accommodate complex computations.
+In general, the complexity of Turing machine may be considered as a double edge
+sword; it impedes adversaries and potentially increases overhead to certain
+degree. As reported in the cost evaluation (Fig.~\ref{fig:cost}), we observed
+non-negligible performance penalty for both cases. One countermeasure here is to
+perform selective obfuscation; users can mark sensitive program codes and guide
+the Turing machine obfuscator to only harden those parts. Such strategy would
+improve the overall execution speed without sacrificing the major security
+considerations.

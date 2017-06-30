@@ -1,0 +1,30 @@
+\contentsline {chapter}{List of Figures}{vi}
+\contentsline {chapter}{List of Tables}{vii}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Related Work}{4}
+\contentsline {chapter}{\numberline {3}Turing Machine Obfuscator}{6}
+\contentsline {section}{\numberline {3.1}Design Overview}{6}
+\contentsline {section}{\numberline {3.2}Turing Machine}{7}
+\contentsline {subsection}{\numberline {3.2.1}Transition Table}{8}
+\contentsline {subsection}{\numberline {3.2.2}Turing Machine Encoding}{9}
+\contentsline {subsection}{\numberline {3.2.3}Turing Machine Execution}{9}
+\contentsline {subsection}{\numberline {3.2.4}Addition Turing Machine}{10}
+\contentsline {subsection}{\numberline {3.2.5}Turing Machine of Other Operations}{11}
+\contentsline {section}{\numberline {3.3}Universal Turing Machine}{12}
+\contentsline {chapter}{\numberline {4}Implementation}{14}
+\contentsline {section}{\numberline {4.1}Phase One: Translate Source Code to IR}{14}
+\contentsline {section}{\numberline {4.2}Phase Two: Collect Transformation Candidate}{15}
+\contentsline {section}{\numberline {4.3}Phase Three: Obfuscation Transformation}{16}
+\contentsline {chapter}{\numberline {5}Evaluation}{19}
+\contentsline {section}{\numberline {5.1}Functionality}{20}
+\contentsline {section}{\numberline {5.2}Potency}{20}
+\contentsline {section}{\numberline {5.3}Resilience}{22}
+\contentsline {section}{\numberline {5.4}Stealth}{24}
+\contentsline {section}{\numberline {5.5}Cost}{25}
+\contentsline {chapter}{\numberline {6}Discussion}{27}
+\contentsline {section}{\numberline {6.1}Complexity}{27}
+\contentsline {section}{\numberline {6.2}Application Scope}{28}
+\contentsline {section}{\numberline {6.3}Branch Selection Techniques}{28}
+\contentsline {section}{\numberline {6.4}Execution Overhead}{29}
+\contentsline {chapter}{\numberline {7}Conclusion}{30}
+\contentsline {chapter}{Bibliography}{31}

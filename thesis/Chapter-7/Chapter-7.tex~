@@ -1,0 +1,9 @@
+\chapter{Conclusion}
+In this paper, we propose a novel obfuscation technique using 
+ Turing machines. We have implemented a research prototype, Turing
+machine obfuscator, on the LLVM platform and evaluated %Turing machine obfuscator
+on open source software with respect to functionality
+correctness, potency, resilience, stealth, and cost. The results
+indicate effectiveness and robustness of Turing machine obfuscation. We believe
+Turing machine obfuscation could be a promising and practical obfuscation tool to
+battle reverse engineering.

@@ -1,15 +1,61 @@
-\chapter{Title of the Second Chapter}
+% \chapter{Title of the Second Chapter}
 
-\section{Introduction}
-When in the Course of human events, it becomes necessary for one people  to dissolve the political bands which have connected them with another,  and to assume among the powers of the earth, the separate and equal station  to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare  the causes which impel them to the separation.
+% \section{Introduction}
+% When in the Course of human events, it becomes necessary for one people  to dissolve the political bands which have connected them with another,  and to assume among the powers of the earth, the separate and equal station  to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare  the causes which impel them to the separation.
 
-\section{More Declaration}
+% \section{More Declaration}
 
-We hold these truths to be self-evident, that all men are created equal,  that they are endowed by their Creator with certain unalienable Rights,  that among these are Life, Liberty and the pursuit of Happiness. --That to secure these  rights, Governments are instituted among Men, deriving their just powers  from the consent of the governed, --That whenever any Form of Government  becomes destructive of these ends, it is the Right of the People to alter  or to abolish it, and to institute new Government, laying its foundation on  such principles and organizing its powers in such form, as to them shall  seem most likely to effect their Safety and Happiness. Prudence, indeed, will dictate that Governments long established should not  be changed for light and transient causes; and accordingly all experience  hath shewn, that mankind are more disposed to suffer, while evils are  sufferable, than to right themselves by abolishing the forms to which they  are accustomed. But when a long train of abuses and usurpations, pursuing invariably the same  Object evinces a design to reduce them under absolute Despotism, it is their  right, it is their duty, to throw off such Government, and to provide new Guards for their future security. --Such has been the patient sufferance of these Colonies; and such is now the  necessity which constrains them to alter their former Systems of Government.
-%%
-\begin{equation}
-\label{eq: label}
-x = y
-\end{equation}
-%%
-The history of the present King of Great Britain [George III] is a history  of repeated injuries and usurpations, all having in direct object the  establishment of an absolute Tyranny over these States. To prove this, let Facts be submitted to a candid world.
+% We hold these truths to be self-evident, that all men are created equal,  that they are endowed by their Creator with certain unalienable Rights,  that among these are Life, Liberty and the pursuit of Happiness. --That to secure these  rights, Governments are instituted among Men, deriving their just powers  from the consent of the governed, --That whenever any Form of Government  becomes destructive of these ends, it is the Right of the People to alter  or to abolish it, and to institute new Government, laying its foundation on  such principles and organizing its powers in such form, as to them shall  seem most likely to effect their Safety and Happiness. Prudence, indeed, will dictate that Governments long established should not  be changed for light and transient causes; and accordingly all experience  hath shewn, that mankind are more disposed to suffer, while evils are  sufferable, than to right themselves by abolishing the forms to which they  are accustomed. But when a long train of abuses and usurpations, pursuing invariably the same  Object evinces a design to reduce them under absolute Despotism, it is their  right, it is their duty, to throw off such Government, and to provide new Guards for their future security. --Such has been the patient sufferance of these Colonies; and such is now the  necessity which constrains them to alter their former Systems of Government.
+% %%
+% \begin{equation}
+% \label{eq: label}
+% x = y
+% \end{equation}
+% %%
+% The history of the present King of Great Britain [George III] is a history  of repeated injuries and usurpations, all having in direct object the  establishment of an absolute Tyranny over these States. To prove this, let Facts be submitted to a candid world.
+\chapter{Related Work}
+Generally speaking, reverse engineering techniques are categorized into static
+track and dynamic track. To battle static reverse engineering, researchers
+usually focus on hardening disassembling and decompiling process. To combat the
+dynamic reverse engineering techniques such as concolic testing, sensitive
+conditional transfer logic must be hidden from adversaries. Control flow
+obfuscation has been proved effective in this scenario.
+
+Sharif et al.~\cite{Sharif} propose a technique to rewrite certain branch
+conditions and encrypt code components that are guarded by such conditions.
+Branch conditions that are dependent on the input are selected and branch
+condition outputs are transformed with a hash function. Moreover, the code
+component which is dependent on a transformed condition would be encrypted; the
+encryption key is derived from the input which satisfies the branch condition.
+In general, their technique focus on selectively translate branch conditions
+that are dependent on the input, which could leave many branch conditions
+unprotected. Also, since the branch condition statement itself is mostly
+untouched (only the boolean output is hashed), the original branch condition
+code is still in the obfuscated program, which could be leveraged to reveal the
+original semantics.
+
+Popov et al.~\cite{Popov} propose to replace unconditional control transfer
+instructions such as \texttt{jmp} and \texttt{call} with ``signals''. Their work
+is used to impede binary disassembly, usually the starting point of reverse
+engineering. Moreover, dummy control transfers and junk instructions are also
+inserted after the replaced control transfers. This method is effective in
+fooling disassemblers in analyzing unconditional transfers but it becomes
+mal-functional where the conditional transfers need to be protected as well.
+Another related work proposes to protect control flow branches leveraging a
+remote trusted third party environment~\cite{Zhi}. In general, their technique
+mostly introduces notable network overhead and also relies on trusted network
+accessibility which may not be feasible in practice.
+
+Ma et al.~\cite{Ma, Maieee} propose to use neural network to replace certain
+branch condition statements; the propose technique is evaluated to conceal
+conditional instructions and impede typical reverse engineering analysis such as
+concolic testing. Although the idea is promising and the experimental results
+indicate the effectiveness to certain degree, in general neural network-based
+approach may not be suitable for security applications. To the best of our
+knowledge, neural network works like a black box; it lacks a rigorous
+theoretical foundation to show a correct result can always to generated given an
+input. In other words, neural networks may yield results which lead to an
+incorrect branch selection. Overall, neural networks introduce complexity as
+well as (unwanted) uncertainty to the transformed programs. In addition, we
+notice that neural network usually consumes too much memory in transforming
+non-trivial programs.
