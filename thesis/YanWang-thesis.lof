@@ -3,18 +3,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Obfuscate a branch condition statement through a Turing machine.\relax }}{7}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Turing machine components.\relax }}{8}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Turing machine execution result.\relax }}{11}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Universal Turing machine.\relax }}{13}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Obfuscate a branch condition statement through a Turing machine.\relax }}{8}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Turing machine components.\relax }}{9}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Turing machine execution result.\relax }}{12}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Universal Turing machine.\relax }}{14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Workflow of the Turing machine obfuscator.\relax }}{15}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Obfuscation transformation for an \texttt {icmp} instruction. ``UTM'' standards for universal Turing machine.\relax }}{16}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Workflow of the Turing machine obfuscator.\relax }}{16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Obfuscation transformation for an \texttt {icmp} instruction. ``UTM'' standards for universal Turing machine.\relax }}{17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Number of call graph edges in terms of different obfuscation levels.\relax }}{22}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces KLEE sample code used in our evaluation. All the path conditions are obfuscated.\relax }}{23}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces \textsc {bzip2} instruction distribution comparison.\relax }}{24}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces \textsc {regexp} instruction distribution comparison.\relax }}{25}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Execution overhead in terms of different obfuscation levels.\relax }}{26}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Number of call graph edges in terms of different obfuscation levels.\relax }}{23}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces KLEE sample code used in our evaluation. All the path conditions are obfuscated.\relax }}{24}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces \textsc {bzip2} instruction distribution comparison.\relax }}{25}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces \textsc {regexp} instruction distribution comparison.\relax }}{26}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Execution overhead in terms of different obfuscation levels.\relax }}{27}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

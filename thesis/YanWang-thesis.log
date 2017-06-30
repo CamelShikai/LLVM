@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.5.12)  28 JUN 2017 13:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.5.12)  29 JUN 2017 23:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -748,16 +748,16 @@ Chapter 1.
 
 
 
-] [2]) [3]
+] [2]) [3] [4]
 \openout2 = `Chapter-2/Chapter-2.aux'.
 
  (./Chapter-2/Chapter-2.tex
 Chapter 2.
-[4
+[5
 
 
 
-]) [5]
+]) [6]
 \openout2 = `Chapter-3/Chapter-3.aux'.
 
  (./Chapter-3/Chapter-3.tex
@@ -767,57 +767,57 @@ LaTeX Warning: File `figure2.eps' not found on input line 20.
 
 Package epstopdf Info: Source file: <figure2.eps>
 (epstopdf)             Output file: <figure2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 20805 bytes
 (epstopdf)             Command: <repstopdf --outfile=figure2-eps-converted-to.p
 df figure2.eps>
 (epstopdf)             \includegraphics on input line 20.
 Package epstopdf Info: Output file is already uptodate.
-<figure2-eps-converted-to.pdf, id=49, 918.43124pt x 286.06876pt>
+<figure2-eps-converted-to.pdf, id=55, 918.43124pt x 286.06876pt>
 File: figure2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure2-eps-converted-to.pdf>
 Package pdftex.def Info: figure2-eps-converted-to.pdf used on input line 20.
 (pdftex.def)             Requested size: 419.16621pt x 130.56306pt.
- [6
+ [7
 
 
 
-] [7 <./figure2-eps-converted-to.pdf>]
-<TM.pdf, id=65, 487.8225pt x 231.11343pt>
+] [8 <./figure2-eps-converted-to.pdf>]
+<TM.pdf, id=70, 487.8225pt x 231.11343pt>
 File: TM.pdf Graphic file (type pdf)
  <use TM.pdf>
 Package pdftex.def Info: TM.pdf used on input line 49.
 (pdftex.def)             Requested size: 377.24702pt x 178.72667pt.
- [8 <./TM.pdf>] [9]
+ [9 <./TM.pdf>] [10]
 Overfull \hbox (12.06958pt too wide) in paragraph at lines 105--131
  [][] 
  []
 
-<Turingaddoutcome.pdf, id=84, 441.90094pt x 81.30376pt>
+<Turingaddoutcome.pdf, id=87, 441.90094pt x 81.30376pt>
 File: Turingaddoutcome.pdf Graphic file (type pdf)
 
 <use Turingaddoutcome.pdf>
 Package pdftex.def Info: Turingaddoutcome.pdf used on input line 149.
 (pdftex.def)             Requested size: 377.24702pt x 69.41121pt.
- [10] [11 <./Turingaddoutcome.pdf>] [12]
-<UTM.pdf, id=104, 473.51906pt x 260.47313pt>
+ [11] [12 <./Turingaddoutcome.pdf>] [13]
+<UTM.pdf, id=107, 473.51906pt x 260.47313pt>
 File: UTM.pdf Graphic file (type pdf)
  <use UTM.pdf>
 Package pdftex.def Info: UTM.pdf used on input line 237.
 (pdftex.def)             Requested size: 419.16621pt x 230.5803pt.
-) [13 <./UTM.pdf>]
+) [14 <./UTM.pdf>]
 \openout2 = `Chapter-4/Chapter-4.aux'.
 
 
 (./Chapter-4/Chapter-4.tex
 Chapter 4.
-<overview.pdf, id=116, 1056.19594pt x 237.88875pt>
+<overview.pdf, id=119, 1056.19594pt x 237.88875pt>
 File: overview.pdf Graphic file (type pdf)
  <use overview.pdf>
 Package pdftex.def Info: overview.pdf used on input line 16.
 (pdftex.def)             Requested size: 419.16621pt x 94.40967pt.
- [14
+ [15
 
 
 
@@ -826,7 +826,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--50
 
  []
 
-[15 <./overview.pdf>] <transform_pass.pdf, id=131, 701.47992pt x 228.67964pt>
+[16 <./overview.pdf>] <transform_pass.pdf, id=134, 701.47992pt x 228.67964pt>
 File: transform_pass.pdf Graphic file (type pdf)
 
 <use transform_pass.pdf>
@@ -842,17 +842,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 71--108
 
  []
 
-[16 <./transform_pass.pdf>]
+[17 <./transform_pass.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 109--121
 
  []
 
-[17]) [18]
+[18]) [19]
 \openout2 = `Chapter-5/Chapter-5.aux'.
 
  (./Chapter-5/Chapter-5.tex
 Chapter 5.
-[19
+[20
 
 
 
@@ -861,24 +861,24 @@ Overfull \hbox (18.55118pt too wide) in paragraph at lines 54--67
  [][] 
  []
 
-[20] [21]
+[21] [22]
 Package epstopdf Info: Source file: <cg.eps>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 20284 bytes
 (epstopdf)             Output file: <cg-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 6931 bytes
 (epstopdf)             Command: <repstopdf --outfile=cg-eps-converted-to.pdf cg
 .eps>
 (epstopdf)             \includegraphics on input line 108.
 Package epstopdf Info: Output file is already uptodate.
- <cg-eps-converted-to.pdf, id=159, 361.35pt x 252.945pt>
+ <cg-eps-converted-to.pdf, id=163, 361.35pt x 252.945pt>
 File: cg-eps-converted-to.pdf Graphic file (type pdf)
 
 <use cg-eps-converted-to.pdf>
 Package pdftex.def Info: cg-eps-converted-to.pdf used on input line 108.
 (pdftex.def)             Requested size: 377.24702pt x 264.07553pt.
- [22 <./cg-eps-converted-to.pdf>]
+ [23 <./cg-eps-converted-to.pdf>]
 LaTeX Font Info:    Try loading font information for T1+DejaVuSansMono-TLF on i
 nput line 130.
 LaTeX Font Info:    No file T1DejaVuSansMono-TLF.fd. on input line 130.
@@ -893,19 +893,19 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 136.
-[23]
+[24]
 
 LaTeX Warning: File `st_bzip2.eps' not found on input line 179.
 
 Package epstopdf Info: Source file: <st_bzip2.eps>
 (epstopdf)             Output file: <st_bzip2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 7951 bytes
 (epstopdf)             Command: <repstopdf --outfile=st_bzip2-eps-converted-to.
 pdf st_bzip2.eps>
 (epstopdf)             \includegraphics on input line 179.
 Package epstopdf Info: Output file is already uptodate.
-<st_bzip2-eps-converted-to.pdf, id=174, 361.35pt x 252.945pt>
+<st_bzip2-eps-converted-to.pdf, id=178, 361.35pt x 252.945pt>
 File: st_bzip2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use st_bzip2-eps-converted-to.pdf>
@@ -917,67 +917,67 @@ LaTeX Warning: File `st_regexp.eps' not found on input line 185.
 
 Package epstopdf Info: Source file: <st_regexp.eps>
 (epstopdf)             Output file: <st_regexp-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 8059 bytes
 (epstopdf)             Command: <repstopdf --outfile=st_regexp-eps-converted-to
 .pdf st_regexp.eps>
 (epstopdf)             \includegraphics on input line 185.
 Package epstopdf Info: Output file is already uptodate.
-<st_regexp-eps-converted-to.pdf, id=175, 361.35pt x 252.945pt>
+<st_regexp-eps-converted-to.pdf, id=179, 361.35pt x 252.945pt>
 File: st_regexp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use st_regexp-eps-converted-to.pdf>
 Package pdftex.def Info: st_regexp-eps-converted-to.pdf used on input line 185.
 
 (pdftex.def)             Requested size: 377.24702pt x 264.07553pt.
- [24 <./st_bzip2-eps-converted-to.pdf>]
-[25 <./st_regexp-eps-converted-to.pdf>]
+ [25 <./st_bzip2-eps-converted-to.pdf>]
+[26 <./st_regexp-eps-converted-to.pdf>]
 
 LaTeX Warning: File `cost.eps' not found on input line 217.
 
 Package epstopdf Info: Source file: <cost.eps>
 (epstopdf)             Output file: <cost-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-26 22:31:31
+(epstopdf)                    date: 2017-06-29 21:11:55
 (epstopdf)                    size: 6960 bytes
 (epstopdf)             Command: <repstopdf --outfile=cost-eps-converted-to.pdf 
 cost.eps>
 (epstopdf)             \includegraphics on input line 217.
 Package epstopdf Info: Output file is already uptodate.
-<cost-eps-converted-to.pdf, id=193, 361.35pt x 252.945pt>
+<cost-eps-converted-to.pdf, id=196, 361.35pt x 252.945pt>
 File: cost-eps-converted-to.pdf Graphic file (type pdf)
 
 <use cost-eps-converted-to.pdf>
 Package pdftex.def Info: cost-eps-converted-to.pdf used on input line 217.
 (pdftex.def)             Requested size: 377.24702pt x 264.07553pt.
-) [26 <./cost-eps-converted-to.pdf>]
+) [27 <./cost-eps-converted-to.pdf>]
 \openout2 = `Chapter-6/Chapter-6.aux'.
 
 
 (./Chapter-6/Chapter-6.tex
 Chapter 6.
-[27
+[28
 
 
 
-] [28]) [29]
+] [29]) [30]
 \openout2 = `Chapter-7/Chapter-7.aux'.
 
  (./Chapter-7/Chapter-7.tex
 Chapter 7.
-) [30
+) [31
 
 
 
-] [31
+] [32
 
 
-] [32]
+] [33]
 Overfull \hbox (68.8769pt too wide) in paragraph at lines 617--618
 []$\T1/lmtt/m/n/12 https : / / www . bu . edu / eng / 2017 / 05 / 18 / protecti
 on-[]from-[]ransomware-[]like-[]wannacry/$ 
  []
 
-[33] (./YanWang-thesis.aux (./Chapter-1/Chapter-1.aux)
+[34] (./YanWang-thesis.aux (./Chapter-1/Chapter-1.aux)
 (./Chapter-2/Chapter-2.aux) (./Chapter-3/Chapter-3.aux)
 (./Chapter-4/Chapter-4.aux) (./Chapter-5/Chapter-5.aux)
 (./Chapter-6/Chapter-6.aux) (./Chapter-7/Chapter-7.aux))
@@ -986,17 +986,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 9796 strings out of 495028
- 146927 string characters out of 6181497
- 243252 words of memory out of 5000000
- 12592 multiletter control sequences out of 15000+600000
- 84557 words of font info for 112 fonts, out of 8000000 for 9000
+ 9806 strings out of 495028
+ 147085 string characters out of 6181497
+ 242252 words of memory out of 5000000
+ 12598 multiletter control sequences out of 15000+600000
+ 84731 words of font info for 114 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 52i,10n,49p,1462b,1290s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,10n,49p,1462b,1300s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/sk/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk>{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-math
-sy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/e
-nc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr
+texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.e
+nc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/e
+nc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr
 /share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/l
@@ -1005,10 +1005,10 @@ m/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf
 pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on YanWang-thesis.pdf (40 pages, 953634 bytes).
+Output written on YanWang-thesis.pdf (41 pages, 955849 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
+ 312 PDF objects out of 1000 (max. 8388607)
+ 203 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  22579 words of extra memory for PDF output out of 24883 (max. 10000000)
 
